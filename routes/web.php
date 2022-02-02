@@ -20,3 +20,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// LINE メッセージ受信
+Route::post('/line/webhook', 'LineMessengerController@webhook')->name('line.webhook');
+
+// LINE メッセージ送信用
+Route::get('/line/message', 'LineMessengerController@message');
