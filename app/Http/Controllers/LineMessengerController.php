@@ -36,14 +36,14 @@ class LineMessengerController extends Controller
         // もし見つからない場合は、データベースに保存
         if ($user == NULL) {
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
-            // $mode = $event->getMode();
+            $mode = $inputs['events'][0]['mode'];
 
             $user = new LineUser();
             $user->user_id = '3';
             $user->name = $profile['displayName'];
             $user->line_id = $userId;
             $user->provider = 'line';
-            $user->mode = '1';
+            $user->mode = $mode;
             $user->save();
         }
 
