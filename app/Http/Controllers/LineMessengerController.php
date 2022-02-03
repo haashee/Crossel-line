@@ -21,7 +21,7 @@ class LineMessengerController extends Controller
 
         // そこからtypeをとりだし、$message_typeに代入
         $message_type = $inputs['events'][0]['type'];
-        Log::info("LOG: message type is " . $message_type);
+        Log::info("LOG: message type is `" . $message_type . "`");
 
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
@@ -54,10 +54,10 @@ class LineMessengerController extends Controller
                 // メッセージ受信
             case 'message':
 
-                // 返答に必要なトークンを取得
+                // get the token needed to reply
                 $reply_token = $inputs['events'][0]['replyToken'];
 
-                // define message content
+                // get message content that was sent to you
                 $message_content = $inputs['events'][0]['message']['text'];
 
                 // The message to send
@@ -68,7 +68,7 @@ class LineMessengerController extends Controller
                     $message_data = 'ご確認ありがとうございます';
                 }
 
-                // LINEの投稿処理
+                // LINE process to send
                 $response = $bot->replyText($reply_token, $message_data);
 
                 // Succeeded
@@ -86,9 +86,18 @@ class LineMessengerController extends Controller
                 // ユーザー固有のIDを取得
                 $mid = $request['events'][0]['source']['userId'];
 
+                // get the token needed to reply
+                $reply_token = $inputs['events'][0]['replyToken'];
+
+                // The message to send
+                $message_data = "初めまして";
+
+                // LINE process to send
+                $response = $bot->replyText($reply_token, $message_data);
+
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
                 LineUser::updateOrCreate(['line_id' => $mid]);
-                Log::info("ユーザーを追加しました。 user_id = " . $mid);
+                Log::info("New user added user_id = " . $mid);
                 break;
 
                 // グループ・トークルーム参加
@@ -107,7 +116,7 @@ class LineMessengerController extends Controller
                 break;
 
             default:
-                Log::info("the type is" . $message_type);
+                Log::info("the type is `" . $message_type . "`");
                 break;
         }
 
