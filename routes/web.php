@@ -27,4 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::post('/line/webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');
 
 // LINE メッセージ送信用
-Route::get('/line/message', [LineMessengerController::class, 'message']);
+Route::get('/line/send', [LineMessengerController::class, 'sendMessage']);

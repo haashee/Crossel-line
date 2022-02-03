@@ -126,7 +126,7 @@ class LineMessengerController extends Controller
 
 
     // メッセージ送信用
-    public function message()
+    public function sendMessage()
     {
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
@@ -141,5 +141,12 @@ class LineMessengerController extends Controller
         // メッセージ送信
         $textMessageBuilder = new TextMessageBuilder($message);
         $response    = $bot->pushMessage($userId, $textMessageBuilder);
+
+        // 配信成功・失敗
+        if ($response->isSucceeded()) {
+            Log::info('Line 送信完了');
+        } else {
+            Log::error('投稿失敗: ' . $response->getRawBody());
+        }
     }
 }
