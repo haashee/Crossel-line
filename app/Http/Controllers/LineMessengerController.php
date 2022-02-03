@@ -6,6 +6,8 @@ use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
 use App\Models\User;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use Log;
+
 
 use Illuminate\Http\Request;
 
@@ -18,6 +20,8 @@ class LineMessengerController extends Controller
 
         // そこからtypeをとりだし、$message_typeに代入
         $message_type = $inputs['events'][0]['type'];
+        Log::info("LOG: the msg type is " . $message_type);
+
 
         // define message content
         $message_content = $inputs['events'][0]['message']['text'];
@@ -42,7 +46,7 @@ class LineMessengerController extends Controller
 
             // ユーザーにメッセージを返す
             $reply = $bot->replyText($reply_token, $reply_message);
-
+            Log::info("LOG: the msg is sent");
 
 
             // LINEのユーザーIDをuserIdに代入
@@ -60,6 +64,8 @@ class LineMessengerController extends Controller
                 $user->line_id = $userId;
                 $user->name = $profile['displayName'];
                 $user->save();
+
+                Log::info("LOG: the user is saved " . $userId);
             }
             return 'ok';
         }
