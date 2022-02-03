@@ -93,7 +93,9 @@ class LineMessengerController extends Controller
         $response = $bot->createRichMenu($richMenuBuilder);
 
         // check what is sent in POST for debug
-        file_put_contents('/tmp/postdata.txt', var_export($richMenuBuilder, true));
+        file_put_contents('/tmp/postdata.txt', var_export($response, true));
+        // retrieve richmenu id
+        // Log::info('LOG: the message is sent');
 
         // delete the rich menu
         // $response = $bot->deleteRichMenu('richmenu-b1f66f6d9c93859b2d5673a383075e6d');
