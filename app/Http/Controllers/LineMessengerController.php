@@ -7,9 +7,16 @@ use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
 use App\Models\User;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
+use LINE\LINEBot\MessageBuilder\LocationMessageBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
+use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
 use Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use \LINE\LINEBot\Constant\HTTPHeader;
+
 
 
 class LineMessengerController extends Controller
@@ -65,11 +72,30 @@ class LineMessengerController extends Controller
 
                 // if message content is `確認`
                 if ($message_content == '確認') {
-                    $message_data = 'ご確認ありがとうございます';
+                    $message_data = $reply_token . 'ご確認ありがとうございます';
                 }
 
                 // LINE process to send
-                $response = $bot->replyText($reply_token, $message_data);
+                // $response = $bot->replyText($reply_token, $message_data);
+
+                if ($message_content == 'Stamp') {
+                    $response = $bot->replyMessage($reply_token, new StickerMessageBuilder('1', '2'));
+                } elseif ($message_content == 'Location') {
+                    $response = $bot->replyMessage($reply_token, new LocationMessageBuilder("位置情報", "チトワンソウラハ村", 27.576718, 84.493928));
+                } elseif ($message_content == 'Confirm') {
+                    $bot->replyMessage(
+                        $reply_token,
+                        new TemplateMessageBuilder(
+                            'Confirm alt text',
+                            new ConfirmTemplateBuilder(
+                                'Do it?',
+                                [new MessageTemplateActionBuilder('Yes', 'Yes!'), new MessageTemplateActionBuilder('No', 'No!'),]
+                            )
+                        )
+                    );
+                } else {
+                    $response = $bot->replyText($reply_token, $message_data);
+                }
 
                 // Succeeded
                 if ($response->isSucceeded()) {
