@@ -110,7 +110,7 @@ class LineMessengerController extends Controller
                     $carousel = new CarouselTemplateBuilder($columns);
                     // カルーセルを追加してメッセージを作る
                     $carousel_message = new TemplateMessageBuilder("メッセージのタイトル", $carousel);
-                    $bot->replyMessage($reply_token, $carousel_message);
+                    $response = $bot->replyMessage($reply_token, $carousel_message);
                 } else {
                     $response = $bot->replyText($reply_token, $message_data);
                 }
