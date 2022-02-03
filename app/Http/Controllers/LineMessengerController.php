@@ -8,9 +8,9 @@ use LINE\LINEBot;
 use App\Models\User;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use Log;
-
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
 
 class LineMessengerController extends Controller
 {
@@ -37,9 +37,10 @@ class LineMessengerController extends Controller
         if ($user == NULL) {
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
             $mode = $inputs['events'][0]['mode'];
+            // $id = Auth::user()->id;
 
             $user = new LineUser();
-            $user->user_id = '3';
+            // $user->user_id = '4'; 
             $user->name = $profile['displayName'];
             $user->line_id = $userId;
             $user->provider = 'line';
