@@ -12,6 +12,9 @@ use LINE\LINEBot\MessageBuilder\LocationMessageBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
+use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
 use Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -93,6 +96,21 @@ class LineMessengerController extends Controller
                             )
                         )
                     );
+                } elseif ($message_content == 'Carousel') {
+                    //カルーセル型メッセージ送信
+                    $columns = []; // カルーセル型カラムを3つ追加する配列
+                    for ($i = 0; $i < 3; $i++) {
+                        // カルーセルに付与するボタンを作る
+                        $action = new UriTemplateActionBuilder("クリックしてね", "http://hiroasake.blogspot.com/");
+                        // カルーセルのカラムを作成する
+                        $column = new CarouselColumnTemplateBuilder("タイトル(40文字以内)", "ブログです", 'https://57c57cef.ngrok.io/linebot/image/PICT0065.JPG', [$action]);
+                        $columns[] = $column;
+                    }
+                    // カラムの配列を組み合わせてカルーセルを作成する
+                    $carousel = new CarouselTemplateBuilder($columns);
+                    // カルーセルを追加してメッセージを作る
+                    $carousel_message = new TemplateMessageBuilder("メッセージのタイトル", $carousel);
+                    $bot->replyMessage($reply_token, $carousel_message);
                 } else {
                     $response = $bot->replyText($reply_token, $message_data);
                 }
