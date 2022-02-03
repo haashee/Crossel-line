@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LineUser;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
 use App\Models\User;
@@ -30,16 +31,19 @@ class LineMessengerController extends Controller
         $userId = $request['events'][0]['source']['userId'];
 
         // userIdがあるユーザーを検索
-        $user = User::where('line_id', $userId)->first();
+        $user = LineUser::where('line_id', $userId)->first();
 
         // もし見つからない場合は、データベースに保存
         if ($user == NULL) {
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
+            // $mode = $event->getMode();
 
-            $user = new User();
-            $user->provider = 'line';
-            $user->line_id = $userId;
+            $user = new LineUser();
+            $user->user_id = '3';
             $user->name = $profile['displayName'];
+            $user->line_id = $userId;
+            $user->provider = 'line';
+            $user->mode = '1';
             $user->save();
         }
 
