@@ -92,10 +92,11 @@ class LineMessengerController extends Controller
         $richMenuBuilder = new RichMenuBuilder($richMenuSizeBuilder, false, "Nice richmenu", "Tap here", $richMenuAreaBuilder);
         $response = $bot->createRichMenu($richMenuBuilder);
 
-        // $richMenuBuilder = new \LINE\LINEBot\RichMenuBuilder(...)
-        // $response = $bot->createRichMenu($richMenuBuilder);
+        // check what is sent in POST for debug
+        file_put_contents('/tmp/postdata.txt', var_export($richMenuBuilder, true));
 
-        // $response = $bot->deleteRichMenu('richmenu-e0b5882d0b06bbf2abda69237c123f72');
+        // delete the rich menu
+        // $response = $bot->deleteRichMenu('richmenu-b1f66f6d9c93859b2d5673a383075e6d');
 
 
         // タイプごとに分岐
