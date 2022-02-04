@@ -66,57 +66,6 @@ class LineMessengerController extends Controller
             $user->save();
         }
 
-        // $channelAccessToken = config('services.line.channel_token');
-
-        // function createNewRichmenu($channelAccessToken)
-        // {
-        //     $sh = <<< EOF
-        //     curl -X POST \
-        //     -H 'Authorization: Bearer $channelAccessToken' \
-        //     -H 'Content-Type:application/json' \
-        //     -d '{"size": {"width": 2500,"height": 1686},"selected": false,"name": "Controller","chatBarText": "Controller","areas": [{"bounds": {"x": 551,"y": 325,"width": 321,"height": 321},"action": {"type": "message","text": "up"}},{"bounds": {"x": 876,"y": 651,"width": 321,"height": 321},"action": {"type": "message","text": "right"}},{"bounds": {"x": 551,"y": 972,"width": 321,"height": 321},"action": {"type": "message","text": "down"}},{"bounds": {"x": 225,"y": 651,"width": 321,"height": 321},"action": {"type": "message","text": "left"}},{"bounds": {"x": 1433,"y": 657,"width": 367,"height": 367},"action": {"type": "message","text": "btn b"}},{"bounds": {"x": 1907,"y": 657,"width": 367,"height": 367},"action": {"type": "message","text": "btn a"}}]}' https://api.line.me/v2/bot/richmenu;
-        //     EOF;
-        //     $result = json_decode(shell_exec(str_replace('\\', '', str_replace(PHP_EOL, '', $sh))), true);
-        //     if (isset($result['richMenuId'])) {
-        //         return $result['richMenuId'];
-        //     } else {
-        //         return $result['message'];
-        //     }
-        // }
-        // createNewRichmenu(getenv('CHANNEL_ACCESS_TOKEN'));
-
-        // Create richmenu
-        $richMenuSizeBuilder = new RichMenuSizeBuilder(1686, 2500); #h,w
-        $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 1686); #w,h
-        $postbackTemplateActionBuilder = new PostbackTemplateActionBuilder("Test", "i=1");
-        $richMenuAreaBuilder = new RichMenuAreaBuilder($richMenuAreaBoundsBuilder, $postbackTemplateActionBuilder);
-        $richMenuBuilder = new RichMenuBuilder($richMenuSizeBuilder, false, "Nice richmenu", "Tap here", $richMenuAreaBuilder);
-        $response = $bot->createRichMenu($richMenuBuilder);
-
-        // check what is sent in POST for debug
-        file_put_contents('/tmp/postdata.txt', var_export($response, true));
-
-        // retrieve richmenu id
-        $richMenuBody = $response->getRawBody();
-        $richMenuId = json_decode($richMenuBody)->richMenuId;
-        Log::info('the rich menu ID is `' . $richMenuId . '`');
-
-        // upload pic for richmenu
-        $imagePath = public_path() . '/images/rich-img.jpeg';
-        $contentType = 'image/jpeg';
-        $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
-
-        // Succeeded
-        if ($response->isSucceeded()) {
-            Log::info('Richmenu uploaded');
-        } else {
-            // Failed
-            Log::error($response->getRawBody());
-        }
-
-        // delete the rich menu
-        // $response = $bot->deleteRichMenu('richmenu-73da58a22f63aaf84741ea5d3da863dd');
-
 
 
 
@@ -254,5 +203,44 @@ class LineMessengerController extends Controller
         } else {
             Log::error('投稿失敗: ' . $response->getRawBody());
         }
+    }
+
+    public function richMenu()
+    {
+        // LINEBOTSDKの設定
+        $http_client = new CurlHTTPClient(config('services.line.channel_token'));
+        $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
+
+        // Create richmenu
+        $richMenuSizeBuilder = new RichMenuSizeBuilder(1686, 2500); #h,w
+        $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 1686); #w,h
+        $postbackTemplateActionBuilder = new PostbackTemplateActionBuilder("Test", "i=1");
+        $richMenuAreaBuilder = new RichMenuAreaBuilder($richMenuAreaBoundsBuilder, $postbackTemplateActionBuilder);
+        $richMenuBuilder = new RichMenuBuilder($richMenuSizeBuilder, false, "Nice richmenu", "Tap here", $richMenuAreaBuilder);
+        $response = $bot->createRichMenu($richMenuBuilder);
+
+        // check what is sent in POST for debug
+        file_put_contents('/tmp/postdata.txt', var_export($response, true));
+
+        // retrieve richmenu id
+        $richMenuBody = $response->getRawBody();
+        $richMenuId = json_decode($richMenuBody)->richMenuId;
+        Log::info('the rich menu ID is `' . $richMenuId . '`');
+
+        // upload pic for richmenu
+        $imagePath = public_path() . '/images/rich-img.jpeg';
+        $contentType = 'image/jpeg';
+        $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
+
+        // Succeeded
+        if ($response->isSucceeded()) {
+            Log::info('Richmenu uploaded');
+        } else {
+            // Failed
+            Log::error($response->getRawBody());
+        }
+
+        // delete the rich menu
+        $response = $bot->deleteRichMenu('richmenu-7149d7382d689981cb05e1d866060bf5');
     }
 }

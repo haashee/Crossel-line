@@ -23,8 +23,11 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// LINE メッセージ受信
+// LINE recieve message
 Route::post('/line/webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');
 
-// LINE メッセージ送信用
+// LINE send message
 Route::get('/line/send', [LineMessengerController::class, 'sendMessage']);
+
+// LINE rich menu create/upload/delete
+Route::get('/line/richmenu', [LineMessengerController::class, 'richMenu']);
