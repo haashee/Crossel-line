@@ -165,6 +165,7 @@ class LineMessengerController extends Controller
 
                 // ブロック
             case 'unfollow':
+                $bot->unlinkRichMenu($userId);
                 Log::info("ユーザーにブロックされました。");
                 break;
 
@@ -229,9 +230,6 @@ class LineMessengerController extends Controller
         $imagePath = public_path() . '/images/rich-img.jpeg';
         $contentType = 'image/jpeg';
         $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
-
-        // link LINE user ID with rich menu ID
-        // $response = $bot->linkRichMenu('U6f9e0ed71f65c0f07c6915788713aa5c', $richMenuId);
 
         // Succeeded
         if ($response->isSucceeded()) {
