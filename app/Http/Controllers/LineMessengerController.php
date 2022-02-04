@@ -85,6 +85,7 @@ class LineMessengerController extends Controller
         // }
         // createNewRichmenu(getenv('CHANNEL_ACCESS_TOKEN'));
 
+        // Create richmenu
         $richMenuSizeBuilder = new RichMenuSizeBuilder(1686, 2500); #h,w
         $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 1686); #w,h
         $postbackTemplateActionBuilder = new PostbackTemplateActionBuilder("Test", "i=1");
@@ -100,11 +101,8 @@ class LineMessengerController extends Controller
         $richMenuId = json_decode($richMenuBody)->richMenuId;
         Log::info('the rich menu ID is `' . $richMenuId . '`');
 
-        // delete the rich menu
-        // $response = $bot->deleteRichMenu('richmenu-5a98abadefd6fa98c3abc4a3a42b20f1');
-
         // upload pic for richmenu
-        $imagePath = '/Users/hashem/Documents/Projects/Meniu/Meniu-line/public/images/rich-img.jpeg';
+        $imagePath = public_path() . '/images/rich-img.jpeg';
         $contentType = 'image/jpeg';
         $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
 
@@ -115,6 +113,9 @@ class LineMessengerController extends Controller
             // Failed
             Log::error($response->getRawBody());
         }
+
+        // delete the rich menu
+        // $response = $bot->deleteRichMenu('richmenu-73da58a22f63aaf84741ea5d3da863dd');
 
 
 
