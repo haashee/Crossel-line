@@ -146,7 +146,7 @@ class LineMessengerController extends Controller
                 $response = $bot->replyText($reply_token, $message_data);
 
                 // link LINE user ID with rich menu ID
-                $response = $bot->linkRichMenu($userId, 'richmenu-7d0d5b4064f89e5eb6f158cd3c5bb9ae');
+                $response = $bot->linkRichMenu($userId, 'richmenu-366a328009612e91c0cc59aae4e65525');
 
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
                 LineUser::updateOrCreate(['line_id' => $userId]);
@@ -211,8 +211,8 @@ class LineMessengerController extends Controller
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
 
         // Create richmenu
-        $richMenuSizeBuilder = new RichMenuSizeBuilder(1686, 2500); #h,w
-        $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 1686); #w,h
+        $richMenuSizeBuilder = new RichMenuSizeBuilder(843, 2500); #h,w
+        $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 843); #w,h
         $postbackTemplateActionBuilder = new PostbackTemplateActionBuilder("Test", "i=1");
         $richMenuAreaBuilder = new RichMenuAreaBuilder($richMenuAreaBoundsBuilder, $postbackTemplateActionBuilder);
         $richMenuBuilder = new RichMenuBuilder($richMenuSizeBuilder, false, "Nice richmenu", "Tap here", $richMenuAreaBuilder);
@@ -240,6 +240,6 @@ class LineMessengerController extends Controller
         }
 
         // delete the rich menu
-        // $response = $bot->deleteRichMenu('richmenu-7e1235e710b3e392ef28389d8d4cac6a');
+        // $response = $bot->deleteRichMenu('richmenu-7d0d5b4064f89e5eb6f158cd3c5bb9ae');
     }
 }
