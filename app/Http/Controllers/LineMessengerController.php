@@ -66,8 +66,7 @@ class LineMessengerController extends Controller
             $user->save();
         }
 
-
-
+        // $response = $bot->getRichMenuId($userId);
 
         // タイプごとに分岐
         switch ($message_type) {
@@ -232,6 +231,9 @@ class LineMessengerController extends Controller
         $contentType = 'image/jpeg';
         $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
 
+        // link LINE user ID with rich menu ID
+        $response = $bot->linkRichMenu('U6f9e0ed71f65c0f07c6915788713aa5c', $richMenuId);
+
         // Succeeded
         if ($response->isSucceeded()) {
             Log::info('Richmenu uploaded');
@@ -241,6 +243,6 @@ class LineMessengerController extends Controller
         }
 
         // delete the rich menu
-        $response = $bot->deleteRichMenu('richmenu-7149d7382d689981cb05e1d866060bf5');
+        // $response = $bot->deleteRichMenu('richmenu-edf32ff8ef2b652c5aa5d474374d6ca8');
     }
 }
