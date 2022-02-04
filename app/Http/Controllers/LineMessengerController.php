@@ -136,10 +136,6 @@ class LineMessengerController extends Controller
 
                 // 友だち追加 or ブロック解除
             case 'follow':
-
-                // ユーザー固有のIDを取得
-                $mid = $request['events'][0]['source']['userId'];
-
                 // get the token needed to reply
                 $reply_token = $inputs['events'][0]['replyToken'];
 
@@ -149,9 +145,12 @@ class LineMessengerController extends Controller
                 // LINE process to send
                 $response = $bot->replyText($reply_token, $message_data);
 
+                // link LINE user ID with rich menu ID
+                $response = $bot->linkRichMenu($userId, 'richmenu-7d0d5b4064f89e5eb6f158cd3c5bb9ae');
+
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
-                LineUser::updateOrCreate(['line_id' => $mid]);
-                Log::info("New user added user_id = " . $mid);
+                LineUser::updateOrCreate(['line_id' => $userId]);
+                Log::info("New user added user_id = " . $userId);
                 break;
 
                 // グループ・トークルーム参加
@@ -232,7 +231,7 @@ class LineMessengerController extends Controller
         $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
 
         // link LINE user ID with rich menu ID
-        $response = $bot->linkRichMenu('U6f9e0ed71f65c0f07c6915788713aa5c', $richMenuId);
+        // $response = $bot->linkRichMenu('U6f9e0ed71f65c0f07c6915788713aa5c', $richMenuId);
 
         // Succeeded
         if ($response->isSucceeded()) {
@@ -243,6 +242,6 @@ class LineMessengerController extends Controller
         }
 
         // delete the rich menu
-        // $response = $bot->deleteRichMenu('richmenu-edf32ff8ef2b652c5aa5d474374d6ca8');
+        // $response = $bot->deleteRichMenu('richmenu-7e1235e710b3e392ef28389d8d4cac6a');
     }
 }
