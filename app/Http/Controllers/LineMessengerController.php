@@ -96,11 +96,27 @@ class LineMessengerController extends Controller
         file_put_contents('/tmp/postdata.txt', var_export($response, true));
 
         // retrieve richmenu id
-        $richMenuId = $response->getRawBody();
-        Log::info('the rich menu ID is' . $richMenuId);
+        $richMenuBody = $response->getRawBody();
+        $richMenuId = json_decode($richMenuBody)->richMenuId;
+        Log::info('the rich menu ID is `' . $richMenuId . '`');
 
         // delete the rich menu
         // $response = $bot->deleteRichMenu('richmenu-5a98abadefd6fa98c3abc4a3a42b20f1');
+
+        // upload pic for richmenu
+        $imagePath = '/Users/hashem/Documents/Projects/Meniu/Meniu-line/public/images/rich-img.jpeg';
+        $contentType = 'image/jpeg';
+        $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
+
+        // Succeeded
+        if ($response->isSucceeded()) {
+            Log::info('Richmenu uploaded');
+        } else {
+            // Failed
+            Log::error($response->getRawBody());
+        }
+
+
 
 
         // タイプごとに分岐
