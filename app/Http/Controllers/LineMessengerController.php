@@ -16,6 +16,7 @@ use LINE\LINEBot\TemplateActionBuilder\MessageTemplateActionBuilder;
 use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
+use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
 
 use LINE\LINEBot\RichMenuBuilder\RichMenuAreaBuilder;
 use LINE\LINEBot\RichMenuBuilder\RichMenuSizeBuilder;
@@ -88,14 +89,14 @@ class LineMessengerController extends Controller
                     $message_data = $reply_token . 'ご確認ありがとうございます';
                 }
 
-                // LINE process to send
-                // $response = $bot->replyText($reply_token, $message_data);
-
                 if ($message_content == 'Stamp') {
-                    $response = $bot->replyMessage($reply_token, new StickerMessageBuilder('1', '2'));
+                    //Send stamp message
+                    $response = $bot->replyMessage($reply_token, new StickerMessageBuilder('1', '2')); #LINE stamp Id  
                 } elseif ($message_content == 'Location') {
+                    //Send location message
                     $response = $bot->replyMessage($reply_token, new LocationMessageBuilder("位置情報", "チトワンソウラハ村", 27.576718, 84.493928));
                 } elseif ($message_content == 'Confirm') {
+                    //Send confirm message
                     $bot->replyMessage(
                         $reply_token,
                         new TemplateMessageBuilder(
@@ -106,22 +107,34 @@ class LineMessengerController extends Controller
                             )
                         )
                     );
+                } elseif ($message_content == 'Button') {
+                    //Send button message
+                    // Create button in buttons message
+                    $yes_button = new MessageTemplateActionBuilder('Confirm text', 'reply text');
+                    $no_button = new MessageTemplateActionBuilder('Cancel text', 'reply text');
+                    // Create actions
+                    $actions = [$yes_button, $no_button];
+                    $button = new ButtonTemplateBuilder('Title', 'Description', '', $actions);
+                    // Add button message and send message
+                    $button_message = new TemplateMessageBuilder('Alt text', $button);
+                    $bot->replyMessage($reply_token, $button_message);
                 } elseif ($message_content == 'Carousel') {
-                    //カルーセル型メッセージ送信
-                    $columns = []; // カルーセル型カラムを3つ追加する配列
+                    //Send carousel message
+                    $columns = []; // Column array for carousel
                     for ($i = 0; $i < 3; $i++) {
-                        // カルーセルに付与するボタンを作る
+                        // Create button in carousel
                         $action = new UriTemplateActionBuilder("クリックしてね", "http://hiroasake.blogspot.com/");
-                        // カルーセルのカラムを作成する
+                        // Create columns for carousel
                         $column = new CarouselColumnTemplateBuilder("タイトル(40文字以内)", "ブログです", 'https://57c57cef.ngrok.io/linebot/image/PICT0065.JPG', [$action]);
                         $columns[] = $column;
                     }
-                    // カラムの配列を組み合わせてカルーセルを作成する
+                    // Create carousel from columns
                     $carousel = new CarouselTemplateBuilder($columns);
-                    // カルーセルを追加してメッセージを作る
+                    // Add carousel and send message
                     $carousel_message = new TemplateMessageBuilder("メッセージのタイトル", $carousel);
                     $response = $bot->replyMessage($reply_token, $carousel_message);
                 } else {
+                    // LINE process to send
                     $response = $bot->replyText($reply_token, $message_data);
                 }
 
@@ -134,7 +147,7 @@ class LineMessengerController extends Controller
                 Log::error($response->getRawBody());
                 break;
 
-                // 友だち追加 or ブロック解除
+                // Added as new friend or unblocked
             case 'follow':
                 // get the token needed to reply
                 $reply_token = $inputs['events'][0]['replyToken'];
@@ -153,17 +166,17 @@ class LineMessengerController extends Controller
                 Log::info("New user added user_id = " . $userId);
                 break;
 
-                // グループ・トークルーム参加
+                // Enter chat room
             case 'join':
                 Log::info("グループ・トークルームに追加されました。");
                 break;
 
-                // グループ・トークルーム退出
+                // Leave chat room
             case 'leave':
                 Log::info("グループ・トークルームから退出させられました。");
                 break;
 
-                // ブロック
+                // Block or unfollow
             case 'unfollow':
                 $bot->unlinkRichMenu($userId);
                 Log::info("ユーザーにブロックされました。");
@@ -180,7 +193,7 @@ class LineMessengerController extends Controller
 
 
 
-    // メッセージ送信用
+    // Send message
     public function sendMessage()
     {
         // LINEBOTSDKの設定
