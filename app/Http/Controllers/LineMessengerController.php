@@ -18,6 +18,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
 use LINE\LINEBot\TemplateActionBuilder\DatetimePickerTemplateActionBuilder;
+use LINE\LINEBot\QuickReplyBuilder\ButtonBuilder\QuickReplyButtonBuilder;
+use LINE\LINEBot\QuickReplyBuilder\QuickReplyMessageBuilder;
 
 use LINE\LINEBot\RichMenuBuilder\RichMenuAreaBuilder;
 use LINE\LINEBot\RichMenuBuilder\RichMenuSizeBuilder;
@@ -41,7 +43,7 @@ class LineMessengerController extends Controller
 
         // そこからtypeをとりだし、$message_typeに代入
         $message_type = $inputs['events'][0]['type'];
-        Log::info("LOG: message type is `" . $message_type . "`");
+        Log::info("LOG: received message type is `" . $message_type . "`");
 
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
@@ -136,6 +138,30 @@ class LineMessengerController extends Controller
                     // Add carousel and send message
                     $carousel_message = new TemplateMessageBuilder("メッセージのタイトル", $carousel);
                     $response = $bot->replyMessage($reply_token, $carousel_message);
+                } elseif ($message_content == 'Quick') {
+                    //Send quick reply message
+                    //Define display texts for quick reply (max number is 12)
+                    $categories = [
+                        '和食',
+                        '洋食',
+                        '中華料理',
+                        'アジア・エスニック',
+                        'イタリアン',
+                        'フレンチ'
+                    ];
+
+                    foreach ($categories as $category) {
+                        // Display the texts and define reply text
+                        $message_template_action_builder = new MessageTemplateActionBuilder($category, $category . 'を選択したよ！'); #(display text, reply text)
+                        // Create buttons for the display text
+                        $quick_reply_button_builder = new QuickReplyButtonBuilder($message_template_action_builder);
+                        // Add buttons
+                        $quick_reply_buttons[] = $quick_reply_button_builder;
+                    }
+                    // Create quick reply and send message
+                    $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
+                    $text_message_builder = new TextMessageBuilder('カテゴリを選択してください', $quick_reply_message_builder); #(text bubble, quick reply)
+                    $bot->replyMessage($reply_token, $text_message_builder);
                 } else {
                     // LINE process to send
                     $response = $bot->replyText($reply_token, $message_data);
@@ -238,15 +264,15 @@ class LineMessengerController extends Controller
             "Tap here", # Display text for rich menu
             array( # array for actions on rich menu
                 new RichMenuAreaBuilder( # action 1
-                    new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # x,y,width,height
+                    new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
                     new MessageTemplateActionBuilder('m', 'Text A') # reply text
                 ),
                 new RichMenuAreaBuilder( # action 2
-                    new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # x,y,width,height
+                    new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
                     new MessageTemplateActionBuilder('m', 'Text B') # reply text
                 ),
                 new RichMenuAreaBuilder( # action 3
-                    new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # x,y,width,height
+                    new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
                     new MessageTemplateActionBuilder('m', 'Text C') # reply text
                 ),
             )
