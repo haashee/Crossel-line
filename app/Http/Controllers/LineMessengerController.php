@@ -146,7 +146,7 @@ class LineMessengerController extends Controller
                 $response = $bot->replyText($reply_token, $message_data);
 
                 // link LINE user ID with rich menu ID
-                $response = $bot->linkRichMenu($userId, 'richmenu-366a328009612e91c0cc59aae4e65525');
+                $response = $bot->linkRichMenu($userId, 'richmenu-e8e98cde71be6c8f00bb34e08d2a74d2');
 
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
                 LineUser::updateOrCreate(['line_id' => $userId]);
@@ -210,13 +210,38 @@ class LineMessengerController extends Controller
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
 
+        // // Create richmenu
+        // $richMenuSizeBuilder = new RichMenuSizeBuilder(843, 2500); #h,w
+        // $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 843); #w,h
+        // $postbackTemplateActionBuilder = new PostbackTemplateActionBuilder("Test", "i=1");
+        // // Log::info('postbackTemplateActionBuilder is `' . $postbackTemplateActionBuilder . '`');
+        // $richMenuAreaBuilder = new RichMenuAreaBuilder($richMenuAreaBoundsBuilder, $postbackTemplateActionBuilder);
+        // $richMenuBuilder = new RichMenuBuilder($richMenuSizeBuilder, false, "Nice richmenu", "Tap here", $richMenuAreaBuilder);
+        // $response = $bot->createRichMenu($richMenuBuilder);
+
         // Create richmenu
-        $richMenuSizeBuilder = new RichMenuSizeBuilder(843, 2500); #h,w
-        $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 843); #w,h
-        $postbackTemplateActionBuilder = new PostbackTemplateActionBuilder("Test", "i=1");
-        $richMenuAreaBuilder = new RichMenuAreaBuilder($richMenuAreaBoundsBuilder, $postbackTemplateActionBuilder);
-        $richMenuBuilder = new RichMenuBuilder($richMenuSizeBuilder, false, "Nice richmenu", "Tap here", $richMenuAreaBuilder);
+        $richMenuBuilder = new RichMenuBuilder(
+            new RichMenuSizeBuilder(843, 2500), #h,w
+            true, # show rich menu as default (false to hide rich menu) 
+            "Rich Menu 1", # ชื่อ rich menu
+            "Tap here", # Display text for rich menu
+            array( # array for actions on rich menu
+                new RichMenuAreaBuilder( # action 1
+                    new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # x,y,width,height
+                    new MessageTemplateActionBuilder('m', 'Text A') # reply text
+                ),
+                new RichMenuAreaBuilder( # action 2
+                    new RichMenuAreaBoundsBuilder(833, 0, 1666, 843), # x,y,width,height
+                    new MessageTemplateActionBuilder('m', 'Text B') # reply text
+                ),
+                new RichMenuAreaBuilder( # action 3
+                    new RichMenuAreaBoundsBuilder(1666, 0, 2500, 843), # x,y,width,height
+                    new MessageTemplateActionBuilder('m', 'Text C') # reply text
+                ),
+            )
+        );
         $response = $bot->createRichMenu($richMenuBuilder);
+
 
         // check what is sent in POST for debug
         file_put_contents('/tmp/postdata.txt', var_export($response, true));
@@ -240,6 +265,6 @@ class LineMessengerController extends Controller
         }
 
         // delete the rich menu
-        // $response = $bot->deleteRichMenu('richmenu-7d0d5b4064f89e5eb6f158cd3c5bb9ae');
+        // $response = $bot->deleteRichMenu('richmenu-366a328009612e91c0cc59aae4e65525');
     }
 }
