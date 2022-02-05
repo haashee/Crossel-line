@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LineMessengerController;
+use App\Http\Controllers\LiffController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -21,7 +23,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/line/liff', [LiffController::class, 'liff'])->name('liff');
 
 // LINE recieve message
 Route::post('/line/webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');
