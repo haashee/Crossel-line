@@ -142,7 +142,7 @@ class LineMessengerController extends Controller
                     $response = $bot->replyMessage($reply_token, $carousel_message);
                 } elseif ($message_content == 'Flex') {
                     // flex message
-                    $flexTemplate = file_get_contents("/Users/hashem/Documents/Projects/Meniu/Meniu-line/flex_message.json");
+                    $flexTemplate = file_get_contents(resource_path() . "/json/flex_message.json");
                     $flexMessageBuilder = new RawMessageBuilder([
                         'type' => 'flex',
                         'altText' => 'Test Flex Message',
@@ -225,7 +225,7 @@ class LineMessengerController extends Controller
                 $response = $bot->replyText($reply_token, $message_data);
 
                 // link LINE user ID with rich menu ID
-                $response = $bot->linkRichMenu($userId, 'richmenu-22834552e6be9e42342a2d03b3e6b15b');
+                $response = $bot->linkRichMenu($userId, 'richmenu-1a8948e29628ceacd10c9de215e9a1b3');
 
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
                 LineUser::updateOrCreate(['line_id' => $userId]);
@@ -339,7 +339,7 @@ class LineMessengerController extends Controller
 
 
         // check what is sent in POST for debug
-        file_put_contents('/tmp/postdata.txt', var_export($response, true));
+        file_put_contents(base_path() . '/postdata.txt', var_export($response, true));
 
         // retrieve richmenu id
         $richMenuBody = $response->getRawBody();
@@ -375,6 +375,7 @@ class LineMessengerController extends Controller
         // retrieve richmenu id
         $richMenuBody = $response->getRawBody();
         $richMenuId = json_decode($richMenuBody)->richMenuId;
+        // $richMenuId = 'richmenu-3e40821aed6905db110e1c88a874108f';
         Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
 
         // delete the rich menu
