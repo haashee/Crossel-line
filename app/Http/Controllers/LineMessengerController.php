@@ -146,7 +146,7 @@ class LineMessengerController extends Controller
                 $response = $bot->replyText($reply_token, $message_data);
 
                 // link LINE user ID with rich menu ID
-                $response = $bot->linkRichMenu($userId, 'richmenu-e8e98cde71be6c8f00bb34e08d2a74d2');
+                $response = $bot->linkRichMenu($userId, 'richmenu-f9cc10cd9680108ea6bbc1aca6f4db2d');
 
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
                 LineUser::updateOrCreate(['line_id' => $userId]);
@@ -179,6 +179,7 @@ class LineMessengerController extends Controller
 
 
 
+
     // メッセージ送信用
     public function sendMessage()
     {
@@ -204,20 +205,14 @@ class LineMessengerController extends Controller
         }
     }
 
-    public function richMenu()
+
+
+
+    public function richMenuCreate()
     {
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
-
-        // // Create richmenu
-        // $richMenuSizeBuilder = new RichMenuSizeBuilder(843, 2500); #h,w
-        // $richMenuAreaBoundsBuilder = new RichMenuAreaBoundsBuilder(0, 0, 2500, 843); #w,h
-        // $postbackTemplateActionBuilder = new PostbackTemplateActionBuilder("Test", "i=1");
-        // // Log::info('postbackTemplateActionBuilder is `' . $postbackTemplateActionBuilder . '`');
-        // $richMenuAreaBuilder = new RichMenuAreaBuilder($richMenuAreaBoundsBuilder, $postbackTemplateActionBuilder);
-        // $richMenuBuilder = new RichMenuBuilder($richMenuSizeBuilder, false, "Nice richmenu", "Tap here", $richMenuAreaBuilder);
-        // $response = $bot->createRichMenu($richMenuBuilder);
 
         // Create richmenu
         $richMenuBuilder = new RichMenuBuilder(
@@ -263,8 +258,26 @@ class LineMessengerController extends Controller
             // Failed
             Log::error($response->getRawBody());
         }
+    }
+
+
+
+
+    public function richMenuDelete()
+    {
+        // LINEBOTSDKの設定
+        $http_client = new CurlHTTPClient(config('services.line.channel_token'));
+        $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
+
+        // Get rich menu ID from user
+        $response = $bot->getRichMenuId('U6f9e0ed71f65c0f07c6915788713aa5c');
+
+        // retrieve richmenu id
+        $richMenuBody = $response->getRawBody();
+        $richMenuId = json_decode($richMenuBody)->richMenuId;
+        Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
 
         // delete the rich menu
-        // $response = $bot->deleteRichMenu('richmenu-366a328009612e91c0cc59aae4e65525');
+        $response = $bot->deleteRichMenu($richMenuId);
     }
 }

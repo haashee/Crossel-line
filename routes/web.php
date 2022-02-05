@@ -29,5 +29,8 @@ Route::post('/line/webhook', [LineMessengerController::class, 'webhook'])->name(
 // LINE send message
 Route::get('/line/send', [LineMessengerController::class, 'sendMessage']);
 
-// LINE rich menu create/upload/delete
-Route::get('/line/richmenu', [LineMessengerController::class, 'richMenu']);
+// LINE rich menu create/upload/
+Route::get('/line/richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
+
+// LINE rich menu delete
+Route::get('/line/richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);
