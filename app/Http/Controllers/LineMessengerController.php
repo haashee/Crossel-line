@@ -141,40 +141,16 @@ class LineMessengerController extends Controller
                     $carousel_message = new TemplateMessageBuilder("メッセージのタイトル", $carousel);
                     $response = $bot->replyMessage($reply_token, $carousel_message);
                 } elseif ($message_content == 'Flex') {
-                    // flex message
+                    // get flex json for layout (https://developers.line.biz/flex-simulator/)
                     $flexTemplate = file_get_contents(resource_path() . "/json/flex_message.json");
+                    // create flex message
                     $flexMessageBuilder = new RawMessageBuilder([
                         'type' => 'flex',
                         'altText' => 'Test Flex Message',
                         'contents' => json_decode($flexTemplate)
                     ]);
-
-                    // // confirm message
-                    // $actionBuilders = new MessageTemplateActionBuilder('hai', 'hai');
-                    // $confirmMessageBuilder = new ConfirmTemplateBuilder(
-                    //     'Ada lagi yang bisa Vero bantu?',
-                    //     $actionBuilders
-                    // );
-
-                    // confirm message
-                    $confirmMessageBuilder = new TemplateMessageBuilder(
-                        'Confirm alt text',
-                        new ConfirmTemplateBuilder(
-                            'Do it?',
-                            [new MessageTemplateActionBuilder('Yes', 'Yes!'), new MessageTemplateActionBuilder('No', 'No!'),]
-                        )
-                    );
-
-
-                    // multi message
-                    $multiMessageBuilder = new MultiMessageBuilder();
-                    $multiMessageBuilder->add($flexMessageBuilder);
-                    $multiMessageBuilder->add($confirmMessageBuilder);
-
-                    // send
-                    $response = $bot->replyMessage($reply_token, $multiMessageBuilder);
-
-                    // bodyはsetBody、footerはsetFooterで詰める
+                    // send flex message
+                    $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
                 } elseif ($message_content == 'Quick') {
                     //Send quick reply message
                     //Define display texts for quick reply (max number is 12)
