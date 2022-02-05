@@ -223,7 +223,7 @@ class LineMessengerController extends Controller
         $richMenuBuilder = new RichMenuBuilder(
             new RichMenuSizeBuilder(843, 2500), #h,w
             true, # show rich menu as default (false to hide rich menu) 
-            "Rich Menu 1", # ชื่อ rich menu
+            "Rich Menu 1", # name of rich menu
             "Tap here", # Display text for rich menu
             array( # array for actions on rich menu
                 new RichMenuAreaBuilder( # action 1
