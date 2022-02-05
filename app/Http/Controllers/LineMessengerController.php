@@ -128,7 +128,7 @@ class LineMessengerController extends Controller
                     $columns = []; // Column array for carousel
                     for ($i = 0; $i < 3; $i++) {
                         // Create button in carousel
-                        $action = new UriTemplateActionBuilder("クリックしてね", "http://hiroasake.blogspot.com/");
+                        $action = new UriTemplateActionBuilder("クリックしてね", "https://liff.line.me/1656854060-ByZ88V8o");
                         // Create columns for carousel
                         $column = new CarouselColumnTemplateBuilder("タイトル(40文字以内)", "ブログです", 'https://57c57cef.ngrok.io/linebot/image/PICT0065.JPG', [$action]);
                         $columns[] = $column;
