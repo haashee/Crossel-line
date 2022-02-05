@@ -159,7 +159,7 @@ class LineMessengerController extends Controller
                 $response = $bot->replyText($reply_token, $message_data);
 
                 // link LINE user ID with rich menu ID
-                $response = $bot->linkRichMenu($userId, 'richmenu-f9cc10cd9680108ea6bbc1aca6f4db2d');
+                $response = $bot->linkRichMenu($userId, 'richmenu-22834552e6be9e42342a2d03b3e6b15b');
 
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
                 LineUser::updateOrCreate(['line_id' => $userId]);
@@ -239,11 +239,11 @@ class LineMessengerController extends Controller
                     new MessageTemplateActionBuilder('m', 'Text A') # reply text
                 ),
                 new RichMenuAreaBuilder( # action 2
-                    new RichMenuAreaBoundsBuilder(833, 0, 1666, 843), # x,y,width,height
+                    new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # x,y,width,height
                     new MessageTemplateActionBuilder('m', 'Text B') # reply text
                 ),
                 new RichMenuAreaBuilder( # action 3
-                    new RichMenuAreaBoundsBuilder(1666, 0, 2500, 843), # x,y,width,height
+                    new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # x,y,width,height
                     new MessageTemplateActionBuilder('m', 'Text C') # reply text
                 ),
             )
