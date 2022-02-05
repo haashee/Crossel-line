@@ -20,6 +20,8 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
 use LINE\LINEBot\TemplateActionBuilder\DatetimePickerTemplateActionBuilder;
 use LINE\LINEBot\QuickReplyBuilder\ButtonBuilder\QuickReplyButtonBuilder;
 use LINE\LINEBot\QuickReplyBuilder\QuickReplyMessageBuilder;
+use LINE\LINEBot\MessageBuilder\RawMessageBuilder;
+use LINE\LINEBot\MessageBuilder\MultiMessageBuilder;
 
 use LINE\LINEBot\RichMenuBuilder\RichMenuAreaBuilder;
 use LINE\LINEBot\RichMenuBuilder\RichMenuSizeBuilder;
@@ -239,10 +241,26 @@ class LineMessengerController extends Controller
         $textMessageBuilder = new TextMessageBuilder($message);
         $response    = $bot->pushMessage($userId, $textMessageBuilder);
 
-        // Send to multiple people
+        // // Send to multiple people
         // $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U6f9e0ed71f65c0f07c6915788713aa5c"];
         // $textMessageBuilder = new TextMessageBuilder('sending this msg to multiple people');
         // $response = $bot->multicast($line_id_list, $textMessageBuilder);
+
+        // // Send multiple messages to one user
+        // // confirm message
+        // $confirmMessageBuilder = new TemplateMessageBuilder(
+        //     'Confirm alt text',
+        //     new ConfirmTemplateBuilder(
+        //         'Do it?',
+        //         [new MessageTemplateActionBuilder('Yes', 'Yes!'), new MessageTemplateActionBuilder('No', 'No!'),]
+        //     )
+        // );
+        // // multi message
+        // $multiMessageBuilder = new MultiMessageBuilder();
+        // $multiMessageBuilder->add($textMessageBuilder);
+        // $multiMessageBuilder->add($confirmMessageBuilder);
+        // // send
+        // $response    = $bot->pushMessage($userId, $multiMessageBuilder);
 
         // Logging error
         if ($response->isSucceeded()) {
