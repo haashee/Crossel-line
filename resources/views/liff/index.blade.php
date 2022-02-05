@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>LIFF Starter</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ asset('liff/style.css') }}">
     </head>
     <body>
         <div id="liffAppContent">
@@ -125,6 +125,6 @@
             <p>Unable to receive the LIFF ID as an environment variable.</p>
         </div>
         <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
-        <script src="liff-starter.js"></script>
+        <script src="{{ asset('liff/liff-starter.js') }}"></script>
     </body>
 </html>
