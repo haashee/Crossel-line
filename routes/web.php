@@ -25,16 +25,23 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/line/liff', [LiffController::class, 'liff'])->name('liff');
 
-// LINE recieve message
-Route::post('/line/webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');
 
-// LINE send message
-Route::get('/line/send', [LineMessengerController::class, 'sendMessage']);
+Route::group(['prefix' => 'line'], function () {
 
-// LINE rich menu create/upload/
-Route::get('/line/richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
+    // LINE recieve message
+    Route::post('webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');
 
-// LINE rich menu delete
-Route::get('/line/richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);
+    // LINE send message
+    Route::get('send', [LineMessengerController::class, 'sendMessage']);
+
+    // LINE rich menu create/upload/
+    Route::get('richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
+
+    // LINE rich menu delete
+    Route::get('richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);
+});
+
+
+// Liff sample
+Route::get('/liff/sample', [LiffController::class, 'liff'])->name('liff');

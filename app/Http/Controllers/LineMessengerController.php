@@ -240,9 +240,9 @@ class LineMessengerController extends Controller
         $response    = $bot->pushMessage($userId, $textMessageBuilder);
 
         // Send to multiple people
-        $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U6f9e0ed71f65c0f07c6915788713aa5c"];
-        $textMessageBuilder = new TextMessageBuilder('sending this msg to multiple people');
-        $response = $bot->multicast($line_id_list, $textMessageBuilder);
+        // $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U6f9e0ed71f65c0f07c6915788713aa5c"];
+        // $textMessageBuilder = new TextMessageBuilder('sending this msg to multiple people');
+        // $response = $bot->multicast($line_id_list, $textMessageBuilder);
 
         // Logging error
         if ($response->isSucceeded()) {
