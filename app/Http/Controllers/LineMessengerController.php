@@ -17,6 +17,7 @@ use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselColumnTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\CarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ButtonTemplateBuilder;
+use LINE\LINEBot\TemplateActionBuilder\DatetimePickerTemplateActionBuilder;
 
 use LINE\LINEBot\RichMenuBuilder\RichMenuAreaBuilder;
 use LINE\LINEBot\RichMenuBuilder\RichMenuSizeBuilder;
@@ -112,8 +113,10 @@ class LineMessengerController extends Controller
                     // Create button in buttons message
                     $yes_button = new MessageTemplateActionBuilder('Confirm text', 'reply text');
                     $no_button = new MessageTemplateActionBuilder('Cancel text', 'reply text');
+                    // Select date template
+                    $date_time = new DatetimePickerTemplateActionBuilder('日付を選択', 'storeId=12345', 'datetime');
                     // Create actions
-                    $actions = [$yes_button, $no_button];
+                    $actions = [$date_time, $yes_button, $no_button];
                     $button = new ButtonTemplateBuilder('Title', 'Description', '', $actions);
                     // Add button message and send message
                     $button_message = new TemplateMessageBuilder('Alt text', $button);
