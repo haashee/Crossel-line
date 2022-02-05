@@ -229,21 +229,26 @@ class LineMessengerController extends Controller
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
 
-        // LINEユーザーID指定
+        // Set user to send 
         $userId = "U6f9e0ed71f65c0f07c6915788713aa5c";
 
-        // メッセージ設定
+        // Set message to send
         $message = "こんにちは!";
 
-        // メッセージ送信
+        // Send message
         $textMessageBuilder = new TextMessageBuilder($message);
         $response    = $bot->pushMessage($userId, $textMessageBuilder);
 
-        // 配信成功・失敗
+        // Send to multiple people
+        $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U6f9e0ed71f65c0f07c6915788713aa5c"];
+        $textMessageBuilder = new TextMessageBuilder('sending this msg to multiple people');
+        $response = $bot->multicast($line_id_list, $textMessageBuilder);
+
+        // Logging error
         if ($response->isSucceeded()) {
-            Log::info('Line 送信完了');
+            Log::info('Line send successful');
         } else {
-            Log::error('投稿失敗: ' . $response->getRawBody());
+            Log::error('Sending failed: ' . $response->getRawBody());
         }
     }
 
