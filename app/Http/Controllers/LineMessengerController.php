@@ -116,7 +116,7 @@ class LineMessengerController extends Controller
                     $yes_button = new MessageTemplateActionBuilder('Confirm text', 'reply text');
                     $no_button = new MessageTemplateActionBuilder('Cancel text', 'reply text');
                     // Select date template
-                    $date_time = new DatetimePickerTemplateActionBuilder('日付を選択', 'storeId=12345', 'datetime');
+                    $date_time = new DatetimePickerTemplateActionBuilder('日付を選択', 'action=dosomething&data=1', 'datetime');
                     // Create actions
                     $actions = [$date_time, $yes_button, $no_button];
                     $button = new ButtonTemplateBuilder('Title', 'Description', '', $actions);
