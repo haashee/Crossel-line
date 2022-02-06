@@ -142,7 +142,8 @@ class LineMessengerController extends Controller
                     $response = $bot->replyMessage($reply_token, $carousel_message);
                 } elseif ($message_content == 'Flex') {
                     // get flex json for layout (https://developers.line.biz/flex-simulator/)
-                    $flexTemplate = file_get_contents(resource_path() . "/json/flex_message.json");
+                    // https://developers.line.biz/en/docs/messaging-api/using-flex-messages/
+                    $flexTemplate = file_get_contents(resource_path() . "/json/flex_receipt.json");
                     // create flex message
                     $flexMessageBuilder = new RawMessageBuilder([
                         'type' => 'flex',
@@ -221,6 +222,7 @@ class LineMessengerController extends Controller
                 // Block or unfollow
             case 'unfollow':
                 $bot->unlinkRichMenu($userId);
+                LineUser::where('line_id', $userId)->delete();
                 Log::info("ユーザーにブロックされました。");
                 break;
 
@@ -286,6 +288,7 @@ class LineMessengerController extends Controller
 
     public function richMenuCreate()
     {
+        // https://developers.line.biz/en/reference/messaging-api/#create-rich-menu
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient(config('services.line.channel_token'));
         $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
