@@ -46,4 +46,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.account');
     }
+
+
+    public function chat()
+    {
+        return view('dashboard.chat');
+    }
 }

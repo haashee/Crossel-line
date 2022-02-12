@@ -29,6 +29,7 @@ Route::get('/wizard', [DashboardController::class, 'wizard'])->name('wizard');
 Route::get('/friends', [DashboardController::class, 'friends'])->name('friends');
 Route::get('/accounts-list', [DashboardController::class, 'accountsList'])->name('accounts');
 Route::get('/account', [DashboardController::class, 'account'])->name('account');
+Route::get('/chat', [DashboardController::class, 'chat'])->name('chat');
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
