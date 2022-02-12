@@ -20,6 +20,9 @@ use App\Http\Controllers\HomeController;
 Route::get('/', function () {
     return view('dashboard.dashboard');
 });
+Route::get('/settings', function () {
+    return view('dashboard.settings');
+});
 
 Auth::routes();
 
