@@ -34,8 +34,6 @@ Route::get('/friends', [DashboardController::class, 'friends'])->name('friends')
 Route::get('/chat', [DashboardController::class, 'chat'])->name('chat');
 
 Route::resource('/accounts', AccountsController::class);
-Route::get('/accounts-list', [DashboardController::class, 'accountsList'])->name('accounts');
-Route::get('/account', [DashboardController::class, 'account'])->name('account');
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

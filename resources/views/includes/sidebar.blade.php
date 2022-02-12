@@ -238,7 +238,7 @@
                             </div>
                         </li> --}}
                         <li class="nav-item ">
-                            <a class="nav-link " href="{{ URL::route('accounts') }}">
+                            <a class="nav-link " href="{{ URL::route('accounts.index') }}">
                                 <span class="sidenav-mini-icon"> P </span>
                                 <span class="sidenav-normal">アカウント一覧</span>
                             </a>
