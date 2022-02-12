@@ -82,9 +82,11 @@ Account
                         <div class="col-12 col-sm-4 p-3 ">
                             <div class="avatar avatar-xl position-relative">
                                 <img src="../../assets/img/bruce-mars.jpg" class="border-radius-md" alt="team-2">
-                                <a href="javascript:;" class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                                    <i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image"></i><span class="sr-only">Edit Image</span>
-                                </a>
+                                <label class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                                    <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image"></i></span>
+                                    <span class="sr-only">Edit Image</span>
+                                    <input type="file" style="display: none" >
+                                </label>
                             </div>
                         </div>
                         <div class="card-body p-3">
