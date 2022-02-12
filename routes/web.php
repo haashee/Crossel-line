@@ -22,6 +22,7 @@ use App\Http\Controllers\DashboardController;
 Auth::routes();
 
 
+// Dashboard Routes
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 Route::get('/billing', [DashboardController::class, 'billing'])->name('billing');
@@ -36,6 +37,9 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
 
+
+
+// LINE Routes
 Route::group(['prefix' => 'line'], function () {
 
     // LINE recieve message
