@@ -12,7 +12,8 @@
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto h-auto h-100" id="sidenav-collapse-main">
         <ul class="navbar-nav">
-            <li class="nav-item">
+            
+            {{-- <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link active"
                     aria-controls="dashboardsExamples" role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
@@ -41,7 +42,7 @@
                             </a>
                         </li>
                         
-                        {{-- <li class="nav-item ">
+                        <!--- <li class="nav-item ">
                             <a class="nav-link " href="../../pages/dashboards/smart-home.html">
                                 <span class="sidenav-mini-icon"> S </span>
                                 <span class="sidenav-normal"> Smart Home </span>
@@ -74,13 +75,45 @@
                                 <span class="sidenav-mini-icon"> C </span>
                                 <span class="sidenav-normal"> CRM </span>
                             </a>
-                        </li> --}}
+                        </li> --->
+                    </ul>
+                </div>
+            </li> --}}
+            
+            <!--- <li class="nav-item mt-3">
+                <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">PAGES</h6>
+            </li> --->
+            <li class="nav-item">
+                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link "
+                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                    <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                        <i class="ni ni-ui-04 text-dark text-sm opacity-8"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">ダッシュボード</span>
+                </a>
+                <div class="collapse " id="applicationsExamples">
+                    <ul class="nav ms-4">
+                        <li class="nav-item ">
+                            <a class="nav-link " href="{{ URL::route('dashboard') }}">
+                                <span class="sidenav-mini-icon"> K </span>
+                                <span class="sidenav-normal">LINE</span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="../../pages/applications/wizard.html">
+                                <span class="sidenav-mini-icon"> W </span>
+                                <span class="sidenav-normal"> メインへ戻る </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link " href="{{ URL::route('default') }}">
+                                <span class="sidenav-mini-icon"> D </span>
+                                <span class="sidenav-normal"> デフォルト </span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </li>
-            {{-- <li class="nav-item mt-3">
-                <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">PAGES</h6>
-            </li> --}}
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link " aria-controls="pagesExamples"
                     role="button" aria-expanded="false">
@@ -244,43 +277,82 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link "
-                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link "
+                    aria-controls="ecommerceExamples" role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                        <i class="ni ni-ui-04 text-info text-sm opacity-10"></i>
+                        <i class="ni ni-archive-2 text-success text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Applications</span>
+                    <span class="nav-link-text ms-1">Ecommerce</span>
                 </a>
-                <div class="collapse " id="applicationsExamples">
+                <div class="collapse " id="ecommerceExamples">
                     <ul class="nav ms-4">
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/applications/kanban.html">
-                                <span class="sidenav-mini-icon"> K </span>
-                                <span class="sidenav-normal"> Kanban </span>
+                            <a class="nav-link " href="../../pages/ecommerce/overview.html">
+                                <span class="sidenav-mini-icon"> O </span>
+                                <span class="sidenav-normal"> Overview </span>
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/applications/wizard.html">
-                                <span class="sidenav-mini-icon"> W </span>
-                                <span class="sidenav-normal"> Wizard </span>
+                            <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false"
+                                href="#productsExample">
+                                <span class="sidenav-mini-icon"> P </span>
+                                <span class="sidenav-normal"> Products <b class="caret"></b></span>
                             </a>
+                            <div class="collapse " id="productsExample">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/ecommerce/products/new-product.html">
+                                            <span class="sidenav-mini-icon text-xs"> N </span>
+                                            <span class="sidenav-normal"> New Product </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/ecommerce/products/edit-product.html">
+                                            <span class="sidenav-mini-icon text-xs"> E </span>
+                                            <span class="sidenav-normal"> Edit Product </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/ecommerce/products/product-page.html">
+                                            <span class="sidenav-mini-icon text-xs"> P </span>
+                                            <span class="sidenav-normal"> Product Page </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/ecommerce/products/products-list.html">
+                                            <span class="sidenav-mini-icon text-xs"> P </span>
+                                            <span class="sidenav-normal"> Products List </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/applications/datatables.html">
-                                <span class="sidenav-mini-icon"> D </span>
-                                <span class="sidenav-normal"> DataTables </span>
+                            <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#ordersExample">
+                                <span class="sidenav-mini-icon"> O </span>
+                                <span class="sidenav-normal"> Orders <b class="caret"></b></span>
                             </a>
+                            <div class="collapse " id="ordersExample">
+                                <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/ecommerce/orders/list.html">
+                                            <span class="sidenav-mini-icon text-xs"> O </span>
+                                            <span class="sidenav-normal"> Order List </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="../../pages/ecommerce/orders/details.html">
+                                            <span class="sidenav-mini-icon text-xs"> O </span>
+                                            <span class="sidenav-normal"> Order Details </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/applications/calendar.html">
-                                <span class="sidenav-mini-icon"> C </span>
-                                <span class="sidenav-normal"> Calendar </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/applications/analytics.html">
-                                <span class="sidenav-mini-icon"> A </span>
-                                <span class="sidenav-normal"> Analytics </span>
+                            <a class="nav-link " href="../../pages/ecommerce/referral.html">
+                                <span class="sidenav-mini-icon"> R </span>
+                                <span class="sidenav-normal"> Referral </span>
                             </a>
                         </li>
                     </ul>
@@ -548,7 +620,7 @@
                 <hr class="horizontal dark" />
                 {{-- <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DOCS</h6> --}}
             </li>
-            {{-- <li class="nav-item">
+            <!--- <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#basicExamples" class="nav-link " aria-controls="basicExamples"
                     role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
@@ -806,7 +878,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Changelog</span>
                 </a>
-            </li> --}}
+            </li> --->
         </ul>
     </div>
     <div class="sidenav-footer mx-3 my-3">
