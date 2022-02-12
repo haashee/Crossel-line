@@ -36,8 +36,14 @@ class DashboardController extends Controller
     }
 
 
-    public function accounts()
+    public function accountsList()
     {
-        return view('dashboard.accounts');
+        return view('dashboard.accounts-list');
+    }
+
+
+    public function account()
+    {
+        return view('dashboard.account');
     }
 }
