@@ -39,6 +39,22 @@ Account Wizard
                             </div>
                         </div>
                     </div>
+                    <!--error message-->
+                    @if ($errors->any())
+                        <div class="row">
+                        <div class="col-12 col-lg-8 m-auto">
+                        <div class="card p-3 border-radius-xl bg-white mb-5">
+                            <p>エラー発生: 下記内容をご確認ください。</p>
+                            <ul class="m-0 p-0">
+                                @foreach ($errors->all() as $error )
+                                        {{ $error }} <br>
+                                @endforeach
+                            </ul>
+                        </div>
+                        </div>
+                        </div>
+
+                    @endif
                     <!--form panels-->
                     <div class="row">
                         <div class="col-12 col-lg-8 m-auto">
@@ -86,17 +102,6 @@ Account Wizard
                                                     placeholder="name" name="name" />
                                             </div>
                                         </div>
-                                        @if ($errors->any())
-                                            <div class="w-4/5 m-auto">
-                                                <ul>
-                                                    @foreach ($errors->all() as $error )
-                                                        <li class="w-1/5 mb-4 bg-red-700">
-                                                            {{ $error }}
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
-                                        @endif
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
                                                 title="Next">Next</button>
