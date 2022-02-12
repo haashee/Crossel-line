@@ -81,11 +81,11 @@ Account
                         </div>
                         <div class="col-12 col-sm-4 p-3 ">
                             <div class="avatar avatar-xl position-relative">
-                                <img src="../../assets/img/bruce-mars.jpg" class="border-radius-md" alt="team-2">
+                                <img src="{{ asset('uploads/profile-pic/' . $account->image) }}" class="border-radius-md" alt="team-2">
                                 <label class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
                                     <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image"></i></span>
                                     <span class="sr-only">Edit Image</span>
-                                    <input type="file" style="display: none" >
+                                    <input name="image" type="file" style="display: none" >
                                 </label>
                             </div>
                         </div>
@@ -183,7 +183,21 @@ Account
                                         title="Send">保存</button>
                                 </div>
                             </div>
+                            @if ($errors->any())
+                                <div class="row">
+                                <div class="col-12 col-lg-8 m-auto">
+                                <div class="card p-3 border-radius-xl bg-white mb-5">
+                                    <p>エラー発生: 下記内容をご確認ください。</p>
+                                    <ul class="m-0 p-0">
+                                        @foreach ($errors->all() as $error )
+                                                {{ $error }} <br>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                </div>
+                                </div>
 
+                            @endif
                         </div>
                     </div>
                 </div>

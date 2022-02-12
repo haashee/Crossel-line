@@ -88,11 +88,21 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'channel_secret' => 'required',
+            'access_token' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
+        ]);
+
+        $newImageName = auth()->user()->id . '-' . $id . '-' . uniqid() . '.' . $request->image->extension();
+        $request->image->move(public_path('uploads/profile-pic'), $newImageName);
+
         Account::where('id', $id)
             ->update([
                 'name' => $request->input('name'),
                 'channel_secret' => $request->input('channel_secret'),
                 'access_token' => $request->input('access_token'),
+                'image' => $newImageName,
                 'user_id' => auth()->user()->id,
             ]);
 
