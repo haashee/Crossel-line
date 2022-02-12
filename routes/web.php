@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LineMessengerController;
 use App\Http\Controllers\LiffController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 
 
 /*
@@ -17,14 +18,13 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard.dashboard');
-});
-Route::get('/settings', function () {
-    return view('dashboard.settings');
-});
 
 Auth::routes();
+
+
+Route::get('/', [DashboardController::class, 'index'])->name('index');
+Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
