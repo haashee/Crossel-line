@@ -118,7 +118,7 @@
                 <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link " aria-controls="pagesExamples"
                     role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                        <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
+                        <i class="ni ni-ungroup text-dark text-sm opacity-8"></i>
                     </div>
                     <span class="nav-link-text ms-1">アカウント情報</span>
                 </a>
@@ -280,16 +280,16 @@
                 <a data-bs-toggle="collapse" href="#ecommerceExamples" class="nav-link "
                     aria-controls="ecommerceExamples" role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                        <i class="ni ni-archive-2 text-success text-sm opacity-10"></i>
+                        <i class="ni ni-archive-2 text-dark text-sm opacity-8"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Ecommerce</span>
+                    <span class="nav-link-text ms-1">友だち情報</span>
                 </a>
                 <div class="collapse " id="ecommerceExamples">
                     <ul class="nav ms-4">
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/ecommerce/overview.html">
+                            <a class="nav-link " href="{{ URL::route('friends') }}">
                                 <span class="sidenav-mini-icon"> O </span>
-                                <span class="sidenav-normal"> Overview </span>
+                                <span class="sidenav-normal"> 友達一覧 </span>
                             </a>
                         </li>
                         <li class="nav-item ">
