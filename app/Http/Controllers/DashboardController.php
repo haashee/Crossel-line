@@ -16,4 +16,22 @@ class DashboardController extends Controller
     {
         return view('dashboard.settings');
     }
+
+
+    public function billing()
+    {
+        return view('dashboard.billing');
+    }
+
+
+    public function wizard()
+    {
+        return view('dashboard.wizard');
+    }
+
+
+    public function friends()
+    {
+        return view('dashboard.friends');
+    }
 }
