@@ -16,7 +16,7 @@ class AccountsController extends Controller
     {
         $accounts = Account::all();
 
-        return view('dashboard.accounts.accounts-list', [
+        return view('dashboard.accounts.accounts', [
             'accounts' => $accounts,
         ]);
     }
@@ -28,7 +28,11 @@ class AccountsController extends Controller
      */
     public function create()
     {
-        //
+        $accounts = Account::all();
+
+        return view('dashboard.accounts.create', [
+            'accounts' => $accounts,
+        ]);
     }
 
     /**

@@ -345,9 +345,9 @@
                     <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card h-100">
                         <div class="card-body d-flex flex-column justify-content-center text-center">
-                            <a href="javascript:;">
+                            <a href="/accounts/create">
                             <i class="fa fa-plus text-secondary mb-3"></i>
-                            <h5 class=" text-secondary"> New project </h5>
+                            <h5 class=" text-secondary"> New account </h5>
                             </a>
                         </div>
                         </div>
