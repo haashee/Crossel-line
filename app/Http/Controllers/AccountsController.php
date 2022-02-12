@@ -28,11 +28,8 @@ class AccountsController extends Controller
      */
     public function create()
     {
-        $accounts = Account::all();
 
-        return view('dashboard.accounts.create', [
-            'accounts' => $accounts,
-        ]);
+        return view('dashboard.accounts.create');
     }
 
     /**
@@ -78,7 +75,8 @@ class AccountsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.accounts.edit')
+            ->with('account', Account::where('id', $id)->first());
     }
 
     /**
