@@ -99,12 +99,16 @@
                                     {{-- <p class="text-sm mt-3"> If everything I did failed - which it doesn&#39;t, I think that it actually succeeds. </p> --}}
                                     <hr class="horizontal dark">
                                     <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-4">
                                         <h6 class="text-sm mb-0">5</h6>
                                         <p class="text-secondary text-sm font-weight-bold mb-0">友だち数</p>
                                     </div>
-                                    <div class="col-6 text-end">
-                                        <h6 class="text-sm mb-0">02.03.22</h6>
+                                    <div class="col-4">
+                                        <h6 class="text-sm mb-0">{{ $account->user->name }}</h6>
+                                        <p class="text-secondary text-sm font-weight-bold mb-0">ユーザー名</p>
+                                    </div>
+                                    <div class="col-4 text-end">
+                                        <h6 class="text-sm mb-0">{{ date('Y/m/d', strtotime($account->updated_at)) }}</h6>
                                         <p class="text-secondary text-sm font-weight-bold mb-0">登録日</p>
                                     </div>
                                     </div>
