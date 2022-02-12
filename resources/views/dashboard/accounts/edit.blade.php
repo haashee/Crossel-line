@@ -178,7 +178,7 @@ Account
                                     {{-- <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
                                         title="Prev">Prev</button> --}}
                                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                        title="Send">送信</button>
+                                        title="Send">保存</button>
                                 </div>
                             </div>
 

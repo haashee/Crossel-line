@@ -88,7 +88,16 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Account::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'channel_secret' => $request->input('channel_secret'),
+                'access_token' => $request->input('access_token'),
+                'user_id' => auth()->user()->id,
+            ]);
+
+        return redirect('/accounts')
+            ->with('message', 'Account updated');
     }
 
     /**
