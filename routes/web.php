@@ -27,6 +27,7 @@ Route::get('/settings', [DashboardController::class, 'settings'])->name('setting
 Route::get('/billing', [DashboardController::class, 'billing'])->name('billing');
 Route::get('/wizard', [DashboardController::class, 'wizard'])->name('wizard');
 Route::get('/friends', [DashboardController::class, 'friends'])->name('friends');
+Route::get('/accounts', [DashboardController::class, 'accounts'])->name('accounts');
 
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');

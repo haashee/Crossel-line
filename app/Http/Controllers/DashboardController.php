@@ -34,4 +34,10 @@ class DashboardController extends Controller
     {
         return view('dashboard.friends');
     }
+
+
+    public function accounts()
+    {
+        return view('dashboard.accounts');
+    }
 }

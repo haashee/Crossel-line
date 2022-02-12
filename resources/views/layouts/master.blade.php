@@ -14,20 +14,11 @@
     <!-- End Sidebar -->
 
 
-    <main class="main-content position-relative border-radius-lg ">
-        
 
-        <!-- Navbar -->
-        @include('includes.navbar')
-        <!-- End Navbar -->
-
-
-        <!-- Content -->
-        @yield('content')
-        <!-- End Content -->
-
-
-    </main>
+    
+            <!-- Content -->
+            @yield('content')
+            <!-- End Content -->
 
 
     <!-- Left Sidebar -->
