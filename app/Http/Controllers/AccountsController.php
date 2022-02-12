@@ -47,6 +47,16 @@ class AccountsController extends Controller
             'channel_secret' => 'required',
             'access_token' => 'required',
         ]);
+
+        Account::create([
+            'name' => $request->input('name'),
+            'channel_secret' => $request->input('channel_secret'),
+            'access_token' => $request->input('access_token'),
+            'user_id' => auth()->user()->id,
+        ]);
+
+        return redirect('/accounts')
+            ->with('message', 'Account added');
     }
 
     /**

@@ -81,11 +81,22 @@ Account Wizard
                                                 <label>アクセストークン</label>
                                                 <textarea class="multisteps-form__input form-control mb-3" 
                                                     placeholder="access_token" name="access_token"></textarea>
-                                                <label>Email Address</label>
-                                                <input class="multisteps-form__input form-control" type="email"
-                                                    placeholder="Eg. soft@dashboard.com" />
+                                                <label>Name</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="name" name="name" />
                                             </div>
                                         </div>
+                                        @if ($errors->any())
+                                            <div class="w-4/5 m-auto">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error )
+                                                        <li class="w-1/5 mb-4 bg-red-700">
+                                                            {{ $error }}
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
                                                 title="Next">Next</button>
