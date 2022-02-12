@@ -13,7 +13,7 @@ class AccountsController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.accounts-list');
     }
 
     /**
