@@ -23,7 +23,8 @@ Auth::routes();
 
 
 // Dashboard Routes
-Route::get('/', [DashboardController::class, 'index'])->name('index');
+Route::get('/', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/default', [DashboardController::class, 'default'])->name('default');
 Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 Route::get('/billing', [DashboardController::class, 'billing'])->name('billing');
 Route::get('/wizard', [DashboardController::class, 'wizard'])->name('wizard');

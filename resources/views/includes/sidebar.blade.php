@@ -16,31 +16,32 @@
                 <a data-bs-toggle="collapse" href="#dashboardsExamples" class="nav-link active"
                     aria-controls="dashboardsExamples" role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                        <i class="ni ni-shop text-primary text-sm opacity-10"></i>
+                        <i class="ni ni-shop text-dark text-sm opacity-8"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboards</span>
+                    <span class="nav-link-text ms-1">ダッシュボード</span>
                 </a>
                 <div class="collapse  show " id="dashboardsExamples">
                     <ul class="nav ms-4">
+                        <li class="nav-item active">
+                            <a class="nav-link active" href="{{ URL::route('dashboard') }}">
+                                <span class="sidenav-mini-icon"> D </span>
+                                <span class="sidenav-normal"> LINE</span>
+                            </a>
+                        </li>
                         <li class="nav-item ">
                             <a class="nav-link " href="../../pages/dashboards/landing.html">
                                 <span class="sidenav-mini-icon"> L </span>
-                                <span class="sidenav-normal"> Landing </span>
-                            </a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link active" href="../../pages/dashboards/default.html">
-                                <span class="sidenav-mini-icon"> D </span>
-                                <span class="sidenav-normal"> Default </span>
+                                <span class="sidenav-normal"> メインへ戻る </span>
                             </a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/dashboards/automotive.html">
+                            <a class="nav-link " href="{{ URL::route('default') }}">
                                 <span class="sidenav-mini-icon"> A </span>
-                                <span class="sidenav-normal"> Automotive </span>
+                                <span class="sidenav-normal"> デフォルト </span>
                             </a>
                         </li>
-                        <li class="nav-item ">
+                        
+                        {{-- <li class="nav-item ">
                             <a class="nav-link " href="../../pages/dashboards/smart-home.html">
                                 <span class="sidenav-mini-icon"> S </span>
                                 <span class="sidenav-normal"> Smart Home </span>
@@ -73,24 +74,24 @@
                                 <span class="sidenav-mini-icon"> C </span>
                                 <span class="sidenav-normal"> CRM </span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </li>
-            <li class="nav-item mt-3">
+            {{-- <li class="nav-item mt-3">
                 <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">PAGES</h6>
-            </li>
+            </li> --}}
             <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#pagesExamples" class="nav-link " aria-controls="pagesExamples"
                     role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
                         <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Pages</span>
+                    <span class="nav-link-text ms-1">アカウント情報</span>
                 </a>
                 <div class="collapse " id="pagesExamples">
                     <ul class="nav ms-4">
-                        <li class="nav-item ">
+                        {{-- <li class="nav-item ">
                             <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#profileExample">
                                 <span class="sidenav-mini-icon"> P </span>
                                 <span class="sidenav-normal"> Profile <b class="caret"></b></span>
@@ -202,11 +203,11 @@
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="nav-item ">
-                            <a class="nav-link " href="../../pages/pages/pricing-page.html">
+                            <a class="nav-link " href="{{ URL::route('accounts') }}">
                                 <span class="sidenav-mini-icon"> P </span>
-                                <span class="sidenav-normal"> Pricing Page </span>
+                                <span class="sidenav-normal">アカウント一覧</span>
                             </a>
                         </li>
                         <li class="nav-item ">
@@ -545,9 +546,9 @@
             </li>
             <li class="nav-item">
                 <hr class="horizontal dark" />
-                <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DOCS</h6>
+                {{-- <h6 class="ps-4  ms-2 text-uppercase text-xs font-weight-bolder opacity-6">DOCS</h6> --}}
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#basicExamples" class="nav-link " aria-controls="basicExamples"
                     role="button" aria-expanded="false">
                     <div class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
@@ -805,7 +806,7 @@
                     </div>
                     <span class="nav-link-text ms-1">Changelog</span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </div>
     <div class="sidenav-footer mx-3 my-3">
@@ -814,10 +815,10 @@
                 alt="sidebar_illustration">
             <div class="card-body text-center p-3 w-100 pt-0">
                 <div class="docs-info">
-                    <h6 class="mb-0">Need help?</h6>
-                    <p class="text-xs font-weight-bold">Please check our docs</p>
-                    <a href="https://www.creative-tim.com/learning-lab/bootstrap/overview/argon-dashboard"
-                        target="_blank" class="btn btn-primary btn-sm w-100 mb-0">Documentation</a>
+                    {{-- <h6 class="mb-0">Need help?</h6> --}}
+                    <p class="text-xs font-weight-bold">操作方法などについて詳しくみる</p>
+                    <a href="https://www.meniu.io/howto/"
+                        target="_blank" class="btn btn-primary btn-sm w-100 mb-0">使い方ガイド</a>
                 </div>
             </div>
         </div>
