@@ -43,7 +43,10 @@ class AccountsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'channel_secret' => 'required',
+            'access_token' => 'required',
+        ]);
     }
 
     /**
