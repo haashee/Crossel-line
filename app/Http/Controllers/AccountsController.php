@@ -121,7 +121,7 @@ class AccountsController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
 
-        return redirect('/accounts')
+        return redirect('/accounts' . '/' . $id . '/' . 'edit')
             ->with('message', 'Account updated');
     }
 

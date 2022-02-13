@@ -66,6 +66,25 @@ Account
         </div>
     </div>
     <div class="container-fluid py-4">
+
+        <!--session message-->
+        @if (session()->has('message'))
+        <div class="position-fixed bottom-1 end-1 z-index-2">
+            <div class="toast fade hide p-2 bg-white show" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+                <div class="toast-header border-0">
+                    <i class="ni ni-check-bold text-success me-2"></i>
+                    <span class="me-auto font-weight-bold">Argon Dashboard</span>
+                    <small class="text-body">11 mins ago</small>
+                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+                </div>
+                <hr class="horizontal dark m-0">
+                <div class="toast-body">
+                    {{ session()->get('message') }}
+                </div>
+            </div>
+        </div>
+        @endif
+
         <form 
             action="/accounts/{{ $account->id }}"
             method="POST"
@@ -185,21 +204,6 @@ Account
                                         title="Send">保存</button>
                                 </div>
                             </div>
-                            @if ($errors->any())
-                                <div class="row">
-                                <div class="col-12 col-lg-8 m-auto">
-                                <div class="card p-3 border-radius-xl bg-white mb-5">
-                                    <p>エラー発生: 下記内容をご確認ください。</p>
-                                    <ul class="m-0 p-0">
-                                        @foreach ($errors->all() as $error )
-                                                {{ $error }} <br>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                </div>
-                                </div>
-
-                            @endif
                         </div>
                     </div>
                 </div>

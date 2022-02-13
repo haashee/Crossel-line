@@ -39,29 +39,34 @@ Account Wizard
                             </div>
                         </div>
                     </div>
+
                     <!--error message-->
                     @if ($errors->any())
-                        <div class="row">
-                        <div class="col-12 col-lg-8 m-auto">
-                        <div class="card p-3 border-radius-xl bg-white mb-5">
-                            <p>エラー発生: 下記内容をご確認ください。</p>
-                            <ul class="m-0 p-0">
-                                @foreach ($errors->all() as $error )
-                                        {{ $error }} <br>
-                                @endforeach
-                            </ul>
-                        </div>
-                        </div>
-                        </div>
 
+                    <div class="position-fixed bottom-1 end-1 z-index-2">
+
+                        <div class="toast fade hide p-2 mt-2 bg-white show" role="alert" aria-live="assertive"
+                            id="dangerToast" aria-atomic="true">
+                            <div class="toast-header border-0">
+                                <i class="ni ni-notification-70 text-danger me-2"></i>
+                                <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
+                                <small class="text-body">0 mins ago</small>
+                                <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast"
+                                    aria-label="Close"></i>
+                            </div>
+                            <hr class="horizontal dark m-0">
+                            <div class="toast-body">
+                                @foreach ($errors->all() as $error )
+                                {{ $error }} <br>
+                                @endforeach </div>
+                        </div>
+                    </div>
                     @endif
+
                     <!--form panels-->
                     <div class="row">
                         <div class="col-12 col-lg-8 m-auto">
-                            <form
-                                action="/accounts"
-                                method="POST"
-                                enctype="multipart/form-data"
+                            <form action="/accounts" method="POST" enctype="multipart/form-data"
                                 class="multisteps-form__form">
                                 @csrf
                                 <!--single form panel-->
@@ -95,7 +100,7 @@ Account Wizard
                                                 <input class="multisteps-form__input form-control mb-3" type="text"
                                                     placeholder="channel_secret" name="channel_secret" />
                                                 <label>アクセストークン</label>
-                                                <textarea class="multisteps-form__input form-control mb-3" 
+                                                <textarea class="multisteps-form__input form-control mb-3"
                                                     placeholder="access_token" name="access_token"></textarea>
                                                 <label>Name</label>
                                                 <input class="multisteps-form__input form-control" type="text"
@@ -296,18 +301,18 @@ Account Wizard
 
 
 @section('scripts')
-    <!--   Core JS Files   -->
-    <script src="../../assets/js/core/popper.min.js"></script>
-    <script src="../../assets/js/core/bootstrap.min.js"></script>
-    <script src="../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-    <script src="../../assets/js/plugins/smooth-scrollbar.min.js"></script>
-    <!-- Kanban scripts -->
-    <script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
-    <script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
-    <script src="../../assets/js/plugins/multistep-form.js"></script>
-    <script src="../../assets/js/plugins/choices.min.js"></script>
-    <script>
-        if (document.getElementById('choices-country')) {
+<!--   Core JS Files   -->
+<script src="../../assets/js/core/popper.min.js"></script>
+<script src="../../assets/js/core/bootstrap.min.js"></script>
+<script src="../../assets/js/plugins/perfect-scrollbar.min.js"></script>
+<script src="../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+<!-- Kanban scripts -->
+<script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
+<script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script src="../../assets/js/plugins/multistep-form.js"></script>
+<script src="../../assets/js/plugins/choices.min.js"></script>
+<script>
+    if (document.getElementById('choices-country')) {
             var country = document.getElementById('choices-country');
             const example = new Choices(country);
             }
@@ -324,18 +329,18 @@ Account Wizard
             };
             reader.readAsDataURL(input.files[0]);
             };
-    </script>
-    <script>
-        var win = navigator.platform.indexOf('Win') > -1;
+</script>
+<script>
+    var win = navigator.platform.indexOf('Win') > -1;
             if (win && document.querySelector('#sidenav-scrollbar')) {
             var options = {
                 damping: '0.5'
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
             }
-    </script>
-    <!-- Github buttons -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../assets/js/argon-dashboard.min.js?v=2.0.0"></script>
+</script>
+<!-- Github buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+<script src="../../assets/js/argon-dashboard.min.js?v=2.0.0"></script>
 @endsection

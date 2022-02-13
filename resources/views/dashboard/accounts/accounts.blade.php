@@ -69,6 +69,25 @@
                     <p>This is the paragraph where you can write more details about your projects. Keep you user engaged by providing meaningful information.</p>
                 </div>
                 </div>
+
+                <!--session message-->
+                @if (session()->has('message'))
+                <div class="position-fixed bottom-1 end-1 z-index-2">
+                    <div class="toast fade hide p-2 bg-white show" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+                        <div class="toast-header border-0">
+                            <i class="ni ni-check-bold text-success me-2"></i>
+                            <span class="me-auto font-weight-bold">{{ session()->get('message') }}</span>
+                            {{-- <small class="text-body">11 mins ago</small> --}}
+                            <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+                        </div>
+                        <hr class="horizontal dark m-0">
+                        <div class="toast-body">
+                            {{ session()->get('message') }}
+                        </div>
+                    </div>
+                </div>
+                @endif
+                
                 <div class="row mt-lg-4 mt-2">
 
                     @forelse ($accounts as $account)
