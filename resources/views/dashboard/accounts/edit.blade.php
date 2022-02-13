@@ -226,7 +226,7 @@ Account
                                     @csrf
                                     @method('delete')
                                     <button class="btn bg-gradient-dark mb-0 js-btn-prev" type="submit"
-                                        title="Delete">Delete</button>
+                                        title="Delete" onclick="return confirm('Are you sure you want to delete?');">Delete</button>
                                 </form>
                             </div>
                         </div>

@@ -66,7 +66,7 @@ class AccountsController extends Controller
         Session::put('title', 'アカウント作成完了');
 
         return redirect('/accounts')
-            ->with('message', 'アカウントが無事作成されました。Account added');
+            ->with('message', 'アカウントが無事作成されました。');
     }
 
     /**
@@ -132,7 +132,7 @@ class AccountsController extends Controller
         Session::put('title', 'アカウント編集完了');
 
         return redirect('/accounts' . '/' . $id . '/' . 'edit')
-            ->with('message', 'アカウントが無事編集されました。Account updated');
+            ->with('message', 'アカウントが無事編集されました。');
     }
 
     /**
@@ -153,6 +153,6 @@ class AccountsController extends Controller
 
         Session::put('title', 'アカウント削除');
 
-        return redirect('/accounts')->with('message', 'アカウントが正常に削除されました。Account has been deleted.');
+        return redirect('/accounts')->with('message', 'アカウントが正常に削除されました。');
     }
 }
