@@ -47,7 +47,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::group(['prefix' => 'line'], function () {
 
     // LINE recieve message
-    Route::post('webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');
+    Route::post('{aid}/webhook', [LineMessengerController::class, 'webhook']);
 
     // LINE send message
     Route::get('{aid}/send', [LineMessengerController::class, 'sendMessage']);

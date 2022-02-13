@@ -40,8 +40,16 @@ use \LINE\LINEBot\Constant\HTTPHeader;
 
 class LineMessengerController extends Controller
 {
-    public function webhook(Request $request)
+    public function webhook(Request $request, $aid)
     {
+
+        // get account ID (aid) 
+        $account = Account::where('id', $aid)->first();
+
+        // get channel secret and access token
+        $channel_secret = $account->channel_secret;
+        $access_token = $account->access_token;
+
         // LINEから送られた内容を$inputsに代入
         $inputs = $request->all();
 
@@ -50,8 +58,10 @@ class LineMessengerController extends Controller
         Log::info("LOG: received message type is `" . $message_type . "`");
 
         // LINEBOTSDKの設定
-        $http_client = new CurlHTTPClient(config('services.line.channel_token'));
-        $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
+        $http_client = new CurlHTTPClient($access_token);
+        $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
+        // $http_client = new CurlHTTPClient(config('services.line.channel_token'));
+        // $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
 
         // LINEのユーザーIDをuserIdに代入
         $userId = $request['events'][0]['source']['userId'];
