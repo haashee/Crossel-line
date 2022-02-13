@@ -520,7 +520,7 @@ class LineMessengerController extends Controller
         // $richMenuId = json_decode($richMenuBody)->richMenuId;
 
         // Use below to delete specific richmenu
-        $richMenuId = 'richmenu-c306b5ea28331912870e98ec429ccbfd';
+        $richMenuId = 'richmenu-2630aa74b2177308858d3bf103738b73';
         Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
         // delete the specific richmenu
         $response = $bot->deleteRichMenu($richMenuId);
