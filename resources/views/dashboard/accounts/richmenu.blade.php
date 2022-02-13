@@ -53,7 +53,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
-                                    data-bs-toggle="tab" href="/accounts/{{ $account->id }}/edit" role="tab" aria-selected="false">
+                                    href="/accounts/{{ $account->id }}/edit" role="tab" aria-selected="false">
                                     <i class="ni ni-settings-gear-65"></i>
                                     <span class="ms-2">設定</span>
                                 </a>
