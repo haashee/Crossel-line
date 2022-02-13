@@ -40,14 +40,14 @@ Account
                         <ul class="nav nav-pills nav-fill p-1" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link mb-0 px-0 py-1 active d-flex align-items-center justify-content-center "
-                                    data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="true">
+                                    href="{{ URL::route('accounts.index') }}" role="tab" aria-selected="true">
                                     <i class="ni ni-app"></i>
-                                    <span class="ms-2">App</span>
+                                    <span class="ms-2">一覧</span>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
-                                    data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                                    href="/accounts/{{ $account->id }}/richmenu" role="tab" aria-selected="false">
                                     <i class="ni ni-email-83"></i>
                                     <span class="ms-2">Messages</span>
                                 </a>

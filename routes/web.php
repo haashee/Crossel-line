@@ -33,7 +33,9 @@ Route::get('/wizard', [DashboardController::class, 'wizard'])->name('wizard');
 Route::get('/friends', [DashboardController::class, 'friends'])->name('friends');
 Route::get('/chat', [DashboardController::class, 'chat'])->name('chat');
 
+Route::get('/accounts/{id}/richmenu/', [AccountsController::class, 'richmenu'])->name('accounts.richmenu');
 Route::resource('/accounts', AccountsController::class);
+
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

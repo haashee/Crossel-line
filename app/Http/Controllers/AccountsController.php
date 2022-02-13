@@ -155,4 +155,19 @@ class AccountsController extends Controller
 
         return redirect('/accounts')->with('message', 'アカウントが正常に削除されました。');
     }
+
+
+    // richmenu settings
+    public function richmenu($id)
+    {
+        $account = Account::where('id', $id)->first();
+
+
+        Session::put('title', 'アカウント削除');
+        $accounts = Account::all();
+
+        return view('dashboard.accounts.richmenu', [
+            'accounts' => $accounts,
+        ]);
+    }
 }
