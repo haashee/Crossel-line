@@ -103,7 +103,7 @@ class AccountsController extends Controller
 
         if ($request->hasFile('image')) {
             $image_file_path = public_path('uploads/profile-pic/') . $account->image; // get previous image from folder
-            if ($account->image != null && File::exists($image_file_path)) { // unlink or remove previous image from folder
+            if ($account->image != null && File::exists($image_file_path) && $account->image !== 'default_profilepicture.png') { // unlink or remove previous image from folder
                 unlink($image_file_path);
             }
             $file = $request->file('image');
@@ -133,6 +133,14 @@ class AccountsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $account = Account::where('id', $id)->first();
+        $account->delete();
+
+        if ($account->image !== 'default_profilepicture.png' || $account->image !== null) {
+            $file_path = public_path('uploads/profile-pic/') . $account->image;
+            unlink($file_path);
+        }
+
+        return redirect('/accounts')->with('message', 'Account has been deleted.');
     }
 }
