@@ -15,4 +15,13 @@ class Account extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getProfilepictureFilenameAttribute()
+    {
+        if (!$this->attributes['image']) {
+            return '/images/default_profilepicture.png';
+        }
+
+        return $this->attributes['image'];
+    }
 }

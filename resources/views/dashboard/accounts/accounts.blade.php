@@ -77,8 +77,8 @@
                             <div class="card">
                                 <div class="card-body p-3">
                                     <div class="d-flex">
-                                    <div class="avatar avatar-xl bg-gradient-dark border-radius-md p-2">
-                                        <img src="../../../assets/img/small-logos/logo-slack.svg" alt="slack_logo">
+                                    <div class="avatar avatar-xl">
+                                        <img src="{{ asset('uploads/profile-pic/' . $account->image) }}" class="border-radius-md" alt="team-2" >
                                     </div>
                                     <div class="ms-3 my-auto">
                                         <h6>{{ $account->name }}</h6>
