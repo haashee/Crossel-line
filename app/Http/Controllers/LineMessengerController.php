@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Account;
+
 use App\Models\LineUser;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
@@ -238,11 +240,18 @@ class LineMessengerController extends Controller
 
 
     // Send message
-    public function sendMessage()
+    public function sendMessage($aid)
     {
+        // get account ID (aid) 
+        $account = Account::where('id', $aid)->first();
+
+        // get channel secret and access token
+        $channel_secret = $account->channel_secret;
+        $access_token = $account->access_token;
+
         // LINEBOTSDKの設定
-        $http_client = new CurlHTTPClient(config('services.line.channel_token'));
-        $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
+        $http_client = new CurlHTTPClient($access_token);
+        $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
 
         // Set user to send 
         $userId = "U6f9e0ed71f65c0f07c6915788713aa5c";

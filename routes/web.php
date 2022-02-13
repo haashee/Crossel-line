@@ -50,7 +50,7 @@ Route::group(['prefix' => 'line'], function () {
     Route::post('webhook', [LineMessengerController::class, 'webhook'])->name('line.webhook');
 
     // LINE send message
-    Route::get('send', [LineMessengerController::class, 'sendMessage']);
+    Route::get('{aid}/send', [LineMessengerController::class, 'sendMessage']);
 
     // LINE rich menu create/upload/
     Route::get('richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
