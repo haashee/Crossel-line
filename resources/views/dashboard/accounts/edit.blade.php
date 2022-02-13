@@ -39,8 +39,8 @@ Account
                     <div class="nav-wrapper position-relative end-0">
                         <ul class="nav nav-pills nav-fill p-1" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link mb-0 px-0 py-1 active d-flex align-items-center justify-content-center "
-                                    href="{{ URL::route('accounts.index') }}" role="tab" aria-selected="true">
+                                <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
+                                    href="{{ URL::route('accounts.index') }}" role="tab" aria-selected="false">
                                     <i class="ni ni-app"></i>
                                     <span class="ms-2">一覧</span>
                                 </a>
@@ -48,15 +48,15 @@ Account
                             <li class="nav-item">
                                 <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
                                     href="/accounts/{{ $account->id }}/richmenu" role="tab" aria-selected="false">
-                                    <i class="ni ni-email-83"></i>
-                                    <span class="ms-2">Messages</span>
+                                    <i class="ni ni-image"></i>
+                                    <span class="ms-2">リッチメニュー</span>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
-                                    data-bs-toggle="tab" href="javascript:;" role="tab" aria-selected="false">
+                                <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center border"
+                                    data-bs-toggle="tab" href="/accounts/{{ $account->id }}/edit" role="tab" aria-selected="true">
                                     <i class="ni ni-settings-gear-65"></i>
-                                    <span class="ms-2">Settings</span>
+                                    <span class="ms-2">設定</span>
                                 </a>
                             </li>
                         </ul>

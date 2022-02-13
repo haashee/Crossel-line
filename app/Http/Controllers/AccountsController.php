@@ -167,7 +167,7 @@ class AccountsController extends Controller
         $accounts = Account::all();
 
         return view('dashboard.accounts.richmenu', [
-            'accounts' => $accounts,
+            'account' => $account,
         ]);
     }
 }
