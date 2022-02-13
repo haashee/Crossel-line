@@ -66,6 +66,26 @@ Account
         </div>
     </div>
     <div class="container-fluid py-4">
+
+        <!--session message-->
+        @if (session()->has('message'))
+        <div class="position-fixed bottom-1 end-1 z-index-2">
+            <div class="toast fade hide p-2 bg-white show" role="alert" aria-live="assertive" id="successToast"
+                aria-atomic="true">
+                <div class="toast-header border-0">
+                    <i class="ni ni-check-bold text-success me-2"></i>
+                    <span class="me-auto font-weight-bold">{{ session()->get('title') }}</span>
+                    {{-- <small class="text-body">11 mins ago</small> --}}
+                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+                </div>
+                <hr class="horizontal dark m-0">
+                <div class="toast-body">
+                    {{ session()->get('message') }}
+                </div>
+            </div>
+        </div>
+        @endif
+
         <div class="row mt-4">
             <div class="col-12">
                 <div class="card mb-4">
@@ -94,8 +114,14 @@ Account
                                             As Bubble works through a huge amount of internal management turmoil.
                                         </p> --}}
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
-                                                Project</button>
+                                            <form 
+                                                action="/line/{{ $account->id }}/richmenu/create" 
+                                                method="GET" enctype="multipart/form-data">
+                                                @csrf
+                                                
+                                                <button type="submit" class="btn btn-outline-primary btn-sm mb-0">View
+                                                    Project</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

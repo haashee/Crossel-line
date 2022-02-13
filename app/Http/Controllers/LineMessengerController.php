@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use Illuminate\Support\Facades\Session;
 
 use App\Models\LineUser;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -352,7 +353,7 @@ class LineMessengerController extends Controller
         Log::info('the rich menu ID is `' . $richMenuId . '`');
 
         // upload pic for richmenu
-        $imagePath = public_path() . '/images/rich-img.jpeg';
+        $imagePath = public_path() . '/images/rich-img-01.jpeg';
         $contentType = 'image/jpeg';
         $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
 
@@ -369,6 +370,10 @@ class LineMessengerController extends Controller
             // Failed
             Log::error($response->getRawBody());
         }
+
+        Session::put('title', 'リッチメニュー作成成功');
+
+        return redirect('/accounts' . '/' . $aid . '/richmenu')->with('message', 'リッチメニューが作成されました。');
     }
 
 
@@ -387,18 +392,18 @@ class LineMessengerController extends Controller
         $http_client = new CurlHTTPClient($access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
 
-        // // Use below to delete specific richmenu
         // // Get rich menu ID from user
         // $response = $bot->getRichMenuId('U6f9e0ed71f65c0f07c6915788713aa5c');
 
         // // retrieve richmenu id
         // $richMenuBody = $response->getRawBody();
         // $richMenuId = json_decode($richMenuBody)->richMenuId;
-        // $richMenuId = 'richmenu-49417a2edd3f1287a9e8006cb8f98f18';
-        // Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
 
-        // // delete the rich menu
-        // $response = $bot->deleteRichMenu($richMenuId);
+        // Use below to delete specific richmenu
+        $richMenuId = 'richmenu-0a5ffed8e80b895882fd13b55144cd41';
+        Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
+        // delete the specific richmenu
+        $response = $bot->deleteRichMenu($richMenuId);
 
         // delete the rich menu
         $response = $bot->deleteRichMenu($account->richmenu_id);
