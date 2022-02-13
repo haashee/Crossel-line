@@ -119,7 +119,7 @@ Account
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 
-                                                <button type="submit" class="btn btn-outline-primary btn-sm mb-0">View
+                                                <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">View
                                                     Project</button>
                                             </form>
                                         </div>
@@ -142,8 +142,14 @@ Account
                                             </h5>
                                         </a>
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
-                                                Project</button>
+                                            <form 
+                                                action="/line/{{ $account->id }}/richmenu/create" 
+                                                method="GET" enctype="multipart/form-data">
+                                                @csrf
+                                                
+                                                <button value="rich02" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">View
+                                                    Project</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -164,8 +170,14 @@ Account
                                             </h5>
                                         </a>
                                         <div class="d-flex align-items-center justify-content-between">
-                                            <button type="button" class="btn btn-outline-primary btn-sm mb-0">View
-                                                Project</button>
+                                            <form 
+                                                action="/line/{{ $account->id }}/richmenu/create" 
+                                                method="GET" enctype="multipart/form-data">
+                                                @csrf
+                                                
+                                                <button value="rich03" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">View
+                                                    Project</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

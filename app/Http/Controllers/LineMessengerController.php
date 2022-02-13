@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Account;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Input;
+
 
 use App\Models\LineUser;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -306,7 +308,7 @@ class LineMessengerController extends Controller
 
 
 
-    public function richMenuCreate($aid)
+    public function richMenuCreate($aid, Request $request)
     {
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
@@ -319,6 +321,16 @@ class LineMessengerController extends Controller
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient($access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
+
+        switch ($request->input('richmenu-btn')) {
+            case ('rich01'):
+                dd('rich01');
+                break;
+            case ('rich02'):
+                dd('fucked');
+                break;
+            default:
+        }
 
         // Create richmenu
         $richMenuBuilder = new RichMenuBuilder(
@@ -400,7 +412,7 @@ class LineMessengerController extends Controller
         // $richMenuId = json_decode($richMenuBody)->richMenuId;
 
         // Use below to delete specific richmenu
-        $richMenuId = 'richmenu-8ab420f5d72798649cef007d3e46c16b';
+        $richMenuId = 'richmenu-671d4083bf3ee4f899160f52ee89a625';
         Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
         // delete the specific richmenu
         $response = $bot->deleteRichMenu($richMenuId);
