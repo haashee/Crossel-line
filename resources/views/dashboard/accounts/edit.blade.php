@@ -194,8 +194,11 @@ Account
                                 <textarea class="edit-token-show multisteps-form__input form-control mb-3" placeholder="access_token"
                                     name="access_token" disabled>{{ $account->access_token }}</textarea>
                                 <label>Name</label>
-                                <input class="multisteps-form__input form-control" type="text"
+                                <input class="multisteps-form__input form-control mb-3" type="text"
                                     value="{{ $account->name }}" name="name" />
+                                <label>Webhook URL</label>
+                                <input class="multisteps-form__input form-control" type="text"
+                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook " name="channel_secret" disabled/>
                             </div>
 
                             <hr class="horizontal gray-light my-4">
