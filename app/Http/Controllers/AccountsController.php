@@ -158,9 +158,9 @@ class AccountsController extends Controller
 
 
     // richmenu settings
-    public function richmenu($id)
+    public function richmenu($aid)
     {
-        $account = Account::where('id', $id)->first();
+        $account = Account::where('id', $aid)->first();
 
 
         Session::put('title', 'アカウント削除');

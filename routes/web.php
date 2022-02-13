@@ -33,7 +33,7 @@ Route::get('/wizard', [DashboardController::class, 'wizard'])->name('wizard');
 Route::get('/friends', [DashboardController::class, 'friends'])->name('friends');
 Route::get('/chat', [DashboardController::class, 'chat'])->name('chat');
 
-Route::get('/accounts/{id}/richmenu/', [AccountsController::class, 'richmenu'])->name('accounts.richmenu');
+Route::get('/accounts/{aid}/richmenu/', [AccountsController::class, 'richmenu'])->name('accounts.richmenu');
 Route::resource('/accounts', AccountsController::class);
 
 
@@ -53,7 +53,7 @@ Route::group(['prefix' => 'line'], function () {
     Route::get('{aid}/send', [LineMessengerController::class, 'sendMessage']);
 
     // LINE rich menu create/upload/
-    Route::get('richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
+    Route::get('{aid}/richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
 
     // LINE rich menu delete
     Route::get('richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);

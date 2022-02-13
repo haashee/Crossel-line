@@ -21,6 +21,7 @@ class CreateAccounts extends Migration
             $table->mediumText('access_token')->nullable();
             $table->string('endpoint')->nullable();
             $table->string('webhook')->nullable();
+            $table->string('richmenu_id')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('user_id');

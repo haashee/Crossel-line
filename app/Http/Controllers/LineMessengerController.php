@@ -214,7 +214,7 @@ class LineMessengerController extends Controller
                 $response = $bot->replyText($reply_token, $message_data);
 
                 // link LINE user ID with rich menu ID
-                $response = $bot->linkRichMenu($userId, 'richmenu-1a8948e29628ceacd10c9de215e9a1b3');
+                $response = $bot->linkRichMenu($userId, $account->richmenu_id);
 
                 // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
                 LineUser::updateOrCreate(['line_id' => $userId]);
@@ -305,12 +305,19 @@ class LineMessengerController extends Controller
 
 
 
-    public function richMenuCreate()
+    public function richMenuCreate($aid)
     {
+        // get account ID (aid) 
+        $account = Account::where('id', $aid)->first();
+
+        // get channel secret and access token
+        $channel_secret = $account->channel_secret;
+        $access_token = $account->access_token;
+
         // https://developers.line.biz/en/reference/messaging-api/#create-rich-menu
         // LINEBOTSDKの設定
-        $http_client = new CurlHTTPClient(config('services.line.channel_token'));
-        $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
+        $http_client = new CurlHTTPClient($access_token);
+        $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
 
         // Create richmenu
         $richMenuBuilder = new RichMenuBuilder(
@@ -348,6 +355,12 @@ class LineMessengerController extends Controller
         $imagePath = public_path() . '/images/rich-img.jpeg';
         $contentType = 'image/jpeg';
         $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
+
+        // add richmenu ID to accounts table
+        Account::where('id', $aid)
+            ->update([
+                'richmenu_id' => $richMenuId,
+            ]);
 
         // Succeeded
         if ($response->isSucceeded()) {

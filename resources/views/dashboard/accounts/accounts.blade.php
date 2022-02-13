@@ -90,7 +90,7 @@
                 
                 <div class="row mt-lg-4 mt-2">
 
-                    @forelse ($accounts as $account)
+                    @foreach ($accounts as $account)
                         
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card">
@@ -138,20 +138,7 @@
                             </div>
                         </div>
 
-                    @empty
-
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body d-flex flex-column justify-content-center text-center">
-                                    <a href="javascript:;">
-                                    <i class="fa fa-plus text-secondary mb-3"></i>
-                                    <h5 class=" text-secondary"> アカウントを登録してください。 </h5>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    @endforelse
+                    @endforeach
 
                     {{-- <div class="col-lg-4 col-md-6 mb-4">
                         <div class="card">
