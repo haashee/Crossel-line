@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 
 class AccountsController extends Controller
@@ -57,8 +58,10 @@ class AccountsController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
+        Session::put('title', 'アカウント作成完了');
+
         return redirect('/accounts')
-            ->with('message', 'Account added');
+            ->with('message', 'アカウントが無事作成されました。Account added');
     }
 
     /**
@@ -121,8 +124,10 @@ class AccountsController extends Controller
                 'user_id' => auth()->user()->id,
             ]);
 
+        Session::put('title', 'アカウント編集完了');
+
         return redirect('/accounts' . '/' . $id . '/' . 'edit')
-            ->with('message', 'Account updated');
+            ->with('message', 'アカウントが無事編集されました。Account updated');
     }
 
     /**
@@ -141,6 +146,8 @@ class AccountsController extends Controller
             unlink($file_path);
         }
 
-        return redirect('/accounts')->with('message', 'Account has been deleted.');
+        Session::put('title', 'アカウント削除');
+
+        return redirect('/accounts')->with('message', 'アカウントが正常に削除されました。Account has been deleted.');
     }
 }

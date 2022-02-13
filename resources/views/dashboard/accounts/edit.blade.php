@@ -74,8 +74,8 @@ Account
                 aria-atomic="true">
                 <div class="toast-header border-0">
                     <i class="ni ni-check-bold text-success me-2"></i>
-                    <span class="me-auto font-weight-bold">Argon Dashboard</span>
-                    <small class="text-body">11 mins ago</small>
+                    <span class="me-auto font-weight-bold">{{ session()->get('title') }}</span>
+                    {{-- <small class="text-body">11 mins ago</small> --}}
                     <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
                 </div>
                 <hr class="horizontal dark m-0">
