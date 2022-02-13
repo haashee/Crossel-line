@@ -202,7 +202,12 @@ Account
 
                             <div class="row">
                                 <div class="button-row d-flex mt-4 col-12">
-                                    <a href="{{ URL::route('accounts.index') }}" class="btn bg-gradient-light mb-0 js-btn-prev">アカウント一覧</a>
+                                    <a href="{{ URL::route('accounts.index') }}"
+                                        class="btn bg-gradient-light mb-0 js-btn-prev">アカウント一覧</a>
+                                    <a href="javascript:;">
+                                        <i class="fas fa-trash text-secondary text-sm px-3 pt-2" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="有料プランをご利用中は削除できません。"></i>
+                                    </a>
                                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
                                         title="Send">保存</button>
                                 </div>
@@ -225,8 +230,8 @@ Account
                                 <form action="/accounts/{{ $account->id }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <button class="btn bg-gradient-dark mb-0 js-btn-prev" type="submit"
-                                        title="Delete" onclick="return confirm('Are you sure you want to delete?');">Delete</button>
+                                    <button class="btn bg-gradient-dark mb-0 js-btn-prev" type="submit" title="Delete"
+                                        onclick="return confirm('Are you sure you want to delete?');">Delete</button>
                                 </form>
                             </div>
                         </div>
