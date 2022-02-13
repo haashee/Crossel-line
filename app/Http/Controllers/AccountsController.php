@@ -47,10 +47,13 @@ class AccountsController extends Controller
             'access_token' => 'required',
         ]);
 
+
+
         Account::create([
             'name' => $request->input('name'),
             'channel_secret' => $request->input('channel_secret'),
             'access_token' => $request->input('access_token'),
+            'image' => 'default_profilepicture.png',
             'user_id' => auth()->user()->id,
         ]);
 
