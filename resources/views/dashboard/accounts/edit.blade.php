@@ -177,9 +177,9 @@ Account
                                     <h6 class="mb-0">Profile Information</h6>
                                 </div>
                                 <div class="col-md-4 text-end">
-                                    <a href="javascript:;">
+                                    <a class="edit-token" href="javascript:;">
                                         <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                            data-bs-placement="top" title="Edit Profile"></i>
+                                            data-bs-placement="left" title="アクセストークンを編集"></i>
                                     </a>
                                 </div>
                             </div>
@@ -188,11 +188,11 @@ Account
                         <div class="card-body p-3">
                             <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
                                 <label>チャネルシークレット</label>
-                                <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->channel_secret }}" name="channel_secret" />
+                                <input class="edit-token-show multisteps-form__input form-control mb-3" type="text"
+                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
                                 <label>アクセストークン</label>
-                                <textarea class="multisteps-form__input form-control mb-3" placeholder="access_token"
-                                    name="access_token">{{ $account->access_token }}</textarea>
+                                <textarea class="edit-token-show multisteps-form__input form-control mb-3" placeholder="access_token"
+                                    name="access_token" disabled>{{ $account->access_token }}</textarea>
                                 <label>Name</label>
                                 <input class="multisteps-form__input form-control" type="text"
                                     value="{{ $account->name }}" name="name" />
@@ -268,6 +268,15 @@ Account
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
+
+    const editTokenBtn = document.querySelector('.edit-token');
+    const editToken = document.querySelectorAll('.edit-token-show');
+    editTokenBtn.addEventListener('click', event => {
+        for (var i = 0; i < editToken.length; i++) {
+            editToken[i].toggleAttribute("disabled");
+        }
+    });
+
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
