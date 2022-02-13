@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use Illuminate\Support\Facades\File;
+
 
 class AccountsController extends Controller
 {
@@ -94,15 +96,25 @@ class AccountsController extends Controller
             'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        $newImageName = auth()->user()->id . '-' . $id . '-' . uniqid() . '.' . $request->image->extension();
-        $request->image->move(public_path('uploads/profile-pic'), $newImageName);
+        $account = Account::where('id', $id)->first();
+
+        if ($request->hasFile('image')) {
+            $image_file_path = public_path('uploads/profile-pic/') . $account->image; // get previous image from folder
+            if ($account->image != null && File::exists($image_file_path)) { // unlink or remove previous image from folder
+                unlink($image_file_path);
+            }
+            $file = $request->file('image');
+            $name = auth()->user()->id . '-' . $id . '-' . uniqid() . '.' . $request->image->extension();
+            $file = $file->move(public_path('uploads/profile-pic'), $name);
+            $account->image = $name;
+            $account->save();
+        }
 
         Account::where('id', $id)
             ->update([
                 'name' => $request->input('name'),
                 'channel_secret' => $request->input('channel_secret'),
                 'access_token' => $request->input('access_token'),
-                'image' => $newImageName,
                 'user_id' => auth()->user()->id,
             ]);
 
