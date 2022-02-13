@@ -70,7 +70,8 @@ Account
         <!--session message-->
         @if (session()->has('message'))
         <div class="position-fixed bottom-1 end-1 z-index-2">
-            <div class="toast fade hide p-2 bg-white show" role="alert" aria-live="assertive" id="successToast" aria-atomic="true">
+            <div class="toast fade hide p-2 bg-white show" role="alert" aria-live="assertive" id="successToast"
+                aria-atomic="true">
                 <div class="toast-header border-0">
                     <i class="ni ni-check-bold text-success me-2"></i>
                     <span class="me-auto font-weight-bold">Argon Dashboard</span>
@@ -85,13 +86,10 @@ Account
         </div>
         @endif
 
-        <form 
-            action="/accounts/{{ $account->id }}"
-            method="POST"
-            enctype="multipart/form-data">
+        <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            
+
             <div class="row mt-3">
                 <div class="col-12 col-md-6 col-xl-4">
                     <div class="card h-100">
@@ -100,11 +98,15 @@ Account
                         </div>
                         <div class="col-12 col-sm-4 p-3 ">
                             <div class="avatar avatar-xl position-relative">
-                                <img src="{{ asset('uploads/profile-pic/' . $account->image) }}" class="border-radius-md" alt="team-2">
-                                <label class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                                    <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top" title="" aria-hidden="true" data-bs-original-title="Edit Image" aria-label="Edit Image"></i></span>
+                                <img src="{{ asset('uploads/profile-pic/' . $account->image) }}"
+                                    class="border-radius-md" alt="team-2">
+                                <label
+                                    class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                                    <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top"
+                                            title="" aria-hidden="true" data-bs-original-title="Edit Image"
+                                            aria-label="Edit Image"></i></span>
                                     <span class="sr-only">Edit Image</span>
-                                    <input name="image" type="file" style="display: none" >
+                                    <input name="image" type="file" style="display: none">
                                 </label>
                             </div>
                         </div>
@@ -121,15 +123,17 @@ Account
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault1">
+                                        <input class="form-check-input ms-0" type="checkbox"
+                                            id="flexSwitchCheckDefault1">
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                            for="flexSwitchCheckDefault1">Email me when someone answers on my post</label>
+                                            for="flexSwitchCheckDefault1">Email me when someone answers on my
+                                            post</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault2"
-                                            checked>
+                                        <input class="form-check-input ms-0" type="checkbox"
+                                            id="flexSwitchCheckDefault2" checked>
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
                                     </div>
@@ -139,22 +143,24 @@ Account
                             <ul class="list-group">
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault3">
+                                        <input class="form-check-input ms-0" type="checkbox"
+                                            id="flexSwitchCheckDefault3">
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault3">New launches and projects</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault4"
-                                            checked>
+                                        <input class="form-check-input ms-0" type="checkbox"
+                                            id="flexSwitchCheckDefault4" checked>
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault4">Monthly product updates</label>
                                     </div>
                                 </li>
                                 <li class="list-group-item border-0 px-0 pb-0">
                                     <div class="form-check form-switch ps-0">
-                                        <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault5">
+                                        <input class="form-check-input ms-0" type="checkbox"
+                                            id="flexSwitchCheckDefault5">
                                         <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
                                             for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
                                     </div>
@@ -177,7 +183,7 @@ Account
                                     </a>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="card-body p-3">
                             <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
@@ -185,8 +191,8 @@ Account
                                 <input class="multisteps-form__input form-control mb-3" type="text"
                                     value="{{ $account->channel_secret }}" name="channel_secret" />
                                 <label>アクセストークン</label>
-                                <textarea class="multisteps-form__input form-control mb-3" 
-                                    placeholder="access_token" name="access_token">{{ $account->access_token }}</textarea>
+                                <textarea class="multisteps-form__input form-control mb-3" placeholder="access_token"
+                                    name="access_token">{{ $account->access_token }}</textarea>
                                 <label>Name</label>
                                 <input class="multisteps-form__input form-control" type="text"
                                     value="{{ $account->name }}" name="name" />
@@ -196,10 +202,7 @@ Account
 
                             <div class="row">
                                 <div class="button-row d-flex mt-4 col-12">
-                                    @method('delete')
-                                    <button class="btn bg-gradient-light mb-0 js-btn-prev" type="submit"
-                                        title="Delete">Delete</button>
-                                    @method('put')
+                                    <a href="{{ URL::route('accounts.index') }}" class="btn bg-gradient-light mb-0 js-btn-prev">アカウント一覧</a>
                                     <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
                                         title="Send">保存</button>
                                 </div>
@@ -209,6 +212,31 @@ Account
                 </div>
             </div>
         </form>
+
+
+        <!--admin buttons message-->
+        @if (@isset(Auth::user()->id) && (Auth::user()->name== 'admin'))
+        <div class="row mt-3">
+            <div class="col-12 col-md-6 col-xl-12 mt-md-0 mt-4">
+                <div class="card h-100">
+                    <div class="p-3">
+                        <div class="row">
+                            <div class="col-md-12 d-flex align-items-center">
+                                <form action="/accounts/{{ $account->id }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn bg-gradient-dark mb-0 js-btn-prev" type="submit"
+                                        title="Delete">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endisset
+
+
         <!-- Footer -->
         @include('includes.footer')
         <!-- End Footer -->

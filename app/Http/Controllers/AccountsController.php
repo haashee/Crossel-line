@@ -136,7 +136,7 @@ class AccountsController extends Controller
         $account = Account::where('id', $id)->first();
         $account->delete();
 
-        if ($account->image !== 'default_profilepicture.png' || $account->image !== null) {
+        if ($account->image !== 'default_profilepicture.png') {
             $file_path = public_path('uploads/profile-pic/') . $account->image;
             unlink($file_path);
         }
