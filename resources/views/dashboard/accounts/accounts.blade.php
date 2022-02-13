@@ -77,8 +77,11 @@
                             <div class="card">
                                 <div class="card-body p-3">
                                     <div class="d-flex">
-                                    <div class="avatar avatar-xl">
-                                        <img src="{{ asset('uploads/profile-pic/' . $account->image) }}" class="border-radius-md" alt="team-2" >
+                                    <div class="avatar avatar-l">
+                                        <img 
+                                            src="{{ asset('uploads/profile-pic/' . $account->image) }}" 
+                                            class="border-radius-md" alt="team-2" 
+                                            style="object-fit: cover;height: 100%;width: 100%;">
                                     </div>
                                     <div class="ms-3 my-auto">
                                         <h6>{{ $account->name }}</h6>
