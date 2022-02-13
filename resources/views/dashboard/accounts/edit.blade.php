@@ -198,7 +198,7 @@ Account
                                     value="{{ $account->name }}" name="name" />
                                 <label>Webhook URL</label>
                                 <input class="multisteps-form__input form-control" type="text"
-                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook " name="channel_secret" disabled/>
+                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
                             </div>
 
                             <hr class="horizontal gray-light my-4">
