@@ -56,7 +56,7 @@ Route::group(['prefix' => 'line'], function () {
     Route::get('{aid}/richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
 
     // LINE rich menu delete
-    Route::get('richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);
+    Route::get('{aid}/richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);
 });
 
 

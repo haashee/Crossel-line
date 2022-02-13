@@ -374,22 +374,33 @@ class LineMessengerController extends Controller
 
 
 
-    public function richMenuDelete()
+    public function richMenuDelete($aid)
     {
+        // get account ID (aid) 
+        $account = Account::where('id', $aid)->first();
+
+        // get channel secret and access token
+        $channel_secret = $account->channel_secret;
+        $access_token = $account->access_token;
+
         // LINEBOTSDKの設定
-        $http_client = new CurlHTTPClient(config('services.line.channel_token'));
-        $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
+        $http_client = new CurlHTTPClient($access_token);
+        $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
 
-        // Get rich menu ID from user
-        $response = $bot->getRichMenuId('U6f9e0ed71f65c0f07c6915788713aa5c');
+        // // Use below to delete specific richmenu
+        // // Get rich menu ID from user
+        // $response = $bot->getRichMenuId('U6f9e0ed71f65c0f07c6915788713aa5c');
 
-        // retrieve richmenu id
-        $richMenuBody = $response->getRawBody();
-        $richMenuId = json_decode($richMenuBody)->richMenuId;
-        // $richMenuId = 'richmenu-3e40821aed6905db110e1c88a874108f';
-        Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
+        // // retrieve richmenu id
+        // $richMenuBody = $response->getRawBody();
+        // $richMenuId = json_decode($richMenuBody)->richMenuId;
+        // $richMenuId = 'richmenu-49417a2edd3f1287a9e8006cb8f98f18';
+        // Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
+
+        // // delete the rich menu
+        // $response = $bot->deleteRichMenu($richMenuId);
 
         // delete the rich menu
-        $response = $bot->deleteRichMenu($richMenuId);
+        $response = $bot->deleteRichMenu($account->richmenu_id);
     }
 }
