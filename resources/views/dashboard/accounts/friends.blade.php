@@ -47,7 +47,7 @@ Friend list
                 <div class="card">
                     <!-- Card header -->
                     <div class="card-header">
-                        <h5 class="mb-0">Datatable Simple</h5>
+                        <h5 class="mb-0">登録友だちリスト</h5>
                         <p class="text-sm mb-0">
                             A lightweight, extendable, dependency-free
                             javascript HTML table plugin.
@@ -58,46 +58,51 @@ Friend list
                             <thead class="thead-light">
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Name
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Position
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Office
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Age
-                                    </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Start date
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Salary
+                                        Name
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Registered
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        No. Orders
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Orders total
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Setting
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($friends as $friend )
                                 <tr>
                                     <td class="text-sm font-weight-normal">
-                                        Tiger Nixon
+                                        {{ $friend->created_at->toDateString() }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        System Architect
+                                        {{ $friend->name }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        Edinburgh
+                                        <span class="badge badge-dot me-4">
+                                            <i class="bg-info"></i>
+                                            <span class="text-dark text-xs">登録済み</span>
+                                        </span>
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         61
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        2011/04/25
+                                        ¥9000
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        $320,800
+                                        <a href="#"><i class="fa fa-edit text-secondary text-sm px-3"></i></a>
                                     </td>
                                 </tr>
+                                @endforeach
                                 <tr>
                                     <td class="text-sm font-weight-normal">
                                         Garrett Winters
@@ -1229,7 +1234,7 @@ Friend list
         <!-- Footer -->
         @include('includes.footer')
         <!-- End Footer -->
-        
+
     </div>
     {{-- <div class="container-fluid py-4">
         <div class="row my-4 ">
