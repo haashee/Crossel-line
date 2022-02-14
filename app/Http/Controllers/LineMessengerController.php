@@ -516,7 +516,9 @@ class LineMessengerController extends Controller
             default:
         }
 
+        // session 'message' working but not 'title'
         Session::put('title', 'リッチメニュー作成成功');
+        file_put_contents(base_path() . '/postdata.txt', var_export(Session::all(), true));
 
         return redirect('/accounts' . '/' . $aid . '/richmenu')->with('message', 'リッチメニューが作成されました。');
     }
