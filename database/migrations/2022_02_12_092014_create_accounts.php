@@ -19,7 +19,9 @@ class CreateAccounts extends Migration
             $table->string('image')->nullable();
             $table->mediumText('channel_secret')->nullable();
             $table->mediumText('access_token')->nullable();
-            $table->string('endpoint')->nullable();
+            $table->string('liff_full')->nullable();
+            $table->string('liff_tall')->nullable();
+            $table->string('liff_compact')->nullable();
             $table->string('webhook')->nullable();
             $table->string('richmenu_id')->nullable();
             $table->timestamps();

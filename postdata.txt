@@ -1,26 +1,17 @@
-array (
-  '_token' => 'K1ttrybE6ToA9Zf4NPQ7h7d2S6xBA03zgsm4pwnQ',
-  'url' => 
+LINE\LINEBot\Response::__set_state(array(
+   'httpStatus' => 200,
+   'body' => '{"richMenuId":"richmenu-3d0271265a70afe567a2a381a1f4eced"}',
+   'headers' => 
   array (
+    'x-xss-protection' => '1; mode=block',
+    'x-line-request-id' => '20d2ead9-e153-40fd-8013-f031e33b46db',
+    'x-frame-options' => 'DENY',
+    'x-content-type-options' => 'nosniff',
+    'server' => 'envoy',
+    'pragma' => 'no-cache',
+    'expires' => '0',
+    'date' => 'Mon, 14 Feb 2022 07:30:49 GMT',
+    'content-type' => 'application/json',
+    'cache-control' => 'no-cache, no-store, max-age=0, must-revalidate',
   ),
-  '_previous' => 
-  array (
-    'url' => 'http://127.0.0.1:8000/accounts/1/richmenu',
-  ),
-  '_flash' => 
-  array (
-    'old' => 
-    array (
-    ),
-    'new' => 
-    array (
-    ),
-  ),
-  'login_web_59ba36addc2b2f9401580f014c7f58ea4e30989d' => 5,
-  'auth' => 
-  array (
-    'password_confirmed_at' => 1644796839,
-  ),
-  'title' => 'リッチメニュー作成成功',
-  'wtf' => 'リッチメニュー作成成功',
-)
+))
