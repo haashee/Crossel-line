@@ -11,10 +11,15 @@ class LineUser extends Model
 
     protected $table = 'line_users';
 
+    protected $fillable = ['name', 'line_id', 'provider', 'mode', 'account_id'];
+
     protected $primaryKey = 'id';
 
-    public function user()
+    public function account()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(
+            Account::class,
+            "user_id",
+        );
     }
 }

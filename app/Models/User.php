@@ -42,13 +42,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function lineUsers()
-    {
-        return $this->hasMany(LineUser::class);
-    }
-
     public function account()
     {
         return $this->hasMany(Account::class);
+    }
+
+    public function lineUsers()
+    {
+        return $this->hasManyThrough(
+            LineUser::class,
+            Account::class,
+            "user_id",
+            "account_id"
+        );
     }
 }

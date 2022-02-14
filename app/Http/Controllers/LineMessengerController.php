@@ -79,7 +79,6 @@ class LineMessengerController extends Controller
             // $id = Auth::user()->id;
 
             $user = new LineUser();
-            // $user->user_id = '4'; 
             $user->name = $profile['displayName'];
             $user->line_id = $userId;
             $user->provider = 'line';
