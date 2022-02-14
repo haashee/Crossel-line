@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\LineUser;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
@@ -173,8 +174,12 @@ class AccountsController extends Controller
     {
         $account = Account::where('id', $aid)->first();
 
+        $friends = LineUser::where('account_id', $aid)->get();
+
         return view('dashboard.accounts.friends', [
+            'friends' => $friends,
             'account' => $account,
+
         ]);
     }
 }
