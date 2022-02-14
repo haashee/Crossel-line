@@ -150,7 +150,7 @@ Account
                         <div class="card-header pb-0 p-3">
                             <div class="row">
                                 <div class="col-md-8 d-flex align-items-center">
-                                    <h6 class="mb-0">Profile Information</h6>
+                                    <h6 class="mb-0">アカウント設定</h6>
                                 </div>
                                 <div class="col-md-4 text-end">
                                     <a class="edit-token" href="javascript:;">
@@ -163,17 +163,52 @@ Account
                         </div>
                         <div class="card-body p-3">
                             <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                                <label>チャネルシークレット</label>
+                                <label class="text-muted">チャネルシークレット</label>
                                 <input class="edit-token-show multisteps-form__input form-control mb-3" type="text"
                                     value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
-                                <label>アクセストークン</label>
+                                <label class="text-muted">アクセストークン</label>
                                 <textarea class="edit-token-show multisteps-form__input form-control mb-3" placeholder="access_token"
                                     name="access_token" disabled>{{ $account->access_token }}</textarea>
-                                <label>Name</label>
+                                <label class="text-muted">Name</label>
                                 <input class="multisteps-form__input form-control mb-3" type="text"
                                     value="{{ $account->name }}" name="name" />
-                                <label>Webhook URL</label>
+                                <label class="text-muted">Webhook URL</label>
+                                <input class="multisteps-form__input form-control mb-3" type="text"
+                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
+                            </div>
+
+                            <div class="row pt-4 pb-3">
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <h6 class="mb-0">LIFF設定</h6>
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <a class="edit-liff" href="javascript:;">
+                                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                            data-bs-placement="left" title="Liffを編集"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
+                                <label class="text-muted">FULL エンドポイントURL</label>
                                 <input class="multisteps-form__input form-control" type="text"
+                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
+                                <label class="text-muted">FULLのLIFF ID</label>
+                                <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
+                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
+                                <hr class="horizontal dark" />
+                                <label class="text-muted">TALL エンドポイントURL</label>
+                                <input class="multisteps-form__input form-control" type="text"
+                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
+                                <label class="text-muted">TALLのLIFF ID</label>
+                                <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
+                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
+                                <hr class="horizontal dark" />
+                                <label class="text-muted">COMPACT エンドポイントURL</label>
+                                <input class="multisteps-form__input form-control" type="text"
+                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
+                                <label class="text-muted">COMPACTのLIFF ID</label>
+                                <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
                                     value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
                             </div>
 
@@ -248,11 +283,19 @@ Account
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
 
-    const editTokenBtn = document.querySelector('.edit-token');
-    const editToken = document.querySelectorAll('.edit-token-show');
+    let editTokenBtn = document.querySelector('.edit-token');
+    let editToken = document.querySelectorAll('.edit-token-show');
     editTokenBtn.addEventListener('click', event => {
         for (var i = 0; i < editToken.length; i++) {
             editToken[i].toggleAttribute("disabled");
+        }
+    });
+
+    let editLiffBtn = document.querySelector('.edit-liff');
+    let editLiff = document.querySelectorAll('.edit-liff-show');
+    editLiffBtn.addEventListener('click', event => {
+        for (var i = 0; i < editLiff.length; i++) {
+            editLiff[i].toggleAttribute("disabled");
         }
     });
 
