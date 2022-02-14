@@ -111,9 +111,9 @@
                                             <i class="fa fa-ellipsis-v text-lg"></i>
                                         </button>
                                         <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="/accounts/{{ $account->id }}/friends">Friends</a>
+                                            <a class="dropdown-item" href="/accounts/{{ $account->id }}/richmenu">Richmenu</a>
                                             <a class="dropdown-item" href="/accounts/{{ $account->id }}/edit">Edit</a>
-                                            <a class="dropdown-item" href="javascript:;">Another action</a>
-                                            <a class="dropdown-item" href="javascript:;">Something else here</a>
                                         </div>
                                         </div>
                                     </div>
