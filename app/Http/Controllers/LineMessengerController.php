@@ -84,6 +84,7 @@ class LineMessengerController extends Controller
             $user->line_id = $userId;
             $user->provider = 'line';
             $user->mode = $mode;
+            $user->account_id = $account->id;
             $user->save();
         }
 
@@ -325,8 +326,11 @@ class LineMessengerController extends Controller
         // choosing richmenu 01,02,03
         switch ($request->input('richmenu-btn')) {
             case ('rich01'):
-                // delete the rich menu
-                $response = $bot->deleteRichMenu($account->richmenu_id);
+
+                // delete the old rich menu on LINE if exists in database
+                if ($account->richmenu_id) {
+                    $response = $bot->deleteRichMenu($account->richmenu_id);
+                }
 
                 // Create richmenu
                 $richMenuBuilder = new RichMenuBuilder(
@@ -380,8 +384,10 @@ class LineMessengerController extends Controller
                 break;
 
             case ('rich02'):
-                // delete the rich menu
-                $response = $bot->deleteRichMenu($account->richmenu_id);
+                // delete the old rich menu on LINE if exists in database
+                if ($account->richmenu_id) {
+                    $response = $bot->deleteRichMenu($account->richmenu_id);
+                }
 
                 // Create richmenu
                 $richMenuBuilder = new RichMenuBuilder(
@@ -435,8 +441,10 @@ class LineMessengerController extends Controller
                 break;
 
             case ('rich03'):
-                // delete the rich menu
-                $response = $bot->deleteRichMenu($account->richmenu_id);
+                // delete the old rich menu on LINE if exists in database
+                if ($account->richmenu_id) {
+                    $response = $bot->deleteRichMenu($account->richmenu_id);
+                }
 
                 // Create richmenu
                 $richMenuBuilder = new RichMenuBuilder(
@@ -520,7 +528,7 @@ class LineMessengerController extends Controller
         // $richMenuId = json_decode($richMenuBody)->richMenuId;
 
         // Use below to delete specific richmenu
-        $richMenuId = 'richmenu-2630aa74b2177308858d3bf103738b73';
+        $richMenuId = 'richmenu-9ba0975f7821edad3cc1e5a366bab08e';
         Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
         // delete the specific richmenu
         $response = $bot->deleteRichMenu($richMenuId);

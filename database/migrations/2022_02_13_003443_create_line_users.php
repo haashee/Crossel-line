@@ -14,15 +14,15 @@ class CreateLineUsers extends Migration
     public function up()
     {
         Schema::create('line_users', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id')->nullable()->comment('ユーザーID');
-            $table->string('name')->comment('LINEの名前');
-            $table->string('line_id')->comment('LINEのID');
+            $table->increments('id');
+            $table->string('name')->nullable()->comment('LINEの名前');
+            $table->string('line_id')->nullable()->comment('LINEのID');
             $table->string('provider')->nullable();
-            $table->string('mode')->comment('チャネルの状態'); // `standby` は送信すべきでない
+            $table->string('mode')->nullable()->comment('チャネルの状態'); // `standby` は送信すべきでない
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->unsignedBigInteger('account_id')->nullable()->comment('aid');
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
     }
 

@@ -14,7 +14,7 @@ class CreateAccounts extends Migration
     public function up()
     {
         Schema::create('accounts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('image')->nullable();
             $table->mediumText('channel_secret')->nullable();
