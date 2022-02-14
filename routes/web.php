@@ -34,6 +34,7 @@ Route::get('/friends', [DashboardController::class, 'friends'])->name('friends')
 Route::get('/chat', [DashboardController::class, 'chat'])->name('chat');
 
 Route::get('/accounts/{aid}/richmenu/', [AccountsController::class, 'richmenu'])->name('accounts.richmenu');
+Route::get('/accounts/{aid}/friends/', [AccountsController::class, 'friends'])->name('accounts.friends');
 Route::resource('/accounts', AccountsController::class);
 
 

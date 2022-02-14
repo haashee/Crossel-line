@@ -157,16 +157,23 @@ class AccountsController extends Controller
     }
 
 
-    // richmenu settings
+    // richmenu settings page
     public function richmenu($aid)
     {
         $account = Account::where('id', $aid)->first();
 
-
-        Session::put('title', 'アカウント削除');
-        $accounts = Account::all();
-
         return view('dashboard.accounts.richmenu', [
+            'account' => $account,
+        ]);
+    }
+
+
+    // friends list for each account
+    public function friends($aid)
+    {
+        $account = Account::where('id', $aid)->first();
+
+        return view('dashboard.accounts.friends', [
             'account' => $account,
         ]);
     }
