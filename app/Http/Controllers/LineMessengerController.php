@@ -367,6 +367,12 @@ class LineMessengerController extends Controller
                 $contentType = 'image/jpeg';
                 $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
 
+                // apply richmenu to all users in this account
+                $lineUsers = LineUser::where('account_id', $aid)->get();
+                foreach ($lineUsers as $friend) {
+                    $response = $bot->linkRichMenu($friend->line_id, $richMenuId);
+                }
+
                 // add richmenu ID to accounts table
                 Account::where('id', $aid)
                     ->update([
@@ -423,6 +429,12 @@ class LineMessengerController extends Controller
                 $imagePath = public_path() . '/images/rich-img-02.jpeg';
                 $contentType = 'image/jpeg';
                 $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
+
+                // apply richmenu to all users in this account
+                $lineUsers = LineUser::where('account_id', $aid)->get();
+                foreach ($lineUsers as $friend) {
+                    $response = $bot->linkRichMenu($friend->line_id, $richMenuId);
+                }
 
                 // add richmenu ID to accounts table
                 Account::where('id', $aid)
@@ -481,6 +493,12 @@ class LineMessengerController extends Controller
                 $contentType = 'image/jpeg';
                 $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
 
+                // apply richmenu to all users in this account
+                $lineUsers = LineUser::where('account_id', $aid)->get();
+                foreach ($lineUsers as $friend) {
+                    $response = $bot->linkRichMenu($friend->line_id, $richMenuId);
+                }
+
                 // add richmenu ID to accounts table
                 Account::where('id', $aid)
                     ->update([
@@ -527,7 +545,7 @@ class LineMessengerController extends Controller
         // $richMenuId = json_decode($richMenuBody)->richMenuId;
 
         // Use below to delete specific richmenu
-        $richMenuId = 'richmenu-9ba0975f7821edad3cc1e5a366bab08e';
+        $richMenuId = 'richmenu-03af3696d527d95b71a654f9174f6470';
         Log::info('DELETE: the deleted rich menu ID is `' . $richMenuId . '`');
         // delete the specific richmenu
         $response = $bot->deleteRichMenu($richMenuId);
