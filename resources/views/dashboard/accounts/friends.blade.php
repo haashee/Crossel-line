@@ -49,8 +49,7 @@ Friend list
                     <div class="card-header">
                         <h5 class="mb-0">登録友だちリスト</h5>
                         <p class="text-sm mb-0">
-                            A lightweight, extendable, dependency-free
-                            javascript HTML table plugin.
+                            Friend list for this account.
                         </p>
                     </div>
                     <div class="table-responsive">
@@ -99,7 +98,16 @@ Friend list
                                         ¥9000
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        <a href="#"><i class="fa fa-edit text-secondary text-sm px-3"></i></a>
+                                        <div class="dropdown">
+                                        <button class="btn btn-link text-secondary m-0 p-0" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-ellipsis-h text-secondary text-sm px-3"></i>
+                                        </button>
+                                        <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
+                                            <a class="dropdown-item" href="/friends/{{ $friend->id }}/edit">Edit</a>
+                                            <a class="dropdown-item" href="javascript:;">Another action</a>
+                                            <a class="dropdown-item" href="javascript:;">Something else here</a>
+                                        </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
