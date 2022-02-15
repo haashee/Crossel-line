@@ -10221,6 +10221,10 @@ fieldset:disabled .btn {
     color: #8392ab !important;
 }
 
+.text-third {
+    color: #A2A6B5 !important;
+}
+
 .text-success {
     color: #2dce89 !important;
 }
@@ -37653,6 +37657,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 /* hide content made for spinner */
-.hide-content{
+.hide-content {
     display: none;
 }

@@ -99,15 +99,18 @@ Friend list
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         <div class="dropdown">
-                                        <button class="btn btn-link text-secondary m-0 p-0" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fa fa-ellipsis-h text-secondary text-sm px-3"></i>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-end me-sm-n4 me-n3" aria-labelledby="navbarDropdownMenuLink">
-                                            <a class="dropdown-item" href="/friends/{{ $friend->id }}/edit">Edit</a>
-                                            <a class="dropdown-item" href="javascript:;">Another action</a>
-                                            <a class="dropdown-item" href="javascript:;">Something else here</a>
-                                        </div>
-                                        </div>
+                                        <a href="javascript:;" data-bs-toggle="tooltip"
+                                            data-bs-original-title="見る">
+                                            <i class="fas fa-eye text-third"></i>
+                                        </a>
+                                        <a href="/friends/{{ $friend->id }}/edit" class="mx-3" data-bs-toggle="tooltip"
+                                            data-bs-original-title="編集">
+                                            <i class="fas fa-user-edit text-third"></i>
+                                        </a>
+                                        <a href="javascript:;" data-bs-toggle="tooltip"
+                                            data-bs-original-title="削除">
+                                            <i class="fas fa-trash text-third"></i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
