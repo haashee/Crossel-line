@@ -43,6 +43,28 @@ Account
     </div>
     <div class="container-fluid py-4">
 
+        <!--error message-->
+        @if ($errors->any())
+        <div class="position-fixed bottom-1 end-1 z-index-2">
+
+            <div class="toast fade hide p-2 mt-2 bg-white show" role="alert" aria-live="assertive"
+                id="dangerToast" aria-atomic="true">
+                <div class="toast-header border-0">
+                    <i class="ni ni-notification-70 text-danger me-2"></i>
+                    <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
+                    <small class="text-body">0 mins ago</small>
+                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast"
+                        aria-label="Close"></i>
+                </div>
+                <hr class="horizontal dark m-0">
+                <div class="toast-body">
+                    @foreach ($errors->all() as $error )
+                    {{ $error }} <br>
+                    @endforeach </div>
+            </div>
+        </div>
+        @endif
+
         <!--session message-->
         @if (session()->has('message'))
         <div class="position-fixed bottom-1 end-1 z-index-2">
@@ -164,17 +186,17 @@ Account
                         <div class="card-body p-3">
                             <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
                                 <label class="text-muted">チャネルシークレット</label>
-                                <input class="edit-token-show multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
+                                <input class="edit-token-show multisteps-form__input form-control mb-3" type="text" placeholder="channel_secret"
+                                    value="{{ $account->channel_secret }}" name="channel_secret" readonly="readonly"/>
                                 <label class="text-muted">アクセストークン</label>
                                 <textarea class="edit-token-show multisteps-form__input form-control mb-3" placeholder="access_token"
-                                    name="access_token" disabled>{{ $account->access_token }}</textarea>
+                                    name="access_token" readonly="readonly">{{ $account->access_token }}</textarea>
                                 <label class="text-muted">Name</label>
                                 <input class="multisteps-form__input form-control mb-3" type="text"
                                     value="{{ $account->name }}" name="name" />
                                 <label class="text-muted">Webhook URL</label>
                                 <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
+                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="" readonly="readonly"/>
                             </div>
 
                             <div class="row pt-4 pb-3">
@@ -192,24 +214,26 @@ Account
                             <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
                                 <label class="text-muted">FULL エンドポイントURL</label>
                                 <input class="multisteps-form__input form-control" type="text"
-                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
+                                    value="URL for menu" name="" readonly="readonly"/>
                                 <label class="text-muted">FULLのLIFF ID</label>
                                 <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
-                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
+                                    value="{{ $account->liff_full }}" name="liff_full" readonly="readonly"/>
                                 <hr class="horizontal dark" />
+
                                 <label class="text-muted">TALL エンドポイントURL</label>
                                 <input class="multisteps-form__input form-control" type="text"
-                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
+                                    value="URL for menu" name="" readonly="readonly"/>
                                 <label class="text-muted">TALLのLIFF ID</label>
                                 <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
-                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
+                                    value="{{ $account->liff_tall }}" name="liff_tall" readonly="readonly"/>
                                 <hr class="horizontal dark" />
+
                                 <label class="text-muted">COMPACT エンドポイントURL</label>
                                 <input class="multisteps-form__input form-control" type="text"
-                                    value="{{ $account->channel_secret }}" name="channel_secret" disabled/>
+                                    value="URL for menu" name="" readonly="readonly"/>
                                 <label class="text-muted">COMPACTのLIFF ID</label>
                                 <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
-                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="channel_secret" disabled/>
+                                    value="{{ $account->liff_compact }}" name="liff_compact" readonly="readonly"/>
                             </div>
 
                             <hr class="horizontal gray-light my-4">
@@ -287,7 +311,7 @@ Account
     let editToken = document.querySelectorAll('.edit-token-show');
     editTokenBtn.addEventListener('click', event => {
         for (var i = 0; i < editToken.length; i++) {
-            editToken[i].toggleAttribute("disabled");
+            editToken[i].toggleAttribute("readonly");
         }
     });
 
@@ -295,7 +319,7 @@ Account
     let editLiff = document.querySelectorAll('.edit-liff-show');
     editLiffBtn.addEventListener('click', event => {
         for (var i = 0; i < editLiff.length; i++) {
-            editLiff[i].toggleAttribute("disabled");
+            editLiff[i].toggleAttribute("readonly");
         }
     });
 

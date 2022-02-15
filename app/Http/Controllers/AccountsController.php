@@ -127,7 +127,9 @@ class AccountsController extends Controller
                 'name' => $request->input('name'),
                 'channel_secret' => $request->input('channel_secret'),
                 'access_token' => $request->input('access_token'),
-                'user_id' => auth()->user()->id,
+                'liff_full' => $request->input('liff_full'),
+                'liff_tall' => $request->input('liff_tall'),
+                'liff_compact' => $request->input('liff_compact'),
             ]);
 
         Session::put('title', 'アカウント編集完了');
