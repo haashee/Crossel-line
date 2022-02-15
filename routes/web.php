@@ -6,6 +6,7 @@ use App\Http\Controllers\LineMessengerController;
 use App\Http\Controllers\LiffController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LineUserController;
 
 
 /*
@@ -40,6 +41,8 @@ Route::resource('/accounts', AccountsController::class);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/friends/{aid}', [LineUserController::class, 'index'])->name('friends.index');
+Route::resource('/friends', LineUserController::class, ['except' => ['index']]);
 
 
 

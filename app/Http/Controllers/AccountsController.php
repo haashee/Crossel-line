@@ -174,19 +174,4 @@ class AccountsController extends Controller
             'account' => $account,
         ]);
     }
-
-
-    // friends list for each account
-    public function friends($aid)
-    {
-        $account = Account::where('id', $aid)->first();
-
-        $friends = LineUser::where('account_id', $aid)->get();
-
-        return view('dashboard.accounts.friends', [
-            'friends' => $friends,
-            'account' => $account,
-
-        ]);
-    }
 }

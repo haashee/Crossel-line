@@ -13,8 +13,8 @@
             <li class="nav-item mx-3">
                 <a 
                     class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center 
-                        {{ Route::currentRouteNamed('accounts.friends') ? 'topnav-select' : '' }}"
-                    href="/accounts/{{ $account->id }}/friends" role="tab" aria-selected="true">
+                        {{ Route::currentRouteNamed('friends.index') ? 'topnav-select' : '' }}"
+                    href="/friends/{{ $account->id }}" role="tab" aria-selected="true">
                     <i class="ni ni-image"></i>
                     <span class="ms-2">友だちリスト</span>
                 </a>
