@@ -37643,9 +37643,16 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /*# sourceMappingURL=dashboard-pro.css.map */
 
-/* Customs */
+/* ------------Customs------------ */
+
+/* topnav (small nav in accounts */
 .topnav-select {
     outline-offset: 3px;
     outline: 1px solid lightgrey;
     /* margin: 0 8px; */
+}
+
+/* hide content made for spinner */
+.hide-content{
+    display: none;
 }

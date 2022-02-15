@@ -70,7 +70,7 @@ Account
                         <p class="text-sm">Architects design houses</p>
                     </div>
                     <div class="card-body p-3">
-                        <div class="row">
+                        <div class="row target-area">
                             <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                                 <div class="card card-blog card-plain">
                                     <div class="position-relative">
@@ -94,9 +94,11 @@ Account
                                                 action="/line/{{ $account->id }}/richmenu/create" 
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
-                                                
-                                                <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">View
-                                                    Project</button>
+                                                <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
+                                                    View Project
+                                                    <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
+                                                    <span class="sr-only">Loading...</span>
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
@@ -123,8 +125,11 @@ Account
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 
-                                                <button value="rich02" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">View
-                                                    Project</button>
+                                                <button value="rich02" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
+                                                    View Project
+                                                    <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
+                                                    <span class="sr-only">Loading...</span>
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
@@ -151,8 +156,11 @@ Account
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 
-                                                <button value="rich03" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">View
-                                                    Project</button>
+                                                <button value="rich03" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
+                                                    View Project
+                                                    <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
+                                                    <span class="sr-only">Loading...</span>
+                                                </button>
                                             </form>
                                         </div>
                                     </div>
@@ -199,6 +207,20 @@ Account
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
+
+    const targetArea = document.querySelector('.target-area');
+    const richSpinner = document.querySelectorAll('.spinner-border');
+    targetArea.addEventListener("click", function(e){
+        const targetName = e.target.name;
+        if(targetName == 'richmenu-btn'){
+            richSpinner.forEach(function(btn) {
+                btn.classList.add('hide-content');
+                e.target.children[0].classList.remove('hide-content');
+            });
+        }
+
+    })
+
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
