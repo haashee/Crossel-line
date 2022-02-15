@@ -58,7 +58,6 @@ class AccountsController extends Controller
         ]);
 
 
-
         Account::create([
             'name' => $request->input('name'),
             'channel_secret' => $request->input('channel_secret'),
