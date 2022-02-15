@@ -52,6 +52,9 @@ class AccountsController extends Controller
         $request->validate([
             'channel_secret' => 'required',
             'access_token' => 'required',
+            'liff_full' => 'required',
+            'liff_tall' => 'required',
+            'liff_compact' => 'required',
         ]);
 
 
@@ -60,6 +63,9 @@ class AccountsController extends Controller
             'name' => $request->input('name'),
             'channel_secret' => $request->input('channel_secret'),
             'access_token' => $request->input('access_token'),
+            'liff_full' => $request->input('liff_full'),
+            'liff_tall' => $request->input('liff_tall'),
+            'liff_compact' => $request->input('liff_compact'),
             'image' => 'default_profilepicture.png',
             'user_id' => auth()->user()->id,
         ]);

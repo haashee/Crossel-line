@@ -9,7 +9,7 @@ class Account extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['channel_secret', 'access_token', 'user_id', 'image', 'name'];
+    protected $fillable = ['channel_secret', 'access_token', 'user_id', 'image', 'name', 'liff_full', 'liff_tall', 'liff_compact',];
 
     public function user()
     {

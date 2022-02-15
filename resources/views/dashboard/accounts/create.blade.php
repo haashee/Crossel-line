@@ -28,13 +28,16 @@ Account Wizard
                         <div class="col-12 col-lg-8 mx-auto my-5">
                             <div class="multisteps-form__progress">
                                 <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
-                                    <span>About</span>
+                                    <span>LINEの設定</span>
                                 </button>
                                 <button class="multisteps-form__progress-btn" type="button" title="Address">
-                                    <span>Account</span>
+                                    <span>Webhookの確認</span>
+                                </button>
+                                <button class="multisteps-form__progress-btn" type="button" title="Address">
+                                    <span>Liffの設定</span>
                                 </button>
                                 <button class="multisteps-form__progress-btn" type="button" title="Order Info">
-                                    <span>Address</span>
+                                    <span>完了</span>
                                 </button>
                             </div>
                         </div>
@@ -42,7 +45,6 @@ Account Wizard
 
                     <!--error message-->
                     @if ($errors->any())
-
                     <div class="position-fixed bottom-1 end-1 z-index-2">
 
                         <div class="toast fade hide p-2 mt-2 bg-white show" role="alert" aria-live="assertive"
@@ -50,7 +52,7 @@ Account Wizard
                             <div class="toast-header border-0">
                                 <i class="ni ni-notification-70 text-danger me-2"></i>
                                 <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
-                                <small class="text-body">0 mins ago</small>
+                                {{-- <small class="text-body">0 mins ago</small> --}}
                                 <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast"
                                     aria-label="Close"></i>
                             </div>
@@ -96,15 +98,15 @@ Account Wizard
                                                 </div>
                                             </div> --}}
                                             <div class="col-12 col-sm-8 mt-4 mt-sm-0 text-start m-auto">
+                                                <label>Name</label>
+                                                <input class="multisteps-form__input form-control mb-3" type="text"
+                                                    placeholder="name" name="name" />
                                                 <label>チャネルシークレット</label>
                                                 <input class="multisteps-form__input form-control mb-3" type="text"
                                                     placeholder="channel_secret" name="channel_secret" />
                                                 <label>アクセストークン</label>
                                                 <textarea class="multisteps-form__input form-control mb-3"
                                                     placeholder="access_token" name="access_token"></textarea>
-                                                <label>Name</label>
-                                                <input class="multisteps-form__input form-control" type="text"
-                                                    placeholder="name" name="name" />
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
@@ -224,6 +226,51 @@ Account Wizard
                                                     </svg>
                                                 </label>
                                                 <h6>Develop</h6>
+                                            </div>
+                                        </div>
+                                        <div class="button-row d-flex mt-4">
+                                            <button class="btn bg-gradient-light mb-0 js-btn-prev" type="button"
+                                                title="Prev">Prev</button>
+                                            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
+                                                title="Next">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--single form panel-->
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
+                                    data-animation="FadeIn">
+                                    <div class="row text-center">
+                                        <div class="col-10 mx-auto">
+                                            <h5 class="font-weight-normal">What are you doing? (checkboxes)</h5>
+                                            <p>Give us more details about you. What do you enjoy doing in your spare
+                                                time?</p>
+                                        </div>
+                                    </div>
+                                    <div class="multisteps-form__content">
+                                        <div class="row mt-3">
+                                            <div class="col-12 col-sm-8 mt-4 mt-sm-0 text-start m-auto">
+                                                <label class="">FULL エンドポイントURL</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    value="URL for menu" name="" readonly="readonly"/>
+                                                <label>FULLのLIFF ID</label>
+                                                <input class="multisteps-form__input form-control mb-3" type="text"
+                                                    placeholder="Liff ID (Full用)" name="liff_full" />
+                                                <hr class="horizontal dark" />
+
+                                                <label class="">TALL エンドポイントURL</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    value="URL for menu" name="" readonly="readonly"/>
+                                                <label>TALLのLIFF ID</label>
+                                                <input class="multisteps-form__input form-control mb-3" type="text"
+                                                    placeholder="Liff ID (Tall用)" name="liff_tall" />
+                                                <hr class="horizontal dark" />
+
+                                                <label class="">COMPACT エンドポイントURL</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    value="URL for menu" name="" readonly="readonly"/>
+                                                <label>COMPACTのLIFF ID</label>
+                                                <input class="multisteps-form__input form-control mb-3"
+                                                    placeholder="Liff ID (Compact用)" name="liff_compact"/>
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
