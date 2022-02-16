@@ -86,7 +86,7 @@ class LineUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $aid, $id)
     {
         $request->validate([
             'name' => 'required',
@@ -104,7 +104,7 @@ class LineUserController extends Controller
 
         Session::put('title', 'ユーザー編集完了');
 
-        return redirect('/friends' . '/' . $id . '/' . 'edit')
+        return redirect('accounts/' . $aid . '/' . 'friends' . '/' . $id . '/' . 'edit')
             ->with('message', 'ユーザー情報が無事編集されました。');
     }
 

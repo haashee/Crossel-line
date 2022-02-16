@@ -82,7 +82,7 @@ Account
     </div>
     @endif
 
-    <form action="/friends/{{ $friend->id }}" method="POST" enctype="multipart/form-data">
+    <form action="{{  route('friends.update', ['aid' => $account->id,'friend'=>$friend->id])  }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
 
@@ -433,7 +433,7 @@ Account
                 </div>
               </div>
 
-              <form class='ms-auto' action="/accounts/{{ $account->id }}/friends" method="POST">
+              {{-- <form class='ms-auto' action="/accounts/{{ $account->id }}/friends" method="POST">
                   @csrf
                   @method('delete')
                   
@@ -442,7 +442,7 @@ Account
                   Delete Account
                 </button>
               </form>
-            </div>
+            </div> --}}
           </div>
         </div>
 
