@@ -206,7 +206,7 @@ Account
                 <div class="col-6">
                   <label class="form-label mt-4">郵便番号</label>
                   <div class="input-group">
-                    <input id="location" name="location" class="form-control" type="text" placeholder="Sydney, A">
+                    <input id="location" name="postcode" class="form-control" type="text" placeholder="Sydney, A">
                   </div>
                 </div>
                 <div class="col-6">
