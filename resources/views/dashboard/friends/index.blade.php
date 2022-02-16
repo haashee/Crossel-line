@@ -77,7 +77,7 @@ Friend list
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         <div class="dropdown">
-                                            <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="見る">
+                                            <a href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}" data-bs-toggle="tooltip" data-bs-original-title="見る">
                                                 <i class="fas fa-eye text-third"></i>
                                             </a>
                                             <a href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}/edit" class="mx-3"

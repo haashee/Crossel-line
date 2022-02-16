@@ -23,40 +23,44 @@ Friend list
         <div class="row">
             <div class="col-lg-8">
                 <div class="row">
-                    <div class="col-xl-6 mb-xl-0 mb-4">
-                        <div class="card bg-transparent shadow-xl">
-                            <div class="overflow-hidden position-relative border-radius-xl"
-                                style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/card-visa.jpg');">
-                                <span class="mask bg-gradient-dark"></span>
-                                <div class="card-body position-relative z-index-1 p-3">
-                                    <i class="fas fa-wifi text-white p-2"></i>
-                                    <h5 class="text-white mt-4 mb-5 pb-2">
-                                        4562&nbsp;&nbsp;&nbsp;1122&nbsp;&nbsp;&nbsp;4594&nbsp;&nbsp;&nbsp;7852</h5>
-                                    <div class="d-flex">
-                                        <div class="d-flex">
-                                            <div class="me-4">
-                                                <p class="text-white text-sm opacity-8 mb-0">Card Holder</p>
-                                                <h6 class="text-white mb-0">Jack Peterson</h6>
-                                            </div>
-                                            <div>
-                                                <p class="text-white text-sm opacity-8 mb-0">Expires</p>
-                                                <h6 class="text-white mb-0">11/22</h6>
-                                            </div>
-                                        </div>
-                                        <div class="ms-auto w-20 d-flex align-items-end justify-content-end">
-                                            <img class="w-60 mt-2" src="../../../assets/img/logos/mastercard.png"
-                                                alt="logo">
-                                        </div>
+                    <div class="col-md-12 mb-lg-0 mb-4">
+                        <div class="card card-body">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-sm-auto col-4">
+                                    <div class="avatar avatar-sm position-relative">
+                                        <img src="{{ asset('assets/img/team-3.jpg') }}" alt="bruce"
+                                            class="w-100 border-radius-lg shadow-sm">
+                                    </div>
+                                </div>
+                                <div class="col-sm-auto col-8 my-auto">
+                                    <div class="h-100">
+                                        <h5 class="mb-1 font-weight-bolder">
+                                            {{-- {{ $friend->name }} --}}
+                                        </h5>
+                                        <p class="mb-0 font-weight-bold text-sm text-secondary">
+                                            {{-- 登録日 {{ $friend->created_at->toDateString() }} --}}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
+                                    <label class="form-check-label mb-0">
+                                        <small id="profileVisibility">
+                                            Switch to invisible
+                                        </small>
+                                    </label>
+                                    <div class="form-check form-switch ms-2">
+                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23"
+                                            checked onchange="visible()">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6">
+                    <div class="col-xl-6 mt-4">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
-                                    <div class="card-header mx-4 p-3 text-center">
+                                    <div class="card-header mx-4 p-3 text-center ">
                                         <div
                                             class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
                                             <i class="fas fa-landmark opacity-10"></i>
@@ -88,49 +92,77 @@ Friend list
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12 mb-lg-0 mb-4">
-                        <div class="card mt-4">
-                            <div class="card-header pb-0 p-3">
-                                <div class="row">
-                                    <div class="col-6 d-flex align-items-center">
-                                        <h6 class="mb-0">Payment Method</h6>
+                    <div class="col-xl-6 mt-4">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header mx-4 p-3 text-center ">
+                                        <div
+                                            class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                                            <i class="fas fa-landmark opacity-10"></i>
+                                        </div>
                                     </div>
-                                    <div class="col-6 text-end">
-                                        <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
-                                                class="fas fa-plus"></i>&nbsp;&nbsp;Add New Card</a>
+                                    <div class="card-body pt-0 p-3 text-center">
+                                        <h6 class="text-center mb-0">Salary</h6>
+                                        <span class="text-xs">Belong Interactive</span>
+                                        <hr class="horizontal dark my-3">
+                                        <h5 class="mb-0">+$2000</h5>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body p-3">
-                                <div class="row">
-                                    <div class="col-md-6 mb-md-0 mb-4">
+                            <div class="col-md-6 mt-md-0 mt-4">
+                                <div class="card">
+                                    <div class="card-header mx-4 p-3 text-center">
                                         <div
-                                            class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                                            <img class="w-10 me-3 mb-0" src="../../../assets/img/logos/mastercard.png"
-                                                alt="logo">
-                                            <h6 class="mb-0">
-                                                ****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;7852
-                                            </h6>
-                                            <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
+                                            class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
+                                            <i class="fab fa-paypal opacity-10"></i>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div
-                                            class="card card-body border card-plain border-radius-lg d-flex align-items-center flex-row">
-                                            <img class="w-10 me-3 mb-0" src="../../../assets/img/logos/visa.png"
-                                                alt="logo">
-                                            <h6 class="mb-0">
-                                                ****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;****&nbsp;&nbsp;&nbsp;5248
-                                            </h6>
-                                            <i class="fas fa-pencil-alt ms-auto text-dark cursor-pointer"
-                                                data-bs-toggle="tooltip" data-bs-placement="top" title="Edit Card"></i>
-                                        </div>
+                                    <div class="card-body pt-0 p-3 text-center">
+                                        <h6 class="text-center mb-0">Paypal</h6>
+                                        <span class="text-xs">Freelance Payment</span>
+                                        <hr class="horizontal dark my-3">
+                                        <h5 class="mb-0">$455.00</h5>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12 mb-lg-0 mb-4 mt-4">
+                        <div class="card overflow-hidden">
+                            <div class="card-header p-3 pb-0">
+                                <div class="d-flex align-items-center">
+                                    <div
+                                        class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                        <i class="ni ni-calendar-grid-58 text-lg opacity-10" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <p class="text-sm mb-0 text-uppercase font-weight-bold">Tasks</p>
+                                        <h5 class="font-weight-bolder mb-0">
+                                            480
+                                        </h5>
+                                    </div>
+                                    <div class="progress-wrapper ms-auto w-25">
+                                        <div class="progress-info">
+                                            <div class="progress-percentage">
+                                                <span class="text-xs font-weight-bold">60%</span>
+                                            </div>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-gradient-primary w-60" role="progressbar"
+                                                aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body mt-3 p-0">
+                                <div class="chart">
+                                    <canvas id="chart-line-widgets" class="chart-canvas" height="100"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <div class="col-lg-4">
@@ -211,7 +243,7 @@ Friend list
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        {{-- <div class="row mt-4">
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-header pb-0 px-3">
@@ -392,12 +424,12 @@ Friend list
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-            <!-- Footer -->
-            @include('includes.footer')
-            <!-- End Footer -->
-            
+        <!-- Footer -->
+        @include('includes.footer')
+        <!-- End Footer -->
+
     </div>
 
 
@@ -408,30 +440,81 @@ Friend list
 
 
 @section('scripts')
-<script src="../../../assets/js/core/popper.min.js"></script>
-<script src="../../../assets/js/core/bootstrap.min.js"></script>
-<script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script src="../../assets/js/plugins/datatables.js"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/choices.min.js') }}"></script>
 <!-- Kanban scripts -->
-<script src="../../assets/js/plugins/dragula/dragula.min.js"></script>
-<script src="../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script src="{{ asset('assets/js/plugins/dragula/dragula.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/jkanban/jkanban.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/chartjs.min.js') }}"></script>
 <script>
-    const dataTableBasic = new simpleDatatables.DataTable(
-                "#datatable-basic",
-                {
-                    searchable: false,
-                    fixedHeight: true,
-                }
-            );
 
-            const dataTableSearch = new simpleDatatables.DataTable(
-                "#datatable-search",
-                {
-                    searchable: true,
-                    fixedHeight: true,
-                }
-            );
+    var ctx3 = document.getElementById("chart-line-widgets").getContext("2d");
+
+    var gradientStroke3 = ctx3.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke3.addColorStop(1, 'rgba(94, 114, 228, 0.1)');
+    gradientStroke3.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+    gradientStroke3.addColorStop(0, 'rgba(94, 114, 228, 0)'); //primary colors
+
+    new Chart(ctx3, {
+      type: "line",
+      data: {
+        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+          label: "Tasks",
+          tension: 0.3,
+          pointRadius: 2,
+          pointBackgroundColor: "#5e72e4",
+          borderColor: "#5e72e4",
+          borderWidth: 2,
+          backgroundColor: gradientStroke3,
+          data: [40, 45, 42, 41, 40, 43, 40, 42, 39],
+          maxBarThickness: 6,
+          fill: true
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          }
+        },
+        interaction: {
+          intersect: false,
+          mode: 'index',
+        },
+        scales: {
+          y: {
+            grid: {
+              drawBorder: false,
+              display: false,
+              drawOnChartArea: false,
+              drawTicks: false,
+            },
+            ticks: {
+              display: false
+            }
+          },
+          x: {
+            grid: {
+              drawBorder: false,
+              display: false,
+              drawOnChartArea: false,
+              drawTicks: false,
+            },
+            ticks: {
+              color: '#252f40',
+              padding: 10
+            }
+          },
+        },
+      },
+    });
 </script>
 <script>
     var win = navigator.platform.indexOf("Win") > -1;
@@ -448,6 +531,6 @@ Friend list
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../../assets/js/argon-dashboard.min.js?v=2.0.0"></script>
+<script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.0') }}"></script>
 
 @endsection
