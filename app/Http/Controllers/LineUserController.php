@@ -22,7 +22,7 @@ class LineUserController extends Controller
 
         $friends = LineUser::where('account_id', $aid)->get();
 
-        return view('dashboard.friends.show', [
+        return view('dashboard.friends.index', [
             'friends' => $friends,
             'account' => $account,
 
