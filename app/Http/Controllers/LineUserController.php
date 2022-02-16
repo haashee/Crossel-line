@@ -87,7 +87,40 @@ class LineUserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'channel_secret' => 'required',
+            'access_token' => 'required',
+            'image' => 'mimes:jpg,png,jpeg|max:5048'
+        ]);
+
+        $account = Account::where('id', $id)->first();
+
+        if ($request->hasFile('image')) {
+            $image_file_path = public_path('uploads/profile-pic/') . $account->image; // get previous image from folder
+            if ($account->image != null && File::exists($image_file_path) && $account->image !== 'default_profilepicture.png') { // unlink or remove previous image from folder
+                unlink($image_file_path);
+            }
+            $file = $request->file('image');
+            $name = auth()->user()->id . '-' . $id . '-' . uniqid() . '.' . $request->image->extension();
+            $file = $file->move(public_path('uploads/profile-pic'), $name);
+            $account->image = $name;
+            $account->save();
+        }
+
+        Account::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'channel_secret' => $request->input('channel_secret'),
+                'access_token' => $request->input('access_token'),
+                'liff_full' => $request->input('liff_full'),
+                'liff_tall' => $request->input('liff_tall'),
+                'liff_compact' => $request->input('liff_compact'),
+            ]);
+
+        Session::put('title', 'アカウント編集完了');
+
+        return redirect('/accounts' . '/' . $id . '/' . 'edit')
+            ->with('message', 'アカウントが無事編集されました。');
     }
 
     /**

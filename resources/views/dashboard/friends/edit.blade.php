@@ -82,7 +82,7 @@ Account
     </div>
     @endif
 
-    <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
+    <form action="/friends/{{ $friend->id }}" method="POST" enctype="multipart/form-data">
       @csrf
       @method('PUT')
 
@@ -163,14 +163,15 @@ Account
             <div class="card-body pt-0">
               <div class="row">
                 <div class="col-6">
-                  <label class="form-label">お名前</label>
+                  <label class="form-label">ユーザー名</label>
                   <div class="input-group">
-                    <input id="firstName" name="name" class="form-control" type="text" placeholder="Alec"
-                      required="required">
+                    <input 
+                      id="firstName" name="name" class="form-control" 
+                      type="text" placeholder="ユーザー名" value="{{ $friend->name }}">
                   </div>
                 </div>
                 <div class="col-6">
-                  <label class="form-label">Email</label>
+                  <label class="form-label">メールアドレス</label>
                   <div class="input-group">
                     <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com">
                   </div>
@@ -178,10 +179,10 @@ Account
               </div>
               <div class="row">
                 <div class="col-sm-4 col-6">
-                  <label class="form-label mt-4">I'm</label>
-                  <select class="form-control" name="choices-gender" id="choices-gender">
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
+                  <label class="form-label mt-4">性別</label>
+                  <select class="form-control" name="gender" id="choices-gender">
+                    <option value="male">男性</option>
+                    <option value="female">女性</option>
                   </select>
                 </div>
                 <div class="col-sm-8">
