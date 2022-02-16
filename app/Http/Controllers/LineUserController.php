@@ -103,10 +103,10 @@ class LineUserController extends Controller
                 'email' => $request->input('email'),
             ]);
 
-        Session::put('title', 'アカウント編集完了');
+        Session::put('title', 'ユーザー編集完了');
 
         return redirect('/friends' . '/' . $id . '/' . 'edit')
-            ->with('message', 'アカウントが無事編集されました。');
+            ->with('message', 'ユーザー情報が無事編集されました。');
     }
 
     /**
@@ -117,6 +117,11 @@ class LineUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $lineUser = LineUser::where('id', $id)->first();
+        $lineUser->delete();
+
+        Session::put('title', 'ユーザー削除');
+
+        return redirect('/accounts')->with('message', 'ユーザーが正常に削除されました。');
     }
 }
