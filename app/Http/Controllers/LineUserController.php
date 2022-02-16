@@ -20,7 +20,7 @@ class LineUserController extends Controller
 
         $friends = LineUser::where('account_id', $aid)->get();
 
-        return view('dashboard.accounts.friends', [
+        return view('dashboard.friends.show', [
             'friends' => $friends,
             'account' => $account,
 
@@ -67,7 +67,8 @@ class LineUserController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('dashboard.friends.edit')
+            ->with('account', Account::where('id', $id)->first());
     }
 
     /**

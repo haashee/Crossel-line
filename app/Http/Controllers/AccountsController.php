@@ -25,7 +25,7 @@ class AccountsController extends Controller
     {
         $accounts = Account::all();
 
-        return view('dashboard.accounts.accounts', [
+        return view('dashboard.accounts.show', [
             'accounts' => $accounts,
         ]);
     }
