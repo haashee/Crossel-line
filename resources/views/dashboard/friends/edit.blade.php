@@ -161,14 +161,14 @@ Account
           <div class="card card-body" id="profile">
             <div class="row justify-content-center align-items-center">
               <div class="col-sm-auto col-4">
-                <div class="avatar avatar-xl position-relative">
+                <div class="avatar avatar-sm position-relative">
                   <img src="../../../assets/img/team-3.jpg" alt="bruce" class="w-100 border-radius-lg shadow-sm">
                 </div>
               </div>
               <div class="col-sm-auto col-8 my-auto">
                 <div class="h-100">
                   <h5 class="mb-1 font-weight-bolder">
-                    Mark Johnson
+                    {{ $friend->name }}
                   </h5>
                   <p class="mb-0 font-weight-bold text-sm">
                     CEO / Co-Founder
