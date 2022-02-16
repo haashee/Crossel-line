@@ -6,8 +6,9 @@
                     class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center
                         {{ Route::currentRouteNamed('accounts.index') ? 'topnav-select' : '' }}"
                     href="{{ URL::route('accounts.index') }}" role="tab" aria-selected="false">
-                    <i class="ni ni-app"></i>
-                    <span class="ms-2">一覧</span>
+                    {{-- <i class="ni ni-app"></i> --}}
+                    <i class="ni ni-chat-round"></i>
+                    <span class="ms-2">チャット機能</span>
                 </a>
             </li>
             <li class="nav-item mx-3">
@@ -15,7 +16,7 @@
                     class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center 
                         {{ Route::currentRouteNamed('friends.index') ? 'topnav-select' : '' }}"
                     href="{{ route('friends.index', ['aid' => $account->id]) }}" role="tab" aria-selected="true">
-                    <i class="ni ni-image"></i>
+                    <i class="ni ni-collection"></i>
                     <span class="ms-2">友だちリスト</span>
                 </a>
             </li>

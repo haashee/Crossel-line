@@ -37651,9 +37651,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* topnav (small nav in accounts */
 .topnav-select {
-    outline-offset: 3px;
-    outline: 1px solid lightgrey;
-    /* margin: 0 8px; */
+    width: 50px;
+    /* height: 40px; */
+    /* background-color: lightcoral; */
+    position: relative;
+}
+.topnav-select::after {
+    border-bottom: 2px solid lightgrey;
+    content: "";
+    width: 50px;
+    position: absolute;
+    bottom: 2px;
 }
 
 /* hide content made for spinner */

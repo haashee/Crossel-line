@@ -16,13 +16,20 @@
                         {{ Auth::user()->name }}
                         @endif
                     </h5>
-                    <p class="mb-0 font-weight-bold text-sm">
-                        @if (Route::currentRouteName() != 'accounts.index' )
-                        {{ $account->created_at->toDateString()}}
-                        @else
-                        add something here
-                        @endif
-                    </p>
+
+                    @if (Route::currentRouteName() != 'accounts.index' )
+                    <a href="{{ URL::route('accounts.index') }}">
+                        <p class="mb-0 font-weight-bold text-sm text-third">
+                            アカウント一覧へ戻る
+                        </p>
+                    </a> 
+                    @else
+                    <a href="{{ URL::route('dashboard') }}">
+                        <p class="mb-0 font-weight-bold text-sm text-third">
+                            ダッシュボードへ戻る
+                        </p>
+                    </a> 
+                    @endif
                 </div>
             </div>
 

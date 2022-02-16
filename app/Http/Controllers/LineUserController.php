@@ -60,10 +60,10 @@ class LineUserController extends Controller
     {
         $account = Account::where('id', $id)->first();
 
-        $friends = LineUser::where('account_id', $account->id)->get();
+        $friend = LineUser::where('account_id', $account->id)->first();
 
         return view('dashboard.friends.show', [
-            'friends' => $friends,
+            'friend' => $friend,
             'account' => $account,
 
         ]);
