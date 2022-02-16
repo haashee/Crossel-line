@@ -114,9 +114,9 @@ class LineUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($aid, $id)
     {
-        $lineUser = LineUser::where('id', $id)->first();
+        $lineUser = LineUser::where('account_id', $aid)->first();
         $lineUser->delete();
 
         Session::put('title', 'ユーザー削除');

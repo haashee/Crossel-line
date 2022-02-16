@@ -433,16 +433,15 @@ Account
                 </div>
               </div>
 
-              {{-- <form class='ms-auto' action="/accounts/{{ $account->id }}/friends" method="POST">
+              <form class='ms-auto' action="{{  route('friends.destroy', ['aid' => $account->id,'friend'=>$friend->id])  }}" method="POST">
                   @csrf
                   @method('delete')
-                  
                 <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button" name="button">確定</button>
                 <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit" name="button" disabled>
                   Delete Account
                 </button>
               </form>
-            </div> --}}
+            </div>
           </div>
         </div>
 
