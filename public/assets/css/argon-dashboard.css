@@ -10222,7 +10222,7 @@ fieldset:disabled .btn {
 }
 
 .text-third {
-    color: #A2A6B5 !important;
+    color: #a2a6b5 !important;
 }
 
 .text-success {
@@ -37659,4 +37659,39 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* hide content made for spinner */
 .hide-content {
     display: none;
+}
+
+/* confirm box */
+#id_confrmdiv {
+    display: none;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+    position: fixed;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+    padding: 6px 8px 8px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#id_confrmdiv button {
+    background-color: #ccc;
+    display: inline-block;
+    border-radius: 3px;
+    border: 1px solid #aaa;
+    padding: 2px;
+    text-align: center;
+    width: 80px;
+    cursor: pointer;
+}
+
+#id_confrmdiv .button:hover {
+    background-color: #ddd;
+}
+
+#confirmBox .message {
+    text-align: left;
+    margin-bottom: 8px;
 }
