@@ -109,51 +109,18 @@ Account
                 </a>
               </li>
               <li class="nav-item pt-2">
+                <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#sessions">
+                  <i class="ni ni-watch-time me-2 text-dark opacity-6"></i>
+                  <span class="text-sm">Sessions</span>
+                </a>
+              </li>
+              <li class="nav-item pt-2">
                 <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#delete">
                   <i class="ni ni-settings-gear-65 me-2 text-dark opacity-6"></i>
                   <span class="text-sm">Delete Account</span>
                 </a>
               </li>
             </ul>
-            {{-- <div class="card-header pb-3">
-              <h5>接続情報</h5>
-              <p class="text-sm">
-                This is a list of devices that have logged into your account. Remove those that you do
-                not recognize.
-              </p>
-            </div> --}}
-            <div class="card-body pt-0">
-              <div class="d-flex align-items-center">
-                <div class="text-center w-5">
-                  <i class="fas fa-desktop text-lg opacity-6"></i>
-                </div>
-                <div class="my-auto ms-3">
-                  <div class="h-100">
-                    <p class="text-sm mb-1">
-                      Bucharest 68.133.163.201
-                    </p>
-                    <p class="mb-0 text-xs">
-                      Your current session
-                    </p>
-                  </div>
-                </div>
-                <span class="badge badge-success badge-sm my-auto ms-auto me-3">Active</span>
-              </div>
-              <hr class="horizontal dark">
-              <div class="d-flex align-items-center">
-                <div class="text-center w-5">
-                  <i class="fas fa-desktop text-lg opacity-6"></i>
-                </div>
-                <p class="my-auto ms-3">Chrome on macOS</p>
-              </div>
-              <hr class="horizontal dark">
-              <div class="d-flex align-items-center">
-                <div class="text-center w-5">
-                  <i class="fas fa-mobile text-lg opacity-6"></i>
-                </div>
-                <p class="my-auto ms-3">Safari on iPhone</p>
-              </div>
-            </div>
           </div>
         </div>
         <div class="col-lg-9 mt-lg-0 mt-4">
@@ -191,22 +158,21 @@ Account
           <!-- Card Basic Info -->
           <div class="card mt-4" id="basic-info">
             <div class="card-header">
-              <h5>Basic Info</h5>
+              <h5>基本情報</h5>
             </div>
             <div class="card-body pt-0">
               <div class="row">
                 <div class="col-6">
-                  <label class="form-label">First Name</label>
+                  <label class="form-label">お名前</label>
                   <div class="input-group">
-                    <input id="firstName" name="firstName" class="form-control" type="text" placeholder="Alec"
+                    <input id="firstName" name="name" class="form-control" type="text" placeholder="Alec"
                       required="required">
                   </div>
                 </div>
                 <div class="col-6">
-                  <label class="form-label">Last Name</label>
+                  <label class="form-label">Email</label>
                   <div class="input-group">
-                    <input id="lastName" name="lastName" class="form-control" type="text" placeholder="Thompson"
-                      required="required">
+                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com">
                   </div>
                 </div>
               </div>
@@ -237,28 +203,13 @@ Account
               </div>
               <div class="row">
                 <div class="col-6">
-                  <label class="form-label mt-4">Email</label>
-                  <div class="input-group">
-                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com">
-                  </div>
-                </div>
-                <div class="col-6">
-                  <label class="form-label mt-4">Confirmation Email</label>
-                  <div class="input-group">
-                    <input id="confirmation" name="confirmation" class="form-control" type="email"
-                      placeholder="example@email.com">
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-6">
-                  <label class="form-label mt-4">Your location</label>
+                  <label class="form-label mt-4">郵便番号</label>
                   <div class="input-group">
                     <input id="location" name="location" class="form-control" type="text" placeholder="Sydney, A">
                   </div>
                 </div>
                 <div class="col-6">
-                  <label class="form-label mt-4">Phone Number</label>
+                  <label class="form-label mt-4">電話番号</label>
                   <div class="input-group">
                     <input id="phone" name="phone" class="form-control" type="number" placeholder="+40 735 631 620">
                   </div>
@@ -266,7 +217,7 @@ Account
               </div>
               <div class="row">
                 <div class="col-md-6 align-self-center">
-                  <label class="form-label mt-4">Language</label>
+                  <label class="form-label mt-4">リッチメニュー</label>
                   <select class="form-control" name="choices-language" id="choices-language">
                     <option value="English">English</option>
                     <option value="French">French</option>
@@ -274,7 +225,7 @@ Account
                   </select>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label mt-4">Skills</label>
+                  <label class="form-label mt-4">タグ</label>
                   <input class="form-control" id="choices-skills" type="text" value="vuejs, angular, react"
                     placeholder="Enter something" />
                 </div>
@@ -400,6 +351,57 @@ Account
                     </tr>
                   </tbody>
                 </table>
+              </div>
+            </div>
+          </div>
+          <!-- Card Sessions -->
+          <div class="card mt-4" id="sessions">
+            <div class="card-header pb-3">
+              <h5>Sessions</h5>
+              <p class="text-sm">This is a list of devices that have logged into your account. Remove those that you do not recognize.</p>
+            </div>
+            <div class="card-body pt-0">
+              <div class="d-flex align-items-center">
+                <div class="text-center w-5">
+                  <i class="fas fa-desktop text-lg opacity-6"></i>
+                </div>
+                <div class="my-auto ms-3">
+                  <div class="h-100">
+                    <p class="text-sm mb-1">
+                      Bucharest 68.133.163.201
+                    </p>
+                    <p class="mb-0 text-xs">
+                      Your current session
+                    </p>
+                  </div>
+                </div>
+                <span class="badge badge-success badge-sm my-auto ms-auto me-3">Active</span>
+                <p class="text-secondary text-sm my-auto me-3">EU</p>
+                <a href="javascript:;" class="text-primary text-sm icon-move-right my-auto">See more
+                  <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
+                </a>
+              </div>
+              <hr class="horizontal dark">
+              <div class="d-flex align-items-center">
+                <div class="text-center w-5">
+                  <i class="fas fa-desktop text-lg opacity-6"></i>
+                </div>
+                <p class="my-auto ms-3">Chrome on macOS</p>
+                <p class="text-secondary text-sm ms-auto my-auto me-3">US</p>
+                <a href="javascript:;" class="text-primary text-sm icon-move-right my-auto">See more
+                  <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
+                </a>
+              </div>
+              <hr class="horizontal dark">
+              <div class="d-flex align-items-center">
+                <div class="text-center w-5">
+                  <i class="fas fa-mobile text-lg opacity-6"></i>
+                </div>
+                <p class="my-auto ms-3">Safari on iPhone</p>
+                <p class="text-secondary text-sm ms-auto my-auto me-3">US</p>
+                <a href="javascript:;" class="text-primary text-sm icon-move-right my-auto">See more
+                  <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
+                </a>
               </div>
             </div>
           </div>
