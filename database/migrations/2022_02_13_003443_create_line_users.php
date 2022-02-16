@@ -22,6 +22,7 @@ class CreateLineUsers extends Migration
             $table->string('phone')->nullable();
             $table->string('postcode')->nullable();
             $table->string('gender')->nullable();
+            $table->string('email')->nullable();
             $table->string('mode')->nullable()->comment('チャネルの状態'); // `standby` は送信すべきでない
             $table->timestamps();
 

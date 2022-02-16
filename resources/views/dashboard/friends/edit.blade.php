@@ -165,9 +165,8 @@ Account
                 <div class="col-6">
                   <label class="form-label">ユーザー名</label>
                   <div class="input-group">
-                    <input 
-                      id="firstName" name="name" class="form-control" 
-                      type="text" placeholder="ユーザー名" value="{{ $friend->name }}">
+                    <input id="firstName" name="name" class="form-control" type="text" placeholder="ユーザー名"
+                      value="{{ $friend->name }}">
                   </div>
                 </div>
                 <div class="col-6">
@@ -231,13 +230,19 @@ Account
                     placeholder="Enter something" />
                 </div>
               </div>
+              <div class="row">
+                <div class="button-row d-flex mt-4 col-12">
+                  <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
+                </div>
+              </div>
             </div>
           </div>
           <!-- Card Notifications -->
           <div class="card mt-4" id="notifications">
             <div class="card-header">
               <h5>Notifications</h5>
-              <p class="text-sm">Choose how you receive notifications. These notification settings apply to the things you’re watching.</p>
+              <p class="text-sm">Choose how you receive notifications. These notification settings apply to the things
+                you’re watching.</p>
             </div>
             <div class="card-body pt-0">
               <div class="table-responsive">
@@ -263,7 +268,8 @@ Account
                       <td class="ps-1" colspan="4">
                         <div class="my-auto">
                           <span class="text-dark d-block text-sm">Mentions</span>
-                          <span class="text-xs font-weight-normal">Notify when another user mentions you in a comment</span>
+                          <span class="text-xs font-weight-normal">Notify when another user mentions you in a
+                            comment</span>
                         </div>
                       </td>
                       <td>
@@ -359,7 +365,8 @@ Account
           <div class="card mt-4" id="sessions">
             <div class="card-header pb-3">
               <h5>Sessions</h5>
-              <p class="text-sm">This is a list of devices that have logged into your account. Remove those that you do not recognize.</p>
+              <p class="text-sm">This is a list of devices that have logged into your account. Remove those that you do
+                not recognize.</p>
             </div>
             <div class="card-body pt-0">
               <div class="d-flex align-items-center">
