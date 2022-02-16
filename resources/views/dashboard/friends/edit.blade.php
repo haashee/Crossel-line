@@ -418,6 +418,7 @@ Account
               </div>
             </div>
           </div>
+        </form>
           <!-- Card Delete Account -->
           <div class="card mt-4" id="delete">
             <div class="card-header">
@@ -431,16 +432,19 @@ Account
                   <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span>
                 </div>
               </div>
-              @csrf
-              @method('delete')
-              <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button" name="button">確定</button>
-              <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit" name="button" disabled>
-                Delete Account
-              </button>
+
+              <form class='ms-auto' action="/accounts/{{ $account->id }}/friends" method="POST">
+                  @csrf
+                  @method('delete')
+                  
+                <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button" name="button">確定</button>
+                <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit" name="button" disabled>
+                  Delete Account
+                </button>
+              </form>
             </div>
           </div>
         </div>
-    </form>
 
 
     <!-- Footer -->
