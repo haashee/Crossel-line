@@ -21,13 +21,13 @@ Account
       <div class="row gx-4">
         <div class="col-auto">
           <div class="avatar avatar-xl position-relative">
-            <img src="../../../assets/img/team-1.jpg" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+            <img src="{{ asset('assets/img/team-1.jpg') }}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
           </div>
         </div>
         <div class="col-auto my-auto">
           <div class="h-100">
             <h5 class="mb-1">
-              Sayo Kravits
+              {{ $account->name }}
             </h5>
             <p class="mb-0 font-weight-bold text-sm">
               Public Relations
@@ -129,7 +129,7 @@ Account
             <div class="row justify-content-center align-items-center">
               <div class="col-sm-auto col-4">
                 <div class="avatar avatar-sm position-relative">
-                  <img src="../../../assets/img/team-3.jpg" alt="bruce" class="w-100 border-radius-lg shadow-sm">
+                  <img src="{{ asset('assets/img/team-3.jpg') }}" alt="bruce" class="w-100 border-radius-lg shadow-sm">
                 </div>
               </div>
               <div class="col-sm-auto col-8 my-auto">
@@ -359,7 +359,7 @@ Account
                   </tbody>
                 </table>
               </div>
-                            <div class="row">
+              <div class="row">
                 <div class="button-row d-flex mt-4 col-12">
                   <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
                 </div>
@@ -426,18 +426,17 @@ Account
             </div>
             <div class="card-body d-sm-flex pt-0">
               <div class="d-flex align-items-center mb-sm-0 mb-4">
-                <div>
-                  <div class="form-check form-switch mb-0">
-                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault0">
-                  </div>
-                </div>
                 <div class="ms-2">
-                  <span class="text-dark font-weight-bold d-block text-sm">Confirm</span>
-                  <span class="text-xs d-block">I want to delete my account.</span>
+                  <span class="text-dark font-weight-bold d-block text-sm">削除を確定</span>
+                  <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span>
                 </div>
               </div>
-              <button class="btn btn-outline-secondary mb-0 ms-auto" type="button" name="button">Deactivate</button>
-              <button class="btn bg-gradient-danger mb-0 ms-2" type="button" name="button">Delete Account</button>
+              @csrf
+              @method('delete')
+              <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button" name="button">確定</button>
+              <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit" name="button" disabled>
+                Delete Account
+              </button>
             </div>
           </div>
         </div>
@@ -455,14 +454,14 @@ Account
 
 
 @section('scripts')
-<script src="../../../assets/js/core/popper.min.js"></script>
-<script src="../../../assets/js/core/bootstrap.min.js"></script>
-<script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
-<script src="../../../assets/js/plugins/choices.min.js"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/choices.min.js') }}"></script>
 <!-- Kanban scripts -->
-<script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
-<script src="../../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script src="{{ asset('assets/js/plugins/dragula/dragula.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/jkanban/jkanban.js') }}"></script>
 <script>
   var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -472,21 +471,27 @@ Account
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
 
-    let editTokenBtn = document.querySelector('.edit-token');
-    let editToken = document.querySelectorAll('.edit-token-show');
-    editTokenBtn.addEventListener('click', event => {
-        for (var i = 0; i < editToken.length; i++) {
-            editToken[i].toggleAttribute("readonly");
-        }
+    let editDeleteBtn = document.querySelector('.confirm-delete');
+    let editDelete = document.querySelector('.confirm-delete-btn');
+    editDeleteBtn.addEventListener('click', event => {
+      editDelete.toggleAttribute("disabled");
     });
 
-    let editLiffBtn = document.querySelector('.edit-liff');
-    let editLiff = document.querySelectorAll('.edit-liff-show');
-    editLiffBtn.addEventListener('click', event => {
-        for (var i = 0; i < editLiff.length; i++) {
-            editLiff[i].toggleAttribute("readonly");
-        }
-    });
+    // let editTokenBtn = document.querySelector('.edit-token');
+    // let editToken = document.querySelectorAll('.edit-token-show');
+    // editTokenBtn.addEventListener('click', event => {
+    //     for (var i = 0; i < editToken.length; i++) {
+    //         editToken[i].toggleAttribute("readonly");
+    //     }
+    // });
+
+    // let editLiffBtn = document.querySelector('.edit-liff');
+    // let editLiff = document.querySelectorAll('.edit-liff-show');
+    // editLiffBtn.addEventListener('click', event => {
+    //     for (var i = 0; i < editLiff.length; i++) {
+    //         editLiff[i].toggleAttribute("readonly");
+    //     }
+    // });
 
 </script>
 <script>
@@ -611,5 +616,5 @@ Account
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../../../assets/js/argon-dashboard.min.js?v=2.0.0"></script>
+<script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.0') }}"></script>
 @endsection

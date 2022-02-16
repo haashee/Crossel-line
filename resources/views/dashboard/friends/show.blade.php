@@ -102,7 +102,7 @@ Friend list
                                             <a href="javascript:;" data-bs-toggle="tooltip" data-bs-original-title="見る">
                                                 <i class="fas fa-eye text-third"></i>
                                             </a>
-                                            <a href="/friends/{{ $friend->id }}/edit" class="mx-3"
+                                            <a href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}/edit" class="mx-3"
                                                 data-bs-toggle="tooltip" data-bs-original-title="編集">
                                                 <i class="fas fa-user-edit text-third"></i>
                                             </a>

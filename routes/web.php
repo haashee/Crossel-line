@@ -41,7 +41,7 @@ Route::resource('/accounts', AccountsController::class);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/friends/{aid}', [LineUserController::class, 'index'])->name('friends.index');
-Route::resource('/friends', LineUserController::class, ['except' => ['index']]);
+Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
 
 
 
