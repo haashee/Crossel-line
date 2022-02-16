@@ -58,7 +58,15 @@ class LineUserController extends Controller
      */
     public function show($id)
     {
-        //
+        $account = Account::where('id', $id)->first();
+
+        $friends = LineUser::where('account_id', $account->id)->get();
+
+        return view('dashboard.friends.show', [
+            'friends' => $friends,
+            'account' => $account,
+
+        ]);
     }
 
     /**
