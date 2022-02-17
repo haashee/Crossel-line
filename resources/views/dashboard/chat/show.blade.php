@@ -129,7 +129,7 @@ Account
                             <div class="position-relative w-100">
                                 @foreach ($chats as $chat)
                                 <div class="chat">
-                                    <div data-time="{{$chat->created_at}} " class="{{ $chat->user_identifier == 'SELF' ? 'msg sent' : 'msg rcvd' }}">
+                                    <div data-time="{{$chat->created_at}}" class="{{ $chat->user_identifier == 'SELF' ? 'msg sent' : 'msg rcvd' }}">
                                         {{ $chat->message }}
                                     </div>
                                 </div>
@@ -138,21 +138,21 @@ Account
                         </div>
                         <!-- Card Chat Input -->
                         <div class="card">
-                            <form class="my-4 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
+                            <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
                                 action="{{  route('chat.store', ['aid' => $account->id, 'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="user_identifier" value="SELF">
                                 <input type="hidden" name="name" value="{{ $account->name }}">
                                 <div class="row">
-                                    <div class="col-6">
+                                    <div class="col-lg-10">
                                         <div class="input-group">
-                                            <input name="message" class="form-control " type="text"
-                                                placeholder="Input message.">
+                                            <textarea name="message" class="form-control " type="text"
+                                                placeholder="Input message."></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-2">
+                                    <div class="col-lg-2">
                                         <button class="btn bg-gradient-dark btn-sm float-end"
-                                            type="submit">Send</button>
+                                            type="submit">送信</button>
                                     </div>
                                 </div>
 
