@@ -113,7 +113,7 @@ Account
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">Profile Information</h6>
+                                <h6 class="mb-0">チャット基本設定</h6>
                             </div>
                             <div class="col-md-4 text-end">
                                 <a href="javascript:;">
@@ -124,8 +124,21 @@ Account
                         </div>
                     </div>
                     <hr class="horizontal gray-light my-4">
-                    <div class="card-body p-3">
-
+                    <div class="card-body p-3 pt-0">
+                            <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
+                                <label class="text-muted">チャネルシークレット</label>
+                                <input class="edit-token-show multisteps-form__input form-control mb-3" type="text" placeholder="channel_secret"
+                                    value="{{ $account->channel_secret }}" name="channel_secret" readonly="readonly"/>
+                                <label class="text-muted">アクセストークン</label>
+                                <textarea class="edit-token-show multisteps-form__input form-control mb-3" placeholder="access_token"
+                                    name="access_token" readonly="readonly">{{ $account->access_token }}</textarea>
+                                <label class="text-muted">Name</label>
+                                <input class="multisteps-form__input form-control mb-3" type="text"
+                                    value="{{ $account->name }}" name="name" />
+                                <label class="text-muted">Webhook URL</label>
+                                <input class="multisteps-form__input form-control mb-3" type="text"
+                                    value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="" readonly="readonly"/>
+                            </div>
                     </div>
                 </div>
             </div>
