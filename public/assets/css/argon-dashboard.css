@@ -37664,6 +37664,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
     bottom: 2px;
 }
 
+.nav-pills-custom > li > a {
+    color: #344767;
+}
+
 /* hide content made for spinner */
 .hide-content {
     display: none;
@@ -37705,4 +37709,3 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 /* chat */
-
