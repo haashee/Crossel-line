@@ -15,7 +15,7 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($aid, $id)
+    public function index($aid)
     {
         $account = Account::where('id', $aid)->first();
 
@@ -23,22 +23,11 @@ class ChatController extends Controller
 
         $friendList = LineUser::where('account_id', $aid)->get();
 
-        $chats = Chat::where('lineuser_id', $id)->get();
 
-        // データーベースの件数を取得
-        $length = Chat::all()->count();
-        // 表示する件数を代入
-        $display = 5;
-
-        // $chats = Chat::offset($length - $display)->limit($display)->get();
-
-
-        return view('dashboard.accounts.chat', [
+        return view('dashboard.chat.index', [
             'friend' => $friend,
             'friendlist' => $friendList,
             'account' => $account,
-            'chats' => $chats,
-            // 'chat' => $chat,
         ]);
     }
 
@@ -85,9 +74,30 @@ class ChatController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($aid, $id)
     {
-        //
+        $account = Account::where('id', $aid)->first();
+
+        $friend = LineUser::where('account_id', $aid)->first();
+
+        $friendList = LineUser::where('account_id', $aid)->get();
+
+        $chats = Chat::where('lineuser_id', $id)->get();
+
+        // // データーベースの件数を取得
+        // $length = Chat::where('lineuser_id', $id)->count();
+        // // 表示する件数を代入
+        // $display = 5;
+        // $chats = Chat::offset($length - $display)->limit($display)->get();
+
+
+        return view('dashboard.chat.show', [
+            'friend' => $friend,
+            'friendlist' => $friendList,
+            'account' => $account,
+            'chats' => $chats,
+            // 'chat' => $chat,
+        ]);
     }
 
     /**
