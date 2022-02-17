@@ -7,6 +7,7 @@ use App\Http\Controllers\LiffController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LineUserController;
+use App\Http\Controllers\ChatController;
 
 
 /*
@@ -34,14 +35,20 @@ Route::get('/wizard', [DashboardController::class, 'wizard'])->name('wizard');
 Route::get('/friends', [DashboardController::class, 'friends'])->name('friends');
 Route::get('/chat', [DashboardController::class, 'chat'])->name('chat');
 
+// accounts routes
 Route::get('/accounts/{aid}/richmenu/', [AccountsController::class, 'richmenu'])->name('accounts.richmenu');
 Route::resource('/accounts', AccountsController::class);
 
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// friends routes
 Route::get('accounts/{aid}/friends', [LineUserController::class, 'index'])->name('friends.index');
 Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
+
+// chat routes
+Route::get('accounts/{aid}/chat', [ChatController::class, 'index'])->name('chat.index');
+Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['index']]);
+
 
 
 
