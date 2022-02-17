@@ -46,7 +46,7 @@ Route::get('accounts/{aid}/friends', [LineUserController::class, 'index'])->name
 Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
 
 // chat routes
-Route::get('accounts/{aid}/chat', [ChatController::class, 'index'])->name('chat.index');
+Route::get('accounts/{aid}/chat/{id}', [ChatController::class, 'index'])->name('chat.index');
 Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['index']]);
 
 

@@ -15,25 +15,27 @@ class ChatController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($aid)
+    public function index($aid, $id)
     {
         $account = Account::where('id', $aid)->first();
 
         $friends = LineUser::where('account_id', $aid)->get();
 
+        $chats = Chat::where('lineuser_id', $id)->get();
 
         // データーベースの件数を取得
         $length = Chat::all()->count();
         // 表示する件数を代入
         $display = 5;
 
-        $chats = Chat::offset($length - $display)->limit($display)->get();
+        // $chats = Chat::offset($length - $display)->limit($display)->get();
 
 
         return view('dashboard.accounts.chat', [
             'friends' => $friends,
             'account' => $account,
             'chats' => $chats,
+            // 'chat' => $chat,
         ]);
     }
 

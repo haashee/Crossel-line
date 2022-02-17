@@ -99,8 +99,10 @@ class LineMessengerController extends Controller
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
 
             $chatUser = new Chat();
+            $chatUser->name = $profile['displayName'];
             $chatUser->message = $message_content;
             $chatUser->lineuser_id = $user->id;
+            $chatUser->user_identifier = $userId;
             $chatUser->save();
         }
 

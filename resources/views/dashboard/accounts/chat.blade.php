@@ -145,7 +145,7 @@ Account
                             <form class="my-4 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
                                 action="{{  route('chat.store', ['aid' => $account->id])  }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="user_identifier" value="test">
+                                <input type="hidden" name="user_identifier" value="{{ $account->name }}">
                                 <div class="row">
                                     <div class="col-3">
                                         <div class="input-group">
