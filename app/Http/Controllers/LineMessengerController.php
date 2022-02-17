@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Chat;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Input;
 
@@ -86,6 +87,23 @@ class LineMessengerController extends Controller
             $user->account_id = $account->id;
             $user->save();
         }
+
+        // userIdがあるユーザーを検索
+
+        $chatUser = Chat::where('lineuser_id', $user->line_id)->first();
+
+        // もし見つからない場合は、データベースに保存
+        if ($chatUser == NULL) {
+            // get message content that was sent to you
+            $message_content = $inputs['events'][0]['message']['text'];
+            $profile = $bot->getProfile($userId)->getJSONDecodedBody();
+
+            $chatUser = new Chat();
+            $chatUser->message = $message_content;
+            $chatUser->lineuser_id = $user->id;
+            $chatUser->save();
+        }
+
 
         // $response = $bot->getRichMenuId($userId);
 

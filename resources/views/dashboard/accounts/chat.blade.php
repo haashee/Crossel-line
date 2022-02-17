@@ -134,9 +134,9 @@ Account
                                     23:03:56　＠Guest　Hello World !</li>
 
                                 @foreach ($chats as $chat)
-                                    <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">
-                                        {{$chat->getData()}}
-                                    </li>
+                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">
+                                    {{$chat->getData()}}
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
@@ -150,17 +150,18 @@ Account
                                     <div class="col-3">
                                         <div class="input-group">
                                             <input name="user_name" class="form-control " type="text"
-                                                placeholder="UserName" maxlength="20" >
+                                                placeholder="UserName" maxlength="20">
                                         </div>
                                     </div>
                                     <div class="col-6">
                                         <div class="input-group">
                                             <input name="message" class="form-control " type="text"
-                                                placeholder="Input message." maxlength="20" >
+                                                placeholder="Input message." maxlength="20">
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <button class="btn bg-gradient-dark btn-sm float-end" type="submit">Send</button>
+                                        <button class="btn bg-gradient-dark btn-sm float-end"
+                                            type="submit">Send</button>
                                     </div>
                                 </div>
 
