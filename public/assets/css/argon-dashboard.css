@@ -37667,6 +37667,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .nav-pills-custom > li > a {
     color: #344767;
 }
+.nav-pills-custom > li > a:hover {
+    color: #101010;
+}
 
 /* hide content made for spinner */
 .hide-content {
