@@ -124,12 +124,21 @@ Account
                         </div>
                     </div>
                     <hr class="horizontal gray-light my-4">
-                    <div class="card-body p-3">
+                    <div class="card-body p-3 pt-0">
                         <div class="my-1 rounded-lg ">
                             <ul>
                                 @foreach ($chats as $chat)
-                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">
-                                    {{$chat->getData()}}
+                                {{-- <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">
+                                    {{ $chat->getData() }}
+                                </li> --}}
+
+                                <p class="text-xs  text-right ">
+                                    {{$chat->created_at}} @ {{$chat->name}}
+                                </p>
+                                <li class=" list-group-item border-0 {{ $chat->user_identifier == 'SELF' ? 'chat-bubble-send' : 'chat-bubble-receive' }}">
+                                    <p class="text-sm text-truncate">
+                                        {{ $chat->message }}
+                                    </p> 
                                 </li>
                                 @endforeach
                             </ul>

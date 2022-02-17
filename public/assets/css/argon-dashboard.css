@@ -37709,3 +37709,21 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 /* chat */
+
+.chat-bubble-receive p {
+    background: #42a5f5;
+    color: #fff !important;
+    border-radius: 20px 20px 3px 20px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+}
+
+.chat-bubble-send p {
+    background: #f1f1f1;
+    color: #000 !important;
+    border-radius: 20px 20px 20px 3px;
+    display: block;
+    max-width: 75%;
+    padding: 7px 13px 7px 13px;
+}
