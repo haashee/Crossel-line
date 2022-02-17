@@ -54,10 +54,10 @@ class ChatController extends Controller
         // add richmenu ID to accounts table
         Chat::where('id', $aid)
             ->updateOrCreate([
-                'name' => $request->name,
+                'senderName' => $request->sender_name,
+                'receiverName' => $request->receiver_name,
                 'message' => $request->message,
                 'lineuser_id' => $id,
-                'user_identifier' => $request->user_identifier,
             ]);
 
 

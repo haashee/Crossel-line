@@ -59,7 +59,13 @@ Account
                                             class="border-radius-lg shadow">
                                     </div>
                                     <div class="d-flex align-items-start flex-column justify-content-center">
-                                        <h6 class="mb-0 text-sm">{{ $chat->name }}</h6>
+                                        <h6 class="mb-0 text-sm">
+                                            @if ( $chat->senderName !== $account->name )
+                                            {{ $chat->senderName }}
+                                            @else
+                                            {{ $chat->receiverName }}
+                                            @endif
+                                        </h6>
                                         <p class="mb-0 text-xs">{{ $chat->message }}</p>
                                     </div>
                                     <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="{{  route('chat.show', ['aid' => $account->id, 'chat' => $chat->lineuser_id])  }}">Reply</a>
@@ -132,7 +138,7 @@ Account
                             <div class="position-relative w-100 Content">
                                 @foreach ($chats as $chat)
                                 <div class="chat ">
-                                    <div data-time="{{ date('Y/m/d h:i', strtotime($chat->created_at)) }}" class="{{ $chat->user_identifier == 'SELF' ? 'msg sent' : 'msg rcvd' }}">
+                                    <div data-time="{{ date('Y/m/d h:i', strtotime($chat->created_at)) }}" class="{{ $chat->senderName == $account->name ? 'msg sent' : 'msg rcvd' }}">
                                         {{ $chat->message }}
                                     </div>
                                 </div>
@@ -144,8 +150,8 @@ Account
                             <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
                                 action="{{  route('chat.store', ['aid' => $account->id, 'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="user_identifier" value="SELF">
-                                <input type="hidden" name="name" value="{{ $account->name }}">
+                                <input type="hidden" name="sender_name" value="{{ $account->name }}">
+                                <input type="hidden" name="receiver_name" value="{{ $friend->name }}">
                                 <div class="row">
                                     <div class="col-lg-10">
                                         <div class="input-group">
