@@ -126,17 +126,24 @@ Account
                         <div class="my-1 rounded-lg ">
                             <ul>
                                 <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
-                                    23:03:56　＠Guest　Hello World !</li>
+                                    23:03:56　＠Guest　Hello World !
+                                </li>
                                 <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
                                     23:03:56　＠Guest　Hello World !</li>
                                 <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
                                     23:03:56　＠Guest　Hello World !</li>
+
+                                @foreach ($chats as $chat)
+                                    <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">
+                                        {{$chat->getData()}}
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
-                        <!-- Card Change Password -->
+                        <!-- Card Chat Input -->
                         <div class="card">
                             <form class="my-4 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
-                                action="accounts/{{ $account->id }}/chat" method="POST">
+                                action="{{  route('chat.store', ['aid' => $account->id])  }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="user_identifier" value="test">
                                 <div class="row">
