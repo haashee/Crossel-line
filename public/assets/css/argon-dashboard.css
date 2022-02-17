@@ -37774,3 +37774,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .msg.rcvd::after {
     left: 15px;
 }
+.FixedHeightContainer {
+    /* float: right; */
+    height: 460px;
+    /* width:250px;  */
+    padding: 3px;
+    /* background:#f00; */
+}
+.Content {
+    height: 440px;
+    overflow: auto;
+    background: #fff;
+}

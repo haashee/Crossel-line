@@ -126,9 +126,9 @@ Account
                     <hr class="horizontal gray-light my-4">
                     <div class="card-body p-3 pt-0">
                         <div class="my-1 rounded-lg ">
-                            <div class="position-relative w-100">
+                            <div class="position-relative w-100 Content">
                                 @foreach ($chats as $chat)
-                                <div class="chat">
+                                <div class="chat ">
                                     <div data-time="{{$chat->created_at}}" class="{{ $chat->user_identifier == 'SELF' ? 'msg sent' : 'msg rcvd' }}">
                                         {{ $chat->message }}
                                     </div>
