@@ -88,14 +88,14 @@ class LineMessengerController extends Controller
             $user->save();
         }
 
-        // userIdがあるユーザーを検索
-
+        // check if chat for this user exists
         $chatUser = Chat::where('lineuser_id', $user->line_id)->first();
 
-        // もし見つからない場合は、データベースに保存
+        // if does not exist then create new
         if ($chatUser == NULL) {
             // get message content that was sent to you
             $message_content = $inputs['events'][0]['message']['text'];
+            // get profile info of user
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
 
             $chatUser = new Chat();
@@ -105,7 +105,6 @@ class LineMessengerController extends Controller
             $chatUser->user_identifier = $userId;
             $chatUser->save();
         }
-
 
         // $response = $bot->getRichMenuId($userId);
 

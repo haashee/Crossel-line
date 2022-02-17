@@ -47,7 +47,8 @@ Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' =
 
 // chat routes
 Route::get('accounts/{aid}/chat/{id}', [ChatController::class, 'index'])->name('chat.index');
-Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['index']]);
+Route::post('accounts/{aid}/chat/{id}', [ChatController::class, 'store'])->name('chat.store');
+Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['index', 'store']]);
 
 
 

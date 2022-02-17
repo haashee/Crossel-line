@@ -19,7 +19,7 @@ class ChatController extends Controller
     {
         $account = Account::where('id', $aid)->first();
 
-        $friends = LineUser::where('account_id', $aid)->get();
+        $friend = LineUser::where('account_id', $aid)->first();
 
         $chats = Chat::where('lineuser_id', $id)->get();
 
@@ -32,7 +32,7 @@ class ChatController extends Controller
 
 
         return view('dashboard.accounts.chat', [
-            'friends' => $friends,
+            'friend' => $friend,
             'account' => $account,
             'chats' => $chats,
             // 'chat' => $chat,
@@ -55,13 +55,25 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $aid)
+    public function store(Request $request, $aid, $id)
     {
-        $chat = new Chat;
-        $form = $request->all();
-        $chat->fill($form)->save();
+
+
+        // add richmenu ID to accounts table
+        Chat::where('id', $aid)
+            ->updateOrCreate([
+                'name' => $request->name,
+                'message' => $request->message,
+                'lineuser_id' => $id,
+                'user_identifier' => $request->user_identifier,
+            ]);
+
+
+        // $chat = new Chat;
+        // $form = $request->all();
+        // $chat->fill($form)->save();
         // return redirect('/chat');
-        return redirect('/accounts' . '/' . $aid . '/' . 'chat');
+        return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/' . $id);
     }
 
     /**

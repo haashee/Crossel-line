@@ -9,7 +9,7 @@ class Chat extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_name', 'user_identifier', 'message'];
+    protected $fillable = ['name', 'user_identifier', 'message', 'lineuser_id'];
 
     public function scopeGetData($query)
     {
