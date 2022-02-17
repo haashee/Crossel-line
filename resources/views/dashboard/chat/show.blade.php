@@ -113,7 +113,7 @@ Account
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">Profile Information</h6>
+                                <h6 class="mb-0">{{ $friend->name }}とのチャット</h6>
                             </div>
                             <div class="col-md-4 text-end">
                                 <a href="javascript:window.location.reload(true)">
@@ -129,7 +129,7 @@ Account
                             <div class="position-relative w-100 Content">
                                 @foreach ($chats as $chat)
                                 <div class="chat ">
-                                    <div data-time="{{$chat->created_at}}" class="{{ $chat->user_identifier == 'SELF' ? 'msg sent' : 'msg rcvd' }}">
+                                    <div data-time="{{ date('Y/m/d h:i', strtotime($chat->created_at)) }}" class="{{ $chat->user_identifier == 'SELF' ? 'msg sent' : 'msg rcvd' }}">
                                         {{ $chat->message }}
                                     </div>
                                 </div>

@@ -37734,6 +37734,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
     font: 14px/1.5 sans-serif;
     display: flex;
     flex-direction: column;
+    padding: 15px;
+    font-weight: 300;
 }
 
 .msg {
@@ -37759,21 +37761,33 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* time */
 
-.msg::after {
+.msg::before {
     content: attr(data-time);
-    font-size: 8px;
+    font-size: 9px;
     position: absolute;
-    top: calc(100% + 3px);
+    bottom: 100%;
     color: #888;
+    display: none; /* Hidden by default */
 }
 
-.msg.sent::after {
+.msg.sent::before {
     right: 15px;
 }
 
-.msg.rcvd::after {
+.msg.rcvd::before {
     left: 15px;
 }
+
+/* Show time for messages group */
+
+.msg:first-child::before,
+.msg.sent + .msg.rcvd::before,
+.msg.rcvd + .msg.sent::before {
+    display: block; /* Show only for first message in group */
+}
+
+/* scroll in chat */
+
 .FixedHeightContainer {
     /* float: right; */
     height: 380px;
