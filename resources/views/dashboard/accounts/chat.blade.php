@@ -50,6 +50,9 @@ Account
                     </div>
                     <div class="card-body p-3">
                         <ul class="list-group">
+                            @foreach ($friendlist as $friend)
+                                {{ $friend->name }}
+                            @endforeach
                             <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                 <div class="avatar me-3">
                                     <img src="../../../assets/img/kal-visuals-square.jpg" alt="kal"
@@ -125,14 +128,6 @@ Account
                     <div class="card-body p-3">
                         <div class="my-1 rounded-lg ">
                             <ul>
-                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
-                                    23:03:56　＠Guest　Hello World !
-                                </li>
-                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
-                                    23:03:56　＠Guest　Hello World !</li>
-                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
-                                    23:03:56　＠Guest　Hello World !</li>
-
                                 @foreach ($chats as $chat)
                                 <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">
                                     {{$chat->getData()}}
