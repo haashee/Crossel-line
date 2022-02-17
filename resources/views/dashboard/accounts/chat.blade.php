@@ -121,35 +121,45 @@ Account
                             </div>
                         </div>
                     </div>
+                    <hr class="horizontal gray-light my-4">
                     <div class="card-body p-3">
-                        <p class="text-sm">
-                            Hi, I’m Alec Thompson, Decisions: If you can’t decide, the answer is no. If two equally
-                            difficult paths, choose the one more painful in the short term (pain avoidance is creating
-                            an illusion of equality).
-                        </p>
-                        <hr class="horizontal gray-light my-4">
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full
-                                    Name:</strong> &nbsp; Alec M. Thompson</li>
-                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong>
-                                &nbsp; (44) 123 1234 123</li>
-                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong>
-                                &nbsp; alecthompson@mail.com</li>
-                            <li class="list-group-item border-0 ps-0 text-sm"><strong
-                                    class="text-dark">Location:</strong> &nbsp; USA</li>
-                            <li class="list-group-item border-0 ps-0 pb-0">
-                                <strong class="text-dark text-sm">Social:</strong> &nbsp;
-                                <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-facebook fa-lg"></i>
-                                </a>
-                                <a class="btn btn-twitter btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-twitter fa-lg"></i>
-                                </a>
-                                <a class="btn btn-instagram btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">
-                                    <i class="fab fa-instagram fa-lg"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        <div class="my-1 rounded-lg ">
+                            <ul>
+                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
+                                    23:03:56　＠Guest　Hello World !</li>
+                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
+                                    23:03:56　＠Guest　Hello World !</li>
+                                <li class="list-group-item border-0 ps-0 pt-0 text-sm text-truncate">2021-11-03
+                                    23:03:56　＠Guest　Hello World !</li>
+                            </ul>
+                        </div>
+                        <!-- Card Change Password -->
+                        <div class="card">
+                            <form class="my-4 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
+                                action="accounts/{{ $account->id }}/chat" method="POST">
+                                @csrf
+                                <input type="hidden" name="user_identifier" value="test">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <div class="input-group">
+                                            <input name="user_name" class="form-control " type="text"
+                                                placeholder="UserName" maxlength="20" >
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="input-group">
+                                            <input name="message" class="form-control " type="text"
+                                                placeholder="Input message." maxlength="20" >
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <button class="btn bg-gradient-dark btn-sm float-end" type="submit">Send</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
