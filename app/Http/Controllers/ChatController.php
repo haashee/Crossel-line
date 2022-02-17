@@ -82,6 +82,8 @@ class ChatController extends Controller
 
         $friendList = LineUser::where('account_id', $aid)->get();
 
+        $chatList = Chat::all()->unique('lineuser_id');
+
         $chats = Chat::where('lineuser_id', $id)->get();
 
         // // データーベースの件数を取得
@@ -96,6 +98,7 @@ class ChatController extends Controller
             'friendlist' => $friendList,
             'account' => $account,
             'chats' => $chats,
+            'chatList' => $chatList,
             // 'chat' => $chat,
         ]);
     }

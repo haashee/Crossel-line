@@ -37767,6 +37767,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     position: absolute;
     bottom: 100%;
     color: #888;
+    white-space: nowrap;
     display: none; /* Hidden by default */
 }
 
