@@ -15,4 +15,12 @@ class Chat extends Model
     {
         return $this->created_at . ' @' . $this->user_name . ' ' . $this->message;
     }
+
+    public function lineUser()
+    {
+        return $this->belongsTo(
+            LineUser::class,
+            "account_id",
+        );
+    }
 }

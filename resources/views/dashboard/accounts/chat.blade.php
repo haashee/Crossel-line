@@ -51,19 +51,18 @@ Account
                     <div class="card-body p-3">
                         <ul class="list-group">
                             @foreach ($friendlist as $friend)
-                                {{ $friend->name }}
+                                <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                    <div class="avatar avatar-xs me-3">
+                                        <img src="../../../assets/img/kal-visuals-square.jpg" alt="kal"
+                                            class="border-radius-lg shadow">
+                                    </div>
+                                    <div class="d-flex align-items-start flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm">{{ $friend->name }}</h6>
+                                        <p class="mb-0 text-xs">Hi! I need more information..</p>
+                                    </div>
+                                    <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="{{  route('chat.show', ['aid' => $account->id, 'chat' => $friend->id])  }}">Reply</a>
+                                </li>
                             @endforeach
-                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
-                                <div class="avatar me-3">
-                                    <img src="../../../assets/img/kal-visuals-square.jpg" alt="kal"
-                                        class="border-radius-lg shadow">
-                                </div>
-                                <div class="d-flex align-items-start flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm">Sophie B.</h6>
-                                    <p class="mb-0 text-xs">Hi! I need more information..</p>
-                                </div>
-                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
-                            </li>
                             <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                 <div class="avatar me-3">
                                     <img src="../../../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">

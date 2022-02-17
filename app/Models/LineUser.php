@@ -22,4 +22,9 @@ class LineUser extends Model
             "user_id",
         );
     }
+
+    public function chat()
+    {
+        return $this->hasMany(Chat::class);
+    }
 }
