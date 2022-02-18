@@ -131,4 +131,22 @@ class LineUserController extends Controller
 
         return redirect('/accounts')->with('message', 'ユーザーが正常に削除されました。');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function membership($aid, $id)
+    {
+        $account = Account::where('id', $aid)->first();
+
+        $friend = LineUser::where('id', $id)->first();
+
+        return view('dashboard.membership.index', [
+            'friend' => $friend,
+            'account' => $account,
+        ]);
+    }
 }
