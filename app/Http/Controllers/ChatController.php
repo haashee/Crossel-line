@@ -8,6 +8,11 @@ use App\Models\LineUser;
 use App\Models\Chat;
 use Illuminate\Support\Facades\Session;
 
+use LINE\LINEBot\HTTPClient\CurlHTTPClient;
+use LINE\LINEBot;
+use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
+use Log;
+
 class ChatController extends Controller
 {
     /**
@@ -63,11 +68,35 @@ class ChatController extends Controller
                 'lineuser_id' => $id,
             ]);
 
+        // get account ID (aid) 
+        $account = Account::where('id', $aid)->first();
 
-        // $chat = new Chat;
-        // $form = $request->all();
-        // $chat->fill($form)->save();
-        // return redirect('/chat');
+        // get channel secret and access token
+        $channel_secret = $account->channel_secret;
+        $access_token = $account->access_token;
+
+        // LINEBOTSDKの設定
+        $http_client = new CurlHTTPClient($access_token);
+        $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
+
+        // Set user to send 
+        $user = LineUser::where('id', $id)->first();;
+        $userId = $user->line_id;
+
+        // Set message to send
+        $message = $request->message;
+
+        // Send message
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $response    = $bot->pushMessage($userId, $textMessageBuilder);
+
+        // Logging error
+        if ($response->isSucceeded()) {
+            Log::info('Line send successful');
+        } else {
+            Log::error('Sending failed: ' . $response->getRawBody());
+        }
+
         return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/' . $id);
     }
 
