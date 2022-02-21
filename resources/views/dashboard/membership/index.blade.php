@@ -891,7 +891,7 @@
       </div>
     </div>
     <div class="container">
-      <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center">
+      <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center pb-5">
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
           <div class="card z-index-0">
             {{-- <div class="card-header text-center pt-4">
@@ -899,21 +899,20 @@
             </div> --}}
             <div class="mem-btn-container row px-xl-5 px-sm-4 px-3 py-3">
               <div class="col-4 ms-auto px-1">
-                <button class="mem-tab-btn btn btn-outline-light w-100 active" data-memtab="settings">
+                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 active" data-memtab="settings">
                   基本情報
                 </button>
               </div>
               <div class="col-4 px-1">
-                <button class="mem-tab-btn btn btn-outline-light w-100" data-memtab="orders">
+                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="orders">
                   注文履歴
                 </button>
               </div>
               <div class="col-4 me-auto px-1">
-                <button class="mem-tab-btn btn btn-outline-light w-100" data-memtab="card">
+                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="card">
                   会員証
                 </button>
               </div>
-              <hr class="horizontal dark" />
               {{-- <div class="mt-2 position-relative text-center">
                 <p class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3">
                   or
@@ -923,25 +922,53 @@
             <div class="mem-content card-body active" id="settings">
               <form role="form">
                 <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                  <label class="form-label">メールアドレス</label>
+                  <div class="input-group">
+                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com">
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                <div class="col-sm-8 mb-3">
+                  <div class="row">
+                    <div class="col-sm-5 col-5">
+                      <label class="form-label">Birth Date</label>
+                      <select class="form-control" name="choices-month" id="choices-month"></select>
+                    </div>
+                    <div class="col-sm-4 col-3">
+                      <label class="form-label">&nbsp;</label>
+                      <select class="form-control" name="choices-day" id="choices-day"></select>
+                    </div>
+                    <div class="col-sm-3 col-4">
+                      <label class="form-label">&nbsp;</label>
+                      <select class="form-control" name="choices-year" id="choices-year"></select>
+                    </div>
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Password" aria-label="Password">
+                <div class="row mb-3">
+                  <div class="col-6">
+                    <label class="form-label">性別</label>
+                    <select class="form-control" name="gender" id="choices-gender">
+                      <option value="male">男性</option>
+                      <option value="female">女性</option>
+                    </select>
+                  </div>
+                  <div class="col-6">
+                    <label class="form-label">郵便番号</label>
+                    <div class="input-group">
+                      <input id="location" name="postcode" class="form-control" type="text" placeholder="000-0000">
+                    </div>
+                  </div>
                 </div>
+
+
                 <div class="form-check form-check-info text-start">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
                   <label class="form-check-label" for="flexCheckDefault">
-                    I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
+                    <a href="javascript:;" class="text-dark font-weight-bolder">個人情報の取り扱い</a>に同意します。
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
+                  <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">登録</button>
                 </div>
-                <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;"
-                    class="text-dark font-weight-bolder">Sign in</a></p>
               </form>
             </div>
             <div class="mem-content card-body" id="orders">
@@ -979,60 +1006,6 @@
       </div>
     </div>
   </main>
-  <!-- -------- START FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
-  <footer class="footer py-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mb-4 mx-auto text-center">
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Company
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            About Us
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Team
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Products
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Blog
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2">
-            Pricing
-          </a>
-        </div>
-        <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-dribbble"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-twitter"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-instagram"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-pinterest"></span>
-          </a>
-          <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-            <span class="text-lg fab fa-github"></span>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-8 mx-auto text-center mt-1">
-          <p class="mb-0 text-secondary">
-            Copyright © <script>
-              document.write(new Date().getFullYear())
-            </script> Soft by Creative Tim.
-          </p>
-        </div>
-      </div>
-    </div>
-  </footer>
-  <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Core JS Files   -->
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
@@ -1071,6 +1044,79 @@
       }
     })
 
+
+  if (document.getElementById('choices-year')) {
+    var year = document.getElementById('choices-year');
+    setTimeout(function() {
+      const example = new Choices(year);
+    }, 1);
+
+    for (y = 1900; y <= 2020; y++) {
+      var optn = document.createElement("OPTION");
+      optn.text = y;
+      optn.value = y;
+
+      if (y == 2020) {
+        optn.selected = true;
+      }
+
+      year.options.add(optn);
+    }
+  }
+
+  if (document.getElementById('choices-day')) {
+    var day = document.getElementById('choices-day');
+    setTimeout(function() {
+      const example = new Choices(day);
+    }, 1);
+
+
+    for (y = 1; y <= 31; y++) {
+      var optn = document.createElement("OPTION");
+      optn.text = y;
+      optn.value = y;
+
+      if (y == 1) {
+        optn.selected = true;
+      }
+
+      day.options.add(optn);
+    }
+
+  }
+
+      if (document.getElementById('choices-month')) {
+    var month = document.getElementById('choices-month');
+    setTimeout(function() {
+      const example = new Choices(month);
+    }, 1);
+
+    var d = new Date();
+    var monthArray = new Array();
+    monthArray[0] = "January";
+    monthArray[1] = "February";
+    monthArray[2] = "March";
+    monthArray[3] = "April";
+    monthArray[4] = "May";
+    monthArray[5] = "June";
+    monthArray[6] = "July";
+    monthArray[7] = "August";
+    monthArray[8] = "September";
+    monthArray[9] = "October";
+    monthArray[10] = "November";
+    monthArray[11] = "December";
+    for (m = 0; m <= 11; m++) {
+      var optn = document.createElement("OPTION");
+      optn.text = monthArray[m];
+      // server side month start from one
+      optn.value = (m + 1);
+      // if june selected
+      if (m == 1) {
+        optn.selected = true;
+      }
+      month.options.add(optn);
+    }
+  }
 
   </script>
   <!-- Github buttons -->
