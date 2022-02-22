@@ -52,8 +52,18 @@ class User extends Authenticatable
         return $this->hasManyThrough(
             LineUser::class,
             Account::class,
-            "user_id",
-            "account_id"
+            'user_id',
+            'account_id'
+        );
+    }
+
+    public function accountSetting()
+    {
+        return $this->hasOneThrough(
+            AccountSetting::class,
+            Account::class,
+            'user_id',
+            'account_id'
         );
     }
 }

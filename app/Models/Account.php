@@ -20,4 +20,9 @@ class Account extends Model
     {
         return $this->hasMany(LineUser::class);
     }
+
+    public function accountSetting()
+    {
+        return $this->hasOne(AccountSetting::class, 'account_id', 'id');
+    }
 }
