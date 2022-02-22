@@ -157,4 +157,13 @@ class LineUserController extends Controller
             'account' => $account,
         ]);
     }
+
+    public function privacy($aid)
+    {
+        $account = Account::where('id', $aid)->first();
+
+        return view('dashboard.membership.privacy-policy', [
+            'account' => $account,
+        ]);
+    }
 }
