@@ -284,14 +284,14 @@ Account
             <div class="col-lg-9 mt-lg-0 mt-4">
 
                 <!-- Account Profile -->
-                <div class="card card-body" id="profile">
+                <div class="card card-body p-4" id="profile">
                     <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="card-header pb-0 p-3">
+                        <div class="card-headerp-3 p-0 pb-3">
                             <div class="row">
                                 <div class="col-md-8 d-flex align-items-center">
-                                    <h6 class="mb-0">アカウント設定</h6>
+                                    <h5 class="mb-0">アカウント設定</h5>
                                 </div>
                                 <div class="col-md-4 text-end">
                                     <a class="edit-token" href="javascript:;">
@@ -301,19 +301,28 @@ Account
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-4 p-3 ">
-                            <div class="avatar avatar-xl position-relative">
-                                <img src="{{ asset('uploads/profile-pic/' . $account->image) }}"
-                                    class="border-radius-md" alt="team-2">
-                                <label
-                                    class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                                    <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="" aria-hidden="true" data-bs-original-title="Edit Image"
-                                            aria-label="Edit Image"></i></span>
-                                    <span class="sr-only">Edit Image</span>
-                                    <input name="image" type="file" style="display: none">
-                                </label>
+
+                        <div class="row">
+                            <div class="col-12 col-sm-2 p-3 px-3">
+                                <div class="avatar avatar-xl position-relative">
+                                    <img src="{{ asset('uploads/profile-pic/' . $account->image) }}"
+                                        class="border-radius-md" alt="team-2">
+                                    <label
+                                        class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                                        <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip"
+                                                data-bs-placement="top" title="" aria-hidden="true"
+                                                data-bs-original-title="Edit Image" aria-label="Edit Image"></i></span>
+                                        <span class="sr-only">Edit Image</span>
+                                        <input name="image" type="file" style="display: none">
+                                    </label>
+                                </div>
                             </div>
+                            <div class="col-12 col-sm-10 p-3 px-3">
+                                <label class="text-muted">管理用ニックネーム</label>
+                                <input class="multisteps-form__input form-control mb-3" type="text"
+                                    value="{{ $account->name }}" name="name" />
+                            </div>
+
                         </div>
 
                         <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
@@ -325,9 +334,6 @@ Account
                             <textarea class="edit-token-show multisteps-form__input form-control mb-3"
                                 placeholder="access_token" name="access_token"
                                 readonly="readonly">{{ $account->access_token }}</textarea>
-                            <label class="text-muted">Name</label>
-                            <input class="multisteps-form__input form-control mb-3" type="text"
-                                value="{{ $account->name }}" name="name" />
                             <label class="text-muted">Webhook URL</label>
                             <input class="multisteps-form__input form-control mb-3" type="text"
                                 value="https://e2ef-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name=""
@@ -371,7 +377,8 @@ Account
                                 value="{{ $account->liff_compact }}" name="liff_compact" readonly="readonly" />
                         </div>
 
-                        {{-- <hr class="horizontal gray-light my-4"> --}}
+                        {{--
+                        <hr class="horizontal gray-light my-4"> --}}
 
                         <div class="row">
                             <div class="button-row d-flex mt-4 col-12">
