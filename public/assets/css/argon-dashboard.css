@@ -37863,15 +37863,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .mem-order-content h6 {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     margin-left: 1rem;
     /* font-weight: 600; */
     color: #393a3d;
-
 }
 
 .mem-order-content p {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #545454;
     margin-left: 2rem;
 }

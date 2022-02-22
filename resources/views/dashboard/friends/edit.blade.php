@@ -154,16 +154,17 @@ Account
                 <div class="col-6">
                   <label class="form-label">メールアドレス</label>
                   <div class="input-group">
-                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com">
+                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com"
+                      value="{{ $friend->email }}">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-4 col-6">
                   <label class="form-label mt-4">性別</label>
-                  <select class="form-control" name="gender" id="choices-gender">
-                    <option value="male">男性</option>
-                    <option value="female">女性</option>
+                  <select class="form-control" name="gender" id="choices-gender" >
+                    <option value="male" {{$friend->gender == 'male'  ? 'selected' : ''}}>男性</option>
+                    <option value="female" {{$friend->gender == 'female'  ? 'selected' : ''}}>女性</option>
                   </select>
                 </div>
                 <div class="col-sm-8">
@@ -187,13 +188,13 @@ Account
                 <div class="col-6">
                   <label class="form-label mt-4">郵便番号</label>
                   <div class="input-group">
-                    <input id="location" name="postcode" class="form-control" type="text" placeholder="Sydney, A">
+                    <input id="location" name="postcode" class="form-control" type="text" placeholder="Sydney, A" value="{{ $friend->postcode }}">
                   </div>
                 </div>
                 <div class="col-6">
                   <label class="form-label mt-4">電話番号</label>
                   <div class="input-group">
-                    <input id="phone" name="phone" class="form-control" type="number" placeholder="+40 735 631 620">
+                    <input id="phone" name="phone" class="form-control" type="number" placeholder="090-1234-5678" value="{{ $friend->phone }}">
                   </div>
                 </div>
               </div>

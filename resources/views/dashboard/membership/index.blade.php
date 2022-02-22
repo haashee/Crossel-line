@@ -921,11 +921,13 @@
               </div> --}}
             </div>
             <div class="mem-content card-body pt-2 active" id="settings">
-              <form role="form">
+              <form role="form" action="{{  route('friends.update', ['aid' => $account->id,'friend'=>$friend->id])  }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
                 <div class="mb-3">
                   <label class="form-label">メールアドレス</label>
                   <div class="input-group">
-                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com">
+                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ $friend->email }}">
                   </div>
                 </div>
                 <div class="col-sm-8 mb-3">
@@ -946,16 +948,16 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-6">
-                    <label class="form-label">性別</label>
-                    <select class="form-control" name="gender" id="choices-gender">
-                      <option value="male">男性</option>
-                      <option value="female">女性</option>
-                    </select>
+                  <label class="form-label">性別</label>
+                  <select class="form-control" name="gender" id="choices-gender" >
+                    <option value="male" {{$friend->gender == 'male'  ? 'selected' : ''}}>男性</option>
+                    <option value="female" {{$friend->gender == 'female'  ? 'selected' : ''}}>女性</option>
+                  </select>
                   </div>
                   <div class="col-6">
                     <label class="form-label">郵便番号</label>
                     <div class="input-group">
-                      <input id="location" name="postcode" class="form-control" type="text" placeholder="000-0000">
+                      <input id="location" name="postcode" class="form-control" type="text" placeholder="000-0000" value="{{ $friend->postcode }}">
                     </div>
                   </div>
                 </div>
@@ -968,7 +970,7 @@
                   </label>
                 </div>
                 <div class="text-center">
-                  <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">登録</button>
+                  <button type="submit" class="btn bg-gradient-dark w-100 my-4 mb-2">登録</button>
                 </div>
               </form>
             </div>
