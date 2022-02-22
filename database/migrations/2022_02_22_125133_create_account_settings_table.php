@@ -18,6 +18,7 @@ class CreateAccountSettingsTable extends Migration
             $table->unsignedBigInteger('account_id');
             $table->string('membership_background')->nullable();
             $table->longText('privacy_policy')->nullable();
+            $table->string('privacy_url')->nullable();
             $table->timestamps();
             $table->foreign('account_id')
                 ->references('id')

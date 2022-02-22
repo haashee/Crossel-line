@@ -94,7 +94,9 @@
                                     <p>
                                         {{ $account->accountSetting->privacy_policy }}
                                     </p>
-                                    <a href="" class="btn bg-gradient-dark w-100 my-2">{{ $account->name }}の個人情報取扱について詳しく</a>
+                                    <a href="{{ $account->accountSetting->privacy_url }}" class="btn bg-gradient-dark w-100 my-2">
+                                        {{ $account->name }}の個人情報取扱について詳しく
+                                    </a>
                                 </div>
                                 <div class="mt-3">
                                     <h6>Meniuの個人情報取り扱いについて</h6>
