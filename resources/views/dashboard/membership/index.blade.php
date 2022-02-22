@@ -308,7 +308,7 @@
                 <div class="form-check form-check-info text-start">
                   <input class="form-check-input" type="checkbox" name="checkbox" value="checkbox" id="flexCheckDefault" checked required>
                   <label class="form-check-label" for="flexCheckDefault">
-                    <a href="javascript:;" class="text-dark font-weight-bolder">個人情報の取り扱い</a>に同意します。
+                    <a href="{{ route('membership.privacy', ['aid' => $account->id]) }}" class="text-dark font-weight-bolder">個人情報の取り扱い</a>に同意します。
                   </label>
                 </div>
                 <div class="text-center">

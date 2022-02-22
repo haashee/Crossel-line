@@ -69,113 +69,39 @@
                 <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
                     <div class="card z-index-0 membership-card-height">
                         <div class="mem-btn-container row px-xl-5 px-sm-4 px-4 py-3">
-                            <div class="col-4 ms-auto px-1">
+                            {{-- <div class="col-4 ms-auto px-1">
                                 <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 active"
                                     data-memtab="settings">
                                     基本情報
                                 </button>
-                            </div>
-                            <div class="col-4 px-1">
-                                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="orders">
-                                    注文履歴
-                                </button>
-                            </div>
+                            </div> --}}
                             <div class="col-4 me-auto px-1">
-                                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="card">
-                                    会員証
+                                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="card" onclick="history.back()">
+                                    戻る
                                 </button>
                             </div>
-                            <div class="mt-2 position-relative text-center">
-                                <p
-                                    class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3">
-                                    or
-                                </p>
+                            <div class="col-8 px-1">
+                                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 active" data-memtab="orders">
+                                    個人情報取扱
+                                </button>
                             </div>
                         </div>
 
-                        <div class="mem-content card-body pt-0" id="orders">
+                        <div class="mem-content card-body pt-0 active" id="orders">
                             <div class="col-md-10 mx-auto">
-                                <div class="accordion-body p-0">
-                                    <div class="mem-order-accordion">
-                                        <div class="mem-order-container">
-                                            <div class="mem-order-label">2022年3月1日</div>
-                                            <div class="mem-order-content">
-                                                <h6>受取店舗</h6>
-                                                <p>
-                                                    Restaurant Name here
-                                                </p>
-                                                <h6>受取時間</h6>
-                                                <p>
-                                                    11:30 ~ 11:45
-                                                </p>
-                                                <h6>支払方法</h6>
-                                                <p>
-                                                    Payment method
-                                                </p>
-                                                <h6>注文商品</h6>
-                                                <p>
-                                                    Orders
-                                                </p>
-                                                <h6>合計税込</h6>
-                                                <p>
-                                                    1780円
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="mem-order-container">
-                                            <div class="mem-order-label">2022年3月1日</div>
-                                            <div class="mem-order-content">
-                                                <h6>受取店舗</h6>
-                                                <p>
-                                                    Restaurant Name here
-                                                </p>
-                                                <h6>受取時間</h6>
-                                                <p>
-                                                    11:30 ~ 11:45
-                                                </p>
-                                                <h6>支払方法</h6>
-                                                <p>
-                                                    Payment method
-                                                </p>
-                                                <h6>注文商品</h6>
-                                                <p>
-                                                    Orders
-                                                </p>
-                                                <h6>合計税込</h6>
-                                                <p>
-                                                    1780円
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <div class="mem-order-container">
-                                            <div class="mem-order-label">2022年3月1日</div>
-                                            <div class="mem-order-content">
-                                                <h6>受取店舗</h6>
-                                                <p>
-                                                    Restaurant Name here
-                                                </p>
-                                                <h6>受取時間</h6>
-                                                <p>
-                                                    11:30 ~ 11:45
-                                                </p>
-                                                <h6>支払方法</h6>
-                                                <p>
-                                                    Payment method
-                                                </p>
-                                                <h6>注文商品</h6>
-                                                <p>
-                                                    Orders
-                                                </p>
-                                                <h6>合計税込</h6>
-                                                <p>
-                                                    1780円
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                    </div>
+                                <div class="mt-2">
+                                    <h6>{{ $account->name }}の個人情報取り扱いについて</h6>
+                                    <p>
+                                        {{ $account->accountSetting->privacy_policy }}
+                                    </p>
+                                    <a href="" class="btn bg-gradient-dark w-100 my-2">{{ $account->name }}の個人情報取扱について詳しく</a>
+                                </div>
+                                <div class="mt-3">
+                                    <h6>Meniuの個人情報取り扱いについて</h6>
+                                    <p>
+                                        本サービスより送信された情報は、株式会社unybexが運営するウェブサービス「Meniu」に送信され、Meniuのサーバに保存されます。株式会社unybexは、本サービスを通じてお客様からご提供頂きました個人情報を個人情報保護方針にしたがい取り扱います。
+                                    </p>
+                                    <a href="" class="btn bg-gradient-dark w-100 my-2">Meniuの個人情報取扱について詳しく</a>
                                 </div>
                             </div>
                         </div>
