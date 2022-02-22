@@ -100,10 +100,12 @@ class LineUserController extends Controller
             'name' => 'required',
         ]);
 
+        $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+
         LineUser::where('id', $id)
             ->update([
                 'name' => $request->input('name'),
-                'birthday' => $request->input('birthday'),
+                'birthday' => $DOB,
                 'phone' => $request->input('phone'),
                 'postcode' => $request->input('postcode'),
                 'gender' => $request->input('gender'),
