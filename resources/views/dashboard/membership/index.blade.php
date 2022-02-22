@@ -23,7 +23,8 @@
 
 <body class="bg-gray-100">
   <!-- Navbar -->
-  {{-- <nav class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
+  {{-- <nav
+    class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-4">
     <div class="container ps-2 pe-0">
       <a class="navbar-brand font-weight-bolder ms-lg-0 ms-3 text-white" href="../../../pages/dashboards/default.html">
         Argon Dashboard 2 PRO
@@ -897,7 +898,7 @@
             {{-- <div class="card-header text-center pt-4">
               <h5>Register with</h5>
             </div> --}}
-            <div class="mem-btn-container row px-xl-5 px-sm-4 px-3 py-3">
+            <div class="mem-btn-container row px-xl-5 px-sm-4 px-4 py-3">
               <div class="col-4 ms-auto px-1">
                 <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 active" data-memtab="settings">
                   基本情報
@@ -919,7 +920,7 @@
                 </p>
               </div> --}}
             </div>
-            <div class="mem-content card-body active" id="settings">
+            <div class="mem-content card-body pt-2 active" id="settings">
               <form role="form">
                 <div class="mb-3">
                   <label class="form-label">メールアドレス</label>
@@ -971,35 +972,96 @@
                 </div>
               </form>
             </div>
-            <div class="mem-content card-body" id="orders">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non ab vitae magnam ipsam velit et nobis necessitatibus maxime sapiente doloremque?
-              </p>
-              <form role="form">
-                <div class="mb-3">
-                  <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+            <div class="mem-content card-body pt-0" id="orders">
+                <div class="col-md-10 mx-auto">
+                  <div class="accordion-body p-0">
+                    <div class="mem-order-accordion">
+                      <div class="mem-order-container">
+                        <div class="mem-order-label">2022年3月1日</div>
+                        <div class="mem-order-content">
+                          <h6>受取店舗</h6>
+                          <p>
+                            Restaurant Name here
+                          </p> 
+                          <h6>受取時間</h6>
+                          <p>
+                            11:30 ~ 11:45
+                          </p>
+                          <h6>支払方法</h6>
+                          <p>
+                            Payment method
+                          </p>
+                          <h6>注文商品</h6>
+                          <p>
+                            Orders
+                          </p>
+                          <h6>合計税込</h6>
+                          <p>
+                            1780円
+                          </p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="mem-order-container">
+                        <div class="mem-order-label">2022年3月1日</div>
+                        <div class="mem-order-content">
+                          <h6>受取店舗</h6>
+                          <p>
+                            Restaurant Name here
+                          </p> 
+                          <h6>受取時間</h6>
+                          <p>
+                            11:30 ~ 11:45
+                          </p>
+                          <h6>支払方法</h6>
+                          <p>
+                            Payment method
+                          </p>
+                          <h6>注文商品</h6>
+                          <p>
+                            Orders
+                          </p>
+                          <h6>合計税込</h6>
+                          <p>
+                            1780円
+                          </p>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="mem-order-container">
+                        <div class="mem-order-label">2022年3月1日</div>
+                        <div class="mem-order-content">
+                          <h6>受取店舗</h6>
+                          <p>
+                            Restaurant Name here
+                          </p> 
+                          <h6>受取時間</h6>
+                          <p>
+                            11:30 ~ 11:45
+                          </p>
+                          <h6>支払方法</h6>
+                          <p>
+                            Payment method
+                          </p>
+                          <h6>注文商品</h6>
+                          <p>
+                            Orders
+                          </p>
+                          <h6>合計税込</h6>
+                          <p>
+                            1780円
+                          </p>
+                        </div>
+                      </div>
+                      <hr>
+                    </div>
+                  </div>
                 </div>
-                <div class="mb-3">
-                  <input type="email" class="form-control" placeholder="Email" aria-label="Email">
-                </div>
-                <div class="mb-3">
-                  <input type="password" class="form-control" placeholder="Password" aria-label="Password">
-                </div>
-                <div class="form-check form-check-info text-start">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-                  <label class="form-check-label" for="flexCheckDefault">
-                    I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                  </label>
-                </div>
-                <div class="text-center">
-                  <button type="button" class="btn bg-gradient-dark w-100 my-4 mb-2">Sign up</button>
-                </div>
-                <p class="text-sm mt-3 mb-0">Already have an account? <a href="javascript:;"
-                    class="text-dark font-weight-bolder">Sign in</a></p>
-              </form>
             </div>
             <div class="mem-content card-body" id="card">
-              <p>hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque ratione magni aut, minus similique, obcaecati eveniet, ducimus voluptatem laboriosam fuga inventore natus reiciendis sit itaque eum voluptatum aperiam quidem aliquid!</p>
+              <p>hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque ratione magni aut, minus
+                similique, obcaecati eveniet, ducimus voluptatem laboriosam fuga inventore natus reiciendis sit itaque
+                eum voluptatum aperiam quidem aliquid!</p>
             </div>
           </div>
         </div>
@@ -1117,6 +1179,14 @@
       month.options.add(optn);
     }
   }
+
+  const accordion = document.getElementsByClassName('mem-order-container');
+
+for (i=0; i<accordion.length; i++) {
+  accordion[i].addEventListener('click', function () {
+    this.classList.toggle('active')
+  })
+}
 
   </script>
   <!-- Github buttons -->
