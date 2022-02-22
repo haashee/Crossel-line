@@ -37881,7 +37881,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
     width: 100%;
     margin-left: 0;
     margin-top: 0;
-    border: 0.5px solid lightgrey;
 }
 
 /* Unhides the content part when active. Sets the height */

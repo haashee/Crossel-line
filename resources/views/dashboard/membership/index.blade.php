@@ -891,6 +891,25 @@
         </div>
       </div>
     </div>
+
+    <!--session message-->
+    @if (session()->has('message'))
+    <div class="position-fixed bottom-1 end-1 z-index-2">
+      <div class="toast fade hide p-2 bg-white show" role="alert" aria-live="assertive" id="successToast"
+        aria-atomic="true">
+        <div class="toast-header border-0">
+          <i class="ni ni-check-bold text-success me-2"></i>
+          <span class="me-auto font-weight-bold">{{ session()->get('title') }}</span>
+          {{-- <small class="text-body">11 mins ago</small> --}}
+          <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+        </div>
+        <hr class="horizontal dark m-0">
+        <div class="toast-body">
+          {{ session()->get('message') }}
+        </div>
+      </div>
+    </div>
+    @endif
     <div class="container">
       <div class="row mt-lg-n10 mt-md-n11 mt-n10 justify-content-center pb-5">
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
@@ -924,17 +943,18 @@
               <form role="form" action="{{  route('friends.update', ['aid' => $account->id,'friend'=>$friend->id])  }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                <input id="firstName" name="name" class="form-control" type="hidden" placeholder="ユーザー名" value="{{ $friend->name }}">
                 <div class="mb-3">
                   <label class="form-label">メールアドレス</label>
                   <div class="input-group">
-                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ $friend->email }}">
+                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ $friend->email }}" required>
                   </div>
                 </div>
                 <div class="col-sm-8 mb-3">
                   <div class="row">
                     <div class="col-sm-5 col-5">
                       <label class="form-label">お誕生日</label>
-                        <select name="dob-year" id="dob-year" class="form-control">
+                        <select name="dob-year" id="dob-year" class="form-control" required>
                           <option value="">年</option>
                           <option value="">----</option>
                           <option value="2015" {{date("Y", strtotime($friend->birthday)) == '2015'  ? 'selected' : ''}}>2015</option>
@@ -1057,7 +1077,7 @@
                     </div>
                     <div class="col-sm-4 col-3">
                       <label class="form-label">&nbsp;</label>
-                        <select name="dob-month" id="dob-month" class="form-control">
+                        <select name="dob-month" id="dob-month" class="form-control" required>
                           <option value="">月</option>
                           <option value="">-----</option>
                           <option value="01" {{date("F", strtotime($friend->birthday)) == 'January'  ? 'selected' : ''}}>01</option>
@@ -1076,7 +1096,7 @@
                     </div>
                     <div class="col-sm-3 col-4">
                       <label class="form-label">&nbsp;</label>
-                        <select name="dob-day" id="dob-day" class="form-control">
+                        <select name="dob-day" id="dob-day" class="form-control" required>
                           <option value="">日</option>
                           <option value="">---</option>
                           <option value="01" {{date("d", strtotime($friend->birthday)) == '01'  ? 'selected' : ''}}>01</option>
@@ -1132,7 +1152,7 @@
 
 
                 <div class="form-check form-check-info text-start">
-                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                  <input class="form-check-input" type="checkbox" name="checkbox" value="checkbox" id="flexCheckDefault" checked required>
                   <label class="form-check-label" for="flexCheckDefault">
                     <a href="javascript:;" class="text-dark font-weight-bolder">個人情報の取り扱い</a>に同意します。
                   </label>
