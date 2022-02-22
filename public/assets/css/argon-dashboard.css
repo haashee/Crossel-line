@@ -9556,6 +9556,14 @@ fieldset:disabled .btn {
     margin-top: -16rem !important;
 }
 
+.mt-n13 {
+    margin-top: -18rem !important;
+}
+
+.mt-n14 {
+    margin-top: -20rem !important;
+}
+
 .me-n1 {
     margin-right: -0.25rem !important;
 }
@@ -37809,8 +37817,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .mem-content {
     display: none;
 }
+
+.mem-tab-btn {
+    color: darkgray; 
+}
+
 .mem-tab-btn.active {
     background: lightgray;
+    border: none;
 }
 .mem-content.active {
     display: block;
@@ -37894,4 +37908,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .mem-order-accordion .mem-order-container.active .mem-order-label::before {
     content: "←";
     font-size: 1rem;
+}
+
+.membership-card-height {
+    min-height: 350px;
 }
