@@ -397,7 +397,7 @@ Account
                 <!-- Card Basic Info -->
                 <div class="card mt-4" id="basic-info">
                     <div class="card-header">
-                        <h5>基本情報</h5>
+                        <h5>会員登録の設定</h5>
                     </div>
                     <div class="card-body pt-0">
                         <div class="row">
