@@ -406,9 +406,7 @@
               <p>hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque ratione magni aut, minus
                 similique, obcaecati eveniet, ducimus voluptatem laboriosam fuga inventore natus reiciendis sit itaque
                 eum voluptatum aperiam quidem aliquid!</p>
-              <p>
-                {{ $account->accountSetting->privacy_policy }}
-              </p>
+              <div class="mb-3">{!! DNS2D::getBarcodeHTML(url('/') . '/accounts/1/friends/{{ $friend->id }}', 'QRCODE') !!}</div>
             </div>
           </div>
         </div>
