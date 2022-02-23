@@ -41,6 +41,7 @@ class MembershipController extends Controller
         AccountSetting::updateOrCreate(['account_id' => $aid], [
             'privacy_policy' => $request->input('privacy-policy'),
             'privacy_url' => $request->input('privacy-url'),
+            'membership_background' => $request->input('color'),
         ]);
 
         Session::put('title', 'プライバシーポリシー更新完了');

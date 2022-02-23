@@ -428,46 +428,29 @@ Account
                                     <label class="form-label">プライバシーページURL</label>
                                     <div class="input-group">
                                         <input id="" name="privacy-url" class="form-control" type="text"
-                                            placeholder="http://www.meniu.io/privacy" value="">
+                                            placeholder="http://www.meniu.io/privacy" value="{{ $account->accountSetting->privacy_url }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-12">
                                     <label class="form-label mt-4">プライバシーポリシー本文</label>
-                                    <textarea class="form-control" name="privacy-policy" id="" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control" name="privacy-policy" id="" cols="30" rows="10">{{ $account->accountSetting->privacy_policy }}</textarea>
+                                </div>
+                            </div>
+
+                            <div class="row pt-4 pb-3">
+                                <div class="col-md-8 d-flex align-items-center">
+                                    <h6 class="mb-0">会員画面のカスタマイズ</h6>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-6">
-                                    <label class="form-label mt-4">郵便番号</label>
+                                    <label class="form-label">背景の色</label>
                                     <div class="input-group">
-                                        <input id="location" name="" class="form-control" type="text"
-                                            placeholder="Sydney, A" value="">
+                                        <input class="form-control" type="color" id="colorpicker" name="color" value="#ff9500">
                                     </div>
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label mt-4">電話番号</label>
-                                    <div class="input-group">
-                                        <input id="phone" name="" class="form-control" type="tel"
-                                            placeholder="090-1234-5678" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 align-self-center">
-                                    <label class="form-label mt-4">リッチメニュー</label>
-                                    <select class="form-control" name="choices-language" id="choices-language">
-                                        <option value="English">English</option>
-                                        <option value="French">French</option>
-                                        <option value="Spanish">Spanish</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label mt-4">タグ</label>
-                                    <input class="form-control" id="choices-skills" type="text"
-                                        value="vuejs, angular, react" placeholder="Enter something" />
                                 </div>
                             </div>
                             <div class="row">

@@ -91,8 +91,8 @@
                             <div class="col-md-10 mx-auto">
                                 <div class="mt-2">
                                     <h6>{{ $account->name }}の個人情報取り扱いについて</h6>
-                                    <p>
-                                        {{ $account->accountSetting->privacy_policy }}
+                                    <p style="white-space: pre-line; ">
+                                        {!! $account->accountSetting->privacy_policy !!}
                                     </p>
                                     <a href="{{ $account->accountSetting->privacy_url }}" class="btn bg-gradient-dark w-100 my-2">
                                         {{ $account->name }}の個人情報取扱について詳しく
