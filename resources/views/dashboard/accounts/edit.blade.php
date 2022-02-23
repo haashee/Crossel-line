@@ -403,76 +403,81 @@ Account
                 </div>
                 <!-- Card Basic Info -->
                 <div class="card mt-4" id="basic-info">
-                    <div class="card-header pb-2">
-                        <h5>会員登録の設定</h5>
-                    </div>
+                    <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="card-header pb-2">
+                            <h5>会員登録の設定</h5>
+                        </div>
 
-                    <div class="row pt-0 pb-3 px-4">
-                        <div class="col-md-8 d-flex align-items-center">
-                            <h6 class="mb-0">個人情報取扱についてページ</h6>
+                        <div class="row pt-0 pb-3 px-4">
+                            <div class="col-md-8 d-flex align-items-center">
+                                <h6 class="mb-0">個人情報取扱についてページ</h6>
+                            </div>
+                            {{-- <div class="col-md-4 text-end">
+                                <a class="edit-token" href="javascript:;">
+                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                        data-bs-placement="left" title="アクセストークンを編集"></i>
+                                </a>
+                            </div> --}}
                         </div>
-                        {{-- <div class="col-md-4 text-end">
-                            <a class="edit-token" href="javascript:;">
-                                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                    data-bs-placement="left" title="アクセストークンを編集"></i>
-                            </a>
-                        </div> --}}
-                    </div>
-                        
-                    <div class="card-body pt-0">
-                        <div class="row">
-                            <div class="col-sm-12 col-12">
-                                <label class="form-label">プライバシーページURL</label>
-                                <div class="input-group">
-                                    <input id="firstName" name="" class="form-control" type="text" placeholder="http://www.meniu.io/privacy"
-                                        value="">
+
+                        <div class="card-body pt-0">
+                            <div class="row">
+                                <div class="col-sm-12 col-12">
+                                    <label class="form-label">プライバシーページURL</label>
+                                    <div class="input-group">
+                                        <input id="firstName" name="" class="form-control" type="text"
+                                            placeholder="http://www.meniu.io/privacy" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-12">
+                                    <label class="form-label mt-4">プライバシーポリシー本文</label>
+                                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6">
+                                    <label class="form-label mt-4">郵便番号</label>
+                                    <div class="input-group">
+                                        <input id="location" name="postcode" class="form-control" type="text"
+                                            placeholder="Sydney, A" value="">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <label class="form-label mt-4">電話番号</label>
+                                    <div class="input-group">
+                                        <input id="phone" name="phone" class="form-control" type="tel"
+                                            placeholder="090-1234-5678" value="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <label class="form-label mt-4">リッチメニュー</label>
+                                    <select class="form-control" name="choices-language" id="choices-language">
+                                        <option value="English">English</option>
+                                        <option value="French">French</option>
+                                        <option value="Spanish">Spanish</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label mt-4">タグ</label>
+                                    <input class="form-control" id="choices-skills" type="text"
+                                        value="vuejs, angular, react" placeholder="Enter something" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="button-row d-flex mt-4 col-12">
+                                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                        title="Send">保存</button>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-12 col-12">
-                                <label class="form-label mt-4">プライバシーポリシー本文</label>
-                                <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="col-6">
-                                <label class="form-label mt-4">郵便番号</label>
-                                <div class="input-group">
-                                    <input id="location" name="postcode" class="form-control" type="text"
-                                        placeholder="Sydney, A" value="">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <label class="form-label mt-4">電話番号</label>
-                                <div class="input-group">
-                                    <input id="phone" name="phone" class="form-control" type="tel"
-                                        placeholder="090-1234-5678" value="">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <label class="form-label mt-4">リッチメニュー</label>
-                                <select class="form-control" name="choices-language" id="choices-language">
-                                    <option value="English">English</option>
-                                    <option value="French">French</option>
-                                    <option value="Spanish">Spanish</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label mt-4">タグ</label>
-                                <input class="form-control" id="choices-skills" type="text"
-                                    value="vuejs, angular, react" placeholder="Enter something" />
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="button-row d-flex mt-4 col-12">
-                                <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
-                            </div>
-                        </div>
-                    </div>
+                    </form>
                 </div>
                 <!-- Card Notifications -->
                 <div class="card mt-4" id="notifications">
