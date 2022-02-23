@@ -449,7 +449,7 @@ Account
                                 <div class="col-6">
                                     <label class="form-label">背景の色</label>
                                     <div class="input-group">
-                                        <input class="form-control" type="color" id="colorpicker" name="color" value="#ff9500">
+                                        <input class="form-control" type="color" id="colorpicker" name="color" value="{{ $account->accountSetting->membership_background }}">
                                     </div>
                                 </div>
                             </div>
