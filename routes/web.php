@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LineUserController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\MembershipController;
 
 
 /*
@@ -44,8 +45,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // friends routes
 Route::get('accounts/{aid}/friends', [LineUserController::class, 'index'])->name('friends.index');
 Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
-Route::get('accounts/{aid}/membership/privacy', [LineUserController::class, 'privacy'])->name('membership.privacy');
-Route::get('accounts/{aid}/membership/{id}', [LineUserController::class, 'membership'])->name('membership');
+
+// membership routes
+Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'privacy'])->name('membership.privacy');
+Route::get('accounts/{aid}/membership/{id}', [MembershipController::class, 'membership'])->name('membership');
 
 // chat routes
 Route::get('accounts/{aid}/chat', [ChatController::class, 'index'])->name('chat.index');
