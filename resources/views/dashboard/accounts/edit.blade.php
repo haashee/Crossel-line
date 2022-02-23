@@ -414,12 +414,12 @@ Account
                             <div class="col-md-8 d-flex align-items-center">
                                 <h6 class="mb-0">個人情報取扱についてページ</h6>
                             </div>
-                            {{-- <div class="col-md-4 text-end">
-                                <a class="edit-token" href="javascript:;">
+                            <div class="col-md-4 text-end">
+                                <a class="edit-member" href="javascript:;">
                                     <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="アクセストークンを編集"></i>
+                                        data-bs-placement="left" title="プライバシーポリシーを編集"></i>
                                 </a>
-                            </div> --}}
+                            </div>
                         </div>
 
                         <div class="card-body pt-0">
@@ -427,15 +427,19 @@ Account
                                 <div class="col-sm-12 col-12">
                                     <label class="form-label">プライバシーページURL</label>
                                     <div class="input-group">
-                                        <input id="" name="privacy-url" class="form-control" type="text"
-                                            placeholder="http://www.meniu.io/privacy" value="{{ $account->accountSetting->privacy_url }}">
+                                        <input id="" name="privacy-url" class="form-control edit-member-show" type="text"
+                                            placeholder="http://www.meniu.io/privacy" 
+                                            value="{{ $account->accountSetting->privacy_url }}"
+                                            readonly="readonly">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-12">
                                     <label class="form-label mt-4">プライバシーポリシー本文</label>
-                                    <textarea class="form-control" name="privacy-policy" id="" cols="30" rows="10">{{ $account->accountSetting->privacy_policy }}</textarea>
+                                    <textarea class="form-control edit-member-show" name="privacy-policy" id="" cols="30" rows="10" readonly="readonly">
+                                        {{ $account->accountSetting->privacy_policy }}
+                                    </textarea>
                                 </div>
                             </div>
 
@@ -773,6 +777,14 @@ Account
     editLiffBtn.addEventListener('click', event => {
         for (var i = 0; i < editLiff.length; i++) {
             editLiff[i].toggleAttribute("readonly");
+        }
+    });
+
+    let editMemBtn = document.querySelector('.edit-member');
+    let editMem = document.querySelectorAll('.edit-member-show');
+    editMemBtn.addEventListener('click', event => {
+        for (var i = 0; i < editMem.length; i++) {
+            editMem[i].toggleAttribute("readonly");
         }
     });
 
