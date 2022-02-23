@@ -288,7 +288,7 @@ Account
                     <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
-                        <div class="card-headerp-3 p-0 pb-3">
+                        <div class="card-header p-0 pb-3">
                             <div class="row">
                                 <div class="col-md-8 d-flex align-items-center">
                                     <h5 class="mb-0">アカウント設定</h5>
@@ -403,38 +403,39 @@ Account
                 </div>
                 <!-- Card Basic Info -->
                 <div class="card mt-4" id="basic-info">
-                    <div class="card-header">
+                    <div class="card-header pb-2">
                         <h5>会員登録の設定</h5>
                     </div>
+
+                    <div class="row pt-0 pb-3 px-4">
+                        <div class="col-md-8 d-flex align-items-center">
+                            <h6 class="mb-0">個人情報取扱についてページ</h6>
+                        </div>
+                        {{-- <div class="col-md-4 text-end">
+                            <a class="edit-token" href="javascript:;">
+                                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                    data-bs-placement="left" title="アクセストークンを編集"></i>
+                            </a>
+                        </div> --}}
+                    </div>
+                        
                     <div class="card-body pt-0">
                         <div class="row">
-                            <div class="col-6">
-                                <label class="form-label">ユーザー名</label>
+                            <div class="col-sm-12 col-12">
+                                <label class="form-label">プライバシーページURL</label>
                                 <div class="input-group">
-                                    <input id="firstName" name="" class="form-control" type="text" placeholder="ユーザー名"
+                                    <input id="firstName" name="" class="form-control" type="text" placeholder="http://www.meniu.io/privacy"
                                         value="">
                                 </div>
                             </div>
-                            <div class="col-6">
-                                <label class="form-label">メールアドレス</label>
-                                <div class="input-group">
-                                    <input id="email" name="email" class="form-control" type="email"
-                                        placeholder="example@email.com" value="">
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 col-6">
-                                <label class="form-label mt-4">性別</label>
-                                <select class="form-control" name="gender" id="choices-gender">
-                                    <option value="male">男性</option>
-                                    <option value="female">女性
-                                    </option>
-                                </select>
+                            <div class="col-sm-12 col-12">
+                                <label class="form-label mt-4">プライバシーポリシー本文</label>
+                                <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
                             </div>
-
-
                         </div>
+                        
                         <div class="row">
                             <div class="col-6">
                                 <label class="form-label mt-4">郵便番号</label>
