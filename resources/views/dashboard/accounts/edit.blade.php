@@ -403,9 +403,9 @@ Account
                 </div>
                 <!-- Card Basic Info -->
                 <div class="card mt-4" id="basic-info">
-                    <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{  route('membership.privacy.update', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('PUT')
+
                         <div class="card-header pb-2">
                             <h5>会員登録の設定</h5>
                         </div>
@@ -427,7 +427,7 @@ Account
                                 <div class="col-sm-12 col-12">
                                     <label class="form-label">プライバシーページURL</label>
                                     <div class="input-group">
-                                        <input id="firstName" name="" class="form-control" type="text"
+                                        <input id="" name="privacy-url" class="form-control" type="text"
                                             placeholder="http://www.meniu.io/privacy" value="">
                                     </div>
                                 </div>
@@ -435,7 +435,7 @@ Account
                             <div class="row">
                                 <div class="col-sm-12 col-12">
                                     <label class="form-label mt-4">プライバシーポリシー本文</label>
-                                    <textarea class="form-control" name="" id="" cols="30" rows="10"></textarea>
+                                    <textarea class="form-control" name="privacy-policy" id="" cols="30" rows="10"></textarea>
                                 </div>
                             </div>
 
@@ -443,14 +443,14 @@ Account
                                 <div class="col-6">
                                     <label class="form-label mt-4">郵便番号</label>
                                     <div class="input-group">
-                                        <input id="location" name="postcode" class="form-control" type="text"
+                                        <input id="location" name="" class="form-control" type="text"
                                             placeholder="Sydney, A" value="">
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <label class="form-label mt-4">電話番号</label>
                                     <div class="input-group">
-                                        <input id="phone" name="phone" class="form-control" type="tel"
+                                        <input id="phone" name="" class="form-control" type="tel"
                                             placeholder="090-1234-5678" value="">
                                     </div>
                                 </div>

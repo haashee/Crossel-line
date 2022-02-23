@@ -48,6 +48,7 @@ Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' =
 
 // membership routes
 Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'privacy'])->name('membership.privacy');
+Route::post('accounts/{aid}/membership/privacy/update', [MembershipController::class, 'updatePrivacy'])->name('membership.privacy.update');
 Route::get('accounts/{aid}/membership/{id}', [MembershipController::class, 'membership'])->name('membership');
 
 // chat routes
