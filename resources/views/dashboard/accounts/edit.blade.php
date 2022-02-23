@@ -293,12 +293,19 @@ Account
                                 <div class="col-md-8 d-flex align-items-center">
                                     <h5 class="mb-0">アカウント設定</h5>
                                 </div>
-                                <div class="col-md-4 text-end">
-                                    <a class="edit-token" href="javascript:;">
-                                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="アクセストークンを編集"></i>
-                                    </a>
-                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="row pt-2 pb-3">
+                            <div class="col-md-8 d-flex align-items-center">
+                                <h6 class="mb-0">基本設定</h6>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <a class="edit-token" href="javascript:;">
+                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                        data-bs-placement="left" title="アクセストークンを編集"></i>
+                                </a>
                             </div>
                         </div>
 
