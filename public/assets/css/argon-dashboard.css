@@ -37929,3 +37929,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .id-container p {
     margin-left: 20px;
 }
+
+/* rich menu */
+.richmenu{
+    height: 540px;
+    background: lightgrey;
+}

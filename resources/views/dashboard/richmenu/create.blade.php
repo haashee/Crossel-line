@@ -72,44 +72,30 @@ Account
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
-                                                <label>Name</label>
-                                                <input class="multisteps-form__input form-control" type="text"
-                                                    placeholder="eg. Off-White" />
-                                            </div>
-                                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                <label>Weight</label>
-                                                <input class="multisteps-form__input form-control" type="text"
-                                                    placeholder="eg. 42" />
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <label class="mt-4">Description</label>
-                                                <p class="form-text text-muted text-xs ms-1 d-inline">
-                                                    (optional)
-                                                </p>
-                                                <div id="edit-deschiption" class="h-50">
-                                                    <p>Some initial <strong>bold</strong> text</p>
+                                                <div class="card card-body richmenu">
+                                                    <div class="rich-top">
+                                                        <p>hello</p>
+                                                    </div>
+                                                    <div class="rich-main">
+                                                        <p>小さいリッチメニュー</p>
+                                                    </div>
+                                                    <div class="rich-bottom">
+                                                        display label
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-sm-6 mt-sm-0 mt-4">
-                                                <label class="mt-4">Category</label>
-                                                <select class="form-control" name="choices-category"
-                                                    id="choices-category">
-                                                    <option value="Choice 1" selected="">Clothing</option>
-                                                    <option value="Choice 2">Real Estate</option>
-                                                    <option value="Choice 3">Electronics</option>
-                                                    <option value="Choice 4">Furniture</option>
-                                                    <option value="Choice 5">Others</option>
-                                                </select>
-                                                <label>Sizes</label>
-                                                <select class="form-control" name="choices-sizes" id="choices-sizes">
-                                                    <option value="Choice 1" selected="">Medium</option>
-                                                    <option value="Choice 2">Small</option>
-                                                    <option value="Choice 3">Large</option>
-                                                    <option value="Choice 4">Extra Large</option>
-                                                    <option value="Choice 5">Extra Small</option>
-                                                </select>
+                                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                <label>Name</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="eg. 42" />
+                                                <label>Display label</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="eg. 42" />
+                                                <label>Size</label> <br>
+                                                <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big">
+                                                <label for="big">Big</label><br>
+                                                <input type="radio" id="small" name="richmenu_size" class="multisteps-form__input" value="small">
+                                                <label for="small">Small</label><br>
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
@@ -244,25 +230,6 @@ Account
 <script src="../../../assets/js/plugins/quill.min.js"></script>
 <script src="../../../assets/js/plugins/multistep-form.js"></script>
 <script>
-        if (document.getElementById('edit-deschiption')) {
-        var quill = new Quill('#edit-deschiption', {
-            theme: 'snow' // Specify theme in configuration
-        });
-        };
-
-        if (document.getElementById('choices-category')) {
-        var element = document.getElementById('choices-category');
-        const example = new Choices(element, {
-            searchEnabled: false
-        });
-        };
-
-        if (document.getElementById('choices-sizes')) {
-        var element = document.getElementById('choices-sizes');
-        const example = new Choices(element, {
-            searchEnabled: false
-        });
-        };
 
         if (document.getElementById('choices-currency')) {
         var element = document.getElementById('choices-currency');
