@@ -74,14 +74,24 @@ Account
                                             <div class="col-12 col-sm-6">
                                                 <div class="card richmenu">
                                                     <div class="rich-top">
-                                                        <p>hello</p>
+                                                        <div class="row">
+                                                            <p>hello</p>
+                                                        </div>
                                                     </div>
                                                     <div class="rich-bottom">
                                                         <div class="rich-display">
-                                                            <p>小さいリッチメニュー</p>
+                                                            {{-- <p>小さいリッチメニュー</p> --}}
+                                                            <div class="row g-0">
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                         <div class="rich-label">
-                                                            <p>display label</p>
+                                                            <p>display label &#x25BC;</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -212,9 +222,6 @@ Account
                 </div>
             </div>
         </div>
-        <!-- Footer -->
-        @include('includes.footer')
-        <!-- End Footer -->
     </div>
 
 </div>
