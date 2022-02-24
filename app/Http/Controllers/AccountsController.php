@@ -70,7 +70,6 @@ class AccountsController extends Controller
             'user_id' => auth()->user()->id,
         ]);
 
-        // dd($newAccount->id);
         AccountSetting::create([
             'account_id' => $newAccount->id,
             'privacy_url' => 'プライバシーURLが登録されていません。',

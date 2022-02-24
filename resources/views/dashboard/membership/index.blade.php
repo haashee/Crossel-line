@@ -99,15 +99,21 @@
                 @method('PUT')
                 <input id="firstName" name="name" class="form-control" type="hidden" placeholder="ユーザー名" value="{{ $friend->name }}">
                 <div class="mb-3">
-                  <label class="form-label">メールアドレス</label>
+                  <label class="form-label">メールアドレス（必須）</label>
                   <div class="input-group">
                     <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ $friend->email }}" required>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">電話番号（任意）</label>
+                  <div class="input-group">
+                    <input id="phone" name="phone" class="form-control" type="tel" placeholder="090-9999-8888" value="{{ $friend->phone }}">
                   </div>
                 </div>
                 <div class="col-sm-8 mb-3">
                   <div class="row">
                     <div class="col-sm-5 col-5">
-                      <label class="form-label">お誕生日</label>
+                      <label class="form-label">お誕生日（必須）</label>
                         <select name="dob-year" id="dob-year" class="form-control" required>
                           <option value="">年</option>
                           <option value="">----</option>
@@ -290,14 +296,14 @@
                 </div>
                 <div class="row mb-3">
                   <div class="col-6">
-                  <label class="form-label">性別</label>
+                  <label class="form-label">性別（任意）</label>
                   <select class="form-control" name="gender" id="choices-gender" >
                     <option value="male" {{$friend->gender == 'male'  ? 'selected' : ''}}>男性</option>
                     <option value="female" {{$friend->gender == 'female'  ? 'selected' : ''}}>女性</option>
                   </select>
                   </div>
                   <div class="col-6">
-                    <label class="form-label">郵便番号</label>
+                    <label class="form-label">郵便番号（任意）</label>
                     <div class="input-group">
                       <input id="location" name="postcode" class="form-control" type="text" placeholder="000-0000" value="{{ $friend->postcode }}">
                     </div>
@@ -403,14 +409,18 @@
                 </div>
             </div>
             <div class="mem-content card-body" id="card">
-              <div class="qrcode-container">
-                <div class="qrcocde">{!! DNS2D::getBarcodeHTML(url('/') . '/accounts/1/friends/{{ $friend->id }}', 'QRCODE',5,5) !!}</div>
-              </div>
-              <p class="text-center mt-2">この画面をご提示ください</p>
-              <div class="id-container ">                
-                <p>会員番号 : <br> {{ $account->name }}-00{{ $friend->id}}</p>
-                <p>識別番号 : <br> {{ $friend->line_id}}</p>
-              </div>
+              @if ($friend->email)
+                <div class="qrcode-container">
+                  <div class="qrcocde">{!! DNS2D::getBarcodeHTML(url('/') . '/accounts/1/friends/{{ $friend->id }}', 'QRCODE',5,5) !!}</div>
+                </div>
+                <p class="text-center mt-2">この画面をご提示ください</p>
+                <div class="id-container ">                
+                  <p>会員番号 : <br> {{ $account->name }}-00{{ $friend->id}}</p>
+                  <p>識別番号 : <br> {{ $friend->line_id}}</p>
+                </div>
+              @else
+                <p class="text-center mt-2">会員登録がされてません。<br> 登録後、会員画面が表示されます。</p>
+              @endif
             </div>
           </div>
         </div>
