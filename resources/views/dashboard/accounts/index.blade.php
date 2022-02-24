@@ -83,16 +83,16 @@
                                     <hr class="horizontal dark">
                                     <div class="row">
                                     <div class="col-4">
-                                        <h6 class="text-sm mb-0">5</h6>
                                         <p class="text-secondary text-sm font-weight-bold mb-0">友だち数</p>
+                                        <h6 class="text-xs mb-0">{{ $account->chats->count() }}</h6>
                                     </div>
                                     <div class="col-4">
-                                        <h6 class="text-sm mb-0">{{ $account->user->name }}</h6>
-                                        <p class="text-secondary text-sm font-weight-bold mb-0">ユーザー名</p>
+                                        <p class="text-secondary text-sm font-weight-bold mb-0 text-center">オーダー数</p>
+                                        <h6 class="text-xs mb-0 text-center">326</h6>
                                     </div>
                                     <div class="col-4 text-end">
-                                        <h6 class="text-sm mb-0">{{ date('Y/m/d', strtotime($account->updated_at)) }}</h6>
                                         <p class="text-secondary text-sm font-weight-bold mb-0">登録日</p>
+                                        <h6 class="text-xs mb-0">{{ date('Y/m/d', strtotime($account->updated_at)) }}</h6>
                                     </div>
                                     </div>
                                 </div>
