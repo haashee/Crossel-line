@@ -15,8 +15,12 @@ class CreateRichMenusTable extends Migration
     {
         Schema::create('rich_menus', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name')->nullable();
             $table->string('width')->nullable();
             $table->string('height')->nullable();
+            $table->string('image')->nullable();
+            $table->string('display_text')->nullable();
+            $table->string('richmenu_id')->nullable();
             $table->timestamps();
         });
     }
