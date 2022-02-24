@@ -32,7 +32,7 @@ Account
                 <div class="toast-header border-0">
                     <i class="ni ni-notification-70 text-danger me-2"></i>
                     <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
-                    <small class="text-body">0 mins ago</small>
+                    {{-- <small class="text-body">0 mins ago</small> --}}
                     <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
                 </div>
                 <hr class="horizontal dark m-0">

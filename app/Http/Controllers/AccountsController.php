@@ -116,8 +116,12 @@ class AccountsController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'name' => 'required',
             'channel_secret' => 'required',
             'access_token' => 'required',
+            'liff_full' => 'required',
+            'liff_tall' => 'required',
+            'liff_compact' => 'required',
             'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
