@@ -26,8 +26,8 @@ class ChatController extends Controller
 
         $friend = LineUser::where('account_id', $aid)->first();
 
-        $chat = $account->chats()->get();
-        $chatList = $chat->sortByDesc('created_at')->unique('lineuser_id');
+        $chatAccount = $account->chats()->get();
+        $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id');
 
         return view('dashboard.chat.index', [
             'friend' => $friend,
@@ -111,9 +111,8 @@ class ChatController extends Controller
 
         $friendList = LineUser::where('account_id', $aid)->get();
 
-        // $chatList = Chat::all()->unique('lineuser_id');
-        $chatList = Chat::all()->sortByDesc('created_at')->unique('lineuser_id');
-
+        $chatAccount = $account->chats()->get();
+        $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id');
 
         $chats = Chat::where('lineuser_id', $id)->get();
 

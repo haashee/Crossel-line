@@ -31,7 +31,7 @@ class Account extends Model
         return $this->hasManyThrough(
             Chat::class,
             LineUser::class,
-            'id',
+            'account_id',
             'lineuser_id'
         );
     }
