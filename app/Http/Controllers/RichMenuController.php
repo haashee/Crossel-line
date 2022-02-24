@@ -19,7 +19,7 @@ class RichMenuController extends Controller
     {
         $account = Account::where('id', $aid)->first();
 
-        return view('dashboard.accounts.richmenu', [
+        return view('dashboard.richmenu.index', [
             'account' => $account,
         ]);
     }
@@ -29,9 +29,13 @@ class RichMenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($aid)
     {
-        //
+        $account = Account::where('id', $aid)->first();
+
+        return view('dashboard.richmenu.create', [
+            'account' => $account,
+        ]);
     }
 
     /**
