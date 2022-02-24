@@ -47,8 +47,8 @@ Route::get('accounts/{aid}/friends', [LineUserController::class, 'index'])->name
 Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
 
 // rich menu routes
-Route::get('accounts/{aid}/richmenus', [RichMenuController::class, 'index'])->name('richmenus.index');
-Route::resource('accounts/{aid}/richmenus', RichMenuController::class, ['except' => ['index']]);
+Route::get('accounts/{aid}/richmenu', [RichMenuController::class, 'index'])->name('richmenu.index');
+Route::resource('accounts/{aid}/richmenu', RichMenuController::class, ['except' => ['index']]);
 
 // membership routes
 Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'privacy'])->name('membership.privacy');
