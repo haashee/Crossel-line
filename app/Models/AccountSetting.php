@@ -9,5 +9,5 @@ class AccountSetting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['privacy_url', 'privacy_policy', 'membership_background'];
+    protected $fillable = ['privacy_url', 'privacy_policy', 'membership_background', 'account_id'];
 }

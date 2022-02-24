@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\AccountSetting;
 use App\Models\LineUser;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
@@ -58,7 +59,7 @@ class AccountsController extends Controller
         ]);
 
 
-        Account::create([
+        $newAccount = Account::create([
             'name' => $request->input('name'),
             'channel_secret' => $request->input('channel_secret'),
             'access_token' => $request->input('access_token'),
@@ -67,6 +68,14 @@ class AccountsController extends Controller
             'liff_compact' => $request->input('liff_compact'),
             'image' => 'default_profilepicture.png',
             'user_id' => auth()->user()->id,
+        ]);
+
+        // dd($newAccount->id);
+        AccountSetting::create([
+            'account_id' => $newAccount->id,
+            'privacy_url' => 'プライバシーURLが登録されていません。',
+            'privacy_policy' => 'プライバシー方針が登録されていません。',
+            'membership_background' => '#5a9ae4',
         ]);
 
         Session::put('title', 'アカウント作成完了');
