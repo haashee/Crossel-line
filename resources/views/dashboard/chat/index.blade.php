@@ -50,9 +50,8 @@ Account
                     </div>
                     <div class="card-body p-3">
                         <ul class="list-group">
-                            @foreach ($chatList as $chat)
+                            @forelse ($chatList as $chat)
                                 @if ($chat->lineuser_id)
-                                    
                                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                     <div class="avatar avatar-xs me-3">
                                         <img src="{{ asset('uploads/profile-pic/' . $friend->image) }}" alt="kal"
@@ -70,8 +69,12 @@ Account
                                     </div>
                                     <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="{{  route('chat.show', ['aid' => $account->id, 'chat' => $chat->lineuser_id])  }}">Reply</a>
                                 </li>
+                                @else
+                                <p class="mb-0 text-xs">最新のチャットがありません。</p>
                                 @endif
-                            @endforeach
+                            @empty
+                            <p class="mb-0 text-xs">最新のチャットがありません。</p>
+                            @endforelse
                             <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                 <div class="avatar me-3">
                                     <img src="../../../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">

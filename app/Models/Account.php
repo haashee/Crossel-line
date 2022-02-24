@@ -25,4 +25,14 @@ class Account extends Model
     {
         return $this->hasOne(AccountSetting::class, 'account_id', 'id');
     }
+
+    public function chats()
+    {
+        return $this->hasManyThrough(
+            Chat::class,
+            LineUser::class,
+            'id',
+            'lineuser_id'
+        );
+    }
 }

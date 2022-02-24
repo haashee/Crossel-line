@@ -3,7 +3,7 @@
         <div class="row gx-4">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="{{ asset('assets/img/team-1.jpg') }}" alt="profile_image"
+                    <img src="{{ (Route::currentRouteName() == 'accounts.index') ? asset('assets/img/team-1.jpg') : asset('uploads/profile-pic/' . $account->image) }}" alt="profile_image"
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
