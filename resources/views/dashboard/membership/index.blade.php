@@ -101,7 +101,7 @@
                 <div class="mb-3">
                   <label class="form-label">メールアドレス（必須）</label>
                   <div class="input-group">
-                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ $friend->email }}" required>
+                    <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ $friend->email }}" oninvalid="this.setCustomValidity('こちらは必須項目です。')" required>
                   </div>
                 </div>
                 <div class="mb-3">
@@ -114,9 +114,8 @@
                   <div class="row">
                     <div class="col-sm-5 col-5">
                       <label class="form-label">お誕生日（必須）</label>
-                        <select name="dob-year" id="dob-year" class="form-control" required>
+                        <select name="dob-year" id="dob-year" class="form-control" oninvalid="this.setCustomValidity('こちらは必須項目です。')" required>
                           <option value="">年</option>
-                          <option value="">----</option>
                           <option value="2015" {{date("Y", strtotime($friend->birthday)) == '2015'  ? 'selected' : ''}}>2015</option>
                           <option value="2014" {{date("Y", strtotime($friend->birthday)) == '2014'  ? 'selected' : ''}}>2014</option>
                           <option value="2013" {{date("Y", strtotime($friend->birthday)) == '2013'  ? 'selected' : ''}}>2013</option>
@@ -237,9 +236,8 @@
                     </div>
                     <div class="col-sm-4 col-3">
                       <label class="form-label">&nbsp;</label>
-                        <select name="dob-month" id="dob-month" class="form-control" required>
+                        <select name="dob-month" id="dob-month" class="form-control" oninvalid="this.setCustomValidity('こちらは必須項目です。')" required>
                           <option value="">月</option>
-                          <option value="">-----</option>
                           <option value="01" {{date("F", strtotime($friend->birthday)) == 'January'  ? 'selected' : ''}}>01</option>
                           <option value="02" {{date("F", strtotime($friend->birthday)) == 'February'  ? 'selected' : ''}}>02</option>
                           <option value="03" {{date("F", strtotime($friend->birthday)) == 'March'  ? 'selected' : ''}}>03</option>
@@ -256,9 +254,8 @@
                     </div>
                     <div class="col-sm-3 col-4">
                       <label class="form-label">&nbsp;</label>
-                        <select name="dob-day" id="dob-day" class="form-control" required>
+                        <select name="dob-day" id="dob-day" class="form-control" oninvalid="this.setCustomValidity('こちらは必須項目です。')" required>
                           <option value="">日</option>
-                          <option value="">---</option>
                           <option value="01" {{date("d", strtotime($friend->birthday)) == '01'  ? 'selected' : ''}}>01</option>
                           <option value="02" {{date("d", strtotime($friend->birthday)) == '02'  ? 'selected' : ''}}>02</option>
                           <option value="03" {{date("d", strtotime($friend->birthday)) == '03'  ? 'selected' : ''}}>03</option>
