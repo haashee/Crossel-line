@@ -89,15 +89,26 @@
 
                         <div class="mem-content card-body pt-0 active" id="orders">
                             <div class="col-md-10 mx-auto">
-                                <div class="mt-2">
-                                    <h6>{{ $account->name }}の個人情報取り扱いについて</h6>
-                                    <p style="white-space: pre-line; ">
-                                        {!! $account->accountSetting->privacy_policy !!}
-                                    </p>
-                                    <a href="{{ $account->accountSetting->privacy_url }}" class="btn bg-gradient-dark w-100 my-2">
-                                        {{ $account->name }}の個人情報取扱について詳しく
-                                    </a>
-                                </div>
+
+                                @if($account->accountSetting->privacy_policy)
+                                    <div class="mt-2">
+                                        <h6>{{ $account->name }}の個人情報取り扱いについて</h6>
+                                        <p style="white-space: pre-line; ">
+                                            {!! $account->accountSetting->privacy_policy !!}
+                                        </p>
+                                        <a href="{{ $account->accountSetting->privacy_url }}" class="btn bg-gradient-dark w-100 my-2">
+                                            {{ $account->name }}の個人情報取扱について詳しく
+                                        </a>
+                                    </div>
+                                @else
+                                    <div class="mt-2">
+                                        <h6>{{ $account->name }}の個人情報取り扱いについて</h6>
+                                        <p style="white-space: pre-line; ">
+                                            {{ $account->name }}の個人情報方針が登録されていません。
+                                        </p>
+                                    </div>
+                                @endif
+
                                 <div class="mt-3">
                                     <h6>Meniuの個人情報取り扱いについて</h6>
                                     <p>

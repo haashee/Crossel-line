@@ -34,8 +34,8 @@ class MembershipController extends Controller
     public function updatePrivacy(Request $request, $aid)
     {
         $request->validate([
-            'privacy-url' => 'required',
-            'privacy-policy' => 'required',
+            // 'privacy-url' => 'required',
+            // 'privacy-policy' => 'required',
         ]);
 
         AccountSetting::updateOrCreate(['account_id' => $aid], [
