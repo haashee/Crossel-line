@@ -93,9 +93,7 @@
                                 @if($account->accountSetting->privacy_policy)
                                     <div class="mt-2">
                                         <h6>{{ $account->name }}の個人情報取り扱いについて</h6>
-                                        <p style="white-space: pre-line; ">
-                                            {!! $account->accountSetting->privacy_policy !!}
-                                        </p>
+                                        <p style="white-space: pre-line; ">{!! $account->accountSetting->privacy_policy !!}</p>
                                         <a href="{{ $account->accountSetting->privacy_url }}" class="btn bg-gradient-dark w-100 my-2">
                                             {{ $account->name }}の個人情報取扱について詳しく
                                         </a>
@@ -103,9 +101,7 @@
                                 @else
                                     <div class="mt-2">
                                         <h6>{{ $account->name }}の個人情報取り扱いについて</h6>
-                                        <p style="white-space: pre-line; ">
-                                            {{ $account->name }}の個人情報方針が登録されていません。
-                                        </p>
+                                        <p style="white-space: pre-line; ">{{ $account->name }}の個人情報方針が登録されていません。</p>
                                     </div>
                                 @endif
 

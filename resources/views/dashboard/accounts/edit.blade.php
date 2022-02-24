@@ -437,9 +437,7 @@ Account
                             <div class="row">
                                 <div class="col-sm-12 col-12">
                                     <label class="form-label mt-4">プライバシーポリシー本文</label>
-                                    <textarea class="form-control edit-member-show" name="privacy-policy" id="" cols="30" rows="10" readonly="readonly">
-                                        {{ $account->accountSetting->privacy_policy }}
-                                    </textarea>
+                                    <textarea class="form-control edit-member-show" name="privacy-policy" id="" cols="30" rows="10" readonly="readonly">{{ $account->accountSetting->privacy_policy }}</textarea>
                                 </div>
                             </div>
 
