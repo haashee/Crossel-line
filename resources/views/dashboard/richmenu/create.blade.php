@@ -72,15 +72,17 @@ Account
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
-                                                <div class="card card-body richmenu">
+                                                <div class="card richmenu">
                                                     <div class="rich-top">
                                                         <p>hello</p>
                                                     </div>
-                                                    <div class="rich-main">
-                                                        <p>小さいリッチメニュー</p>
-                                                    </div>
                                                     <div class="rich-bottom">
-                                                        display label
+                                                        <div class="rich-display">
+                                                            <p>小さいリッチメニュー</p>
+                                                        </div>
+                                                        <div class="rich-label">
+                                                            <p>display label</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

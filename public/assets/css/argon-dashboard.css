@@ -37931,7 +37931,29 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 /* rich menu */
-.richmenu{
+.richmenu {
     height: 540px;
-    background: lightgrey;
+    background: #d4dce4;
+    position: relative;
+}
+
+.rich-top {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.rich-bottom {
+    position: absolute;
+    background: #35455d;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.rich-display {
+    background: #8bcfad;
+    height: 50%;
 }
