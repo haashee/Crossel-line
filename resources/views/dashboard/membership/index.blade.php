@@ -403,10 +403,14 @@
                 </div>
             </div>
             <div class="mem-content card-body" id="card">
-              <p>hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque ratione magni aut, minus
-                similique, obcaecati eveniet, ducimus voluptatem laboriosam fuga inventore natus reiciendis sit itaque
-                eum voluptatum aperiam quidem aliquid!</p>
-              <div class="mb-3">{!! DNS2D::getBarcodeHTML(url('/') . '/accounts/1/friends/{{ $friend->id }}', 'QRCODE') !!}</div>
+              <div class="qrcode-container">
+                <div class="qrcocde">{!! DNS2D::getBarcodeHTML(url('/') . '/accounts/1/friends/{{ $friend->id }}', 'QRCODE',5,5) !!}</div>
+              </div>
+              <p class="text-center mt-2">この画面をご提示ください</p>
+              <div class="id-container ">                
+                <p>会員番号 : <br> {{ $account->name }}-00{{ $friend->id}}</p>
+                <p>識別番号 : <br> {{ $friend->line_id}}</p>
+              </div>
             </div>
           </div>
         </div>

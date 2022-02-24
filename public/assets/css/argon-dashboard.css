@@ -37819,7 +37819,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 .mem-tab-btn {
-    color: darkgray; 
+    color: darkgray;
 }
 
 .mem-tab-btn.active {
@@ -37912,4 +37912,20 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 .membership-card-height {
     min-height: 350px;
+}
+
+/* qr code */
+.qrcode-container {
+    margin: 25px;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* id container */
+.id-container {
+    margin-top: 2rem;
+    padding: 0 10px;
+}
+.id-container p {
+    margin-left: 20px;
 }
