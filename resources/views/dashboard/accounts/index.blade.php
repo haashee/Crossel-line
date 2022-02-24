@@ -63,7 +63,7 @@
                                             style="object-fit: cover;height: 100%;width: 100%;">
                                     </div>
                                     <div class="ms-3 my-auto">
-                                        <h6>{{ $account->name }}</h6>
+                                        <a class="" href="{{ route('chat.index', ['aid' => $account->id]) }}"><h6>{{ $account->name }}</h6></a>
                                     </div>
                                     <div class="ms-auto">
                                         <div class="dropdown">
