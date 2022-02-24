@@ -17,6 +17,7 @@ class CreateLineUsers extends Migration
             $table->increments('id');
             $table->string('name')->nullable()->comment('LINEの名前');
             $table->string('line_id')->nullable()->comment('LINEのID');
+            $table->string('image')->nullable();
             $table->string('provider')->nullable();
             $table->date('birthday')->nullable();
             $table->string('phone')->nullable();

@@ -113,7 +113,7 @@ Account
             <div class="row justify-content-center align-items-center">
               <div class="col-sm-auto col-4">
                 <div class="avatar avatar-sm position-relative">
-                  <img src="{{ asset('assets/img/team-3.jpg') }}" alt="bruce" class="w-100 border-radius-lg shadow-sm">
+                  <img src="{{ asset('uploads/profile-pic/' . $friend->image) }}" alt="bruce" class="w-100 border-radius-lg shadow-sm">
                 </div>
               </div>
               <div class="col-sm-auto col-8 my-auto">

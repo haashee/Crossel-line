@@ -84,6 +84,7 @@ class LineMessengerController extends Controller
             $user->line_id = $userId;
             $user->provider = 'line';
             $user->mode = $mode;
+            $user->image = 'default_lineprofilepicture.png';
             $user->account_id = $account->id;
             $user->save();
         }
