@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\RichMenu;
+use App\Models\Account;
+
 use Illuminate\Http\Request;
+
 
 class RichMenuController extends Controller
 {
@@ -12,9 +15,13 @@ class RichMenuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($aid)
     {
-        //
+        $account = Account::where('id', $aid)->first();
+
+        return view('dashboard.accounts.richmenu', [
+            'account' => $account,
+        ]);
     }
 
     /**

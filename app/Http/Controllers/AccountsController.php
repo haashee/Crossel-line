@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\AccountSetting;
-use App\Models\LineUser;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 
@@ -174,16 +173,5 @@ class AccountsController extends Controller
         Session::put('title', 'アカウント削除');
 
         return redirect('/accounts')->with('message', 'アカウントが正常に削除されました。');
-    }
-
-
-    // richmenu settings page
-    public function richmenu($aid)
-    {
-        $account = Account::where('id', $aid)->first();
-
-        return view('dashboard.accounts.richmenu', [
-            'account' => $account,
-        ]);
     }
 }

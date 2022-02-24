@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LineUserController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\RichMenuController;
 
 
 /*
@@ -37,7 +38,6 @@ Route::get('/friends', [DashboardController::class, 'friends'])->name('friends')
 Route::get('/chat', [DashboardController::class, 'chat'])->name('chat');
 
 // accounts routes
-Route::get('/accounts/{aid}/richmenu/', [AccountsController::class, 'richmenu'])->name('accounts.richmenu');
 Route::resource('/accounts', AccountsController::class);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -45,6 +45,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 // friends routes
 Route::get('accounts/{aid}/friends', [LineUserController::class, 'index'])->name('friends.index');
 Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
+
+// rich menu routes
+Route::get('accounts/{aid}/richmenus', [RichMenuController::class, 'index'])->name('richmenus.index');
+Route::resource('accounts/{aid}/richmenus', RichMenuController::class, ['except' => ['index']]);
 
 // membership routes
 Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'privacy'])->name('membership.privacy');
