@@ -84,7 +84,7 @@
                                     <div class="row">
                                     <div class="col-4">
                                         <p class="text-secondary text-sm font-weight-bold mb-0">友だち数</p>
-                                        <h6 class="text-xs mb-0">{{ $account->chats->count() }}</h6>
+                                        <h6 class="text-xs mb-0">{{ $account->lineUsers->count() }}</h6>
                                     </div>
                                     <div class="col-4">
                                         <p class="text-secondary text-sm font-weight-bold mb-0 text-center">オーダー数</p>
