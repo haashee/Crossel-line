@@ -14,7 +14,7 @@ class CreateAccountSettingsTable extends Migration
     public function up()
     {
         Schema::create('account_settings', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('account_id');
             $table->string('membership_background')->nullable();
             $table->longText('privacy_policy')->nullable();
