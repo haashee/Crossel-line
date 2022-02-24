@@ -42,120 +42,183 @@ Account
         </div>
         @endif
 
-        <div class="row mt-4">
+        <div class="row">
             <div class="col-12">
-                <div class="card mb-4">
-                    <div class="card-header pb-0 p-3">
-                        <h6 class="mb-1">Projects</h6>
-                        <p class="text-sm">Architects design houses</p>
+                <div class="multisteps-form">
+                    <div class="row">
+                        <div class="col-12 col-lg-8 mx-auto mt-4 mb-sm-5 mb-3">
+                            <div class="multisteps-form__progress">
+                                <button class="multisteps-form__progress-btn js-active" type="button"
+                                    title="Product Info">
+                                    <span>1. Product Info</span>
+                                </button>
+                                <button class="multisteps-form__progress-btn" type="button" title="Media">2.
+                                    Media</button>
+                                <button class="multisteps-form__progress-btn" type="button" title="Socials">3.
+                                    Socials</button>
+                                <button class="multisteps-form__progress-btn" type="button" title="Pricing">4.
+                                    Pricing</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body p-3">
-                        <div class="row target-area">
-                            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                                <div class="card card-blog card-plain">
-                                    <div class="position-relative">
-                                        <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="{{ asset('images/rich-img-01.jpeg') }}" alt="img-blur-shadow"
-                                                class="img-fluid shadow border-radius-xl">
-                                        </a>
-                                    </div>
-                                    <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-sm">Project #1</p>
-                                        <a href="javascript:;">
-                                            <h5>
-                                                Bubbles
-                                            </h5>
-                                        </a>
-                                        {{-- <p class="mb-4 text-sm">
-                                            As Bubble works through a huge amount of internal management turmoil.
-                                        </p> --}}
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <form 
-                                                action="/line/{{ $account->id }}/richmenu/create" 
-                                                method="GET" enctype="multipart/form-data">
-                                                @csrf
-                                                <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
-                                                    View Project
-                                                    <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
-                                                    <span class="sr-only">Loading...</span>
-                                                </button>
-                                            </form>
+                    <!--form panels-->
+                    <div class="row">
+                        <div class="col-12 col-lg-8 m-auto">
+                            <form class="multisteps-form__form mb-8">
+                                <!--single form panel-->
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
+                                    data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Product Information</h5>
+                                    <div class="multisteps-form__content">
+                                        <div class="row mt-3">
+                                            <div class="col-12 col-sm-6">
+                                                <label>Name</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="eg. Off-White" />
+                                            </div>
+                                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                <label>Weight</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="eg. 42" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <label class="mt-4">Description</label>
+                                                <p class="form-text text-muted text-xs ms-1 d-inline">
+                                                    (optional)
+                                                </p>
+                                                <div id="edit-deschiption" class="h-50">
+                                                    <p>Some initial <strong>bold</strong> text</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6 mt-sm-0 mt-4">
+                                                <label class="mt-4">Category</label>
+                                                <select class="form-control" name="choices-category"
+                                                    id="choices-category">
+                                                    <option value="Choice 1" selected="">Clothing</option>
+                                                    <option value="Choice 2">Real Estate</option>
+                                                    <option value="Choice 3">Electronics</option>
+                                                    <option value="Choice 4">Furniture</option>
+                                                    <option value="Choice 5">Others</option>
+                                                </select>
+                                                <label>Sizes</label>
+                                                <select class="form-control" name="choices-sizes" id="choices-sizes">
+                                                    <option value="Choice 1" selected="">Medium</option>
+                                                    <option value="Choice 2">Small</option>
+                                                    <option value="Choice 3">Large</option>
+                                                    <option value="Choice 4">Extra Large</option>
+                                                    <option value="Choice 5">Extra Small</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="button-row d-flex mt-4">
+                                            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
+                                                title="Next">Next</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                                <div class="card card-blog card-plain">
-                                    <div class="position-relative">
-                                        <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="{{ asset('images/rich-img-02.jpeg') }}" alt="img-blur-shadow"
-                                                class="img-fluid shadow border-radius-lg">
-                                        </a>
-                                    </div>
-                                    <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-sm">Project #2</p>
-                                        <a href="javascript:;">
-                                            <h5>
-                                                Scandinavian
-                                            </h5>
-                                        </a>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <form 
-                                                action="/line/{{ $account->id }}/richmenu/create" 
-                                                method="GET" enctype="multipart/form-data">
-                                                @csrf
-                                                
-                                                <button value="rich02" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
-                                                    View Project
-                                                    <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
-                                                    <span class="sr-only">Loading...</span>
-                                                </button>
-                                            </form>
+                                <!--single form panel-->
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
+                                    data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Media</h5>
+                                    <div class="multisteps-form__content">
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <label>Product images</label>
+                                                <div action="/file-upload" class="form-control dropzone"
+                                                    id="productImg"></div>
+                                            </div>
+                                        </div>
+                                        <div class="button-row d-flex mt-4">
+                                            <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
+                                                title="Prev">Prev</button>
+                                            <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
+                                                title="Next">Next</button>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                                <div class="card card-blog card-plain">
-                                    <div class="position-relative">
-                                        <a class="d-block shadow-xl border-radius-xl">
-                                            <img src="{{ asset('images/rich-img-03.jpeg') }}" alt="img-blur-shadow"
-                                                class="img-fluid shadow border-radius-xl">
-                                        </a>
-                                    </div>
-                                    <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-sm">Project #3</p>
-                                        <a href="javascript:;">
-                                            <h5>
-                                                Minimalist
-                                            </h5>
-                                        </a>
-                                        <div class="d-flex align-items-center justify-content-between">
-                                            <form 
-                                                action="/line/{{ $account->id }}/richmenu/create" 
-                                                method="GET" enctype="multipart/form-data">
-                                                @csrf
-                                                
-                                                <button value="rich03" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
-                                                    View Project
-                                                    <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
-                                                    <span class="sr-only">Loading...</span>
-                                                </button>
-                                            </form>
+                                <!--single form panel-->
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
+                                    data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Socials</h5>
+                                    <div class="multisteps-form__content">
+                                        <div class="row mt-3">
+                                            <div class="col-12">
+                                                <label>Shoppify Handle</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="@argon" />
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <label>Facebook Account</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="https://..." />
+                                            </div>
+                                            <div class="col-12 mt-3">
+                                                <label>Instagram Account</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="https://..." />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="button-row d-flex mt-4 col-12">
+                                                <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
+                                                    title="Prev">Prev</button>
+                                                <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
+                                                    type="button" title="Next">Next</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                                <div class="card h-100 card-plain border">
-                                    <div class="card-body d-flex flex-column justify-content-center text-center">
-                                        <a href="javascript:;">
-                                            <i class="fa fa-plus text-secondary mb-3"></i>
-                                            <h5 class=" text-secondary"> New project </h5>
-                                        </a>
+                                <!--single form panel-->
+                                <div class="card multisteps-form__panel p-3 border-radius-xl bg-white h-100"
+                                    data-animation="FadeIn">
+                                    <h5 class="font-weight-bolder">Pricing</h5>
+                                    <div class="multisteps-form__content mt-3">
+                                        <div class="row">
+                                            <div class="col-3">
+                                                <label>Price</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="99.00" />
+                                            </div>
+                                            <div class="col-4">
+                                                <label>Currency</label>
+                                                <select class="form-control" name="choices-sizes" id="choices-currency">
+                                                    <option value="Choice 1" selected="">USD</option>
+                                                    <option value="Choice 2">EUR</option>
+                                                    <option value="Choice 3">GBP</option>
+                                                    <option value="Choice 4">CNY</option>
+                                                    <option value="Choice 5">INR</option>
+                                                    <option value="Choice 6">BTC</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-5">
+                                                <label>SKU</label>
+                                                <input class="multisteps-form__input form-control" type="text"
+                                                    placeholder="71283476591" />
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <label class="mt-4 form-label">Tags</label>
+                                                <select class="form-control" name="choices-tags" id="choices-tags"
+                                                    multiple>
+                                                    <option value="Choice 1" selected>In Stock</option>
+                                                    <option value="Choice 2">Out of Stock</option>
+                                                    <option value="Choice 3">Sale</option>
+                                                    <option value="Choice 4">Black Friday</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="button-row d-flex mt-4">
+                                            <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
+                                                title="Prev">Prev</button>
+                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="button"
+                                                title="Send">Send</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -176,31 +239,73 @@ Account
 <script src="../../../assets/js/core/bootstrap.min.js"></script>
 <script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="../../../assets/js/plugins/choices.min.js"></script>
+<script src="../../../assets/js/plugins/dropzone.min.js"></script>
+<script src="../../../assets/js/plugins/quill.min.js"></script>
+<script src="../../../assets/js/plugins/multistep-form.js"></script>
+<script>
+        if (document.getElementById('edit-deschiption')) {
+        var quill = new Quill('#edit-deschiption', {
+            theme: 'snow' // Specify theme in configuration
+        });
+        };
+
+        if (document.getElementById('choices-category')) {
+        var element = document.getElementById('choices-category');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+        };
+
+        if (document.getElementById('choices-sizes')) {
+        var element = document.getElementById('choices-sizes');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+        };
+
+        if (document.getElementById('choices-currency')) {
+        var element = document.getElementById('choices-currency');
+        const example = new Choices(element, {
+            searchEnabled: false
+        });
+        };
+
+        if (document.getElementById('choices-tags')) {
+        var tags = document.getElementById('choices-tags');
+        const examples = new Choices(tags, {
+            removeItemButton: true
+        });
+
+        examples.setChoices(
+            [{
+                value: 'One',
+                label: 'Expired',
+                disabled: true
+            },
+            {
+                value: 'Two',
+                label: 'Out of Stock',
+                selected: true
+            }
+            ],
+            'value',
+            'label',
+            false,
+        );
+        }
+</script>
 <!-- Kanban scripts -->
 <script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
 <script src="../../../assets/js/plugins/jkanban/jkanban.js"></script>
 <script>
-    var win = navigator.platform.indexOf('Win') > -1;
+        var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
         var options = {
             damping: '0.5'
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-
-    const targetArea = document.querySelector('.target-area');
-    const richSpinner = document.querySelectorAll('.spinner-border');
-    targetArea.addEventListener("click", function(e){
-        const targetName = e.target.name;
-        if(targetName == 'richmenu-btn'){
-            richSpinner.forEach(function(btn) {
-                btn.classList.add('hide-content');
-                e.target.children[0].classList.remove('hide-content');
-            });
-        }
-
-    })
-
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
