@@ -327,7 +327,7 @@ Account
                             <div class="col-12 col-sm-10 p-3 px-3">
                                 <label class="text-muted">管理用ニックネーム</label>
                                 <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->name }}" name="name" />
+                                    value="{{ $account->name }}" name="name"/>
                             </div>
 
                         </div>
