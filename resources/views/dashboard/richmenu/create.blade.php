@@ -74,8 +74,11 @@ Account
                                             <div class="col-12 col-sm-6">
                                                 <div class="card richmenu">
                                                     <div class="rich-top">
-                                                        <div class="row">
-                                                            <p>hello</p>
+                                                        <div class="row m-2 ms-3 g-0">
+                                                            <div class="col-1"><i class="fa fa-arrow-left"></i></div>
+                                                            <div class="col-9 text-center"><p>{{ $account->name }}</p></div>
+                                                            <div class="col-1"><i class="fa fa-home"></i></div>
+                                                            <div class="col-1"><i class="fa fa-bars"></i></div>
                                                         </div>
                                                     </div>
                                                     <div class="rich-bottom">
