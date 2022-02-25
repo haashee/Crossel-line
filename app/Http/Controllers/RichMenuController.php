@@ -52,9 +52,18 @@ class RichMenuController extends Controller
             'name' => 'required',
         ]);
 
+        if ($request->input('richmenu_size') == 'big') {
+            $height = 1686;
+        } elseif ($request->input('richmenu_size') == 'small') {
+            $height = 843;
+        }
 
         RichMenu::create([
             'name' => $request->input('name'),
+            'width' => '2500',
+            'height' => $height,
+            // 'image' => $request->input('image'),
+            // 'richmenu_id' => $request->input('richmenu_id'),
             'account_id' => $aid,
         ]);
 
