@@ -147,8 +147,11 @@ Account
                                             <div class="col-12">
                                                 <label>Product images</label>
                                                 <div action="/file-upload" class="form-control dropzone"
-                                                    id="productImg"></div>
+                                                    id="image" ></div>
                                             </div>
+                                        </div>
+                                        <div class="fallback">
+                                            <input type="file" name="image" class="form-control dropzone"/>
                                         </div>
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"

@@ -58,11 +58,14 @@ class RichMenuController extends Controller
             $height = 843;
         }
 
+        $newImageName = 'richmenu' . '-' . $aid . '-' . uniqid() . '.' . $request->image->clientExtension();
+        $request->image->move(public_path('uploads/richmenu'), $newImageName);
+
         RichMenu::create([
             'name' => $request->input('name'),
             'width' => '2500',
             'height' => $height,
-            // 'image' => $request->input('image'),
+            'image' => $newImageName,
             // 'richmenu_id' => $request->input('richmenu_id'),
             'account_id' => $aid,
         ]);
