@@ -37970,6 +37970,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
     height: 100px;
 }
 
+.hide-rich {
+    display: none;
+}
+
 .rich-label {
     color: white;
     height: 40px;
@@ -37987,4 +37991,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
     z-index: 1;
     text-align: center;
     color: white;
+}
+
+.rich-display-big > .text-top{
+    top: 40%;
 }

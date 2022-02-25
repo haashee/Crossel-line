@@ -82,7 +82,7 @@ Account
                                                         </div>
                                                     </div>
                                                     <div class="rich-bottom">
-                                                        <div class="rich-display-small position-relative">
+                                                        <div class="rich-display-small position-relative hide-rich">
                                                             <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span>
                                                             <div class="row g-0">
                                                                 <div class="col-4 rich-boxes">
@@ -290,6 +290,22 @@ Account
             false,
         );
         }
+
+        var bigBtn = document.getElementById("big");
+        var smallBtn = document.getElementById("small");
+        var big = document.querySelector(".rich-display-big");
+        var small = document.querySelector(".rich-display-small");
+
+        bigBtn.addEventListener("click", function() {
+            small.classList.add("hide-rich");
+            big.classList.remove("hide-rich");
+        });
+        smallBtn.addEventListener("click", function() {
+            small.classList.remove("hide-rich");
+            big.classList.add("hide-rich");
+        });
+
+
 </script>
 <!-- Kanban scripts -->
 <script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
