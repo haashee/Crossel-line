@@ -361,7 +361,8 @@ class LineMessengerController extends Controller
                     array( # array for actions on rich menu
                         new RichMenuAreaBuilder( # action 1
                             new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text A') # reply text
+                            new UriTemplateActionBuilder("クリックしてね", 'https://google.com/') # reply text
+                            // new MessageTemplateActionBuilder('m', 'Text A') # reply text
                         ),
                         new RichMenuAreaBuilder( # action 2
                             new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)

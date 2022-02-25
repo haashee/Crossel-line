@@ -221,6 +221,7 @@ Account
                                                     <option value="membership">会員情報</option>
                                                     <option value="shop">店舗情報</option>
                                                     <option value="friend">友達に紹介</option>
+                                                    <option value="url">URLリンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
@@ -230,6 +231,7 @@ Account
                                                     <option value="membership">会員情報</option>
                                                     <option value="shop">店舗情報</option>
                                                     <option value="friend">友達に紹介</option>
+                                                    <option value="url">URLリンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
@@ -239,6 +241,7 @@ Account
                                                     <option value="membership">会員情報</option>
                                                     <option value="shop">店舗情報</option>
                                                     <option value="friend">友達に紹介</option>
+                                                    <option value="url">URLリンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 D 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
@@ -248,6 +251,7 @@ Account
                                                     <option value="membership">会員情報</option>
                                                     <option value="shop">店舗情報</option>
                                                     <option value="friend">友達に紹介</option>
+                                                    <option value="url">URLリンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 E 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
@@ -257,6 +261,7 @@ Account
                                                     <option value="membership">会員情報</option>
                                                     <option value="shop">店舗情報</option>
                                                     <option value="friend">友達に紹介</option>
+                                                    <option value="url">URLリンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 F 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
@@ -266,6 +271,7 @@ Account
                                                     <option value="membership">会員情報</option>
                                                     <option value="shop">店舗情報</option>
                                                     <option value="friend">友達に紹介</option>
+                                                    <option value="url">URLリンク</option>
                                                 </select>
                                             </div>
                                         </div>
