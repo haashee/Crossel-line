@@ -177,32 +177,32 @@ Account
                                                     </div>
                                                     <div class="rich-bottom">
                                                         <div class="rich-display-small position-relative hide-rich">
-                                                            <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span>
+                                                            {{-- <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span> --}}
                                                             <div class="row g-0">
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">A
                                                                 </div>
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">B
                                                                 </div>
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">C
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="rich-display-big position-relative">
-                                                            <span class="text-top text-md">大きいリッチメニューを使用 <br> ボタン6つまで設定可能</span>
+                                                            {{-- <span class="text-top text-md">大きいリッチメニューを使用 <br> ボタン6つまで設定可能</span> --}}
                                                             <div class="row g-0">
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">A
                                                                 </div>
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">B
                                                                 </div>
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">C
                                                                 </div>
                                                             </div>
                                                             <div class="row g-0">
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">D
                                                                 </div>
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">E
                                                                 </div>
-                                                                <div class="col-4 rich-boxes">
+                                                                <div class="col-4 rich-boxes">F
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -215,6 +215,7 @@ Account
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="">-</option>
                                                     <option value="menu">メニューをみる</option>
                                                     <option value="orders">注文履歴</option>
                                                     <option value="membership">会員情報</option>
@@ -223,6 +224,7 @@ Account
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="">-</option>
                                                     <option value="menu">メニューをみる</option>
                                                     <option value="orders">注文履歴</option>
                                                     <option value="membership">会員情報</option>
@@ -231,6 +233,7 @@ Account
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="">-</option>
                                                     <option value="menu">メニューをみる</option>
                                                     <option value="orders">注文履歴</option>
                                                     <option value="membership">会員情報</option>
@@ -239,6 +242,7 @@ Account
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 D 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="">-</option>
                                                     <option value="menu">メニューをみる</option>
                                                     <option value="orders">注文履歴</option>
                                                     <option value="membership">会員情報</option>
@@ -247,6 +251,7 @@ Account
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 E 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="">-</option>
                                                     <option value="menu">メニューをみる</option>
                                                     <option value="orders">注文履歴</option>
                                                     <option value="membership">会員情報</option>
@@ -255,6 +260,7 @@ Account
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 F 」ボタンの設定</label>
                                                 <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="">-</option>
                                                     <option value="menu">メニューをみる</option>
                                                     <option value="orders">注文履歴</option>
                                                     <option value="membership">会員情報</option>
@@ -376,7 +382,7 @@ Account
         );
         }
 
-        
+
 
         var bigBtn = document.getElementById("big");
         var smallBtn = document.getElementById("small");
