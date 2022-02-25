@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\RichMenu;
 use App\Models\Account;
 
+use Illuminate\Support\Facades\Session;
+
 use Illuminate\Http\Request;
 
 
@@ -44,9 +46,23 @@ class RichMenuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $aid)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+
+        RichMenu::create([
+            'name' => $request->input('name'),
+            'account_id' => $aid,
+        ]);
+
+
+        Session::put('title', 'リッチメニュー作成完了');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'richmenu')
+            ->with('message', 'リッチメニューが無事作成されました。');
     }
 
     /**

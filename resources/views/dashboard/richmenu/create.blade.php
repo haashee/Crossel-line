@@ -64,7 +64,9 @@ Account
                     <!--form panels-->
                     <div class="row">
                         <div class="col-12 col-lg-8 m-auto">
-                            <form class="multisteps-form__form mb-8">
+                            <form action="{{ route('richmenu.store', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data"
+                                class="multisteps-form__form mb-3">
+                                @csrf
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                     data-animation="FadeIn">
@@ -113,7 +115,7 @@ Account
                                                             </div>
                                                         </div>
                                                         <div class="rich-label">
-                                                            <p id="display-label">display label &#x25BC;</p>
+                                                            <p id="display-label">表示ラベル &#x25BC;</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -231,7 +233,7 @@ Account
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
                                                 title="Prev">Prev</button>
-                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="button"
+                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
                                                 title="Send">Send</button>
                                         </div>
                                     </div>
