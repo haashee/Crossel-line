@@ -37955,7 +37955,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 .rich-display {
     background: #8bcfad;
-    height: 14vh;
+    height: 100px;
     align-items: center;
 }
 
@@ -37965,5 +37965,5 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 .rich-boxes {
     border: 1px solid #909090;
-    height: 14vh;
+    height: 100px;
 }
