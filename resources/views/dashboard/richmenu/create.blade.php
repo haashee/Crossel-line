@@ -113,16 +113,16 @@ Account
                                                             </div>
                                                         </div>
                                                         <div class="rich-label">
-                                                            <p>display label &#x25BC;</p>
+                                                            <p id="display-label">display label &#x25BC;</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                <label>名前</label>
-                                                <input class="multisteps-form__input form-control" type="text" placeholder="eg. 42" />
+                                                <label>メニュー名</label>
+                                                <input id="name" name="name" class="multisteps-form__input form-control" type="text" placeholder="管理用メニュー名" />
                                                 <label class="mt-4">表示ラベル</label>
-                                                <input class="multisteps-form__input form-control" type="text" placeholder="eg. 42" />
+                                                <input id="label" name="label" class="multisteps-form__input form-control" type="text" placeholder="リッチメニュー表示ラベル" />
                                                 <label class="mt-4">リッチメニューのサイズ</label> <br>
                                                 <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big">
                                                 <label for="big">Big</label><br>
@@ -291,6 +291,7 @@ Account
         );
         }
 
+
         var bigBtn = document.getElementById("big");
         var smallBtn = document.getElementById("small");
         var big = document.querySelector(".rich-display-big");
@@ -306,6 +307,16 @@ Account
         });
 
 
+        var inputVal = document.getElementById("label").value;
+        var inputDisplay = document.getElementById("display-label");
+
+        document.getElementById('label').addEventListener('keyup', copyToDiv);
+
+        function copyToDiv() {
+        document.getElementById("display-label").innerHTML = document.getElementById("label").value + ' &#x25BC;';
+        }
+
+        
 </script>
 <!-- Kanban scripts -->
 <script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
