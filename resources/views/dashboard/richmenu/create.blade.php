@@ -376,20 +376,30 @@ Account
         );
         }
 
+        
 
         var bigBtn = document.getElementById("big");
         var smallBtn = document.getElementById("small");
-        var big = document.querySelector(".rich-display-big");
-        var small = document.querySelector(".rich-display-small");
+        var bigs = document.querySelectorAll(".rich-display-big");
+        var smalls = document.querySelectorAll(".rich-display-small");
 
         bigBtn.addEventListener("click", function() {
-            small.classList.add("hide-rich");
-            big.classList.remove("hide-rich");
+            smalls.forEach((small) => {
+                small.classList.add("hide-rich");
+            });
+            bigs.forEach((big) => {
+                big.classList.remove("hide-rich");
+            });
         });
         smallBtn.addEventListener("click", function() {
-            small.classList.remove("hide-rich");
-            big.classList.add("hide-rich");
+            smalls.forEach((small) => {
+                small.classList.remove("hide-rich");
+            });
+            bigs.forEach((big) => {
+                big.classList.add("hide-rich");
+            });
         });
+
 
 
         var inputVal = document.getElementById("label").value;
