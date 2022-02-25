@@ -214,7 +214,7 @@ Account
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsA" id="buttons">
+                                                <select class="form-control" name="buttonsA" id="buttons" onchange="showDiv('hidden_div', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -223,8 +223,10 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
-                                                <label class="text-secondary">リンクのURL</label>
-                                                <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                <div id="hidden_div">
+                                                    <label class="text-secondary">リンクのURL</label>
+                                                    <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                </div>
 
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
                                                 <select class="form-control" name="buttonsB" id="buttons">
@@ -429,6 +431,10 @@ Account
         }
 
         
+        function showDiv(divId, element)
+        {
+            document.getElementById(divId).style.display = element.value == 'リンク' ? 'block' : 'none';
+        }
 </script>
 <!-- Kanban scripts -->
 <script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>

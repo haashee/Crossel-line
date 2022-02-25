@@ -37996,3 +37996,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .rich-display-big > .text-top{
     top: 40%;
 }
+
+#hidden_div {
+    display: none;
+}
