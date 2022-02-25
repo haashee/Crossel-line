@@ -214,7 +214,7 @@ Account
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsA" id="buttons" onchange="showDiv('hidden_div', this)">
+                                                <select class="form-control" name="buttonsA" id="buttons" onchange="showDiv('hidden_divA', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -223,13 +223,13 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
-                                                <div id="hidden_div">
+                                                <div id="hidden_divA">
                                                     <label class="text-secondary">リンクのURL</label>
                                                     <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
                                                 </div>
 
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsB" id="buttons">
+                                                <select class="form-control" name="buttonsB" id="buttons" onchange="showDiv('hidden_divB', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -238,8 +238,13 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
+                                                <div id="hidden_divB">
+                                                    <label class="text-secondary">リンクのURL</label>
+                                                    <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                </div>
+
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsC" id="buttons">
+                                                <select class="form-control" name="buttonsC" id="buttons" onchange="showDiv('hidden_divC', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -248,8 +253,13 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
+                                                <div id="hidden_divC">
+                                                    <label class="text-secondary">リンクのURL</label>
+                                                    <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                </div>
+
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 D 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsD" id="buttons">
+                                                <select class="form-control" name="buttonsD" id="buttons" onchange="showDiv('hidden_divD', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -258,8 +268,13 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
+                                                <div id="hidden_divD">
+                                                    <label class="text-secondary">リンクのURL</label>
+                                                    <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                </div>
+
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 E 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsE" id="buttons">
+                                                <select class="form-control" name="buttonsE" id="buttons" onchange="showDiv('hidden_divE', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -268,8 +283,13 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
+                                                <div id="hidden_divE">
+                                                    <label class="text-secondary">リンクのURL</label>
+                                                    <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                </div>
+
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 F 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsF" id="buttons">
+                                                <select class="form-control" name="buttonsF" id="buttons" onchange="showDiv('hidden_divF', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -278,6 +298,11 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
+                                                <div id="hidden_divF">
+                                                    <label class="text-secondary">リンクのURL</label>
+                                                    <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                </div>
+
                                             </div>
                                         </div>
                                         <div class="row">
