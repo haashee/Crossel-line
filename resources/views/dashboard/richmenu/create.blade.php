@@ -94,7 +94,7 @@ Account
                                                             </div>
                                                         </div>
                                                         <div class="rich-display-big position-relative">
-                                                            <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span>
+                                                            <span class="text-top text-md">大きいリッチメニューを使用 <br> ボタン6つまで設定可能</span>
                                                             <div class="row g-0">
                                                                 <div class="col-4 rich-boxes">
                                                                 </div>
@@ -121,9 +121,9 @@ Account
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label>名前</label>
                                                 <input class="multisteps-form__input form-control" type="text" placeholder="eg. 42" />
-                                                <label>表示ラベル</label>
+                                                <label class="mt-4">表示ラベル</label>
                                                 <input class="multisteps-form__input form-control" type="text" placeholder="eg. 42" />
-                                                <label>リッチメニューのサイズ</label> <br>
+                                                <label class="mt-4">リッチメニューのサイズ</label> <br>
                                                 <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big">
                                                 <label for="big">Big</label><br>
                                                 <input type="radio" id="small" name="richmenu_size" class="multisteps-form__input" value="small">
