@@ -37961,9 +37961,23 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 .rich-label {
     color: white;
+        text-align: center;
+        margin: auto;
+
 }
 
 .rich-boxes {
-    border: 1px solid #909090;
+    border: 1px solid #63a685;
     height: 100px;
+}
+
+.text-top {
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 30%;
+    position: absolute;
+    z-index: 1;
+    text-align: center;
+    color: white;
 }
