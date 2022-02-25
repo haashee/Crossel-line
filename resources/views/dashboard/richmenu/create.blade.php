@@ -115,7 +115,7 @@ Account
                                                             </div>
                                                         </div>
                                                         <div class="rich-label">
-                                                            <p id="display-label">表示ラベル &#x25BC;</p>
+                                                            <p class="display-label">表示ラベル &#x25BC;</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -207,7 +207,7 @@ Account
                                                             </div>
                                                         </div>
                                                         <div class="rich-label">
-                                                            <p id="display-label">表示ラベル &#x25BC;</p>
+                                                            <p class="display-label">表示ラベル &#x25BC;</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -408,13 +408,15 @@ Account
 
 
 
-        var inputVal = document.getElementById("label").value;
-        var inputDisplay = document.getElementById("display-label");
-
+        
         document.getElementById('label').addEventListener('keyup', copyToDiv);
+        
+        var inputDisplay = document.querySelectorAll(".display-label");
 
         function copyToDiv() {
-        document.getElementById("display-label").innerHTML = document.getElementById("label").value + ' &#x25BC;';
+            inputDisplay.forEach((display)=>{
+                display.innerHTML = document.getElementById("label").value + ' &#x25BC;';
+            })
         }
 
         
