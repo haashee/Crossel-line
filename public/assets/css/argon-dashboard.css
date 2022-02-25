@@ -37953,9 +37953,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
     border-bottom-right-radius: 1rem;
 }
 
-.rich-display {
+.rich-display-small {
     background: #8bcfad;
     height: 100px;
+    align-items: center;
+}
+
+.rich-display-big {
+    background: #8bcfad;
+    height: 200px;
     align-items: center;
 }
 

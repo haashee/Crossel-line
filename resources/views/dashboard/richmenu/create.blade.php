@@ -82,8 +82,27 @@ Account
                                                         </div>
                                                     </div>
                                                     <div class="rich-bottom">
-                                                        <div class="rich-display position-relative">
+                                                        <div class="rich-display-small position-relative">
                                                             <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span>
+                                                            <div class="row g-0">
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="rich-display-big position-relative">
+                                                            <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span>
+                                                            <div class="row g-0">
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                            </div>
                                                             <div class="row g-0">
                                                                 <div class="col-4 rich-boxes">
                                                                 </div>
