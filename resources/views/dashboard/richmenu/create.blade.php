@@ -165,20 +165,102 @@ Account
                                     <h5 class="font-weight-bolder">Socials</h5>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
-                                            <div class="col-12">
-                                                <label>Shoppify Handle</label>
-                                                <input class="multisteps-form__input form-control" type="text"
-                                                    placeholder="@argon" />
+                                            <div class="col-12 col-sm-6">
+                                                <div class="card richmenu">
+                                                    <div class="rich-top">
+                                                        <div class="row m-2 ms-3 g-0">
+                                                            <div class="col-1"><i class="fa fa-arrow-left"></i></div>
+                                                            <div class="col-9 text-center"><p>{{ $account->name }}</p></div>
+                                                            <div class="col-1"><i class="fa fa-home"></i></div>
+                                                            <div class="col-1"><i class="fa fa-bars"></i></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="rich-bottom">
+                                                        <div class="rich-display-small position-relative hide-rich">
+                                                            <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span>
+                                                            <div class="row g-0">
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="rich-display-big position-relative">
+                                                            <span class="text-top text-md">大きいリッチメニューを使用 <br> ボタン6つまで設定可能</span>
+                                                            <div class="row g-0">
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                            </div>
+                                                            <div class="row g-0">
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                                <div class="col-4 rich-boxes">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="rich-label">
+                                                            <p id="display-label">表示ラベル &#x25BC;</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-12 mt-3">
-                                                <label>Facebook Account</label>
-                                                <input class="multisteps-form__input form-control" type="text"
-                                                    placeholder="https://..." />
-                                            </div>
-                                            <div class="col-12 mt-3">
-                                                <label>Instagram Account</label>
-                                                <input class="multisteps-form__input form-control" type="text"
-                                                    placeholder="https://..." />
+                                            <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                                <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
+                                                <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="menu">メニューをみる</option>
+                                                    <option value="orders">注文履歴</option>
+                                                    <option value="membership">会員情報</option>
+                                                    <option value="shop">店舗情報</option>
+                                                    <option value="friend">友達に紹介</option>
+                                                </select>
+                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
+                                                <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="menu">メニューをみる</option>
+                                                    <option value="orders">注文履歴</option>
+                                                    <option value="membership">会員情報</option>
+                                                    <option value="shop">店舗情報</option>
+                                                    <option value="friend">友達に紹介</option>
+                                                </select>
+                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
+                                                <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="menu">メニューをみる</option>
+                                                    <option value="orders">注文履歴</option>
+                                                    <option value="membership">会員情報</option>
+                                                    <option value="shop">店舗情報</option>
+                                                    <option value="friend">友達に紹介</option>
+                                                </select>
+                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 D 」ボタンの設定</label>
+                                                <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="menu">メニューをみる</option>
+                                                    <option value="orders">注文履歴</option>
+                                                    <option value="membership">会員情報</option>
+                                                    <option value="shop">店舗情報</option>
+                                                    <option value="friend">友達に紹介</option>
+                                                </select>
+                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 E 」ボタンの設定</label>
+                                                <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="menu">メニューをみる</option>
+                                                    <option value="orders">注文履歴</option>
+                                                    <option value="membership">会員情報</option>
+                                                    <option value="shop">店舗情報</option>
+                                                    <option value="friend">友達に紹介</option>
+                                                </select>
+                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 F 」ボタンの設定</label>
+                                                <select class="form-control" name="buttons" id="buttons">
+                                                    <option value="menu">メニューをみる</option>
+                                                    <option value="orders">注文履歴</option>
+                                                    <option value="membership">会員情報</option>
+                                                    <option value="shop">店舗情報</option>
+                                                    <option value="friend">友達に紹介</option>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="row">
