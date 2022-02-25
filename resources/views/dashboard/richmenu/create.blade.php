@@ -223,6 +223,9 @@ Account
                                                     <option value="友達に紹介">友達に紹介</option>
                                                     <option value="リンク">リンク</option>
                                                 </select>
+                                                <label class="text-secondary">リンクのURL</label>
+                                                <input id="url" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
                                                 <select class="form-control" name="buttonsB" id="buttons">
                                                     <option value="">-</option>
