@@ -61,10 +61,6 @@ class RichMenuController extends Controller
         $newImageName = 'richmenu' . '-' . $aid . '-' . uniqid() . '.' . $request->image->clientExtension();
         $request->image->move(public_path('uploads/richmenu'), $newImageName);
 
-        // if ($request->input('buttonsA') == 'リンク') {
-        //     $urlA =  
-        // }
-
         RichMenu::create([
             'name' => $request->input('name'),
             'width' => '2500',
@@ -76,6 +72,12 @@ class RichMenuController extends Controller
             'text_d' => $request->input('buttonsD'),
             'text_e' => $request->input('buttonsE'),
             'text_f' => $request->input('buttonsF'),
+            'url_a' => $request->input('urlA'),
+            'url_b' => $request->input('urlB'),
+            'url_c' => $request->input('urlC'),
+            'url_d' => $request->input('urlD'),
+            'url_e' => $request->input('urlE'),
+            'url_f' => $request->input('urlF'),
             // 'richmenu_id' => $request->input('richmenu_id'),
             'account_id' => $aid,
         ]);
