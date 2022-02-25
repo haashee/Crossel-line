@@ -214,64 +214,64 @@ Account
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                                 <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
-                                                <select class="form-control" name="buttons" id="buttons">
+                                                <select class="form-control" name="buttonsA" id="buttons">
                                                     <option value="">-</option>
-                                                    <option value="menu">メニューをみる</option>
-                                                    <option value="orders">注文履歴</option>
-                                                    <option value="membership">会員情報</option>
-                                                    <option value="shop">店舗情報</option>
-                                                    <option value="friend">友達に紹介</option>
-                                                    <option value="url">URLリンク</option>
+                                                    <option value="メニューをみる">メニューをみる</option>
+                                                    <option value="注文履歴">注文履歴</option>
+                                                    <option value="会員情報">会員情報</option>
+                                                    <option value="店舗情報">店舗情報</option>
+                                                    <option value="友達に紹介">友達に紹介</option>
+                                                    <option value="リンク">リンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
-                                                <select class="form-control" name="buttons" id="buttons">
+                                                <select class="form-control" name="buttonsB" id="buttons">
                                                     <option value="">-</option>
-                                                    <option value="menu">メニューをみる</option>
-                                                    <option value="orders">注文履歴</option>
-                                                    <option value="membership">会員情報</option>
-                                                    <option value="shop">店舗情報</option>
-                                                    <option value="friend">友達に紹介</option>
-                                                    <option value="url">URLリンク</option>
+                                                    <option value="メニューをみる">メニューをみる</option>
+                                                    <option value="注文履歴">注文履歴</option>
+                                                    <option value="会員情報">会員情報</option>
+                                                    <option value="店舗情報">店舗情報</option>
+                                                    <option value="友達に紹介">友達に紹介</option>
+                                                    <option value="リンク">リンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
-                                                <select class="form-control" name="buttons" id="buttons">
+                                                <select class="form-control" name="buttonsC" id="buttons">
                                                     <option value="">-</option>
-                                                    <option value="menu">メニューをみる</option>
-                                                    <option value="orders">注文履歴</option>
-                                                    <option value="membership">会員情報</option>
-                                                    <option value="shop">店舗情報</option>
-                                                    <option value="friend">友達に紹介</option>
-                                                    <option value="url">URLリンク</option>
+                                                    <option value="メニューをみる">メニューをみる</option>
+                                                    <option value="注文履歴">注文履歴</option>
+                                                    <option value="会員情報">会員情報</option>
+                                                    <option value="店舗情報">店舗情報</option>
+                                                    <option value="友達に紹介">友達に紹介</option>
+                                                    <option value="リンク">リンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 D 」ボタンの設定</label>
-                                                <select class="form-control" name="buttons" id="buttons">
+                                                <select class="form-control" name="buttonsD" id="buttons">
                                                     <option value="">-</option>
-                                                    <option value="menu">メニューをみる</option>
-                                                    <option value="orders">注文履歴</option>
-                                                    <option value="membership">会員情報</option>
-                                                    <option value="shop">店舗情報</option>
-                                                    <option value="friend">友達に紹介</option>
-                                                    <option value="url">URLリンク</option>
+                                                    <option value="メニューをみる">メニューをみる</option>
+                                                    <option value="注文履歴">注文履歴</option>
+                                                    <option value="会員情報">会員情報</option>
+                                                    <option value="店舗情報">店舗情報</option>
+                                                    <option value="友達に紹介">友達に紹介</option>
+                                                    <option value="リンク">リンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 E 」ボタンの設定</label>
-                                                <select class="form-control" name="buttons" id="buttons">
+                                                <select class="form-control" name="buttonsE" id="buttons">
                                                     <option value="">-</option>
-                                                    <option value="menu">メニューをみる</option>
-                                                    <option value="orders">注文履歴</option>
-                                                    <option value="membership">会員情報</option>
-                                                    <option value="shop">店舗情報</option>
-                                                    <option value="friend">友達に紹介</option>
-                                                    <option value="url">URLリンク</option>
+                                                    <option value="メニューをみる">メニューをみる</option>
+                                                    <option value="注文履歴">注文履歴</option>
+                                                    <option value="会員情報">会員情報</option>
+                                                    <option value="店舗情報">店舗情報</option>
+                                                    <option value="友達に紹介">友達に紹介</option>
+                                                    <option value="リンク">リンク</option>
                                                 </select>
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 F 」ボタンの設定</label>
-                                                <select class="form-control" name="buttons" id="buttons">
+                                                <select class="form-control" name="buttonsF" id="buttons">
                                                     <option value="">-</option>
-                                                    <option value="menu">メニューをみる</option>
-                                                    <option value="orders">注文履歴</option>
-                                                    <option value="membership">会員情報</option>
-                                                    <option value="shop">店舗情報</option>
-                                                    <option value="friend">友達に紹介</option>
-                                                    <option value="url">URLリンク</option>
+                                                    <option value="メニューをみる">メニューをみる</option>
+                                                    <option value="注文履歴">注文履歴</option>
+                                                    <option value="会員情報">会員情報</option>
+                                                    <option value="店舗情報">店舗情報</option>
+                                                    <option value="友達に紹介">友達に紹介</option>
+                                                    <option value="リンク">リンク</option>
                                                 </select>
                                             </div>
                                         </div>
