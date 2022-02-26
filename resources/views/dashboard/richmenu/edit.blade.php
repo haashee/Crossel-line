@@ -69,7 +69,7 @@ Account
 
 
 
-        
+
         <div class="row mt-4">
             <div class="col-lg-3">
                 <div class="card position-sticky top-1">
@@ -229,9 +229,8 @@ Account
                                     <label>画像を変更する場合のみアップロードしてください</label>
                                     <p class="rich-imagetext-big text-secondary text-xs">ピクセルサイズが[横]2500px x [縦]1686pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
                                     <p class="rich-imagetext-small text-secondary text-xs hide-rich">ピクセルサイズが[横]2500px x [縦]843pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
-                                    <div class="form-control ">
-                                        <input id="image" type="file" name="image" class="form-control hide-content"/>
-                                        <label for="image" class="mb-0" >画像を変えるにはクリック (現在選択されている画像ファイル: {{ $richmenu->image }}) </label>
+                                    <div class="">
+                                        <input type="file" name="image" class="form-control "/>
                                     </div>
                                 </div>
                             </div>
