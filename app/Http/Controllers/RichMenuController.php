@@ -63,6 +63,7 @@ class RichMenuController extends Controller
 
         RichMenu::create([
             'name' => $request->input('name'),
+            'display_text' => $request->input('label'),
             'width' => '2500',
             'height' => $height,
             'image' => $newImageName,
