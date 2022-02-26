@@ -96,7 +96,7 @@ Account
                         <div class="row justify-content-center align-items-center">
                             <div class="col-sm-auto col-4">
                                 <div class="avatar avatar-sm position-relative">
-                                    <img src="{{ asset('uploads/richmenu/' . $richmenu->image) }}" alt="bruce"
+                                    <img src="{{ asset('uploads/richmenu/' . $richmenu->image) }}" alt="リッチメニュー画像"
                                         class="w-100 border-radius-lg shadow-sm">
                                 </div>
                             </div>
@@ -188,6 +188,12 @@ Account
                     <div class="card mt-4" id="notifications">
                         <div class="card-header">
                             <h5>リッチメニュー画像</h5>
+                        </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-sm-auto col-4 px-12">
+                                <img src="{{ asset('uploads/richmenu/' . $richmenu->image) }}" alt="リッチメニュー画像"
+                                        class="w-100 border-radius-lg shadow-sm">
+                            </div>
                         </div>
                         <div class="card-body pt-0">
                             <div class="row mt-3">
