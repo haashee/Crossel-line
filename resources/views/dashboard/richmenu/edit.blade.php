@@ -105,9 +105,11 @@ Account
                                     <h5 class="mb-1 font-weight-bolder">
                                         {{ $richmenu->name }}
                                     </h5>
-                                    <p class="mb-0 font-weight-bold text-sm text-secondary">
-                                        登録日 {{ $richmenu->created_at->toDateString() }}
-                                    </p>
+                                    <a href="{{ URL::route('richmenu.index', ['aid' => $account->id]) }}">
+                                        <p class="mb-0 font-weight-bold text-sm text-third">
+                                            リッチメニュー一覧へ戻る
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
@@ -170,13 +172,13 @@ Account
                                 </div>
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label>メニュー名 <span class="text-third">(必須)</span></label>
-                                    <input id="name" name="name" class="multisteps-form__input form-control" type="text" placeholder="管理用メニュー名" />
+                                    <input id="name" name="name" class="multisteps-form__input form-control" type="text" placeholder="管理用メニュー名" value="{{ $richmenu->name }}"/>
                                     <label class="mt-4">表示ラベル <span class="text-third">(必須)</span></label>
-                                    <input id="label" name="label" class="multisteps-form__input form-control" type="text" placeholder="リッチメニュー表示ラベル" />
+                                    <input id="label" name="label" class="multisteps-form__input form-control" type="text" placeholder="リッチメニュー表示ラベル"  value="{{ $richmenu->display_text }}"/>
                                     <label class="mt-4">リッチメニューのサイズ <span class="text-third">(必須)</span></label> <br>
-                                    <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big">
+                                    <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big" {{$richmenu->height == '1686' ? 'checked' : ''}}>
                                     <label for="big">Big</label><br>
-                                    <input type="radio" id="small" name="richmenu_size" class="multisteps-form__input" value="small">
+                                    <input type="radio" id="small" name="richmenu_size" class="multisteps-form__input" value="small" {{$richmenu->height == '843' ? 'checked' : ''}}>
                                     <label for="small">Small</label><br>
                                 </div>
                             </div>
@@ -209,10 +211,8 @@ Account
                     <!-- Card Buttons -->
                     <div class="card mt-4" id="sessions">
                         <div class="card-header pb-3">
-                            <h5>Sessions</h5>
-                            <p class="text-sm">This is a list of devices that have logged into your account. Remove those
-                                that you do
-                                not recognize.</p>
+                            <h5>ボタンの設定</h5>
+                            <p class="text-sm">set the buttons</p>
                         </div>
                         <div class="card-body pt-0">
                             <div class="row mt-3">
@@ -358,18 +358,17 @@ Account
                             </div>
                         </div>
                     </div>
-                    <!-- Card Save Account -->
+                    <!-- Card Save and Submit Account -->
                     <div class="card mt-4" id="save">
                         <div class="card-header">
-                            <h5>Delete Account</h5>
-                            <p class="text-sm mb-0">Once you delete your account, there is no going back. Please be certain.
-                            </p>
+                            <h5>保存する</h5>
+                            {{-- <p class="text-sm mb-0">save changes</p> --}}
                         </div>
                         <div class="card-body d-sm-flex pt-0">
                             <div class="d-flex align-items-center mb-sm-0 mb-4">
                                 <div class="ms-2">
-                                    <span class="text-dark font-weight-bold d-block text-sm">削除を確定</span>
-                                    <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span>
+                                    <span class="text-dark font-weight-bold d-block text-sm">変更を適用するには</span>
+                                    <span class="text-xs d-block">リッチメニューをLINEアカウントに適用するにはリッチメニュー一覧の「リッチメニューを使う」をクリック</span>
                                 </div>
                             </div>
                             <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
