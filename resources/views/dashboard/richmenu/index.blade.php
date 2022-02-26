@@ -46,8 +46,8 @@ Account
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0 p-3">
-                        <h6 class="mb-1">Projects</h6>
-                        <p class="text-sm">Architects design houses</p>
+                        <h6 class="mb-1">すぐ使えるリッチメニュー</h6>
+                        <p class="text-sm">スタンダードテンプレート一覧</p>
                     </div>
                     <div class="card-body p-3">
                         <div class="row target-area">
@@ -75,7 +75,7 @@ Account
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
-                                                    View Project
+                                                    リッチメニューを使う
                                                     <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
                                                     <span class="sr-only">Loading...</span>
                                                 </button>
@@ -106,7 +106,7 @@ Account
                                                 @csrf
                                                 
                                                 <button value="rich02" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
-                                                    View Project
+                                                    リッチメニューを使う
                                                     <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
                                                     <span class="sr-only">Loading...</span>
                                                 </button>
@@ -130,14 +130,14 @@ Account
                                                 Minimalist
                                             </h5>
                                         </a>
-                                        <div class="d-flex align-items-center justify-content-between">
+                                        <div class="d-flex align-items-center justify-content-between mb-4">
                                             <form 
                                                 action="/line/{{ $account->id }}/richmenu/create" 
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 
                                                 <button value="rich03" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
-                                                    View Project
+                                                    リッチメニューを使う
                                                     <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
                                                     <span class="sr-only">Loading...</span>
                                                 </button>
@@ -146,6 +146,61 @@ Account
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header pb-0 p-3">
+                        <h6 class="mb-1">カスタムリッチメニュー</h6>
+                        <p class="text-sm">カスタムテンプレート一覧</p>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class="row target-area">
+                            @foreach ($richmenus as $richmenu)
+                                <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
+                                    <div class="card card-blog card-plain">
+                                        <div class="position-relative">
+                                            <a class="d-block shadow-xl border-radius-xl">
+                                                <img src="{{ asset('images/rich-img-01.jpeg') }}" alt="img-blur-shadow"
+                                                    class="img-fluid shadow border-radius-xl">
+                                            </a>
+                                        </div>
+                                        <div class="card-body px-1 pb-0">
+                                            <p class="text-gradient text-dark mb-2 text-xs">
+                                                @if ($richmenu->height == 1686)
+                                                    大きいリッチメニュー (ボタン6つ) <br> 
+                                                    画像サイズ 2500 x 1686
+                                                @else
+                                                    小さいリッチメニュー (ボタン3つ) <br> 
+                                                    画像サイズ 2500 x 843
+                                                @endif
+                                            </p>
+                                            <a href="javascript:;">
+                                                <h5>
+                                                    {{ $richmenu->name }}
+                                                </h5>
+                                            </a>
+                                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                                <form 
+                                                    action="/line/{{ $account->id }}/richmenu/create" 
+                                                    method="GET" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
+                                                        リッチメニューを使う
+                                                        <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
+                                                        <span class="sr-only">Loading...</span>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                             <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
                                 <div class="card h-100 card-plain border">
                                     <div class="card-body d-flex flex-column justify-content-center text-center">

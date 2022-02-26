@@ -20,9 +20,11 @@ class RichMenuController extends Controller
     public function index($aid)
     {
         $account = Account::where('id', $aid)->first();
+        $richmenus = RichMenu::where('account_id', $aid)->get();
 
         return view('dashboard.richmenu.index', [
             'account' => $account,
+            'richmenus' => $richmenus,
         ]);
     }
 
