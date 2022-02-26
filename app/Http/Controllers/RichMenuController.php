@@ -52,6 +52,10 @@ class RichMenuController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'label' => 'required',
+            'richmenu_size' => 'required',
+            'image' => 'required|mimes:png,jpg,jpeg|max:1024|dimensions:width=2500',
+
         ]);
 
         if ($request->input('richmenu_size') == 'big') {

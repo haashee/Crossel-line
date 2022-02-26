@@ -25108,6 +25108,10 @@ a {
     line-height: 1.25;
 }
 
+.text-xxs {
+    line-height: 1;
+}
+
 p,
 .p {
     font-size: 1rem;
@@ -25127,6 +25131,10 @@ p,
 
 .text-xs {
     font-size: 0.75rem !important;
+}
+
+.text-xxs {
+    font-size: 0.55rem !important;
 }
 
 .text-xxs {
@@ -38001,4 +38009,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
 #hidden_divA, #hidden_divB, #hidden_divC, #hidden_divD, #hidden_divE, #hidden_divF {
     display: none;
     margin-left: 10px;
+}
+
+/* text red for required fields */
+.text-red{
+    color:red;
 }

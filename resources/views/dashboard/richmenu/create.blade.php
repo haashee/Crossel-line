@@ -23,6 +23,29 @@ Account
 
     <div class="container-fluid py-4">
 
+
+        <!--error message-->
+        @if ($errors->any())
+        <div class="position-fixed bottom-1 end-1 z-index-2">
+
+            <div class="toast fade hide p-2 mt-2 bg-white show" role="alert" aria-live="assertive" id="dangerToast"
+                aria-atomic="true">
+                <div class="toast-header border-0">
+                    <i class="ni ni-notification-70 text-danger me-2"></i>
+                    <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
+                    {{-- <small class="text-body">0 mins ago</small> --}}
+                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+                </div>
+                <hr class="horizontal dark m-0">
+                <div class="toast-body">
+                    @foreach ($errors->all() as $error )
+                    {{ $error }} <br>
+                    @endforeach </div>
+            </div>
+        </div>
+        @endif
+
+
         <!--session message-->
         @if (session()->has('message'))
         <div class="position-fixed bottom-1 end-1 z-index-2">
@@ -41,6 +64,7 @@ Account
             </div>
         </div>
         @endif
+
 
         <div class="row">
             <div class="col-12">
@@ -70,7 +94,7 @@ Account
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white js-active"
                                     data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Product Information</h5>
+                                    <h5 class="font-weight-bolder">基本設定</h5>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
                                             <div class="col-12 col-sm-6">
@@ -121,11 +145,11 @@ Account
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                <label>メニュー名</label>
+                                                <label>メニュー名 <span class="text-third">(必須)</span></label>
                                                 <input id="name" name="name" class="multisteps-form__input form-control" type="text" placeholder="管理用メニュー名" />
-                                                <label class="mt-4">表示ラベル</label>
+                                                <label class="mt-4">表示ラベル <span class="text-third">(必須)</span></label>
                                                 <input id="label" name="label" class="multisteps-form__input form-control" type="text" placeholder="リッチメニュー表示ラベル" />
-                                                <label class="mt-4">リッチメニューのサイズ</label> <br>
+                                                <label class="mt-4">リッチメニューのサイズ <span class="text-third">(必須)</span></label> <br>
                                                 <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big">
                                                 <label for="big">Big</label><br>
                                                 <input type="radio" id="small" name="richmenu_size" class="multisteps-form__input" value="small">
@@ -141,11 +165,13 @@ Account
                                 <!--single form panel-->
                                 <div class="card multisteps-form__panel p-3 border-radius-xl bg-white"
                                     data-animation="FadeIn">
-                                    <h5 class="font-weight-bolder">Media</h5>
+                                    <h5 class="font-weight-bolder">リッチメニュー画像</h5>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
                                             <div class="col-12">
-                                                <label>Product images</label>
+                                                <label>画像をアップロード <span class="text-third">(必須)</span></label>
+                                                <p class="rich-imagetext-big text-secondary text-xs">ピクセルサイズが[横]2500px x [縦]1686pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
+                                                <p class="rich-imagetext-small text-secondary text-xs hide-rich">ピクセルサイズが[横]2500px x [縦]843pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
                                                 <div class="form-control ">
                                                     <input type="file" name="image" class="form-control "/>
                                                 </div>
@@ -425,6 +451,8 @@ Account
         var bigs = document.querySelectorAll(".rich-display-big");
         var smalls = document.querySelectorAll(".rich-display-small");
         var cdf = document.querySelectorAll(".forbig-richmenu");
+        var bigImageText = document.querySelectorAll(".rich-imagetext-big");
+        var smallImageText = document.querySelectorAll(".rich-imagetext-small");
 
         bigBtn.addEventListener("click", function() {
             smalls.forEach((small) => {
@@ -436,6 +464,12 @@ Account
             cdf.forEach((btn) =>{
                 btn.classList.remove("hide-rich");
             });
+            bigImageText.forEach((text)=>{
+                text.classList.remove("hide-rich");
+            });
+            smallImageText.forEach((text)=>{
+                text.classList.add("hide-rich");
+            });
         });
         smallBtn.addEventListener("click", function() {
             smalls.forEach((small) => {
@@ -446,6 +480,12 @@ Account
             });
             cdf.forEach((btn) =>{
                 btn.classList.add("hide-rich");
+            });
+            bigImageText.forEach((text)=>{
+                text.classList.add("hide-rich");
+            });
+            smallImageText.forEach((text)=>{
+                text.classList.remove("hide-rich");
             });
         });
 
