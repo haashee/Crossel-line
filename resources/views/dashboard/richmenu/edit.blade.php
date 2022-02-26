@@ -419,13 +419,13 @@ Account
 
 
 @section('scripts')
-<script src="../../../assets/js/core/popper.min.js"></script>
-<script src="../../../assets/js/core/bootstrap.min.js"></script>
-<script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
 <!-- Kanban scripts -->
-<script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
-<script src="../../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script src="{{ asset('assets/js/plugins/dragula/dragula.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/jkanban/jkanban.js') }}"></script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -435,22 +435,73 @@ Account
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
 
-    const targetArea = document.querySelector('.target-area');
-    const richSpinner = document.querySelectorAll('.spinner-border');
-    targetArea.addEventListener("click", function(e){
-        const targetName = e.target.name;
-        if(targetName == 'richmenu-btn'){
-            richSpinner.forEach(function(btn) {
-                btn.classList.add('hide-content');
-                e.target.children[0].classList.remove('hide-content');
-            });
-        }
 
-    })
+    var bigBtn = document.getElementById("big");
+    var smallBtn = document.getElementById("small");
+    var bigs = document.querySelectorAll(".rich-display-big");
+    var smalls = document.querySelectorAll(".rich-display-small");
+    var cdf = document.querySelectorAll(".forbig-richmenu");
+    var bigImageText = document.querySelectorAll(".rich-imagetext-big");
+    var smallImageText = document.querySelectorAll(".rich-imagetext-small");
+
+    bigBtn.addEventListener("click", function() {
+        smalls.forEach((small) => {
+            small.classList.add("hide-rich");
+        });
+        bigs.forEach((big) => {
+            big.classList.remove("hide-rich");
+        });
+        cdf.forEach((btn) =>{
+            btn.classList.remove("hide-rich");
+        });
+        bigImageText.forEach((text)=>{
+            text.classList.remove("hide-rich");
+        });
+        smallImageText.forEach((text)=>{
+            text.classList.add("hide-rich");
+        });
+    });
+    smallBtn.addEventListener("click", function() {
+        smalls.forEach((small) => {
+            small.classList.remove("hide-rich");
+        });
+        bigs.forEach((big) => {
+            big.classList.add("hide-rich");
+        });
+        cdf.forEach((btn) =>{
+            btn.classList.add("hide-rich");
+        });
+        bigImageText.forEach((text)=>{
+            text.classList.add("hide-rich");
+        });
+        smallImageText.forEach((text)=>{
+            text.classList.remove("hide-rich");
+        });
+    });
+
+
+
+    
+    document.addEventListener('DOMContentLoaded', copyToDiv);
+    
+    var inputDisplay = document.querySelectorAll(".display-label");
+
+    function copyToDiv() {
+        inputDisplay.forEach((display)=>{
+            display.innerHTML = document.getElementById("label").value + ' &#x25BC;';
+        })
+    }
+
+
+    
+    function showDiv(divId, element)
+    {
+        document.getElementById(divId).style.display = element.value == 'リンク' ? 'block' : 'none';
+    }
 
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="../../../assets/js/argon-dashboard.min.js?v=2.0.0"></script>
+<script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.0') }}"></script>
 @endsection
