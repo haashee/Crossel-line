@@ -436,6 +436,7 @@ Account
         }
 
 
+
     var bigBtn = document.getElementById("big");
     var smallBtn = document.getElementById("small");
     var bigs = document.querySelectorAll(".rich-display-big");
@@ -444,7 +445,7 @@ Account
     var bigImageText = document.querySelectorAll(".rich-imagetext-big");
     var smallImageText = document.querySelectorAll(".rich-imagetext-small");
 
-    bigBtn.addEventListener("click", function() {
+    if(bigBtn.checked) {
         smalls.forEach((small) => {
             small.classList.add("hide-rich");
         });
@@ -460,8 +461,7 @@ Account
         smallImageText.forEach((text)=>{
             text.classList.add("hide-rich");
         });
-    });
-    smallBtn.addEventListener("click", function() {
+    }else if(smallBtn.checked) {
         smalls.forEach((small) => {
             small.classList.remove("hide-rich");
         });
@@ -477,8 +477,41 @@ Account
         smallImageText.forEach((text)=>{
             text.classList.remove("hide-rich");
         });
-    });
-
+    }
+        bigBtn.addEventListener("click", function() {
+            smalls.forEach((small) => {
+                small.classList.add("hide-rich");
+            });
+            bigs.forEach((big) => {
+                big.classList.remove("hide-rich");
+            });
+            cdf.forEach((btn) =>{
+                btn.classList.remove("hide-rich");
+            });
+            bigImageText.forEach((text)=>{
+                text.classList.remove("hide-rich");
+            });
+            smallImageText.forEach((text)=>{
+                text.classList.add("hide-rich");
+            });
+        });
+        smallBtn.addEventListener("click", function() {
+            smalls.forEach((small) => {
+                small.classList.remove("hide-rich");
+            });
+            bigs.forEach((big) => {
+                big.classList.add("hide-rich");
+            });
+            cdf.forEach((btn) =>{
+                btn.classList.add("hide-rich");
+            });
+            bigImageText.forEach((text)=>{
+                text.classList.add("hide-rich");
+            });
+            smallImageText.forEach((text)=>{
+                text.classList.remove("hide-rich");
+            });
+        });
 
 
     
