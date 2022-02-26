@@ -180,7 +180,7 @@ Account
                                                     画像サイズ 2500 x 843
                                                 @endif
                                             </p>
-                                            <a href="javascript:;">
+                                            <a href="{{ route('richmenu.edit', ['aid' => $account->id, 'richmenu' =>$richmenu->id]) }}">
                                                 <h5>
                                                     {{ $richmenu->name }}
                                                 </h5>
