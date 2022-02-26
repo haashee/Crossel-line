@@ -172,7 +172,7 @@ Account
                                                 <label>画像をアップロード <span class="text-third">(必須)</span></label>
                                                 <p class="rich-imagetext-big text-secondary text-xs">ピクセルサイズが[横]2500px x [縦]1686pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
                                                 <p class="rich-imagetext-small text-secondary text-xs hide-rich">ピクセルサイズが[横]2500px x [縦]843pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
-                                                <div class="form-control ">
+                                                <div class="">
                                                     <input type="file" name="image" class="form-control "/>
                                                 </div>
                                             </div>
