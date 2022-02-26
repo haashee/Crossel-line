@@ -539,9 +539,9 @@ class LineMessengerController extends Controller
         }
 
         // session 'title' with 'message'
-        Session::put('title', 'リッチメニュー作成成功');
+        Session::put('title', 'リッチメニュー適応成功');
 
-        return redirect('/accounts' . '/' . $aid . '/richmenu')->with('message', 'リッチメニューが作成されました。');
+        return redirect('/accounts' . '/' . $aid . '/richmenu')->with('message', 'リッチメニューが適応されました。');
     }
 
 
