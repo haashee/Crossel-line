@@ -258,8 +258,8 @@ Account
                                                     <input id="urlC" name="urlC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 D 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsD" id="buttonsD" onchange="showDiv('hidden_divD', this)">
+                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定</label>
+                                                <select class="form-control forbig-richmenu" name="buttonsD" id="buttonsD" onchange="showDiv('hidden_divD', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -273,8 +273,8 @@ Account
                                                     <input id="urlD" name="urlD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 E 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsE" id="buttonsE" onchange="showDiv('hidden_divE', this)">
+                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定</label>
+                                                <select class="form-control forbig-richmenu" name="buttonsE" id="buttonsE" onchange="showDiv('hidden_divE', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -288,8 +288,8 @@ Account
                                                     <input id="urlE" name="urlE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 F 」ボタンの設定</label>
-                                                <select class="form-control" name="buttonsF" id="buttonsF" onchange="showDiv('hidden_divF', this)">
+                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定</label>
+                                                <select class="form-control forbig-richmenu" name="buttonsF" id="buttonsF" onchange="showDiv('hidden_divF', this)">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
@@ -424,6 +424,7 @@ Account
         var smallBtn = document.getElementById("small");
         var bigs = document.querySelectorAll(".rich-display-big");
         var smalls = document.querySelectorAll(".rich-display-small");
+        var cdf = document.querySelectorAll(".forbig-richmenu");
 
         bigBtn.addEventListener("click", function() {
             smalls.forEach((small) => {
@@ -432,6 +433,9 @@ Account
             bigs.forEach((big) => {
                 big.classList.remove("hide-rich");
             });
+            cdf.forEach((btn) =>{
+                btn.classList.remove("hide-rich");
+            });
         });
         smallBtn.addEventListener("click", function() {
             smalls.forEach((small) => {
@@ -439,6 +443,9 @@ Account
             });
             bigs.forEach((big) => {
                 big.classList.add("hide-rich");
+            });
+            cdf.forEach((btn) =>{
+                btn.classList.add("hide-rich");
             });
         });
 
