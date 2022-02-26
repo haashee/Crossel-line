@@ -50,18 +50,26 @@ class RichMenuController extends Controller
      */
     public function store(Request $request, $aid)
     {
-        $request->validate([
-            'name' => 'required',
-            'label' => 'required',
-            'richmenu_size' => 'required',
-            'image' => 'required|mimes:png,jpg,jpeg|max:1024|dimensions:width=2500',
-
-        ]);
-
         if ($request->input('richmenu_size') == 'big') {
+
             $height = 1686;
+
+            $request->validate([
+                'name' => 'required',
+                'label' => 'required',
+                'richmenu_size' => 'required',
+                'image' => 'required|mimes:png,jpg,jpeg|max:1024|dimensions:width=2500,height=1686',
+            ]);
         } elseif ($request->input('richmenu_size') == 'small') {
+
             $height = 843;
+
+            $request->validate([
+                'name' => 'required',
+                'label' => 'required',
+                'richmenu_size' => 'required',
+                'image' => 'required|mimes:png,jpg,jpeg|max:1024|dimensions:width=2500,height=843',
+            ]);
         }
 
         $newImageName = 'richmenu' . '-' . $aid . '-' . uniqid() . '.' . $request->image->clientExtension();
