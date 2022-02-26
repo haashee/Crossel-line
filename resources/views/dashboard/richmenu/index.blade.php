@@ -166,7 +166,7 @@ Account
                                     <div class="card card-blog card-plain">
                                         <div class="position-relative">
                                             <a class="d-block shadow-xl border-radius-xl">
-                                                <img src="{{ asset('images/rich-img-01.jpeg') }}" alt="img-blur-shadow"
+                                                <img src="{{ asset('uploads/richmenu/' . $richmenu->image) }}" alt="img-blur-shadow"
                                                     class="img-fluid shadow border-radius-xl">
                                             </a>
                                         </div>
