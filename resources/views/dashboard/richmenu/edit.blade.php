@@ -23,6 +23,31 @@ Account
 
     <div class="container-fluid py-4">
 
+
+
+        <!--error message-->
+        @if ($errors->any())
+        <div class="position-fixed bottom-1 end-1 z-index-2">
+
+            <div class="toast fade hide p-2 mt-2 bg-white show" role="alert" aria-live="assertive" id="dangerToast"
+                aria-atomic="true">
+                <div class="toast-header border-0">
+                    <i class="ni ni-notification-70 text-danger me-2"></i>
+                    <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
+                    {{-- <small class="text-body">0 mins ago</small> --}}
+                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
+                </div>
+                <hr class="horizontal dark m-0">
+                <div class="toast-body">
+                    @foreach ($errors->all() as $error )
+                    {{ $error }} <br>
+                    @endforeach </div>
+            </div>
+        </div>
+        @endif
+
+
+
         <!--session message-->
         @if (session()->has('message'))
         <div class="position-fixed bottom-1 end-1 z-index-2">
@@ -42,6 +67,9 @@ Account
         </div>
         @endif
 
+
+
+        
         <div class="row mt-4">
             <div class="col-lg-3">
                 <div class="card position-sticky top-1">
@@ -87,7 +115,7 @@ Account
                 </div>
             </div>
             <div class="col-lg-9 mt-lg-0 mt-4">
-                <form action=""
+                <form action="{{ route('richmenu.update', ['aid' => $account->id, 'richmenu' => $richmenu->id]) }}"
                     method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')

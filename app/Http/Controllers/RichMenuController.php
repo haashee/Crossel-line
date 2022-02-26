@@ -6,6 +6,7 @@ use App\Models\RichMenu;
 use App\Models\Account;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Request;
 
@@ -93,7 +94,6 @@ class RichMenuController extends Controller
             'url_d' => $request->input('urlD'),
             'url_e' => $request->input('urlE'),
             'url_f' => $request->input('urlF'),
-            // 'richmenu_id' => $request->input('richmenu_id'),
             'account_id' => $aid,
         ]);
 
@@ -141,9 +141,70 @@ class RichMenuController extends Controller
      * @param  \App\Models\RichMenu  $richMenu
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RichMenu $richMenu)
+    public function update(Request $request, RichMenu $richMenu, $aid, $id)
     {
-        //
+        if ($request->input('richmenu_size') == 'big') {
+
+            $height = 1686;
+
+            $request->validate([
+                'name' => 'required',
+                'label' => 'required',
+                'richmenu_size' => 'required',
+                'image' => 'mimes:png,jpg,jpeg|max:1024|dimensions:width=2500,height=1686',
+            ]);
+        } elseif ($request->input('richmenu_size') == 'small') {
+
+            $height = 843;
+
+            $request->validate([
+                'name' => 'required',
+                'label' => 'required',
+                'richmenu_size' => 'required',
+                'image' => 'mimes:png,jpg,jpeg|max:1024|dimensions:width=2500,height=843',
+            ]);
+        }
+
+        $account = Account::where('id', $aid)->first();
+        $richmenu = RichMenu::where('id', $id)->first();
+        $richmenus = RichMenu::where('account_id', $aid)->get();
+
+        if ($request->hasFile('image')) {
+            $image_file_path = public_path('uploads/richmenu/') . $richmenu->image; // get previous image from folder
+            if ($richmenu->image != null && File::exists($image_file_path)) { // unlink or remove previous image from folder
+                unlink($image_file_path);
+            }
+            $file = $request->file('image');
+            $name = 'richmenu' . '-' . $aid . '-' . uniqid() . '.' . $request->image->extension();
+            $file = $file->move(public_path('uploads/richmenu'), $name);
+            $account->image = $name;
+            $account->save();
+        }
+
+        RichMenu::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'display_text' => $request->input('label'),
+                'width' => '2500',
+                'height' => $height,
+                'text_a' => $request->input('buttonsA'),
+                'text_b' => $request->input('buttonsB'),
+                'text_c' => $request->input('buttonsC'),
+                'text_d' => $request->input('buttonsD'),
+                'text_e' => $request->input('buttonsE'),
+                'text_f' => $request->input('buttonsF'),
+                'url_a' => $request->input('urlA'),
+                'url_b' => $request->input('urlB'),
+                'url_c' => $request->input('urlC'),
+                'url_d' => $request->input('urlD'),
+                'url_e' => $request->input('urlE'),
+                'url_f' => $request->input('urlF'),
+            ]);
+
+        Session::put('title', 'リッチメニュー更新完了');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'richmenu')
+            ->with('message', 'リッチメニューが無事更新されました。');
     }
 
     /**
