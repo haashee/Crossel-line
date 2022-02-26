@@ -679,7 +679,7 @@ Account
                 <div class="card mt-4" id="delete">
                     <div class="card-header">
                         <h5>Delete Account</h5>
-                        <p class="text-sm mb-0">Once you delete your account, there is no going back. Please be certain.
+                        <p class="text-sm mb-0">削除されたアカウントは復元できませんのでご注意ください。
                         </p>
                     </div>
                     <div class="card-body d-sm-flex pt-0">
@@ -697,7 +697,7 @@ Account
                                 name="button">確定</button>
                             <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit"
                                 name="button" disabled>
-                                Delete Account
+                                削除
                             </button>
                         </form>
                     </div>
