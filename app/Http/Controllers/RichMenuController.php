@@ -213,8 +213,17 @@ class RichMenuController extends Controller
      * @param  \App\Models\RichMenu  $richMenu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RichMenu $richMenu)
+    public function destroy(RichMenu $richMenu, $aid, $id)
     {
-        //
+        $richmenu = RichMenu::where('id', $id)->first();
+        $richmenu->delete();
+
+        $file_path = public_path('uploads/richmenu/') . $richmenu->image;
+        unlink($file_path);
+
+        Session::put('title', 'リッチメニュー削除');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'richmenu')
+            ->with('message', 'リッチメニューが正常に削除されました。');
     }
 }

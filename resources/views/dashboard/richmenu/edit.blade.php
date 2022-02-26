@@ -420,7 +420,7 @@ Account
                         </div>
 
                         <form class='ms-auto'
-                            action=""
+                            action="{{ route('richmenu.destroy', ['aid' => $account->id, 'richmenu' => $richmenu->id]) }}"
                             method="POST">
                             @csrf
                             @method('delete')
