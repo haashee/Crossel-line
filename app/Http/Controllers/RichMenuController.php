@@ -177,8 +177,8 @@ class RichMenuController extends Controller
             $file = $request->file('image');
             $name = 'richmenu' . '-' . $aid . '-' . uniqid() . '.' . $request->image->extension();
             $file = $file->move(public_path('uploads/richmenu'), $name);
-            $account->image = $name;
-            $account->save();
+            $richmenu->image = $name;
+            $richmenu->save();
         }
 
         RichMenu::where('id', $id)
