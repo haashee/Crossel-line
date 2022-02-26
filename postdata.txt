@@ -1,16 +1,16 @@
 LINE\LINEBot\Response::__set_state(array(
    'httpStatus' => 200,
-   'body' => '{"richMenuId":"richmenu-bcdaf632591d053fb6197f3146d59142"}',
+   'body' => '{"richMenuId":"richmenu-eb4b1b19ce16f1a46c77f5fd5b248cea"}',
    'headers' => 
   array (
     'x-xss-protection' => '1; mode=block',
-    'x-line-request-id' => 'fa420dc4-a9a7-458d-aa41-280345ed48d2',
+    'x-line-request-id' => '6e0bbc42-8d94-45c2-9d3c-1c781e1f0b44',
     'x-frame-options' => 'DENY',
     'x-content-type-options' => 'nosniff',
     'server' => 'envoy',
     'pragma' => 'no-cache',
     'expires' => '0',
-    'date' => 'Sat, 26 Feb 2022 13:13:43 GMT',
+    'date' => 'Sat, 26 Feb 2022 14:56:37 GMT',
     'content-type' => 'application/json',
     'cache-control' => 'no-cache, no-store, max-age=0, must-revalidate',
   ),

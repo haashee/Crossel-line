@@ -187,10 +187,10 @@ Account
                                             </a>
                                             <div class="d-flex align-items-center justify-content-between mb-4">
                                                 <form 
-                                                    action="/line/{{ $account->id }}/richmenu/create" 
+                                                    action="{{ route('richmenu.apply', ['aid' => $account->id, 'id' => $richmenu->id]) }}" 
                                                     method="GET" enctype="multipart/form-data">
                                                     @csrf
-                                                    <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
+                                                    <button name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
                                                         リッチメニューを使う
                                                         <span id="show-spinner" class="spinner-border spinner-border-sm hide-content" role="status" aria-hidden="true"></span>
                                                         <span class="sr-only">Loading...</span>
