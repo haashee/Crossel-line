@@ -198,18 +198,13 @@ Account
                         <div class="card-body pt-0">
                             <div class="row mt-3">
                                 <div class="col-12">
-                                    <label>画像をアップロード <span class="text-third">(必須)</span></label>
+                                    <label>画像を変更する場合のみアップロードしてください</label>
                                     <p class="rich-imagetext-big text-secondary text-xs">ピクセルサイズが[横]2500px x [縦]1686pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
                                     <p class="rich-imagetext-small text-secondary text-xs hide-rich">ピクセルサイズが[横]2500px x [縦]843pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
                                     <div class="form-control ">
-                                        <input type="file" name="image" class="form-control "/>
+                                        <input id="image" type="file" name="image" class="form-control hide-content"/>
+                                        <label for="image" class="mb-0" >画像を変えるにはクリック (現在選択されている画像ファイル: {{ $richmenu->image }}) </label>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="button-row d-flex mt-4 col-12">
-                                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                        title="Send">保存</button>
                                 </div>
                             </div>
                         </div>
@@ -272,13 +267,13 @@ Account
                                 <div class="col-12 col-sm-6 mt-3 mt-sm-0">
                                     <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
                                     <select class="form-control" name="buttonsA" id="buttonsA" onchange="showDiv('hidden_divA', this)">
-                                        <option value="">-</option>
-                                        <option value="メニューをみる">メニューをみる</option>
-                                        <option value="注文履歴">注文履歴</option>
-                                        <option value="会員情報">会員情報</option>
-                                        <option value="店舗情報">店舗情報</option>
-                                        <option value="友達に紹介">友達に紹介</option>
-                                        <option value="リンク">リンク</option>
+                                        <option value="" {{$richmenu->text_a == null ? 'selected' : ''}}>-</option>
+                                        <option value="メニューをみる" {{$richmenu->text_a == 'メニューをみる' ? 'selected' : ''}}>メニューをみる</option>
+                                        <option value="注文履歴" {{$richmenu->text_a == '注文履歴' ? 'selected' : ''}}>注文履歴</option>
+                                        <option value="会員情報" {{$richmenu->text_a == '会員情報' ? 'selected' : ''}}>会員情報</option>
+                                        <option value="店舗情報" {{$richmenu->text_a == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
+                                        <option value="友達に紹介" {{$richmenu->text_a == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
+                                        <option value="リンク" {{$richmenu->text_a == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divA">
                                         <label class="text-secondary">リンクのURL</label>
@@ -287,13 +282,13 @@ Account
 
                                     <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
                                     <select class="form-control" name="buttonsB" id="buttonsB" onchange="showDiv('hidden_divB', this)">
-                                        <option value="">-</option>
-                                        <option value="メニューをみる">メニューをみる</option>
-                                        <option value="注文履歴">注文履歴</option>
-                                        <option value="会員情報">会員情報</option>
-                                        <option value="店舗情報">店舗情報</option>
-                                        <option value="友達に紹介">友達に紹介</option>
-                                        <option value="リンク">リンク</option>
+                                        <option value="" {{$richmenu->text_b == null ? 'selected' : ''}}>-</option>
+                                        <option value="メニューをみる" {{$richmenu->text_b == 'メニューをみる' ? 'selected' : ''}}>メニューをみる</option>
+                                        <option value="注文履歴" {{$richmenu->text_b == '注文履歴' ? 'selected' : ''}}>注文履歴</option>
+                                        <option value="会員情報" {{$richmenu->text_b == '会員情報' ? 'selected' : ''}}>会員情報</option>
+                                        <option value="店舗情報" {{$richmenu->text_b == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
+                                        <option value="友達に紹介" {{$richmenu->text_b == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
+                                        <option value="リンク" {{$richmenu->text_b == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divB">
                                         <label class="text-secondary">リンクのURL</label>
@@ -302,13 +297,13 @@ Account
 
                                     <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
                                     <select class="form-control" name="buttonsC" id="buttonsC" onchange="showDiv('hidden_divC', this)">
-                                        <option value="">-</option>
-                                        <option value="メニューをみる">メニューをみる</option>
-                                        <option value="注文履歴">注文履歴</option>
-                                        <option value="会員情報">会員情報</option>
-                                        <option value="店舗情報">店舗情報</option>
-                                        <option value="友達に紹介">友達に紹介</option>
-                                        <option value="リンク">リンク</option>
+                                        <option value="" {{$richmenu->text_c == null ? 'selected' : ''}}>-</option>
+                                        <option value="メニューをみる" {{$richmenu->text_c == 'メニューをみる' ? 'selected' : ''}}>メニューをみる</option>
+                                        <option value="注文履歴" {{$richmenu->text_c == '注文履歴' ? 'selected' : ''}}>注文履歴</option>
+                                        <option value="会員情報" {{$richmenu->text_c == '会員情報' ? 'selected' : ''}}>会員情報</option>
+                                        <option value="店舗情報" {{$richmenu->text_c == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
+                                        <option value="友達に紹介" {{$richmenu->text_c == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
+                                        <option value="リンク" {{$richmenu->text_c == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divC">
                                         <label class="text-secondary">リンクのURL</label>
@@ -317,13 +312,13 @@ Account
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定</label>
                                     <select class="form-control forbig-richmenu" name="buttonsD" id="buttonsD" onchange="showDiv('hidden_divD', this)">
-                                        <option value="">-</option>
-                                        <option value="メニューをみる">メニューをみる</option>
-                                        <option value="注文履歴">注文履歴</option>
-                                        <option value="会員情報">会員情報</option>
-                                        <option value="店舗情報">店舗情報</option>
-                                        <option value="友達に紹介">友達に紹介</option>
-                                        <option value="リンク">リンク</option>
+                                        <option value="" {{$richmenu->text_d == null ? 'selected' : ''}}>-</option>
+                                        <option value="メニューをみる" {{$richmenu->text_d == 'メニューをみる' ? 'selected' : ''}}>メニューをみる</option>
+                                        <option value="注文履歴" {{$richmenu->text_d == '注文履歴' ? 'selected' : ''}}>注文履歴</option>
+                                        <option value="会員情報" {{$richmenu->text_d == '会員情報' ? 'selected' : ''}}>会員情報</option>
+                                        <option value="店舗情報" {{$richmenu->text_d == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
+                                        <option value="友達に紹介" {{$richmenu->text_d == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
+                                        <option value="リンク" {{$richmenu->text_d == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divD">
                                         <label class="text-secondary">リンクのURL</label>
@@ -332,13 +327,13 @@ Account
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定</label>
                                     <select class="form-control forbig-richmenu" name="buttonsE" id="buttonsE" onchange="showDiv('hidden_divE', this)">
-                                        <option value="">-</option>
-                                        <option value="メニューをみる">メニューをみる</option>
-                                        <option value="注文履歴">注文履歴</option>
-                                        <option value="会員情報">会員情報</option>
-                                        <option value="店舗情報">店舗情報</option>
-                                        <option value="友達に紹介">友達に紹介</option>
-                                        <option value="リンク">リンク</option>
+                                        <option value="" {{$richmenu->text_e == null ? 'selected' : ''}}>-</option>
+                                        <option value="メニューをみる" {{$richmenu->text_e == 'メニューをみる' ? 'selected' : ''}}>メニューをみる</option>
+                                        <option value="注文履歴" {{$richmenu->text_e == '注文履歴' ? 'selected' : ''}}>注文履歴</option>
+                                        <option value="会員情報" {{$richmenu->text_e == '会員情報' ? 'selected' : ''}}>会員情報</option>
+                                        <option value="店舗情報" {{$richmenu->text_e == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
+                                        <option value="友達に紹介" {{$richmenu->text_e == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
+                                        <option value="リンク" {{$richmenu->text_e == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divE">
                                         <label class="text-secondary">リンクのURL</label>
@@ -347,13 +342,13 @@ Account
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定</label>
                                     <select class="form-control forbig-richmenu" name="buttonsF" id="buttonsF" onchange="showDiv('hidden_divF', this)">
-                                        <option value="">-</option>
-                                        <option value="メニューをみる">メニューをみる</option>
-                                        <option value="注文履歴">注文履歴</option>
-                                        <option value="会員情報">会員情報</option>
-                                        <option value="店舗情報">店舗情報</option>
-                                        <option value="友達に紹介">友達に紹介</option>
-                                        <option value="リンク">リンク</option>
+                                        <option value="" {{$richmenu->text_f == null ? 'selected' : ''}}>-</option>
+                                        <option value="メニューをみる" {{$richmenu->text_f == 'メニューをみる' ? 'selected' : ''}}>メニューをみる</option>
+                                        <option value="注文履歴" {{$richmenu->text_f == '注文履歴' ? 'selected' : ''}}>注文履歴</option>
+                                        <option value="会員情報" {{$richmenu->text_f == '会員情報' ? 'selected' : ''}}>会員情報</option>
+                                        <option value="店舗情報" {{$richmenu->text_f == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
+                                        <option value="友達に紹介" {{$richmenu->text_f == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
+                                        <option value="リンク" {{$richmenu->text_f == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divF">
                                         <label class="text-secondary">リンクのURL</label>
@@ -522,6 +517,7 @@ Account
 
     
     document.addEventListener('DOMContentLoaded', copyToDiv);
+    document.getElementById('label').addEventListener('keyup', copyToDiv);
     
     var inputDisplay = document.querySelectorAll(".display-label");
 
