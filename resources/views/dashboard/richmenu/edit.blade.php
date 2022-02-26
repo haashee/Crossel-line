@@ -72,6 +72,12 @@ Account
                             </a>
                         </li>
                         <li class="nav-item pt-2">
+                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#save">
+                                <i class="ni ni-watch-time me-2 text-dark opacity-6"></i>
+                                <span class="text-sm">Save</span>
+                            </a>
+                        </li>
+                        <li class="nav-item pt-2">
                             <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#delete">
                                 <i class="ni ni-settings-gear-65 me-2 text-dark opacity-6"></i>
                                 <span class="text-sm">Delete Account</span>
@@ -90,30 +96,21 @@ Account
                         <div class="row justify-content-center align-items-center">
                             <div class="col-sm-auto col-4">
                                 <div class="avatar avatar-sm position-relative">
-                                    <img src="{{ asset('uploads/profile-pic/') }}" alt="bruce"
+                                    <img src="{{ asset('uploads/richmenu/' . $richmenu->image) }}" alt="bruce"
                                         class="w-100 border-radius-lg shadow-sm">
                                 </div>
                             </div>
                             <div class="col-sm-auto col-8 my-auto">
                                 <div class="h-100">
                                     <h5 class="mb-1 font-weight-bolder">
-                                        
+                                        {{ $richmenu->name }}
                                     </h5>
                                     <p class="mb-0 font-weight-bold text-sm text-secondary">
-                                        登録日 
+                                        登録日 {{ $richmenu->created_at->toDateString() }}
                                     </p>
                                 </div>
                             </div>
                             <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
-                                <label class="form-check-label mb-0">
-                                    <small id="profileVisibility">
-                                        Switch to invisible
-                                    </small>
-                                </label>
-                                <div class="form-check form-switch ms-2">
-                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23"
-                                        checked onchange="visible()">
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,93 +121,81 @@ Account
                         </div>
                         <div class="card-body pt-0">
                             <div class="row">
-                                <div class="col-6">
-                                    <label class="form-label">ユーザー名</label>
-                                    <div class="input-group">
-                                        <input id="firstName" name="name" class="form-control" type="text"
-                                            placeholder="ユーザー名" value="">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label">メールアドレス</label>
-                                    <div class="input-group">
-                                        <input id="email" name="email" class="form-control" type="email"
-                                            placeholder="example@email.com" value="">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-4 col-6">
-                                    <label class="form-label mt-4">性別</label>
-                                    <select class="form-control" name="gender" id="choices-gender">
-                                        <option value="male" >男性</option>
-                                        <option value="female">女性
-                                        </option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-8">
-                                    <div class="row">
-                                        <div class="col-sm-5 col-5">
-                                            <label class="form-label mt-4">お誕生日</label>
-                                            <select name="dob-year" id="dob-year" class="form-control">
-                                                <option value="">年</option>
-                                                <option value="">----</option>
-                                                <option value="2015">2015</option>
-                                                <option value="2014" >2014</option>
-                                            </select>
+                                <div class="col-12 col-sm-6">
+                                    <div class="card richmenu">
+                                        <div class="rich-top">
+                                            <div class="row m-2 ms-3 g-0">
+                                                <div class="col-1"><i class="fa fa-arrow-left"></i></div>
+                                                <div class="col-9 text-center"><p>{{ $account->name }}</p></div>
+                                                <div class="col-1"><i class="fa fa-home"></i></div>
+                                                <div class="col-1"><i class="fa fa-bars"></i></div>
+                                            </div>
                                         </div>
-                                        <div class="col-sm-4 col-3">
-                                            <label class="form-label mt-4">&nbsp;</label>
-                                            <select name="dob-month" id="dob-month" class="form-control">
-                                                <option value="">月</option>
-                                                <option value="">-----</option>
-                                                <option value="01" >01
-                                                </option>
-                                            </select>
-                                        </div>
-                                        <div class="col-sm-3 col-4">
-                                            <label class="form-label mt-4">&nbsp;</label>
-                                            <select name="dob-day" id="dob-day" class="form-control">
-                                                <option value="">日</option>
-                                                <option value="">---</option>
-                                                <option value="01" >01
-                                                </option>
-                                                </option>
-                                            </select>
+                                        <div class="rich-bottom">
+                                            <div class="rich-display-small position-relative hide-rich">
+                                                <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span>
+                                                <div class="row g-0">
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="rich-display-big position-relative">
+                                                <span class="text-top text-md">大きいリッチメニューを使用 <br> ボタン6つまで設定可能</span>
+                                                <div class="row g-0">
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                </div>
+                                                <div class="row g-0">
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="rich-label">
+                                                <p class="display-label">表示ラベル &#x25BC;</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <label class="form-label mt-4">郵便番号</label>
-                                    <div class="input-group">
-                                        <input id="location" name="postcode" class="form-control" type="text"
-                                            placeholder="Sydney, A" value="">
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <label class="form-label mt-4">電話番号</label>
-                                    <div class="input-group">
-                                        <input id="phone" name="phone" class="form-control" type="tel"
-                                            placeholder="090-1234-5678" value="">
-                                    </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label>メニュー名 <span class="text-third">(必須)</span></label>
+                                    <input id="name" name="name" class="multisteps-form__input form-control" type="text" placeholder="管理用メニュー名" />
+                                    <label class="mt-4">表示ラベル <span class="text-third">(必須)</span></label>
+                                    <input id="label" name="label" class="multisteps-form__input form-control" type="text" placeholder="リッチメニュー表示ラベル" />
+                                    <label class="mt-4">リッチメニューのサイズ <span class="text-third">(必須)</span></label> <br>
+                                    <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big">
+                                    <label for="big">Big</label><br>
+                                    <input type="radio" id="small" name="richmenu_size" class="multisteps-form__input" value="small">
+                                    <label for="small">Small</label><br>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 align-self-center">
-                                    <label class="form-label mt-4">リッチメニュー</label>
-                                    <select class="form-control" name="choices-language" id="choices-language">
-                                        <option value="English">English</option>
-                                        <option value="French">French</option>
-                                        <option value="Spanish">Spanish</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label mt-4">タグ</label>
-                                    <input class="form-control" id="choices-skills" type="text"
-                                        value="vuejs, angular, react" placeholder="Enter something" />
+                        </div>
+                    </div>
+                    <!-- Card Image -->
+                    <div class="card mt-4" id="notifications">
+                        <div class="card-header">
+                            <h5>リッチメニュー画像</h5>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <label>画像をアップロード <span class="text-third">(必須)</span></label>
+                                    <p class="rich-imagetext-big text-secondary text-xs">ピクセルサイズが[横]2500px x [縦]1686pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
+                                    <p class="rich-imagetext-small text-secondary text-xs hide-rich">ピクセルサイズが[横]2500px x [縦]843pxのJPEGまたはPNG画像ファイルをアップロードしてください。(サイズ上限1MB)</p>
+                                    <div class="form-control ">
+                                        <input type="file" name="image" class="form-control "/>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -221,219 +206,177 @@ Account
                             </div>
                         </div>
                     </div>
-                    <!-- Card Notifications -->
-                    <div class="card mt-4" id="notifications">
-                        <div class="card-header">
-                            <h5>Notifications</h5>
-                            <p class="text-sm">Choose how you receive notifications. These notification settings apply
-                                to the things
-                                you’re watching.</p>
+                    <!-- Card Buttons -->
+                    <div class="card mt-4" id="sessions">
+                        <div class="card-header pb-3">
+                            <h5>Sessions</h5>
+                            <p class="text-sm">This is a list of devices that have logged into your account. Remove those
+                                that you do
+                                not recognize.</p>
                         </div>
                         <div class="card-body pt-0">
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="ps-1" colspan="4">
-                                                <p class="mb-0">Activity</p>
-                                            </th>
-                                            <th class="text-center">
-                                                <p class="mb-0">Email</p>
-                                            </th>
-                                            <th class="text-center">
-                                                <p class="mb-0">Push</p>
-                                            </th>
-                                            <th class="text-center">
-                                                <p class="mb-0">SMS</p>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="ps-1" colspan="4">
-                                                <div class="my-auto">
-                                                    <span class="text-dark d-block text-sm">Mentions</span>
-                                                    <span class="text-xs font-weight-normal">Notify when another user
-                                                        mentions you in a
-                                                        comment</span>
+                            <div class="row mt-3">
+                                <div class="col-12 col-sm-6">
+                                    <div class="card richmenu">
+                                        <div class="rich-top">
+                                            <div class="row m-2 ms-3 g-0">
+                                                <div class="col-1"><i class="fa fa-arrow-left"></i></div>
+                                                <div class="col-9 text-center"><p>{{ $account->name }}</p></div>
+                                                <div class="col-1"><i class="fa fa-home"></i></div>
+                                                <div class="col-1"><i class="fa fa-bars"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="rich-bottom">
+                                            <div class="rich-display-small position-relative hide-rich">
+                                                {{-- <span class="text-top text-md">小さいリッチメニューを使用 <br> ボタン3つまで設定可能</span> --}}
+                                                <div class="row g-0">
+                                                    <div class="col-4 rich-boxes">A
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">B
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">C
+                                                    </div>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" checked type="checkbox"
-                                                        id="flexSwitchCheckDefault11">
+                                            </div>
+                                            <div class="rich-display-big position-relative">
+                                                {{-- <span class="text-top text-md">大きいリッチメニューを使用 <br> ボタン6つまで設定可能</span> --}}
+                                                <div class="row g-0">
+                                                    <div class="col-4 rich-boxes">A
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">B
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">C
+                                                    </div>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckDefault12">
+                                                <div class="row g-0">
+                                                    <div class="col-4 rich-boxes">D
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">E
+                                                    </div>
+                                                    <div class="col-4 rich-boxes">F
+                                                    </div>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckDefault13">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="ps-1" colspan="4">
-                                                <div class="my-auto">
-                                                    <span class="text-dark d-block text-sm">Comments</span>
-                                                    <span class="text-xs font-weight-normal">Notify when another user
-                                                        comments your item.</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" checked type="checkbox"
-                                                        id="flexSwitchCheckDefault14">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" checked type="checkbox"
-                                                        id="flexSwitchCheckDefault15">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckDefault16">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="ps-1" colspan="4">
-                                                <div class="my-auto">
-                                                    <span class="text-dark d-block text-sm">Follows</span>
-                                                    <span class="text-xs font-weight-normal">Notify when another user
-                                                        follows you.</span>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckDefault17">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" checked type="checkbox"
-                                                        id="flexSwitchCheckDefault18">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" type="checkbox"
-                                                        id="flexSwitchCheckDefault19">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="ps-1" colspan="4">
-                                                <div class="my-auto">
-                                                    <p class="text-sm mb-0">Log in from a new device</p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" checked type="checkbox"
-                                                        id="flexSwitchCheckDefault20">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" checked type="checkbox"
-                                                        id="flexSwitchCheckDefault21">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div
-                                                    class="form-check form-switch mb-0 d-flex align-items-center justify-content-center">
-                                                    <input class="form-check-input" checked type="checkbox"
-                                                        id="flexSwitchCheckDefault22">
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="row">
-                                <div class="button-row d-flex mt-4 col-12">
-                                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                        title="Send">保存</button>
+                                            </div>
+                                            <div class="rich-label">
+                                                <p class="display-label">表示ラベル &#x25BC;</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-sm-6 mt-3 mt-sm-0">
+                                    <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
+                                    <select class="form-control" name="buttonsA" id="buttonsA" onchange="showDiv('hidden_divA', this)">
+                                        <option value="">-</option>
+                                        <option value="メニューをみる">メニューをみる</option>
+                                        <option value="注文履歴">注文履歴</option>
+                                        <option value="会員情報">会員情報</option>
+                                        <option value="店舗情報">店舗情報</option>
+                                        <option value="友達に紹介">友達に紹介</option>
+                                        <option value="リンク">リンク</option>
+                                    </select>
+                                    <div id="hidden_divA">
+                                        <label class="text-secondary">リンクのURL</label>
+                                        <input id="urlA" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                    </div>
+
+                                    <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
+                                    <select class="form-control" name="buttonsB" id="buttonsB" onchange="showDiv('hidden_divB', this)">
+                                        <option value="">-</option>
+                                        <option value="メニューをみる">メニューをみる</option>
+                                        <option value="注文履歴">注文履歴</option>
+                                        <option value="会員情報">会員情報</option>
+                                        <option value="店舗情報">店舗情報</option>
+                                        <option value="友達に紹介">友達に紹介</option>
+                                        <option value="リンク">リンク</option>
+                                    </select>
+                                    <div id="hidden_divB">
+                                        <label class="text-secondary">リンクのURL</label>
+                                        <input id="urlB" name="urlB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                    </div>
+
+                                    <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
+                                    <select class="form-control" name="buttonsC" id="buttonsC" onchange="showDiv('hidden_divC', this)">
+                                        <option value="">-</option>
+                                        <option value="メニューをみる">メニューをみる</option>
+                                        <option value="注文履歴">注文履歴</option>
+                                        <option value="会員情報">会員情報</option>
+                                        <option value="店舗情報">店舗情報</option>
+                                        <option value="友達に紹介">友達に紹介</option>
+                                        <option value="リンク">リンク</option>
+                                    </select>
+                                    <div id="hidden_divC">
+                                        <label class="text-secondary">リンクのURL</label>
+                                        <input id="urlC" name="urlC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                    </div>
+
+                                    <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定</label>
+                                    <select class="form-control forbig-richmenu" name="buttonsD" id="buttonsD" onchange="showDiv('hidden_divD', this)">
+                                        <option value="">-</option>
+                                        <option value="メニューをみる">メニューをみる</option>
+                                        <option value="注文履歴">注文履歴</option>
+                                        <option value="会員情報">会員情報</option>
+                                        <option value="店舗情報">店舗情報</option>
+                                        <option value="友達に紹介">友達に紹介</option>
+                                        <option value="リンク">リンク</option>
+                                    </select>
+                                    <div id="hidden_divD">
+                                        <label class="text-secondary">リンクのURL</label>
+                                        <input id="urlD" name="urlD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                    </div>
+
+                                    <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定</label>
+                                    <select class="form-control forbig-richmenu" name="buttonsE" id="buttonsE" onchange="showDiv('hidden_divE', this)">
+                                        <option value="">-</option>
+                                        <option value="メニューをみる">メニューをみる</option>
+                                        <option value="注文履歴">注文履歴</option>
+                                        <option value="会員情報">会員情報</option>
+                                        <option value="店舗情報">店舗情報</option>
+                                        <option value="友達に紹介">友達に紹介</option>
+                                        <option value="リンク">リンク</option>
+                                    </select>
+                                    <div id="hidden_divE">
+                                        <label class="text-secondary">リンクのURL</label>
+                                        <input id="urlE" name="urlE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                    </div>
+
+                                    <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定</label>
+                                    <select class="form-control forbig-richmenu" name="buttonsF" id="buttonsF" onchange="showDiv('hidden_divF', this)">
+                                        <option value="">-</option>
+                                        <option value="メニューをみる">メニューをみる</option>
+                                        <option value="注文履歴">注文履歴</option>
+                                        <option value="会員情報">会員情報</option>
+                                        <option value="店舗情報">店舗情報</option>
+                                        <option value="友達に紹介">友達に紹介</option>
+                                        <option value="リンク">リンク</option>
+                                    </select>
+                                    <div id="hidden_divF">
+                                        <label class="text-secondary">リンクのURL</label>
+                                        <input id="urlF" name="urlF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                    </div>
+
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Card Save Account -->
+                    <div class="card mt-4" id="save">
+                        <div class="card-header">
+                            <h5>Delete Account</h5>
+                            <p class="text-sm mb-0">Once you delete your account, there is no going back. Please be certain.
+                            </p>
+                        </div>
+                        <div class="card-body d-sm-flex pt-0">
+                            <div class="d-flex align-items-center mb-sm-0 mb-4">
+                                <div class="ms-2">
+                                    <span class="text-dark font-weight-bold d-block text-sm">削除を確定</span>
+                                    <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span>
+                                </div>
+                            </div>
+                            <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                        title="Send">変更を保存</button>
                         </div>
                     </div>
                 </form>
-                <!-- Card Sessions -->
-                <div class="card mt-4" id="sessions">
-                    <div class="card-header pb-3">
-                        <h5>Sessions</h5>
-                        <p class="text-sm">This is a list of devices that have logged into your account. Remove those
-                            that you do
-                            not recognize.</p>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div class="d-flex align-items-center">
-                            <div class="text-center w-5">
-                                <i class="fas fa-desktop text-lg opacity-6"></i>
-                            </div>
-                            <div class="my-auto ms-3">
-                                <div class="h-100">
-                                    <p class="text-sm mb-1">
-                                        Bucharest 68.133.163.201
-                                    </p>
-                                    <p class="mb-0 text-xs">
-                                        Your current session
-                                    </p>
-                                </div>
-                            </div>
-                            <span class="badge badge-success badge-sm my-auto ms-auto me-3">Active</span>
-                            <p class="text-secondary text-sm my-auto me-3">EU</p>
-                            <a href="javascript:;" class="text-primary text-sm icon-move-right my-auto">See more
-                                <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <hr class="horizontal dark">
-                        <div class="d-flex align-items-center">
-                            <div class="text-center w-5">
-                                <i class="fas fa-desktop text-lg opacity-6"></i>
-                            </div>
-                            <p class="my-auto ms-3">Chrome on macOS</p>
-                            <p class="text-secondary text-sm ms-auto my-auto me-3">US</p>
-                            <a href="javascript:;" class="text-primary text-sm icon-move-right my-auto">See more
-                                <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <hr class="horizontal dark">
-                        <div class="d-flex align-items-center">
-                            <div class="text-center w-5">
-                                <i class="fas fa-mobile text-lg opacity-6"></i>
-                            </div>
-                            <p class="my-auto ms-3">Safari on iPhone</p>
-                            <p class="text-secondary text-sm ms-auto my-auto me-3">US</p>
-                            <a href="javascript:;" class="text-primary text-sm icon-move-right my-auto">See more
-                                <i class="fas fa-arrow-right text-xs ms-1" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Card Delete Account -->
                 <div class="card mt-4" id="delete">
                     <div class="card-header">

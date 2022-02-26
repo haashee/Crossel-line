@@ -182,7 +182,7 @@ Account
                                             </p>
                                             <a href="{{ route('richmenu.edit', ['aid' => $account->id, 'richmenu' =>$richmenu->id]) }}">
                                                 <h5>
-                                                    {{ $richmenu->name }}
+                                                    {{ $richmenu->name }} <i class="fas fa-edit text-third edit-icon"></i>
                                                 </h5>
                                             </a>
                                             <div class="d-flex align-items-center justify-content-between mb-4">

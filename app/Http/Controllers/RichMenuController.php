@@ -121,13 +121,15 @@ class RichMenuController extends Controller
      * @param  \App\Models\RichMenu  $richMenu
      * @return \Illuminate\Http\Response
      */
-    public function edit(RichMenu $richMenu, $aid)
+    public function edit(RichMenu $richMenu, $aid, $id)
     {
         $account = Account::where('id', $aid)->first();
+        $richmenu = RichMenu::where('id', $id)->first();
         $richmenus = RichMenu::where('account_id', $aid)->get();
 
         return view('dashboard.richmenu.edit', [
             'account' => $account,
+            'richmenu' => $richmenu,
             'richmenus' => $richmenus,
         ]);
     }

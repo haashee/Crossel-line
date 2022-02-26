@@ -38001,17 +38001,27 @@ svg.leaflet-image-layer.leaflet-interactive path {
     color: white;
 }
 
-.rich-display-big > .text-top{
+.rich-display-big > .text-top {
     top: 40%;
 }
 
 /* richmenu create buttons */
-#hidden_divA, #hidden_divB, #hidden_divC, #hidden_divD, #hidden_divE, #hidden_divF {
+#hidden_divA,
+#hidden_divB,
+#hidden_divC,
+#hidden_divD,
+#hidden_divE,
+#hidden_divF {
     display: none;
     margin-left: 10px;
 }
 
 /* text red for required fields */
-.text-red{
-    color:red;
+.text-red {
+    color: red;
+}
+
+/* edit icon */
+.edit-icon {
+    font-size: 0.8rem;
 }
