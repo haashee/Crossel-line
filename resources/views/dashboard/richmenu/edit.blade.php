@@ -277,7 +277,7 @@ Account
                                     </select>
                                     <div id="hidden_divA">
                                         <label class="text-secondary">リンクのURL</label>
-                                        <input id="urlA" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlA" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_a }}"/>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
@@ -292,7 +292,7 @@ Account
                                     </select>
                                     <div id="hidden_divB">
                                         <label class="text-secondary">リンクのURL</label>
-                                        <input id="urlB" name="urlB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlB" name="urlB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_b }}"/>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
@@ -307,7 +307,7 @@ Account
                                     </select>
                                     <div id="hidden_divC">
                                         <label class="text-secondary">リンクのURL</label>
-                                        <input id="urlC" name="urlC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlC" name="urlC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_c }}"/>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定</label>
@@ -322,7 +322,7 @@ Account
                                     </select>
                                     <div id="hidden_divD">
                                         <label class="text-secondary">リンクのURL</label>
-                                        <input id="urlD" name="urlD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlD" name="urlD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_d }}"/>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定</label>
@@ -337,7 +337,7 @@ Account
                                     </select>
                                     <div id="hidden_divE">
                                         <label class="text-secondary">リンクのURL</label>
-                                        <input id="urlE" name="urlE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlE" name="urlE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_e }}"/>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定</label>
@@ -352,7 +352,7 @@ Account
                                     </select>
                                     <div id="hidden_divF">
                                         <label class="text-secondary">リンクのURL</label>
-                                        <input id="urlF" name="urlF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlF" name="urlF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_f }}"/>
                                     </div>
 
                                 </div>
@@ -528,11 +528,40 @@ Account
     }
 
 
-    
+
+    var btnA = document.getElementById("buttonsA");
+    var btnB = document.getElementById("buttonsB");
+    var btnC = document.getElementById("buttonsC");
+    var btnD = document.getElementById("buttonsD");
+    var btnE = document.getElementById("buttonsE");
+    var btnF = document.getElementById("buttonsF");
+
+    if (btnA.value == 'リンク') {
+        showDivv('hidden_divA');
+    }if (btnB.value == 'リンク') {
+        showDivv('hidden_divB');
+    }if (btnC.value == 'リンク') {
+        showDivv('hidden_divC');
+    }if (btnD.value == 'リンク') {
+        showDivv('hidden_divD');
+    }if (btnE.value == 'リンク') {
+        showDivv('hidden_divE');
+    }if (btnF.value == 'リンク') {
+        showDivv('hidden_divF');
+    } 
+
+
+
     function showDiv(divId, element)
     {
         document.getElementById(divId).style.display = element.value == 'リンク' ? 'block' : 'none';
     }
+
+    function showDivv(divId)
+    {
+        document.getElementById(divId).style.display = 'block';
+    }
+
 
 </script>
 <!-- Github buttons -->
