@@ -84,8 +84,8 @@ class LineMessengerController extends Controller
         if ($user == NULL) {
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
             $mode = $inputs['events'][0]['mode'];
-            // $id = Auth::user()->id;
 
+            // add to database
             $user = new LineUser();
             $user->name = $profile['displayName'];
             $user->line_id = $userId;
