@@ -37,7 +37,11 @@ class AccountsController extends Controller
      */
     public function create()
     {
-        return view('dashboard.accounts.create');
+        $aid = 1;
+        $account = Account::where('id', $aid)->first();
+        return view('dashboard.accounts.create', [
+            'account' => $account,
+        ]);
     }
 
     public function webhookCheck($aid)

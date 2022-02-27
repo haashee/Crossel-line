@@ -3,39 +3,37 @@
         <div class="row gx-4">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="{{ (Route::currentRouteName() == 'accounts.index') ? asset('assets/img/team-1.jpg') : asset('uploads/profile-pic/' . $account->image) }}" alt="profile_image"
+                    <img src="{{ Route::currentRouteName('accounts.index','accounts.create') ? asset('assets/img/team-1.jpg') : asset('uploads/profile-pic/' . $account->image) }}" alt="profile_image"
                         class="w-100 border-radius-lg shadow-sm">
                 </div>
             </div>
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        @if (Route::currentRouteName() != 'accounts.index' )
-                        {{ $account->name }}
-                        @else
+                        @if (Route::currentRouteName('accounts.index','accounts.create'))
                         {{ Auth::user()->name }}
+                        @else
+                        {{ $account->name }}
                         @endif
                     </h5>
 
-                    @if (Route::currentRouteName() != 'accounts.index' )
-                    <a href="{{ URL::route('accounts.index') }}">
-                        <p class="mb-0 font-weight-bold text-sm text-third">
-                            アカウント一覧へ戻る
-                        </p>
-                    </a>
-                    @else
+                    @if (Route::currentRouteName('accounts.index','accounts.create'))
                     <a href="{{ URL::route('dashboard') }}">
                         <p class="mb-0 font-weight-bold text-sm text-third">
                             ダッシュボードへ戻る
+                        </p>
+                    </a>
+                    @else
+                    <a href="{{ URL::route('accounts.index') }}">
+                        <p class="mb-0 font-weight-bold text-sm text-third">
+                            アカウント一覧へ戻る
                         </p>
                     </a>
                     @endif
                 </div>
             </div>
 
-            @if (Route::currentRouteName() != 'accounts.index' )
-            @include('includes.topnav-accounts')
-            @else
+            @if (Route::currentRouteName('accounts.index','accounts.create'))
             <div class="col-auto my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
                 <div class="nav-wrapper position-relative end-0">
                     <ul class="nav nav-pills nav-fill p-1" role="tablist">
@@ -70,6 +68,8 @@
                     </ul>
                 </div>
             </div>
+            @else
+            @include('includes.topnav-accounts')
             @endif
 
         </div>

@@ -1,4 +1,4 @@
-@extends('layouts.profile')
+@extends('layouts.master')
 
 
 
@@ -16,61 +16,16 @@ Account Wizard
     @include('includes.navbar')
     <!-- End Navbar -->
 
-    <!-- Account profile -->
-    @include('includes.account-profile')
-    <!-- End Account profile -->
-
 
     <div class="container-fluid py-4">
-
-
-
-        <!--error message-->
-        @if ($errors->any())
-        <div class="position-fixed bottom-1 end-1 z-index-2">
-
-            <div class="toast fade hide p-2 mt-2 bg-white show" role="alert" aria-live="assertive" id="dangerToast"
-                aria-atomic="true">
-                <div class="toast-header border-0">
-                    <i class="ni ni-notification-70 text-danger me-2"></i>
-                    <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
-                    {{-- <small class="text-body">0 mins ago</small> --}}
-                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
-                </div>
-                <hr class="horizontal dark m-0">
-                <div class="toast-body">
-                    @foreach ($errors->all() as $error )
-                    {{ $error }} <br>
-                    @endforeach </div>
-            </div>
-        </div>
-        @endif
-
-
-        <!--session message-->
-        @if (session()->has('message'))
-        <div class="position-fixed bottom-1 end-1 z-index-2">
-            <div class="toast fade hide p-2 bg-white show" role="alert" aria-live="assertive" id="successToast"
-                aria-atomic="true">
-                <div class="toast-header border-0">
-                    <i class="ni ni-check-bold text-success me-2"></i>
-                    <span class="me-auto font-weight-bold">{{ session()->get('title') }}</span>
-                    {{-- <small class="text-body">11 mins ago</small> --}}
-                    <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast" aria-label="Close"></i>
-                </div>
-                <hr class="horizontal dark m-0">
-                <div class="toast-body">
-                    {{ session()->get('message') }}
-                </div>
-            </div>
-        </div>
-        @endif
-
         <div class="row">
-            <div class="col-12">
-                <div class="multisteps-form">
-                    <div class="row">
-                        <div class="col-12 col-lg-8 mx-auto mt-4 mb-sm-5 mb-3">
+            <div class="col-12 text-center">
+                <h3 class="mt-5 text-white">LINEアカウントを連携</h3>
+                <h5 class="text-white font-weight-normal">Page to connect new LINE account.</h5>
+                <div class="multisteps-form mb-5">
+                    <!--progress bar-->
+                    <div class="row mt-5">
+                        <div class="col-12 col-lg-8 mx-auto my-5">
                             <div class="multisteps-form__progress">
                                 <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
                                     <span>LINEの設定</span>
@@ -87,6 +42,29 @@ Account Wizard
                             </div>
                         </div>
                     </div>
+
+                    <!--error message-->
+                    @if ($errors->any())
+                    <div class="position-fixed bottom-1 end-1 z-index-2">
+
+                        <div class="toast fade hide p-2 mt-2 bg-white show" role="alert" aria-live="assertive"
+                            id="dangerToast" aria-atomic="true">
+                            <div class="toast-header border-0">
+                                <i class="ni ni-notification-70 text-danger me-2"></i>
+                                <span class="me-auto text-gradient text-danger font-weight-bold">エラーが発生しました</span>
+                                {{-- <small class="text-body">0 mins ago</small> --}}
+                                <i class="fas fa-times text-md ms-3 cursor-pointer" data-bs-dismiss="toast"
+                                    aria-label="Close"></i>
+                            </div>
+                            <hr class="horizontal dark m-0">
+                            <div class="toast-body">
+                                @foreach ($errors->all() as $error )
+                                {{ $error }} <br>
+                                @endforeach </div>
+                        </div>
+                    </div>
+                    @endif
+
                     <!--form panels-->
                     <div class="row">
                         <div class="col-12 col-lg-8 m-auto">
@@ -105,6 +83,20 @@ Account Wizard
                                     </div>
                                     <div class="multisteps-form__content">
                                         <div class="row mt-3">
+                                            {{-- <div class="col-12 col-sm-4">
+                                                <div class="avatar avatar-xxl position-relative">
+                                                    <img src="../../assets/img/bruce-mars.jpg" class="border-radius-md"
+                                                        alt="team-2">
+                                                    <a href="javascript:;"
+                                                        class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
+                                                        <i class="fa fa-pen top-0" data-bs-toggle="tooltip"
+                                                            data-bs-placement="top" title="" aria-hidden="true"
+                                                            data-bs-original-title="Edit Image"
+                                                            aria-label="Edit Image"></i><span class="sr-only">Edit
+                                                            Image</span>
+                                                    </a>
+                                                </div>
+                                            </div> --}}
                                             <div class="col-12 col-sm-8 mt-4 mt-sm-0 text-start m-auto">
                                                 <label>Name</label>
                                                 <input class="multisteps-form__input form-control mb-3" type="text"
@@ -344,12 +336,10 @@ Account Wizard
                     </div>
                 </div>
             </div>
-
+        </div>
         <!-- Footer -->
         @include('includes.footer')
         <!-- End Footer -->
-        </div>
-
     </div>
 
 </main>
