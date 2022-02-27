@@ -3,21 +3,26 @@
         <div class="row gx-4">
             <div class="col-auto">
                 <div class="avatar avatar-xl position-relative">
-                    <img src="{{ Route::currentRouteName('accounts.index','accounts.create') ? asset('assets/img/team-1.jpg') : asset('uploads/profile-pic/' . $account->image) }}" alt="profile_image"
+                    @if (Route::currentRouteName() == 'accounts.index' || Route::currentRouteName() == 'accounts.create')
+                    <img src="{{ asset('assets/img/team-1.jpg') }}" alt="profile_image"
                         class="w-100 border-radius-lg shadow-sm">
+                    @else
+                    <img src="{{ asset('uploads/profile-pic/' . $account->image) }}" alt="profile_image"
+                        class="w-100 border-radius-lg shadow-sm">
+                    @endif
                 </div>
             </div>
             <div class="col-auto my-auto">
                 <div class="h-100">
                     <h5 class="mb-1">
-                        @if (Route::currentRouteName('accounts.index','accounts.create'))
+                        @if (Route::currentRouteName() == 'accounts.index' || Route::currentRouteName() == 'accounts.create')
                         {{ Auth::user()->name }}
                         @else
                         {{ $account->name }}
                         @endif
                     </h5>
 
-                    @if (Route::currentRouteName('accounts.index','accounts.create'))
+                    @if (Route::currentRouteName() == 'accounts.index' || Route::currentRouteName() == 'accounts.create')
                     <a href="{{ URL::route('dashboard') }}">
                         <p class="mb-0 font-weight-bold text-sm text-third">
                             ダッシュボードへ戻る
@@ -33,43 +38,43 @@
                 </div>
             </div>
 
-            @if (Route::currentRouteName('accounts.index','accounts.create'))
-            <div class="col-auto my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
-                <div class="nav-wrapper position-relative end-0">
-                    <ul class="nav nav-pills nav-fill p-1" role="tablist">
-                        {{-- <li class="nav-item mx-3">
-                            <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
-                                href="{{ URL::route('accounts.index') }}" role="tab" aria-selected="false">
-                                <i class="ni ni-app"></i>
-                                <span class="ms-2">一覧</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mx-3">
-                            <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center {{ Route::currentRouteNamed('friends.index') ? 'topnav-select' : '' }}" href="" role="tab"
-                                aria-selected="true">
-                                <i class="ni ni-image"></i>
-                                <span class="ms-2">友だちリスト</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center{{ Route::currentRouteNamed('accounts.richmenu') ? 'topnav-select' : '' }}" href="" role="tab"
-                                aria-selected="true">
-                                <i class="ni ni-image"></i>
-                                <span class="ms-2">リッチメニュー</span>
-                            </a>
-                        </li> --}}
-                        <li class="nav-item mx-3">
-                            <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center{{ Route::currentRouteNamed('accounts.edit') ? 'topnav-select' : '' }}" href="" role="tab"
-                                aria-selected="false">
-                                <i class="ni ni-settings-gear-65"></i>
-                                <span class="ms-2">設定</span>
-                            </a>
-                        </li>
-                    </ul>
+            @if (Route::currentRouteName() == 'accounts.index' || Route::currentRouteName() == 'accounts.create')
+                <div class="col-auto my-sm-auto ms-sm-auto me-sm-0 mx-auto mt-3">
+                    <div class="nav-wrapper position-relative end-0">
+                        <ul class="nav nav-pills nav-fill p-1" role="tablist">
+                            {{-- <li class="nav-item mx-3">
+                                <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center "
+                                    href="{{ URL::route('accounts.index') }}" role="tab" aria-selected="false">
+                                    <i class="ni ni-app"></i>
+                                    <span class="ms-2">一覧</span>
+                                </a>
+                            </li>
+                            <li class="nav-item mx-3">
+                                <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center {{ Route::currentRouteNamed('friends.index') ? 'topnav-select' : '' }}" href="" role="tab"
+                                    aria-selected="true">
+                                    <i class="ni ni-image"></i>
+                                    <span class="ms-2">友だちリスト</span>
+                                </a>
+                            </li>
+                            <li class="nav-item mx-2">
+                                <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center{{ Route::currentRouteNamed('accounts.richmenu') ? 'topnav-select' : '' }}" href="" role="tab"
+                                    aria-selected="true">
+                                    <i class="ni ni-image"></i>
+                                    <span class="ms-2">リッチメニュー</span>
+                                </a>
+                            </li> --}}
+                            <li class="nav-item mx-3">
+                                <a class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center{{ Route::currentRouteNamed('accounts.edit') ? 'topnav-select' : '' }}" href="" role="tab"
+                                    aria-selected="false">
+                                    <i class="ni ni-settings-gear-65"></i>
+                                    <span class="ms-2">設定</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
             @else
-            @include('includes.topnav-accounts')
+                @include('includes.topnav-accounts')
             @endif
 
         </div>

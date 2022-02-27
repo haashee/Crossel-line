@@ -21,7 +21,7 @@
             <li class="nav-item mx-2">
                 <a 
                     class="nav-link mb-0 px-0 py-1 d-flex align-items-center justify-content-center
-                        {{ Route::currentRouteNamed('accounts.richmenu') ? 'topnav-select' : '' }}"
+                        {{ Route::currentRouteNamed('richmenu.index') ? 'topnav-select' : '' }}"
                     href="/accounts/{{ $account->id }}/richmenu" role="tab" aria-selected="true">
                     <i class="ni ni-image"></i>
                     <span class="ms-2">リッチメニュー</span>
