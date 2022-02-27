@@ -303,7 +303,7 @@ Account
                                         <option value="リンク" {{$richmenu->text_a == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divA">
-                                        <label class="text-secondary">リンクのURL</label>
+                                        <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
                                         <input id="urlA" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_a }}"/>
                                     </div>
 
@@ -318,7 +318,7 @@ Account
                                         <option value="リンク" {{$richmenu->text_b == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divB">
-                                        <label class="text-secondary">リンクのURL</label>
+                                        <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
                                         <input id="urlB" name="urlB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_b }}"/>
                                     </div>
 
@@ -333,7 +333,7 @@ Account
                                         <option value="リンク" {{$richmenu->text_c == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divC">
-                                        <label class="text-secondary">リンクのURL</label>
+                                        <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
                                         <input id="urlC" name="urlC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_c }}"/>
                                     </div>
 
@@ -348,7 +348,7 @@ Account
                                         <option value="リンク" {{$richmenu->text_d == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divD">
-                                        <label class="text-secondary">リンクのURL</label>
+                                        <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
                                         <input id="urlD" name="urlD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_d }}"/>
                                     </div>
 
@@ -363,7 +363,7 @@ Account
                                         <option value="リンク" {{$richmenu->text_e == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divE">
-                                        <label class="text-secondary">リンクのURL</label>
+                                        <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
                                         <input id="urlE" name="urlE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_e }}"/>
                                     </div>
 
@@ -378,7 +378,7 @@ Account
                                         <option value="リンク" {{$richmenu->text_f == 'リンク' ? 'selected' : ''}}>リンク</option>
                                     </select>
                                     <div id="hidden_divF">
-                                        <label class="text-secondary">リンクのURL</label>
+                                        <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
                                         <input id="urlF" name="urlF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_f }}"/>
                                     </div>
 
