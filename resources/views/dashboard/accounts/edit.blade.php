@@ -677,26 +677,26 @@ Account
 
                 <!-- Card Delete Account -->
                 <div class="card mt-4" id="delete">
-                    {{-- <div class="card-header">
+                    <div class="card-header">
                         <h5>Delete Account</h5>
                         <p class="text-sm mb-0">削除されたアカウントは復元できませんのでご注意ください。
                         </p>
-                    </div> --}}
+                    </div>
                     <div class="card-body d-sm-flex pt-4">
                         <div class="d-flex align-items-center mb-sm-0 mb-4">
                             <div class="ms-2">
-                                <span class="text-dark font-weight-bold d-block text-sm">アカウントの削除はできません</span>
-                                <span class="text-xs d-block">有料プランをご利用中はアカウントの削除ができません。</span>
-                                {{-- <span class="text-dark font-weight-bold d-block text-sm">削除を確定</span>
-                                <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span> --}}
+                                {{-- <span class="text-dark font-weight-bold d-block text-sm">アカウントの削除はできません</span>
+                                <span class="text-xs d-block">有料プランをご利用中はアカウントの削除ができません。</span> --}}
+                                <span class="text-dark font-weight-bold d-block text-sm">削除を確定</span>
+                                <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span>
                             </div>
                         </div>
 
-                        <form class='ms-auto' action="" method="POST">
+                        <form class="ms-auto" action="/accounts/{{ $account->id }}" method="POST">
                             @csrf
                             @method('delete')
-                            {{-- <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button"
-                                name="button">確定</button> --}}
+                            <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button"
+                                name="button">確定</button>
                             <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit"
                                 name="button" disabled>
                                 削除
@@ -710,7 +710,7 @@ Account
 
 
         <!--admin buttons message-->
-        @if (@isset(Auth::user()->id) && (Auth::user()->name== 'admin'))
+        {{-- @if (@isset(Auth::user()->id) && (Auth::user()->name== 'admin'))
         <div class="row mt-3">
             <div class="col-12 col-md-6 col-xl-12 mt-md-0 mt-4">
                 <div class="card h-100">
@@ -729,7 +729,7 @@ Account
                 </div>
             </div>
         </div>
-        @endisset
+        @endisset --}}
 
 
 
@@ -763,6 +763,14 @@ Account
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
+
+
+    let editDeleteBtn = document.querySelector('.confirm-delete');
+    let editDelete = document.querySelector('.confirm-delete-btn');
+    editDeleteBtn.addEventListener('click', event => {
+        editDelete.toggleAttribute("disabled");
+    });
+
 
     let editTokenBtn = document.querySelector('.edit-token');
     let editToken = document.querySelectorAll('.edit-token-show');
