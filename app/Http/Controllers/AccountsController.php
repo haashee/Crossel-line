@@ -37,8 +37,25 @@ class AccountsController extends Controller
      */
     public function create()
     {
-
         return view('dashboard.accounts.create');
+    }
+
+    public function webhookCheck($aid)
+    {
+        $account = Account::where('id', $aid)->first();
+
+        return view('dashboard.accounts.webhook', [
+            'account' => $account,
+
+        ]);
+    }
+
+    public function webhookChecked()
+    {
+        Session::put('title', 'アカウント作成完了');
+
+        return redirect('/accounts')
+            ->with('message', 'アカウントが無事作成されました。');
     }
 
     /**
@@ -78,7 +95,7 @@ class AccountsController extends Controller
 
         Session::put('title', 'アカウント作成完了');
 
-        return redirect('/accounts')
+        return redirect('/accounts' . '/' . $newAccount->id . '/webhook/check')
             ->with('message', 'アカウントが無事作成されました。');
     }
 
