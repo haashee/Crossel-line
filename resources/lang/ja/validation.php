@@ -106,7 +106,7 @@ return [
     'prohibited_if' => 'The :attribute field is prohibited when :other is :value.',
     'prohibited_unless' => 'The :attribute field is prohibited unless :other is in :values.',
     'prohibits' => 'The :attribute field prohibits :other from being present.',
-    'regex' => 'The :attribute format is invalid.',
+    'regex' => ':attributeの形式が間違っています。',
     'required' => ':attributeは必須項目です。',
     'required_if' => 'The :attribute field is required when :other is :value.',
     'required_unless' => 'The :attribute field is required unless :other is in :values.',
@@ -171,6 +171,12 @@ return [
         'richmenu_size' => 'リッチメニューのサイズ',
         'label' => '表示ラベル',
         'image' => '画像ファイル',
+        'urlA' => 'URLリンクA',
+        'urlB' => 'URLリンクB',
+        'urlC' => 'URLリンクC',
+        'urlD' => 'URLリンクD',
+        'urlE' => 'URLリンクE',
+        'urlF' => 'URLリンクF',
     ],
 
 ];
