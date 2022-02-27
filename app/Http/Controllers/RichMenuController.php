@@ -279,29 +279,80 @@ class RichMenuController extends Controller
             $response = $bot->deleteRichMenu($account->richmenu_id);
         }
 
-        // Create richmenu
-        $richMenuBuilder = new RichMenuBuilder(
-            new RichMenuSizeBuilder($richmenu->height, $richmenu->width), #h,w
-            true, # show rich menu as default (false to hide rich menu) 
-            $richmenu->name, # name of rich menu
-            $richmenu->display_text, # Display text for rich menu
-            array( # array for actions on rich menu
-                new RichMenuAreaBuilder( # action 1
-                    new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
-                    new UriTemplateActionBuilder("クリックしてね", 'https://google.com/') # reply text
-                    // new MessageTemplateActionBuilder('m', 'Text A') # reply text
-                ),
-                new RichMenuAreaBuilder( # action 2
-                    new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
-                    new MessageTemplateActionBuilder('m', 'Text B') # reply text
-                ),
-                new RichMenuAreaBuilder( # action 3
-                    new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
-                    new MessageTemplateActionBuilder('m', 'Text C') # reply text
-                ),
-            )
-        );
+        if ($richmenu->url_a) {
+            $buttonA = new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a); # (x,y,width,height)
+        } else {
+            $buttonA = new MessageTemplateActionBuilder('m', $richmenu->text_a); # (x,y,width,height)
+        }
 
+        // function insertText($button, $richmenu)
+        // {
+        //     if ($richmenu->url_a) {
+        //         return new UriTemplateActionBuilder($button, $richmenu->url_a); # (x,y,width,height)
+        //     } else {
+        //         return new MessageTemplateActionBuilder('m', $button); # (x,y,width,height)
+        //     }
+        // };
+
+        if ($richmenu->height == 843) {
+            // Create richmenu
+            $richMenuBuilder = new RichMenuBuilder(
+                new RichMenuSizeBuilder($richmenu->height, $richmenu->width), #h,w
+                true, # show rich menu as default (false to hide rich menu) 
+                $richmenu->name, # name of rich menu
+                $richmenu->display_text, # Display text for rich menu
+                array( # array for actions on rich menu
+                    new RichMenuAreaBuilder( # action A
+                        new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
+                    ),
+                    new RichMenuAreaBuilder( # action B
+                        new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_b) ? new UriTemplateActionBuilder($richmenu->text_b, $richmenu->url_b) : new MessageTemplateActionBuilder('m', $richmenu->text_b)
+                    ),
+                    new RichMenuAreaBuilder( # action C
+                        new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_c) ? new UriTemplateActionBuilder($richmenu->text_c, $richmenu->url_c) : new MessageTemplateActionBuilder('m', $richmenu->text_c)
+                    ),
+                )
+            );
+        } elseif ($richmenu->height == 1686) {
+            // Create richmenu
+            $richMenuBuilder = new RichMenuBuilder(
+                new RichMenuSizeBuilder($richmenu->height, $richmenu->width), #h,w
+                true, # show rich menu as default (false to hide rich menu) 
+                $richmenu->name, # name of rich menu
+                $richmenu->display_text, # Display text for rich menu
+                array( # array for actions on rich menu
+                    new RichMenuAreaBuilder( # action A
+                        new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
+                    ),
+                    new RichMenuAreaBuilder( # action B
+                        new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_b) ? new UriTemplateActionBuilder($richmenu->text_b, $richmenu->url_b) : new MessageTemplateActionBuilder('m', $richmenu->text_b)
+                    ),
+                    new RichMenuAreaBuilder( # action C
+                        new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_c) ? new UriTemplateActionBuilder($richmenu->text_c, $richmenu->url_c) : new MessageTemplateActionBuilder('m', $richmenu->text_c)
+                    ),
+                    new RichMenuAreaBuilder( # action D
+                        new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_d) ? new UriTemplateActionBuilder($richmenu->text_d, $richmenu->url_d) : new MessageTemplateActionBuilder('m', $richmenu->text_d)
+                    ),
+                    new RichMenuAreaBuilder( # action E
+                        new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_e) ? new UriTemplateActionBuilder($richmenu->text_e, $richmenu->url_e) : new MessageTemplateActionBuilder('m', $richmenu->text_e)
+                    ),
+                    new RichMenuAreaBuilder( # action F
+                        new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
+                        isset($richmenu->url_f) ? new UriTemplateActionBuilder($richmenu->text_f, $richmenu->url_f) : new MessageTemplateActionBuilder('m', $richmenu->text_f)
+                    ),
+                )
+            );
+        }
+
+        // Build from created rich menu
         $response = $bot->createRichMenu($richMenuBuilder);
 
         // check what is sent in POST for debug
@@ -311,6 +362,12 @@ class RichMenuController extends Controller
         $richMenuBody = $response->getRawBody();
         $richMenuId = json_decode($richMenuBody)->richMenuId;
         Log::info('the rich menu ID is `' . $richMenuId . '`');
+
+        // save rich menu id in rich menu table
+        RichMenu::where('id', $id)
+            ->update([
+                'richmenu_id' => $richMenuId,
+            ]);
 
         // upload pic for richmenu
         $imagePath = public_path() . '/uploads/richmenu/' . $richmenu->image;
