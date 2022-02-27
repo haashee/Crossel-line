@@ -38025,3 +38025,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .edit-icon {
     font-size: 0.8rem;
 }
+
+/* rich card */
+.rich-card {
+    height: 340px;
+    position: relative;
+}
+
+.rich-card-text {
+    position: absolute;
+    bottom: 0;
+}

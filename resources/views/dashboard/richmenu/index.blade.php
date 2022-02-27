@@ -163,14 +163,14 @@ Account
                         <div class="row target-area">
                             @foreach ($richmenus as $richmenu)
                                 <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                                    <div class="card card-blog card-plain">
+                                    <div class="card card-blog card-plain rich-card">
                                         <div class="position-relative">
                                             <a class="d-block shadow-xl border-radius-xl">
                                                 <img src="{{ asset('uploads/richmenu/' . $richmenu->image) }}" alt="img-blur-shadow"
                                                     class="img-fluid shadow border-radius-xl">
                                             </a>
                                         </div>
-                                        <div class="card-body px-1 pb-0">
+                                        <div class="card-body px-1 pb-0 rich-card-text">
                                             <p class="text-gradient text-dark mb-2 text-xs">
                                                 @if ($richmenu->height == 1686)
                                                     大きいリッチメニュー (ボタン6つ) <br> 
