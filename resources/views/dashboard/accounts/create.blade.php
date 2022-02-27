@@ -13,7 +13,7 @@ Account Wizard
 
 
     <!-- Navbar -->
-    @include('includes.navbar')
+    @include('includes.navbar-profile')
     <!-- End Navbar -->
 
     <!-- Account profile -->
