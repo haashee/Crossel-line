@@ -73,8 +73,9 @@ Account Wizard
                         <div class="col-12 col-lg-8 mx-auto mt-4 mb-sm-5 mb-3">
                             <div class="multisteps-form__progress">
                                 <button class="multisteps-form__progress-btn js-active" type="button" title="User Info">
-                                    <span>LINEの設定</span>
+                                    <span>アカウントの基本設定</span>
                                 </button>
+                                {{-- <p class="text-center">アカウントの基本設定</p> --}}
                             </div>
                         </div>
                     </div>
