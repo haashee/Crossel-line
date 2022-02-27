@@ -66,6 +66,14 @@ class LineMessengerController extends Controller
         // $http_client = new CurlHTTPClient(config('services.line.channel_token'));
         // $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
 
+        // check signature if message is from LINE
+        $signature = $request->header('x-line-signature');
+        if (!$bot->validateSignature($request->getContent(), $signature)) {
+            abort(400, 'Invalid signature');
+        } else {
+            Log::info("LOG: Signature is validated `" . $signature . "`");
+        }
+
         // LINEのユーザーIDをuserIdに代入
         $userId = $request['events'][0]['source']['userId'];
 
