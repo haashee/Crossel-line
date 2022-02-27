@@ -45,7 +45,7 @@ class AccountsController extends Controller
     {
         $account = Account::where('id', $aid)->first();
 
-        return view('dashboard.accounts.webhook', [
+        return view('dashboard.accounts.create-check', [
             'account' => $account,
 
         ]);
