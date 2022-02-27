@@ -65,8 +65,13 @@ Friend list
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         <span class="badge badge-dot me-4">
+                                            @if ($friend->email)
                                             <i class="bg-info"></i>
                                             <span class="text-dark text-xs">登録済み</span>
+                                            @else
+                                            <i class="bg-secondary"></i>
+                                            <span class="text-dark text-xs">未登録</span>
+                                            @endif
                                         </span>
                                     </td>
                                     <td class="text-sm font-weight-normal">
