@@ -7,6 +7,7 @@ use App\Models\Account;
 use App\Models\AccountSetting;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Route;
 
 
 class AccountsController extends Controller
@@ -71,11 +72,9 @@ class AccountsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'name' => 'required',
             'channel_secret' => 'required',
             'access_token' => 'required',
-            'liff_full' => 'required',
-            'liff_tall' => 'required',
-            'liff_compact' => 'required',
         ]);
 
 
@@ -97,10 +96,10 @@ class AccountsController extends Controller
             'membership_background' => '#5a9ae4',
         ]);
 
-        Session::put('title', 'アカウント作成完了');
+        Session::put('title', 'アカウントの初期化完了');
 
         return redirect('/accounts' . '/' . $newAccount->id . '/webhook/check')
-            ->with('message', 'アカウントが無事作成されました。');
+            ->with('message', 'アカウントの作成が開始されました。');
     }
 
     /**
@@ -135,6 +134,10 @@ class AccountsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // get previous route name
+        $url = url()->previous();
+        $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
+
         $request->validate([
             'name' => 'required',
             'channel_secret' => 'required',
@@ -144,6 +147,8 @@ class AccountsController extends Controller
             'liff_compact' => 'required',
             'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
+
+
 
         $account = Account::where('id', $id)->first();
 
@@ -169,10 +174,19 @@ class AccountsController extends Controller
                 'liff_compact' => $request->input('liff_compact'),
             ]);
 
-        Session::put('title', 'アカウント編集完了');
 
-        return redirect('/accounts' . '/' . $id . '/' . 'edit')
-            ->with('message', 'アカウントが無事編集されました。');
+        switch ($route) {
+            case 'accounts.check':
+                Session::put('title', 'アカウント作成完了');
+                return redirect('/accounts')
+                    ->with('message', 'アカウントが無事作成されました。');
+                break;
+            default:
+                Session::put('title', 'アカウント編集完了');
+                return redirect('/accounts' . '/' . $id . '/' . 'edit')
+                    ->with('message', 'アカウントが無事編集されました。');
+                break;
+        }
     }
 
     /**
