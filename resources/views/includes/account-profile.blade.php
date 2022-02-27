@@ -22,7 +22,7 @@
                         @endif
                     </h5>
 
-                    @if (Route::currentRouteName() == 'accounts.index' || Route::currentRouteName() == 'accounts.create')
+                    @if (Route::currentRouteName() == 'accounts.index')
                     <a href="{{ URL::route('dashboard') }}">
                         <p class="mb-0 font-weight-bold text-sm text-third">
                             ダッシュボードへ戻る
