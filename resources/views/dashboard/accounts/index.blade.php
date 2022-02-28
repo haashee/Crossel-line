@@ -75,6 +75,7 @@
                                             <a class="dropdown-item" href="{{ route('friends.index', ['aid' => $account->id]) }}">Friends</a>
                                             <a class="dropdown-item" href="/accounts/{{ $account->id }}/richmenu">Richmenu</a>
                                             <a class="dropdown-item" href="/accounts/{{ $account->id }}/edit">Edit</a>
+                                            <a class="dropdown-item" href="/accounts/{{ $account->id }}/edit">Delete</a>
                                         </div>
                                         </div>
                                     </div>

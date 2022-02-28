@@ -123,6 +123,12 @@ class LineMessengerController extends Controller
             $chatUser->save();
         }
 
+        // get basic_id of account from LINE 
+        $profileInfo = Http::withToken($account->access_token)->get('https://api.line.me/v2/bot/info');
+        $basicId = json_decode($profileInfo)->basicId;
+        Log::info("LOG: the basicId of new account is `$basicId`");
+        $account->update(['basic_id' => $basicId,]);
+
         // $response = $bot->getRichMenuId($userId);
 
         // タイプごとに分岐

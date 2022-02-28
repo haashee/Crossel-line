@@ -67,16 +67,10 @@ class AccountsController extends Controller
             'access_token' => 'required',
         ]);
 
-        // get basic_id of account from LINE 
-        $profileInfo = Http::withToken($request->input('access_token'))->get('https://api.line.me/v2/bot/info');
-        $basicId = json_decode($profileInfo)->basicId;
-        Log::info("LOG: the basicId of new account is `$basicId`");
-
         $newAccount = Account::create([
             'name' => $request->input('name'),
             'channel_secret' => $request->input('channel_secret'),
             'access_token' => $request->input('access_token'),
-            'basic_id' => $basicId,
             'liff_full' => $request->input('liff_full'),
             'liff_tall' => $request->input('liff_tall'),
             'liff_compact' => $request->input('liff_compact'),
@@ -143,11 +137,6 @@ class AccountsController extends Controller
             'image' => 'mimes:jpg,png,jpeg|max:5048'
         ]);
 
-        // get basic_id of account from LINE 
-        $profileInfo = Http::withToken($request->input('access_token'))->get('https://api.line.me/v2/bot/info');
-        $basicId = json_decode($profileInfo)->basicId;
-        Log::info("LOG: the basicId of new account is `$basicId`");
-
         $account = Account::where('id', $id)->first();
 
         if ($request->hasFile('image')) {
@@ -167,7 +156,6 @@ class AccountsController extends Controller
                 'name' => $request->input('name'),
                 'channel_secret' => $request->input('channel_secret'),
                 'access_token' => $request->input('access_token'),
-                'basic_id' => $basicId,
                 'liff_full' => $request->input('liff_full'),
                 'liff_tall' => $request->input('liff_tall'),
                 'liff_compact' => $request->input('liff_compact'),
