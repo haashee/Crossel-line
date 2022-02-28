@@ -133,7 +133,7 @@ class RichMenuController extends Controller
         Session::put('title', 'リッチメニュー作成完了');
 
         return redirect('accounts' . '/' . $aid . '/' . 'richmenu')
-            ->with('message', 'リッチメニューが無事作成されました。');
+            ->with('message', 'リッチメニューが無事作成されました。使用するにはデフォルトとして設定してください。');
     }
 
 
@@ -254,7 +254,7 @@ class RichMenuController extends Controller
         Session::put('title', 'リッチメニュー更新完了');
 
         return redirect('accounts' . '/' . $aid . '/' . 'richmenu')
-            ->with('message', 'リッチメニューが無事更新されました。');
+            ->with('message', 'リッチメニューが無事更新されました。使用するにはデフォルトとして設定してください。');
     }
 
 
