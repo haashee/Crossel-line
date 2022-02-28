@@ -50,8 +50,11 @@ class LineMessengerController extends Controller
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
 
-        // get richmenu table
-        $richmenu = RichMenu::where('account_id', $aid)->get();
+        // get default richmenu table
+        $richmenu = RichMenu::where([
+            'account_id' => $aid,
+            'default' => true,
+        ])->get();
 
         // get channel secret and access token
         $channel_secret = $account->channel_secret;
@@ -137,7 +140,7 @@ class LineMessengerController extends Controller
                 $message_data = "メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!";
 
                 // if message content is `確認`
-                if ($message_content == '確認') {
+                if ($message_content == 'メニューをみる') {
                     // get flex json for layout (https://developers.line.biz/flex-simulator/)
                     // https://developers.line.biz/en/docs/messaging-api/using-flex-messages/
                     $flexTemplate = file_get_contents(resource_path() . "/json/flex_receipt.json");

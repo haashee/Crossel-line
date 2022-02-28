@@ -21,6 +21,7 @@ class CreateRichMenusTable extends Migration
             $table->string('image')->nullable();
             $table->string('display_text')->nullable();
             $table->string('richmenu_id')->nullable();
+            $table->boolean('default')->default(0);
             $table->string('text_a')->nullable();
             $table->string('text_b')->nullable();
             $table->string('text_c')->nullable();

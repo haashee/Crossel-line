@@ -303,6 +303,12 @@ class RichMenuController extends Controller
             $response = $bot->deleteRichMenu($account->richmenu_id);
         }
 
+        // remove default from existing richmenu
+        RichMenu::where('id', $id)
+            ->update([
+                'default' => false,
+            ]);
+
         // check if big richmenu or small richmenu
         if ($richmenu->height == 843) {
             // Create richmenu
@@ -373,10 +379,11 @@ class RichMenuController extends Controller
         $richMenuId = json_decode($richMenuBody)->richMenuId;
         Log::info('the rich menu ID is `' . $richMenuId . '`');
 
-        // save rich menu id in rich menu table
+        // save rich menu id in rich menu table and set default
         RichMenu::where('id', $id)
             ->update([
                 'richmenu_id' => $richMenuId,
+                'default' => true,
             ]);
 
         // upload pic for richmenu
