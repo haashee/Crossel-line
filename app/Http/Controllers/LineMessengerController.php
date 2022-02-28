@@ -137,57 +137,6 @@ class LineMessengerController extends Controller
                 $message_data = "メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!";
 
                 // if message content is `確認`
-                if ($message_content == '確認') {
-                    $message_data = $reply_token . 'ご確認ありがとうございます';
-                }
-
-                if ($message_content == 'Stamp') {
-                    //Send stamp message
-                    $response = $bot->replyMessage($reply_token, new StickerMessageBuilder('1', '2')); #LINE stamp Id  
-                } elseif ($message_content == 'Location') {
-                    //Send location message
-                    $response = $bot->replyMessage($reply_token, new LocationMessageBuilder("位置情報", "チトワンソウラハ村", 27.576718, 84.493928));
-                } elseif ($message_content == 'Confirm') {
-                    //Send confirm message
-                    $bot->replyMessage(
-                        $reply_token,
-                        new TemplateMessageBuilder(
-                            'Confirm alt text',
-                            new ConfirmTemplateBuilder(
-                                'Do it?',
-                                [new MessageTemplateActionBuilder('Yes', 'Yes!'), new MessageTemplateActionBuilder('No', 'No!'),]
-                            )
-                        )
-                    );
-                } elseif ($message_content == 'Button') {
-                    //Send button message
-                    // Create button in buttons message
-                    $yes_button = new MessageTemplateActionBuilder('Confirm text', 'reply text');
-                    $no_button = new MessageTemplateActionBuilder('Cancel text', 'reply text');
-                    // Select date template
-                    $date_time = new DatetimePickerTemplateActionBuilder('日付を選択', 'action=dosomething&data=1', 'datetime');
-                    // Create actions
-                    $actions = [$date_time, $yes_button, $no_button];
-                    $button = new ButtonTemplateBuilder('Title', 'Description', '', $actions);
-                    // Add button message and send message
-                    $button_message = new TemplateMessageBuilder('Alt text', $button);
-                    $bot->replyMessage($reply_token, $button_message);
-                } elseif ($message_content == 'Carousel') {
-                    //Send carousel message
-                    $columns = []; // Column array for carousel
-                    for ($i = 0; $i < 3; $i++) {
-                        // Create button in carousel
-                        $action = new UriTemplateActionBuilder("クリックしてね", 'https://liff.line.me/' . $account->liff_full);
-                        // Create columns for carousel
-                        $column = new CarouselColumnTemplateBuilder("タイトル(40文字以内)", "ブログです", 'https://57c57cef.ngrok.io/linebot/image/PICT0065.JPG', [$action]);
-                        $columns[] = $column;
-                    }
-                    // Create carousel from columns
-                    $carousel = new CarouselTemplateBuilder($columns);
-                    // Add carousel and send message
-                    $carousel_message = new TemplateMessageBuilder("メッセージのタイトル", $carousel);
-                    $response = $bot->replyMessage($reply_token, $carousel_message);
-                } elseif ($message_content == 'Flex') {
                     // get flex json for layout (https://developers.line.biz/flex-simulator/)
                     // https://developers.line.biz/en/docs/messaging-api/using-flex-messages/
                     $flexTemplate = file_get_contents(resource_path() . "/json/flex_receipt.json");
