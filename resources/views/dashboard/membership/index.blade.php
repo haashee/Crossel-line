@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
   <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
   <title>
@@ -20,6 +20,8 @@
   <!-- CSS Files -->
   {{-- <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css?v=2.0.0') }}" rel="stylesheet" /> --}}
   <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.0" rel="stylesheet" />
+
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
 </head>
 
 <body class="bg-gray-100">
@@ -64,7 +66,6 @@
     </div>
 
     
-
     <div class="container">
       <div class="row mt-lg-n10 mt-md-n11 mt-n14 justify-content-center pb-5">
         <div class="col-xl-4 col-lg-5 col-md-7 mx-auto">
@@ -477,6 +478,25 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.0') }}"></script>
+
+  {{-- <script>
+    // LIFFの初期化を行う
+    liff.init({
+      // 自分のLIFF ID（URLから『https://liff.line.me/』を除いた文字列）を入力する
+      liffId: "1656854060-voy11a1Y"
+
+    }).then(() => { // 初期化完了. 以降はLIFF SDKの各種メソッドを利用できる
+      // 利用者のLINEアカウントのプロフィール名を取得
+      liff.getProfile().then(profile => {
+
+      // プロフィール名
+      const name = profile.displayName
+
+      // HTMLに挿入
+      document.querySelector("#name").innerText = name
+      })
+    })
+  </script> --}}
 </body>
 
 </html>
