@@ -35,7 +35,7 @@
                         "contents": [
                             {
                                 "type": "text",
-                                "text": "下記ボタンをクリックしてメニュー画面へ移動してください。",
+                                "text": "下記ボタンをクリックして会員情報を登録・更新ができます。",
                                 "align": "center",
                                 "size": "sm",
                                 "margin": "none",
@@ -59,7 +59,7 @@
                 "height": "sm",
                 "action": {
                     "type": "uri",
-                    "label": "メニューを見る",
+                    "label": "会員情報を見る",
                     "uri": "https://linecorp.com"
                 },
                 "margin": "sm"
