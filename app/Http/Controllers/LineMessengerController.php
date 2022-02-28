@@ -172,7 +172,7 @@ class LineMessengerController extends Controller
                     $data["body"]["contents"]["0"]["contents"]["1"]["contents"]["0"]["text"] = $user->name . 'の会員情報';
 
                     // change the URI of button
-                    $data["footer"]["contents"]["0"]["action"]["uri"] = 'https://liff.line.me/' . $account->liff_full;
+                    $data["footer"]["contents"]["0"]["action"]["uri"] = 'https://liff.line.me/' . $account->liff_tall;
 
                     // create flex message
                     $flexMessageBuilder = new RawMessageBuilder([
