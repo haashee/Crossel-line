@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 
 
 use App\Models\LineUser;
+use App\Models\RichMenu;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
 use App\Models\User;
@@ -48,6 +49,9 @@ class LineMessengerController extends Controller
     {
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
+
+        // get richmenu table
+        $richmenu = RichMenu::where('account_id', $aid)->get();
 
         // get channel secret and access token
         $channel_secret = $account->channel_secret;
@@ -130,7 +134,7 @@ class LineMessengerController extends Controller
                 $message_content = $inputs['events'][0]['message']['text'];
 
                 // The message to send
-                $message_data = "メッセージありがとうございます。ただいま準備中です";
+                $message_data = "メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!";
 
                 // if message content is `確認`
                 if ($message_content == '確認') {
@@ -195,30 +199,6 @@ class LineMessengerController extends Controller
                     ]);
                     // send flex message
                     $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
-                } elseif ($message_content == 'Quick') {
-                    //Send quick reply message
-                    //Define display texts for quick reply (max number is 12)
-                    $categories = [
-                        '和食',
-                        '洋食',
-                        '中華料理',
-                        'アジア・エスニック',
-                        'イタリアン',
-                        'フレンチ'
-                    ];
-
-                    foreach ($categories as $category) {
-                        // Display the texts and define reply text
-                        $message_template_action_builder = new MessageTemplateActionBuilder($category, $category . 'を選択したよ！'); #(display text, reply text)
-                        // Create buttons for the display text
-                        $quick_reply_button_builder = new QuickReplyButtonBuilder($message_template_action_builder);
-                        // Add buttons
-                        $quick_reply_buttons[] = $quick_reply_button_builder;
-                    }
-                    // Create quick reply and send message
-                    $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
-                    $text_message_builder = new TextMessageBuilder('カテゴリを選択してください', $quick_reply_message_builder); #(text bubble, quick reply)
-                    $bot->replyMessage($reply_token, $text_message_builder);
                 } else {
                     // LINE process to send
                     $response = $bot->replyText($reply_token, $message_data);
