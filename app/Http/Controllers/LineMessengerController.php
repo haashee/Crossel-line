@@ -50,7 +50,7 @@ class LineMessengerController extends Controller
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
 
-        // get default richmenu table
+        // get current default richmenu table
         $richmenu = RichMenu::where([
             'account_id' => $aid,
             'default' => true,
@@ -139,16 +139,26 @@ class LineMessengerController extends Controller
                 // The message to send
                 $message_data = "メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!";
 
-                // if message content is `確認`
+                // if message content is button texts 
                 if ($message_content == 'メニューをみる') {
                     // get flex json for layout (https://developers.line.biz/flex-simulator/)
                     // https://developers.line.biz/en/docs/messaging-api/using-flex-messages/
-                    $flexTemplate = file_get_contents(resource_path() . "/json/flex_receipt.json");
+                    $flexTemplate = file_get_contents(resource_path() . "/json/flex_btn_menu.json");
+
+                    // decode the json template
+                    $data = json_decode($flexTemplate, true);
+
+                    // change the title of template
+                    $data["hero"]["contents"]["0"]["text"] = $account->name . 'のメニュー';
+
+                    // change the URI of button
+                    $data["footer"]["contents"]["0"]["action"]["uri"] = 'https://liff.line.me/' . $account->liff_full;
+
                     // create flex message
                     $flexMessageBuilder = new RawMessageBuilder([
                         'type' => 'flex',
                         'altText' => 'Test Flex Message',
-                        'contents' => json_decode($flexTemplate)
+                        'contents' => $data
                     ]);
                     // send flex message
                     $response = $bot->replyMessage($reply_token, $flexMessageBuilder);

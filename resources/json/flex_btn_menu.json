@@ -1,0 +1,85 @@
+{
+    "type": "bubble",
+    "hero": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+            {
+                "type": "text",
+                "text": "Brown Cafe",
+                "weight": "bold",
+                "size": "xl",
+                "align": "center",
+                "offsetBottom": "none"
+            }
+        ],
+        "paddingTop": "xxl"
+    },
+    "body": {
+        "type": "box",
+        "layout": "horizontal",
+        "contents": [
+            {
+                "type": "box",
+                "layout": "vertical",
+                "margin": "lg",
+                "spacing": "sm",
+                "contents": [
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "LINE上で注文を進めます。",
+                                "align": "center",
+                                "size": "md",
+                                "margin": "sm",
+                                "wrap": true,
+                                "color": "#666666",
+                                "offsetBottom": "none"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                            {
+                                "type": "text",
+                                "text": "下記ボタンをクリックしてメニュー画面へ移動してください。",
+                                "align": "center",
+                                "size": "sm",
+                                "margin": "none",
+                                "wrap": true,
+                                "color": "#aaaaaa"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+            {
+                "type": "button",
+                "style": "primary",
+                "height": "sm",
+                "action": {
+                    "type": "uri",
+                    "label": "メニューを見る",
+                    "uri": "https://linecorp.com"
+                }
+            },
+            {
+                "type": "spacer",
+                "size": "sm"
+            }
+        ],
+        "flex": 0
+    }
+}
