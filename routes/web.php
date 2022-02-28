@@ -53,9 +53,9 @@ Route::get('accounts/{aid}/richmenu', [RichMenuController::class, 'index'])->nam
 Route::resource('accounts/{aid}/richmenu', RichMenuController::class, ['except' => ['index']]);
 
 // membership routes
+Route::post('accounts/{aid}/membership/privacy/update', [MembershipController::class, 'updatePrivacy'])->name('membership.update.privacy');
 Route::post('accounts/{aid}/membership/{id}/update', [MembershipController::class, 'update'])->name('membership.update');
 Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'privacy'])->name('membership.privacy');
-Route::post('accounts/{aid}/membership/privacy/update', [MembershipController::class, 'updatePrivacy'])->name('membership.privacy.update');
 Route::get('accounts/{aid}/membership/{id}', [MembershipController::class, 'membership'])->name('membership');
 
 // chat routes

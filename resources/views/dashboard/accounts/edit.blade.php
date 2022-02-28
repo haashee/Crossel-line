@@ -403,7 +403,7 @@ Account
                 </div>
                 <!-- Card Basic Info -->
                 <div class="card mt-4" id="basic-info">
-                    <form action="{{  route('membership.privacy.update', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{  route('membership.update.privacy', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="card-header pb-2">
