@@ -309,6 +309,9 @@ class RichMenuController extends Controller
                 'default' => false,
             ]);
 
+        // isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
+        // ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
+        // ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basicId) : (isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a))
 
         // check if big richmenu or small richmenu
         if ($richmenu->height == 843) {
@@ -321,15 +324,15 @@ class RichMenuController extends Controller
                 array( # array for actions on rich menu
                     new RichMenuAreaBuilder( # action A
                         new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
+                        ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a))
                     ),
                     new RichMenuAreaBuilder( # action B
                         new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_b) ? new UriTemplateActionBuilder($richmenu->text_b, $richmenu->url_b) : new MessageTemplateActionBuilder('m', $richmenu->text_b)
+                        ($richmenu->text_b == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_b, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_b) ? new UriTemplateActionBuilder($richmenu->text_b, $richmenu->url_b) : new MessageTemplateActionBuilder('m', $richmenu->text_b))
                     ),
                     new RichMenuAreaBuilder( # action C
                         new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_c) ? new UriTemplateActionBuilder($richmenu->text_c, $richmenu->url_c) : new MessageTemplateActionBuilder('m', $richmenu->text_c)
+                        ($richmenu->text_c == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_c, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_c) ? new UriTemplateActionBuilder($richmenu->text_c, $richmenu->url_c) : new MessageTemplateActionBuilder('m', $richmenu->text_c))
                     ),
                 )
             );
