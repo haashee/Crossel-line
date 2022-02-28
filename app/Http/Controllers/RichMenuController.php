@@ -346,27 +346,27 @@ class RichMenuController extends Controller
                 array( # array for actions on rich menu
                     new RichMenuAreaBuilder( # action A
                         new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
+                        ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a))
                     ),
                     new RichMenuAreaBuilder( # action B
                         new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_b) ? new UriTemplateActionBuilder($richmenu->text_b, $richmenu->url_b) : new MessageTemplateActionBuilder('m', $richmenu->text_b)
+                        ($richmenu->text_b == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_b, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_b) ? new UriTemplateActionBuilder($richmenu->text_b, $richmenu->url_b) : new MessageTemplateActionBuilder('m', $richmenu->text_b))
                     ),
                     new RichMenuAreaBuilder( # action C
                         new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_c) ? new UriTemplateActionBuilder($richmenu->text_c, $richmenu->url_c) : new MessageTemplateActionBuilder('m', $richmenu->text_c)
+                        ($richmenu->text_c == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_c, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_c) ? new UriTemplateActionBuilder($richmenu->text_c, $richmenu->url_c) : new MessageTemplateActionBuilder('m', $richmenu->text_c))
                     ),
                     new RichMenuAreaBuilder( # action D
                         new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_d) ? new UriTemplateActionBuilder($richmenu->text_d, $richmenu->url_d) : new MessageTemplateActionBuilder('m', $richmenu->text_d)
+                        ($richmenu->text_d == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_d, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_d) ? new UriTemplateActionBuilder($richmenu->text_d, $richmenu->url_d) : new MessageTemplateActionBuilder('m', $richmenu->text_d))
                     ),
                     new RichMenuAreaBuilder( # action E
                         new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_e) ? new UriTemplateActionBuilder($richmenu->text_e, $richmenu->url_e) : new MessageTemplateActionBuilder('m', $richmenu->text_e)
+                        ($richmenu->text_e == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_e, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_e) ? new UriTemplateActionBuilder($richmenu->text_e, $richmenu->url_e) : new MessageTemplateActionBuilder('m', $richmenu->text_e))
                     ),
                     new RichMenuAreaBuilder( # action F
                         new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
-                        isset($richmenu->url_f) ? new UriTemplateActionBuilder($richmenu->text_f, $richmenu->url_f) : new MessageTemplateActionBuilder('m', $richmenu->text_f)
+                        ($richmenu->text_f == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_f, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : (isset($richmenu->url_f) ? new UriTemplateActionBuilder($richmenu->text_f, $richmenu->url_f) : new MessageTemplateActionBuilder('m', $richmenu->text_f))
                     ),
                 )
             );
