@@ -396,7 +396,7 @@ Account
                             <div class="d-flex align-items-center mb-sm-0 mb-4">
                                 <div class="ms-2">
                                     <span class="text-dark font-weight-bold d-block text-sm">変更を適用するには</span>
-                                    <span class="text-xs d-block">リッチメニューをLINEアカウントに適用するにはリッチメニュー一覧の「リッチメニューを使う」をクリック</span>
+                                    <span class="text-xs d-block">リッチメニューをLINEアカウントに適用するにはリッチメニュー一覧の「デフォルトとして設定」をクリック</span>
                                 </div>
                             </div>
                             <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"

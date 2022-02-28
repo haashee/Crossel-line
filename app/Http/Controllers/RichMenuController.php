@@ -313,6 +313,7 @@ class RichMenuController extends Controller
         // ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
         // ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basicId) : (isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a))
 
+
         // check if big richmenu or small richmenu
         if ($richmenu->height == 843) {
             // Create richmenu
