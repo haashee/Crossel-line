@@ -49,4 +49,34 @@ class MembershipController extends Controller
         return redirect('accounts/' . $aid . '/' . 'edit')
             ->with('message', 'プライバシーポリシーが無事更新されました。');
     }
+
+    public function update(Request $request, $aid, $id)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $account = Account::where('id', $aid)->first();
+
+        $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+
+        LineUser::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'birthday' => $DOB,
+                'phone' => $request->input('phone'),
+                'postcode' => $request->input('postcode'),
+                'gender' => $request->input('gender'),
+                'email' => $request->input('email'),
+            ]);
+
+
+        Session::put('title', '会員情報の更新完了');
+
+        return redirect('accounts/' . $aid . '/' . 'membership' . '/' . $id)
+            ->with('message', '会員情報が更新されました。');
+
+        // return redirect('https://liff.line.me/' . $account->liff_tall)
+        //     ->with('message', '会員情報が更新されました。');
+    }
 }

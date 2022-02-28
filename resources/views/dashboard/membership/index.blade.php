@@ -95,10 +95,10 @@
               </div> --}}
             </div>
             <div class="mem-content card-body pt-2 active" id="settings">
-              {{-- <form role="form" action="{{  route('friends.update', ['aid' => $account->id,'friend'=>$friend->id])  }}" method="POST" enctype="multipart/form-data"> --}}
-              <form role="form" action="/accounts/{{ $account->id }}/friends/{{ $friend->id }}" method="POST" enctype="multipart/form-data">
+              <form role="form" action="{{  route('membership.update', ['aid' => $account->id,'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
+              {{-- <form role="form" action="/accounts/{{ $account->id }}/friends/{{ $friend->id }}" method="POST" enctype="multipart/form-data"> --}}
                 @csrf
-                @method('PUT')
+                {{-- @method('PUT') --}}
                 <input id="firstName" name="name" class="form-control" type="hidden" placeholder="ユーザー名" value="{{ $friend->name }}">
                 <div class="mb-3">
                   <label class="form-label">メールアドレス<span class="text-third">(必須)</span></label>
