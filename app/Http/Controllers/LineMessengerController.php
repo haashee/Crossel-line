@@ -183,6 +183,29 @@ class LineMessengerController extends Controller
 
                     // send this flex message
                     $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
+                } else if ($message_content == 'リンク') {
+                    // get flex json template for layout (https://developers.line.biz/flex-simulator/)
+                    // https://developers.line.biz/en/docs/messaging-api/using-flex-messages/
+                    $flexTemplate = file_get_contents(resource_path() . "/json/flex_btn_membership.json");
+
+                    // decode the json template
+                    $data = json_decode($flexTemplate, true);
+
+                    // change the title of template
+                    $data["body"]["contents"]["0"]["contents"]["1"]["contents"]["0"]["text"] = $user->name . 'の会員情報';
+
+                    // change the URI of button
+                    $data["footer"]["contents"]["0"]["action"]["uri"] = 'https://liff.line.me/' . $account->liff_tall;
+
+                    // create flex message
+                    $flexMessageBuilder = new RawMessageBuilder([
+                        'type' => 'flex',
+                        'altText' => '会員情報',
+                        'contents' => $data
+                    ]);
+
+                    // send this flex message
+                    $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
                 } else {
                     // LINE process to send
                     $response = $bot->replyText($reply_token, $message_data);
