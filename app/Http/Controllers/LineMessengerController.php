@@ -137,6 +137,7 @@ class LineMessengerController extends Controller
                 $message_data = "メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!";
 
                 // if message content is `確認`
+                if ($message_content == '確認') {
                     // get flex json for layout (https://developers.line.biz/flex-simulator/)
                     // https://developers.line.biz/en/docs/messaging-api/using-flex-messages/
                     $flexTemplate = file_get_contents(resource_path() . "/json/flex_receipt.json");
