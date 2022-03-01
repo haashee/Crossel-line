@@ -294,7 +294,7 @@ Account
                 <div class="card mt-0" id="accounts">
                     <form action="{{ route('chat.setting.update', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        
+
                         <div class="card-header">
                             <h5>チャット設定</h5>
                             <div class="col-md-8 d-flex align-items-center">
@@ -308,7 +308,8 @@ Account
                                 </div>
                                 <p class="text-sm text-secondary ms-auto me-3 my-auto">Enabled</p>
                                 <div class="form-check form-switch my-auto">
-                                <input class="form-check-input" checked type="checkbox" id="flexSwitchCheckDefault1">
+                                <input name="welcome_text_active" class="form-check-input" type="checkbox" 
+                                    id="flexSwitchCheckDefault1" {{ $account->chatsetting->welcome_text_active == true ? 'checked' :''}}>
                                 </div>
                             </div>
                             <div class="pt-1 ms-1">
@@ -325,7 +326,8 @@ Account
                                 </div>
                                 <p class="text-sm text-secondary ms-auto me-3 my-auto">Enabled</p>
                                 <div class="form-check form-switch my-auto">
-                                <input class="form-check-input" checked type="checkbox" id="flexSwitchCheckDefault2">
+                                <input name="default_text_active" class="form-check-input" type="checkbox" 
+                                    id="flexSwitchCheckDefault2" {{ $account->chatsetting->default_text_active == true ? 'checked' :''}}>
                                 </div>
                             </div>
                             <div class="pt-1 ms-1">

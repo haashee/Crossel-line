@@ -193,13 +193,31 @@ class ChatController extends Controller
             'default_text' => 'required',
         ]);
 
+        if ($request->has('default_text_active')) {
+            $defaultFlag = true;
+        } else {
+            $defaultFlag = false;
+        }
+
+        if ($request->has('welcome_text_active')) {
+            $welcomeFlag = true;
+        } else {
+            $welcomeFlag = false;
+        }
+
+        if ($request->has('notify_email')) {
+            $mailFlag = true;
+        } else {
+            $mailFlag = false;
+        }
+
         ChatSetting::where('account_id', $aid)
             ->update([
                 'welcome_text' => $request->input('welcome_text'),
                 'default_text' => $request->input('default_text'),
-                // 'welcome_text_active' => $request->input('welcome_text_active'),
-                // 'default_text_active' => $request->input('default_text_active'),
-                // 'notify_email' => $request->input('notify_email'),
+                'welcome_text_active' => $welcomeFlag,
+                'default_text_active' => $defaultFlag,
+                // 'notify_email' => $mailFlag,
             ]);
 
         Session::put('title', 'チャット設定更新完了');
