@@ -37820,6 +37820,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
     overflow: auto;
     background: #fff;
 }
+.ContentChatList {
+    height: 460px;
+    overflow: auto;
+    background: #fff;
+}
 
 /* membership page */
 .mem-content {

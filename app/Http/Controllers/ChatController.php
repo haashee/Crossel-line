@@ -111,7 +111,7 @@ class ChatController extends Controller
         $friendList = LineUser::where('account_id', $aid)->get();
 
         $chatAccount = $account->chats()->get();
-        $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id');
+        $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id')->take(15);
 
         $chats = Chat::where('lineuser_id', $id)->get();
 

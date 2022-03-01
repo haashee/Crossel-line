@@ -49,7 +49,7 @@ Account
                         <h6 class="mb-0">Conversations</h6>
                     </div>
                     <div class="card-body p-3">
-                        <ul class="list-group">
+                        <ul class="list-group ContentChatList">
                             @forelse ($chatList as $chat)
                                 @if ($chat->lineuser_id)
                                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">

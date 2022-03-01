@@ -49,7 +49,7 @@ Account
                         <h6 class="mb-0">Conversations</h6>
                     </div>
                     <div class="card-body p-3">
-                        <ul class="list-group">
+                        <ul class="list-group ContentChatList">
                             @foreach ($chatList as $chat)
                                 @if ($chat->lineuser_id)
                                     
@@ -72,6 +72,36 @@ Account
                                 </li>
                                 @endif
                             @endforeach
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="avatar me-3">
+                                    <img src="../../../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Anne Marie</h6>
+                                    <p class="mb-0 text-xs">Awesome work, can you..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="avatar me-3">
+                                    <img src="../../../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Anne Marie</h6>
+                                    <p class="mb-0 text-xs">Awesome work, can you..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
+                            <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
+                                <div class="avatar me-3">
+                                    <img src="../../../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
+                                </div>
+                                <div class="d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="mb-0 text-sm">Anne Marie</h6>
+                                    <p class="mb-0 text-xs">Awesome work, can you..</p>
+                                </div>
+                                <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
+                            </li>
                             <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                 <div class="avatar me-3">
                                     <img src="../../../assets/img/marie.jpg" alt="kal" class="border-radius-lg shadow">
