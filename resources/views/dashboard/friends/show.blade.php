@@ -42,23 +42,47 @@ Friend list
                                         </p>
                                     </div>
                                 </div>
-                                <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
-                                    <label class="form-check-label mb-0">
-                                        <small id="profileVisibility">
-                                            Switch to invisible
-                                        </small>
-                                    </label>
-                                    <div class="form-check form-switch ms-2">
-                                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23"
-                                            checked onchange="visible()">
-                                    </div>
-                                </div>
+                                <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex"></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 mt-4">
+                    <div class="col-md-12 mb-lg-0 my-4">
+                        <div class="card">
+                            <div class="card card-body">
+                                <div class="row pb-3">
+                                    <div class="col-md-8 d-flex align-items-center">
+                                        <h5 class="mb-0">基本情報</h5>
+                                    </div>
+                                    <div class="col-md-4 text-end">
+                                        <a class="edit-token" href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}/edit">
+                                            <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                                data-bs-placement="left" title="友達情報を編集"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <ul class="text-muted ps-4 mb-0 float-start list-unstyled">
+                                    <li>
+                                        <span class="text-sm">メールアドレス: {{ $friend->email }}</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-sm">電話番号: {{ $friend->phone }}</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-sm">誕生日: {{ $friend->birthday }}</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-sm">郵便番号: {{ $friend->postcode }}</span>
+                                    </li>
+                                    <li>
+                                        <span class="text-sm">性別: {{ $friend->gender }}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-12 mt-4">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="card">
                                     <div class="card-header mx-4 p-3 text-center ">
                                         <div
@@ -67,14 +91,14 @@ Friend list
                                         </div>
                                     </div>
                                     <div class="card-body pt-0 p-3 text-center">
-                                        <h6 class="text-center mb-0">Salary</h6>
+                                        <h6 class="text-center mb-0">オーダー数</h6>
                                         <span class="text-xs">Belong Interactive</span>
                                         <hr class="horizontal dark my-3">
                                         <h5 class="mb-0">+$2000</h5>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 mt-md-0 mt-4">
+                            <div class="col-md-4 mt-md-0 mt-4">
                                 <div class="card">
                                     <div class="card-header mx-4 p-3 text-center">
                                         <div
@@ -83,34 +107,14 @@ Friend list
                                         </div>
                                     </div>
                                     <div class="card-body pt-0 p-3 text-center">
-                                        <h6 class="text-center mb-0">Paypal</h6>
+                                        <h6 class="text-center mb-0">売上高</h6>
                                         <span class="text-xs">Freelance Payment</span>
                                         <hr class="horizontal dark my-3">
                                         <h5 class="mb-0">$455.00</h5>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 mt-4">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header mx-4 p-3 text-center ">
-                                        <div
-                                            class="icon icon-shape icon-lg bg-gradient-primary shadow text-center border-radius-lg">
-                                            <i class="fas fa-landmark opacity-10"></i>
-                                        </div>
-                                    </div>
-                                    <div class="card-body pt-0 p-3 text-center">
-                                        <h6 class="text-center mb-0">Salary</h6>
-                                        <span class="text-xs">Belong Interactive</span>
-                                        <hr class="horizontal dark my-3">
-                                        <h5 class="mb-0">+$2000</h5>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mt-md-0 mt-4">
+                            <div class="col-md-4 mt-md-0 mt-4">
                                 <div class="card">
                                     <div class="card-header mx-4 p-3 text-center">
                                         <div
@@ -119,7 +123,7 @@ Friend list
                                         </div>
                                     </div>
                                     <div class="card-body pt-0 p-3 text-center">
-                                        <h6 class="text-center mb-0">Paypal</h6>
+                                        <h6 class="text-center mb-0">客単価</h6>
                                         <span class="text-xs">Freelance Payment</span>
                                         <hr class="horizontal dark my-3">
                                         <h5 class="mb-0">$455.00</h5>
@@ -460,60 +464,60 @@ Friend list
     gradientStroke3.addColorStop(0, 'rgba(94, 114, 228, 0)'); //primary colors
 
     new Chart(ctx3, {
-      type: "line",
-      data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-        datasets: [{
-          label: "Tasks",
-          tension: 0.3,
-          pointRadius: 2,
-          pointBackgroundColor: "#5e72e4",
-          borderColor: "#5e72e4",
-          borderWidth: 2,
-          backgroundColor: gradientStroke3,
-          data: [40, 45, 42, 41, 40, 43, 40, 42, 39],
-          maxBarThickness: 6,
-          fill: true
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: false,
-          }
+        type: "line",
+        data: {
+            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            datasets: [{
+            label: "Tasks",
+            tension: 0.3,
+            pointRadius: 2,
+            pointBackgroundColor: "#5e72e4",
+            borderColor: "#5e72e4",
+            borderWidth: 2,
+            backgroundColor: gradientStroke3,
+            data: [40, 45, 42, 41, 40, 43, 40, 42, 39],
+            maxBarThickness: 6,
+            fill: true
+            }],
         },
-        interaction: {
-          intersect: false,
-          mode: 'index',
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
-            },
-            ticks: {
-              display: false
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+            legend: {
+                display: false,
             }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
-              drawTicks: false,
             },
-            ticks: {
-              color: '#252f40',
-              padding: 10
-            }
-          },
+            interaction: {
+            intersect: false,
+            mode: 'index',
+            },
+            scales: {
+            y: {
+                grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+                },
+                ticks: {
+                display: false
+                }
+            },
+            x: {
+                grid: {
+                drawBorder: false,
+                display: false,
+                drawOnChartArea: false,
+                drawTicks: false,
+                },
+                ticks: {
+                color: '#252f40',
+                padding: 10
+                }
+            },
+            },
         },
-      },
     });
 </script>
 <script>
