@@ -65,7 +65,7 @@ Account
                                             {{ $chat->receiverName }}
                                             @endif
                                         </h6>
-                                        <p class="mb-0 text-xs">{{ $chat->message }}</p>
+                                        <p class="mb-0 text-xs">{{ Str::limit($chat->message,22) }}</p>
                                     </div>
                                     <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="{{  route('chat.show', ['aid' => $account->id, 'chat' => $chat->lineuser_id])  }}">Reply</a>
                                 </li>
