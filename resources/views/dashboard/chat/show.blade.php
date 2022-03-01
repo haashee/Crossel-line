@@ -49,7 +49,7 @@ Account
                         <h6 class="mb-0">Conversations</h6>
                     </div>
                     <div class="card-body p-3">
-                        <ul class="list-group ContentChatList">
+                        <ul class="list-group ContentChatList mb-3">
                             @foreach ($chatList as $chat)
                                 @if ($chat->lineuser_id)
                                     
@@ -114,7 +114,7 @@ Account
                                 <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
                             </li>
                         </ul>
-                        <a class="text-xs text-left pt-3" href="">チャット一覧を見る</a>
+                        <a class="text-xs text-left p-1" href="">チャット一覧を見る</a>
                     </div>
                 </div>
             </div>
