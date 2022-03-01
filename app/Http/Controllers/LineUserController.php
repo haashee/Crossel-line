@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\Chat;
 use App\Models\LineUser;
 use Illuminate\Support\Facades\Session;
 
@@ -15,6 +16,7 @@ class LineUserController extends Controller
     {
         $this->middleware('auth');
     }
+
 
     /**
      * Display a listing of the resource.
@@ -34,6 +36,7 @@ class LineUserController extends Controller
         ]);
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,6 +46,7 @@ class LineUserController extends Controller
     {
         //
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -74,6 +78,7 @@ class LineUserController extends Controller
         ]);
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -91,6 +96,7 @@ class LineUserController extends Controller
             'account' => $account,
         ]);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -129,6 +135,7 @@ class LineUserController extends Controller
         }
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -143,5 +150,35 @@ class LineUserController extends Controller
         Session::put('title', 'ユーザー削除');
 
         return redirect('/accounts')->with('message', 'ユーザーが正常に削除されました。');
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function sendChat($aid, $id)
+    {
+        $account = Account::where('id', $aid)->first();
+
+        $friend = LineUser::where('id', $id)->first();
+
+        // check if chat for this user exists
+        $chatUser = Chat::where('lineuser_id', $id)->first();
+
+        // if does not exist then create new
+        if ($chatUser == NULL) {
+            $chatUser = new Chat();
+            $chatUser->senderName = $account->name;
+            $chatUser->receiverName = $friend->name;
+            $chatUser->message = null;
+            $chatUser->lineuser_id = $friend->id;
+            $chatUser->user_identifier = null;
+            $chatUser->save();
+        }
+
+        return redirect('accounts/' . $aid . '/' . 'chat' . '/' . $id);
     }
 }

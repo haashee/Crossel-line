@@ -89,14 +89,18 @@ Friend list
                                                 data-bs-toggle="tooltip" data-bs-original-title="編集">
                                                 <i class="fas fa-user-edit text-third"></i>
                                             </a>
-                                            <a onclick="doSomething()" href="javascript:;" data-bs-toggle="tooltip"
+                                            <a href="{{ route('friends.chat', ['aid' => $account->id, 'id' => $friend->id]) }}" class=""
+                                                data-bs-toggle="tooltip" data-bs-original-title="チャットする">
+                                                <i class="fas fa-envelope text-third"></i>
+                                            </a>
+                                            {{-- <a onclick="doSomething()" href="javascript:;" data-bs-toggle="tooltip"
                                                 data-bs-original-title="削除">
                                                 <i class="fas fa-trash text-third"></i>
                                             </a>
                                             <div id="id_confrmdiv">confirmation
                                                 <button id="id_truebtn">Yes</button>
                                                 <button id="id_falsebtn">No</button>
-                                            </div>
+                                            </div> --}}
                                     </td>
                                 </tr>
                                 @endforeach
