@@ -71,8 +71,6 @@ class LineMessengerController extends Controller
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient($access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
-        // $http_client = new CurlHTTPClient(config('services.line.channel_token'));
-        // $bot = new LINEBot($http_client, ['channelSecret' => config('services.line.messenger_secret')]);
 
         // check signature if message is from LINE
         $signature = $request->header('x-line-signature');
@@ -237,6 +235,7 @@ class LineMessengerController extends Controller
                 // get the token needed to reply
                 $reply_token = $inputs['events'][0]['replyToken'];
 
+                // send welcome text if active
                 if ($account->chatSetting->welcome_text_active == true) {
                     // The message to send
                     $message_data = $account->chatSetting->welcome_text;
@@ -260,6 +259,7 @@ class LineMessengerController extends Controller
                 // get the token needed to reply
                 $reply_token = $inputs['events'][0]['replyToken'];
 
+                // send welcome text if active
                 if ($account->chatSetting->welcome_text_active == true) {
                     // The message to send
                     $message_data = $account->chatSetting->welcome_text;
