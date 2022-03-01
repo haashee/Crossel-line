@@ -147,7 +147,7 @@ Account
                             </div>
                         </div>
                         <!-- Card Chat Input -->
-                        <div class="card">
+                        <div class="">
                             {{-- <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
                                 action="{{  route('chat.store', ['aid' => $account->id, 'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
