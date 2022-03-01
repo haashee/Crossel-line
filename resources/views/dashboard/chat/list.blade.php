@@ -55,17 +55,21 @@ Friend list
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($friends as $friend )
+                                @foreach ($chatList as $chat )
                                 <tr>
                                     <td class="text-sm font-weight-normal">
-                                        {{ $friend->created_at->toDateString() }}
+                                        {{ $chat->created_at->toDateString() }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        {{ $friend->name }}
+                                        @if ( $chat->senderName !== $account->name )
+                                        {{ $chat->senderName }}
+                                        @else
+                                        {{ $chat->receiverName }}
+                                        @endif
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         <span class="badge badge-dot me-4">
-                                            @if ($friend->email)
+                                            @if ($chat->lineUser->email)
                                             <i class="bg-info"></i>
                                             <span class="text-dark text-xs">登録済み</span>
                                             @else
@@ -75,33 +79,25 @@ Friend list
                                         </span>
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        61
+                                        {{ Str::limit($chat->message,22) }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
-                                        ¥9000
+                                        {{ $chat->lineUser->created_at->toDateString() }}
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         <div class="dropdown">
-                                            <a href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}"
-                                                data-bs-toggle="tooltip" data-bs-original-title="見る">
+                                            <a href="/accounts/{{ $account->id }}/friends/{{ $chat->id }}"
+                                                data-bs-toggle="tooltip" data-bs-original-title="見る" class="mx-3 ms-0">
                                                 <i class="fas fa-eye text-third"></i>
                                             </a>
-                                            <a href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}/edit"
+                                            {{-- <a href="/accounts/{{ $account->id }}/friends/{{ $chat->id }}/edit"
                                                 class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="編集">
                                                 <i class="fas fa-user-edit text-third"></i>
-                                            </a>
-                                            <a href="{{ route('friends.chat', ['aid' => $account->id, 'id' => $friend->id]) }}"
+                                            </a> --}}
+                                            <a href="{{ route('friends.chat', ['aid' => $account->id, 'id' => $chat->id]) }}"
                                                 class="" data-bs-toggle="tooltip" data-bs-original-title="チャットする">
                                                 <i class="fas fa-envelope text-third"></i>
                                             </a>
-                                            {{-- <a onclick="doSomething()" href="javascript:;" data-bs-toggle="tooltip"
-                                                data-bs-original-title="削除">
-                                                <i class="fas fa-trash text-third"></i>
-                                            </a>
-                                            <div id="id_confrmdiv">confirmation
-                                                <button id="id_truebtn">Yes</button>
-                                                <button id="id_falsebtn">No</button>
-                                            </div> --}}
                                     </td>
                                 </tr>
                                 @endforeach

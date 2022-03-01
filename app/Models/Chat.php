@@ -20,7 +20,7 @@ class Chat extends Model
     {
         return $this->belongsTo(
             LineUser::class,
-            "account_id",
+            "id",
         );
     }
 }
