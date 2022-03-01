@@ -217,7 +217,7 @@ class ChatController extends Controller
                 'default_text' => $request->input('default_text'),
                 'welcome_text_active' => $welcomeFlag,
                 'default_text_active' => $defaultFlag,
-                // 'notify_email' => $mailFlag,
+                'notify_email' => $mailFlag,
             ]);
 
         Session::put('title', 'チャット設定更新完了');
