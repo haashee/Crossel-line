@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\LineUser;
 use App\Models\Chat;
+use App\Models\ChatSetting;
 use Illuminate\Support\Facades\Session;
 
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -54,8 +55,6 @@ class ChatController extends Controller
      */
     public function store(Request $request, $aid, $id)
     {
-
-
         // add richmenu ID to accounts table
         Chat::where('id', $aid)
             ->updateOrCreate([
@@ -178,5 +177,34 @@ class ChatController extends Controller
     {
         return view('dashboard.chat.edit')
             ->with('account', Account::where('id', $aid)->first());
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $aid
+     * @return \Illuminate\Http\Response
+     */
+    public function settingUpdate(Request $request, $aid)
+    {
+        $request->validate([
+            'welcome_text' => 'required',
+            'default_text' => 'required',
+        ]);
+
+        ChatSetting::where('account_id', $aid)
+            ->update([
+                'welcome_text' => $request->input('welcome_text'),
+                'default_text' => $request->input('default_text'),
+                // 'welcome_text_active' => $request->input('welcome_text_active'),
+                // 'default_text_active' => $request->input('default_text_active'),
+                // 'notify_email' => $request->input('notify_email'),
+            ]);
+
+        Session::put('title', 'チャット設定更新完了');
+
+        return redirect('accounts/' . $aid . '/' . 'chat')
+            ->with('message', 'チャット設定が更新されました。');
     }
 }

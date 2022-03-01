@@ -65,188 +65,11 @@ Account
 
 
 
-        {{-- <div class="row mt-3">
-            <div class="col-12 col-md-6 col-xl-4">
-                <div class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                        <h6 class="mb-0">Platform Settings</h6>
-                    </div>
-                    <div class="col-12 col-sm-4 p-3 ">
-                        <div class="avatar avatar-xl position-relative">
-                            <img src="{{ asset('uploads/profile-pic/' . $account->image) }}" class="border-radius-md"
-                                alt="team-2">
-                            <label
-                                class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                                <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip" data-bs-placement="top"
-                                        title="" aria-hidden="true" data-bs-original-title="Edit Image"
-                                        aria-label="Edit Image"></i></span>
-                                <span class="sr-only">Edit Image</span>
-                                <input name="image" type="file" style="display: none">
-                            </label>
-                        </div>
-                    </div>
-                    <div class="card-body p-3">
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder">Account</h6>
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault"
-                                        checked>
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault">Email me when someone follows me</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault1">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault1">Email me when someone answers on my
-                                        post</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault2"
-                                        checked>
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault2">Email me when someone mentions me</label>
-                                </div>
-                            </li>
-                        </ul>
-                        <h6 class="text-uppercase text-body text-xs font-weight-bolder mt-4">Application</h6>
-                        <ul class="list-group">
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault3">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault3">New launches and projects</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault4"
-                                        checked>
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault4">Monthly product updates</label>
-                                </div>
-                            </li>
-                            <li class="list-group-item border-0 px-0 pb-0">
-                                <div class="form-check form-switch ps-0">
-                                    <input class="form-check-input ms-0" type="checkbox" id="flexSwitchCheckDefault5">
-                                    <label class="form-check-label text-body ms-3 text-truncate w-80 mb-0"
-                                        for="flexSwitchCheckDefault5">Subscribe to newsletter</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-xl-9 mt-md-0 mt-4">
-                <!-- Account Basic Info -->
-                <div class="card h-100" id="profile">
-                    <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
-                        <div class="card-header pb-0 p-3">
-                            <div class="row">
-                                <div class="col-md-8 d-flex align-items-center">
-                                    <h6 class="mb-0">アカウント設定</h6>
-                                </div>
-                                <div class="col-md-4 text-end">
-                                    <a class="edit-token" href="javascript:;">
-                                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="アクセストークンを編集"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="card-body p-3">
-                            <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                                <label class="text-muted">チャネルシークレット</label>
-                                <input class="edit-token-show multisteps-form__input form-control mb-3" type="text"
-                                    placeholder="channel_secret" value="{{ $account->channel_secret }}"
-                                    name="channel_secret" readonly="readonly" />
-                                <label class="text-muted">アクセストークン</label>
-                                <textarea class="edit-token-show multisteps-form__input form-control mb-3"
-                                    placeholder="access_token" name="access_token"
-                                    readonly="readonly">{{ $account->access_token }}</textarea>
-                                <label class="text-muted">Name</label>
-                                <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->name }}" name="name" />
-                                <label class="text-muted">Webhook URL</label>
-                                <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="https://6ee2-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name=""
-                                    readonly="readonly" />
-                            </div>
-
-                            <div class="row pt-4 pb-3">
-                                <div class="col-md-8 d-flex align-items-center">
-                                    <h6 class="mb-0">LIFF設定</h6>
-                                </div>
-                                <div class="col-md-4 text-end">
-                                    <a class="edit-liff" href="javascript:;">
-                                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                            data-bs-placement="left" title="Liffを編集"></i>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                                <label class="text-muted">FULL エンドポイントURL</label>
-                                <input class="multisteps-form__input form-control" type="text" value="URL for menu"
-                                    name="" readonly="readonly" />
-                                <label class="text-muted">FULLのLIFF ID</label>
-                                <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->liff_full }}" name="liff_full" readonly="readonly" />
-                                <hr class="horizontal dark" />
-
-                                <label class="text-muted">TALL エンドポイントURL</label>
-                                <input class="multisteps-form__input form-control" type="text" value="URL for menu"
-                                    name="" readonly="readonly" />
-                                <label class="text-muted">TALLのLIFF ID</label>
-                                <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->liff_tall }}" name="liff_tall" readonly="readonly" />
-                                <hr class="horizontal dark" />
-
-                                <label class="text-muted">COMPACT エンドポイントURL</label>
-                                <input class="multisteps-form__input form-control" type="text" value="URL for menu"
-                                    name="" readonly="readonly" />
-                                <label class="text-muted">COMPACTのLIFF ID</label>
-                                <input class="edit-liff-show multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->liff_compact }}" name="liff_compact" readonly="readonly" />
-                            </div>
-
-                            <hr class="horizontal gray-light my-4">
-
-                            <div class="row">
-                                <div class="button-row d-flex mt-4 col-12">
-                                    <a href="{{ URL::route('accounts.index') }}"
-                                        class="btn bg-gradient-light mb-0 js-btn-prev">アカウント一覧</a>
-                                    <a href="javascript:;">
-                                        <i class="fas fa-trash text-secondary text-sm px-3 pt-2"
-                                            data-bs-toggle="tooltip" data-bs-placement="top"
-                                            title="有料プランをご利用中は削除できません。"></i>
-                                    </a>
-                                    <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
-                                        title="Send">保存</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-
-        </div> --}}
-
-
-
         <div class="row mt-3">
             <div class="col-lg-3">
                 <div class="card position-sticky top-1">
                     <ul class="nav flex-column bg-white border-radius-lg p-3">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#profile">
                                 <i class="ni ni-spaceship me-2 text-dark opacity-6"></i>
                                 <span class="text-sm">Profile</span>
@@ -256,6 +79,12 @@ Account
                             <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#basic-info">
                                 <i class="ni ni-books me-2 text-dark opacity-6"></i>
                                 <span class="text-sm">Basic Info</span>
+                            </a>
+                        </li> --}}
+                        <li class="nav-item pt-2">
+                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#accounts">
+                            <i class="ni ni-badge me-2 text-dark opacity-6"></i>
+                            <span class="text-sm">Accounts</span>
                             </a>
                         </li>
                         <li class="nav-item pt-2">
@@ -284,7 +113,7 @@ Account
             <div class="col-lg-9 mt-lg-0 mt-4">
 
                 <!-- Account Profile -->
-                <div class="card card-body p-4" id="profile">
+                {{-- <div class="card card-body p-4" id="profile">
                     <form action="/accounts/{{ $account->id }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
@@ -384,9 +213,6 @@ Account
                                 value="{{ $account->liff_compact }}" name="liff_compact" readonly="readonly" />
                         </div>
 
-                        {{--
-                        <hr class="horizontal gray-light my-4"> --}}
-
                         <div class="row">
                             <div class="button-row d-flex mt-4 col-12">
                                 <a href="{{ URL::route('accounts.index') }}"
@@ -400,9 +226,9 @@ Account
                         </div>
                     </form>
 
-                </div>
+                </div> --}}
                 <!-- Card Basic Info -->
-                <div class="card mt-4" id="basic-info">
+                {{-- <div class="card mt-4" id="basic-info">
                     <form action="{{  route('membership.update.privacy', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
@@ -461,6 +287,60 @@ Account
                                         title="Send">保存</button>
                                 </div>
                             </div>
+                        </div>
+                    </form>
+                </div> --}}
+                <!-- Card Accounts -->
+                <div class="card mt-0" id="accounts">
+                    <form action="{{ route('chat.setting.update', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        
+                        <div class="card-header">
+                            <h5>チャット設定</h5>
+                            <div class="col-md-8 d-flex align-items-center">
+                                <h6 class="mb-0">基本設定</h6>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div class="d-flex">
+                                <div class="my-auto ms-1">
+                                    <label>あいさつメッセージの有効 / 無効</label>
+                                </div>
+                                <p class="text-sm text-secondary ms-auto me-3 my-auto">Enabled</p>
+                                <div class="form-check form-switch my-auto">
+                                <input class="form-check-input" checked type="checkbox" id="flexSwitchCheckDefault1">
+                                </div>
+                            </div>
+                            <div class="pt-1 ms-1">
+                                <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
+                                    <label>あいさつメッセージ本文</label>
+                                        <textarea class="edit-token-show multisteps-form__input form-control mb-3" type="text"
+                                        placeholder="あいさつメッセージを入力" value="{{ $account->chatsetting->welcome_text }}"
+                                        name="welcome_text" id="" cols="30" rows="5">{{ $account->chatsetting->welcome_text }}</textarea>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="my-auto ms-1">
+                                    <label>デフォルトメッセージの有効 / 無効</label>
+                                </div>
+                                <p class="text-sm text-secondary ms-auto me-3 my-auto">Enabled</p>
+                                <div class="form-check form-switch my-auto">
+                                <input class="form-check-input" checked type="checkbox" id="flexSwitchCheckDefault2">
+                                </div>
+                            </div>
+                            <div class="pt-1 ms-1">
+                                <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
+                                    <label>デフォルトメッセージ本文</label>
+                                        <textarea class="edit-token-show multisteps-form__input form-control mb-3" type="text"
+                                        placeholder="デフォルトメッセージを入力" value="{{ $account->chatsetting->default_text }}"
+                                        name="default_text" id="" cols="30" rows="5">{{ $account->chatsetting->default_text }}</textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                            <div class="button-row d-flex mt-4 col-12">
+                                <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
+                            </div>
+                        </div>
                         </div>
                     </form>
                 </div>
@@ -706,30 +586,6 @@ Account
                 </div>
             </div>
         </div>
-
-
-
-        <!--admin buttons message-->
-        {{-- @if (@isset(Auth::user()->id) && (Auth::user()->name== 'admin'))
-        <div class="row mt-3">
-            <div class="col-12 col-md-6 col-xl-12 mt-md-0 mt-4">
-                <div class="card h-100">
-                    <div class="p-3">
-                        <div class="row">
-                            <div class="col-md-12 d-flex align-items-center">
-                                <form action="/accounts/{{ $account->id }}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn bg-gradient-dark mb-0 js-btn-prev" type="submit" title="Delete"
-                                        onclick="return confirm('Are you sure you want to delete?');">Delete</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endisset --}}
 
 
 

@@ -59,6 +59,7 @@ Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'p
 Route::get('accounts/{aid}/membership/{id}', [MembershipController::class, 'membership'])->name('membership');
 
 // chat routes
+Route::post('accounts/{aid}/chat/setting/update', [ChatController::class, 'settingUpdate'])->name('chat.setting.update');
 Route::get('accounts/{aid}/chat', [ChatController::class, 'index'])->name('chat.index');
 Route::get('accounts/{aid}/chat/setting', [ChatController::class, 'setting'])->name('chat.setting');
 Route::post('accounts/{aid}/chat/{id}', [ChatController::class, 'store'])->name('chat.store');
