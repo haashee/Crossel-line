@@ -60,6 +60,7 @@ Route::get('accounts/{aid}/membership/{id}', [MembershipController::class, 'memb
 
 // chat routes
 Route::get('accounts/{aid}/chat', [ChatController::class, 'index'])->name('chat.index');
+Route::get('accounts/{aid}/chat/setting', [ChatController::class, 'setting'])->name('chat.setting');
 Route::post('accounts/{aid}/chat/{id}', [ChatController::class, 'store'])->name('chat.store');
 Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['index', 'store']]);
 

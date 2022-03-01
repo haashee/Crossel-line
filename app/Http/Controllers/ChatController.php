@@ -166,4 +166,17 @@ class ChatController extends Controller
     {
         //
     }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $aid
+     * @return \Illuminate\Http\Response
+     */
+    public function setting($aid)
+    {
+        return view('dashboard.chat.edit')
+            ->with('account', Account::where('id', $aid)->first());
+    }
 }
