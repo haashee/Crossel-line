@@ -78,6 +78,7 @@ class LineMessengerController extends Controller
         $signature = $request->header('x-line-signature');
         if (!$bot->validateSignature($request->getContent(), $signature)) {
             abort(400, 'Invalid signature');
+            Log::warning("LOG: Signature is not validated");
         } else {
             Log::info("LOG: Signature is validated `" . $signature . "`");
         }
@@ -126,8 +127,9 @@ class LineMessengerController extends Controller
         // get basic_id of account from LINE 
         $profileInfo = Http::withToken($account->access_token)->get('https://api.line.me/v2/bot/info');
         $basicId = json_decode($profileInfo)->basicId;
+        $account->basic_id = $basicId;
+        $account->save();
         Log::info("LOG: the basicId of new account is `$basicId`");
-        $account->update(['basic_id' => $basicId,]);
 
         // $response = $bot->getRichMenuId($userId);
 

@@ -21,7 +21,7 @@ use LINE\LINEBot\TemplateActionBuilder\UriTemplateActionBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateMessageBuilder;
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use Log;
 
@@ -308,6 +308,13 @@ class RichMenuController extends Controller
             ->update([
                 'default' => false,
             ]);
+
+        // get basic_id of account from LINE 
+        $profileInfo = Http::withToken($account->access_token)->get('https://api.line.me/v2/bot/info');
+        $basicId = json_decode($profileInfo)->basicId;
+        $account->basic_id = $basicId;
+        $account->save();
+        Log::info("LOG: the basicId of new account is `$basicId`");
 
         // isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
         // ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
