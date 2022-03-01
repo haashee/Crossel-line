@@ -109,7 +109,7 @@ class LineMessengerController extends Controller
         $chatUser = Chat::where('lineuser_id', $user->line_id)->first();
 
         // if does not exist then create new
-        if ($chatUser == NULL) {
+        if ($chatUser == NULL && $message_type == 'message') {
             // get message content that was sent to you
             $message_content = $inputs['events'][0]['message']['text'];
             // get profile info of user
@@ -144,9 +144,6 @@ class LineMessengerController extends Controller
 
                 // get message content that was sent to you
                 $message_content = $inputs['events'][0]['message']['text'];
-
-                // The message to send
-                $message_data = "メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!";
 
                 // if message content is button texts 
                 if ($message_content == 'メニューをみる') {
@@ -215,9 +212,15 @@ class LineMessengerController extends Controller
 
                     // send this flex message
                     $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
-                } else {
+                } else if ($account->chatSetting->default_text_active == true) {
+                    // The message to send
+                    $message_data = $account->chatSetting->default_text;
+
                     // LINE process to send
                     $response = $bot->replyText($reply_token, $message_data);
+                } else {
+                    Log::info('LOG: break as message does not fit case');
+                    break;
                 }
 
                 // Succeeded
@@ -234,11 +237,15 @@ class LineMessengerController extends Controller
                 // get the token needed to reply
                 $reply_token = $inputs['events'][0]['replyToken'];
 
-                // The message to send
-                $message_data = "初めまして";
+                if ($account->chatSetting->welcome_text_active == true) {
+                    // The message to send
+                    $message_data = $account->chatSetting->welcome_text;
 
-                // LINE process to send
-                $response = $bot->replyText($reply_token, $message_data);
+                    // LINE process to send
+                    $response = $bot->replyText($reply_token, $message_data);
+
+                    Log::info("Welcome message sent to " . $userId);
+                }
 
                 // link LINE user ID with rich menu ID
                 $response = $bot->linkRichMenu($userId, $account->richmenu_id);
@@ -250,6 +257,25 @@ class LineMessengerController extends Controller
 
                 // Enter chat room
             case 'join':
+                // get the token needed to reply
+                $reply_token = $inputs['events'][0]['replyToken'];
+
+                if ($account->chatSetting->welcome_text_active == true) {
+                    // The message to send
+                    $message_data = $account->chatSetting->welcome_text;
+
+                    // LINE process to send
+                    $response = $bot->replyText($reply_token, $message_data);
+
+                    Log::info("Welcome message sent to " . $userId);
+                }
+
+                // link LINE user ID with rich menu ID
+                $response = $bot->linkRichMenu($userId, $account->richmenu_id);
+
+                // ユーザー固有のIDはどこかに保存しておいてください。メッセージ送信の際に必要です。
+                LineUser::updateOrCreate(['line_id' => $userId]);
+                Log::info("New user added user_id = " . $userId);
                 Log::info("グループ・トークルームに追加されました。");
                 break;
 
