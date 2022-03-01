@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\AccountSetting;
+use App\Models\ChatSetting;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Route;
@@ -83,6 +84,12 @@ class AccountsController extends Controller
             'privacy_url' => 'プライバシーURLが登録されていません。',
             'privacy_policy' => 'プライバシー方針が登録されていません。',
             'membership_background' => '#5a9ae4',
+        ]);
+
+        ChatSetting::create([
+            'account_id' => $newAccount->id,
+            'welcome_text' => '友だち追加ありがとうございます! 注文するボタンからLINE上で簡単に注文を行うことができます!',
+            'default_text' => 'メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!',
         ]);
 
         Session::put('title', 'アカウントの初期化完了');

@@ -66,4 +66,14 @@ class User extends Authenticatable
             'account_id'
         );
     }
+
+    public function chatSetting()
+    {
+        return $this->hasOneThrough(
+            ChatSetting::class,
+            Account::class,
+            'user_id',
+            'account_id'
+        );
+    }
 }
