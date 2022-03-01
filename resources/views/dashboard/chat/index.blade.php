@@ -148,11 +148,13 @@ Account
                         </div>
                         <!-- Card Chat Input -->
                         <div class="card">
-                            <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
+                            {{-- <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
                                 action="{{  route('chat.store', ['aid' => $account->id, 'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="sender_name" value="{{ $account->name }}">
-                                <input type="hidden" name="receiver_name" value="{{ $friend->name }}">
+                            </form> --}}
+
+                                {{-- <input type="hidden" name="sender_name" value="{{ $account->name }}">
+                                <input type="hidden" name="receiver_name" value="{{ $friend->name }}"> --}}
                                 <div class="row">
                                     <div class="col-lg-10">
                                         <div class="input-group">
@@ -166,7 +168,6 @@ Account
                                     </div>
                                 </div>
 
-                            </form>
                         </div>
 
                     </div>
