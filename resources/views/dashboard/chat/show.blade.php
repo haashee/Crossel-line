@@ -156,7 +156,7 @@ Account
                                     <div class="col-lg-10">
                                         <div class="input-group">
                                             <textarea name="message" class="form-control " type="text"
-                                                placeholder="Input message."></textarea>
+                                                placeholder="メッセージを入力"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-2">

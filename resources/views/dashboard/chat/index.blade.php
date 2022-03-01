@@ -125,32 +125,50 @@ Account
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">チャット基本設定</h6>
+                                <h6 class="mb-0">チャット未選択</h6>
                             </div>
-                            <div class="col-md-4 text-end">
-                                <a href="javascript:;">
-                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="Edit Profile"></i>
+                            {{-- <div class="col-md-4 text-end">
+                                <a href="javascript:window.location.reload(true)">
+                                    <i class="fas fa-redo text-secondary text-sm" data-bs-toggle="tooltip"
+                                        data-bs-placement="left" title="チャットを更新する"></i>
                                 </a>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <hr class="horizontal gray-light my-4">
                     <div class="card-body p-3 pt-0">
-                            <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                                <label class="text-muted">チャネルシークレット</label>
-                                <input class="edit-token-show multisteps-form__input form-control mb-3" type="text" placeholder="channel_secret"
-                                    value="{{ $account->channel_secret }}" name="channel_secret" readonly="readonly"/>
-                                <label class="text-muted">アクセストークン</label>
-                                <textarea class="edit-token-show multisteps-form__input form-control mb-3" placeholder="access_token"
-                                    name="access_token" readonly="readonly">{{ $account->access_token }}</textarea>
-                                <label class="text-muted">Name</label>
-                                <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->name }}" name="name" />
-                                <label class="text-muted">Webhook URL</label>
-                                <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="https://6ee2-223-133-69-171.ngrok.io/line/{{ $account->id }}/webhook" name="" readonly="readonly"/>
+                        <div class="my-1 rounded-lg ">
+                            <div class="position-relative w-100 Content">
+                                <p class="text-md mx-4">チャットを選択して下さい</p>
+                                <p class="text-sm text-secondary mx-4">新しくチャットを開始する場合は「友だち検索」からチャットを開始したい友だちを選択し、友だち詳細画面の「個別チャット履歴」ブロック内の「チャットを開始する」ボタンから新規チャットを開始する事が出来ます。</p>
+                                <hr class="horizontal gray-light my-4">
+                                <p class="text-md mx-4">チャットの設定は下記ボタンをクリック</p>
+                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="">チャット設定</a>
                             </div>
+                        </div>
+                        <!-- Card Chat Input -->
+                        <div class="card">
+                            <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
+                                action="{{  route('chat.store', ['aid' => $account->id, 'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="sender_name" value="{{ $account->name }}">
+                                <input type="hidden" name="receiver_name" value="{{ $friend->name }}">
+                                <div class="row">
+                                    <div class="col-lg-10">
+                                        <div class="input-group">
+                                            <textarea name="message" class="form-control " type="text"
+                                                placeholder="メッセージを入力" disabled></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <button class="btn bg-gradient-dark btn-sm float-end"
+                                            type="submit" disabled>送信</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+
                     </div>
                 </div>
             </div>
