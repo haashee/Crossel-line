@@ -173,6 +173,26 @@ class ChatController extends Controller
      * @param  int  $aid
      * @return \Illuminate\Http\Response
      */
+    public function chatList($aid)
+    {
+        $account = Account::where('id', $aid)->first();
+
+        $friends = LineUser::where('account_id', $aid)->get();
+
+        return view('dashboard.chat.list', [
+            'friends' => $friends,
+            'account' => $account,
+
+        ]);
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $aid
+     * @return \Illuminate\Http\Response
+     */
     public function setting($aid)
     {
         return view('dashboard.chat.edit')

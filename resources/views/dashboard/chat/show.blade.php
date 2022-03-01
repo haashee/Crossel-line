@@ -114,7 +114,7 @@ Account
                                 <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto" href="javascript:;">Reply</a>
                             </li>
                         </ul>
-                        <a class="text-xs text-left p-1" href="">チャット一覧を見る</a>
+                        <a class="text-xs text-left p-1" href="{{ route('chat.list', ['aid' => $account->id]) }}">チャット一覧を見る</a>
                     </div>
                 </div>
             </div>
