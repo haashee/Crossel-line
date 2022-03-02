@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Account;
+use App\Models\Tag;
 use App\Models\LineUser;
 use App\Models\AccountSetting;
 use Illuminate\Support\Facades\Session;
@@ -78,5 +79,20 @@ class MembershipController extends Controller
 
         // return redirect('https://liff.line.me/' . $account->liff_tall)
         //     ->with('message', '会員情報が更新されました。');
+    }
+
+    public function setting($aid)
+    {
+        $accounts = Account::all();
+        $account = Account::where('id', $aid)->first();
+        $tags = Tag::where('account_id', $aid)->get();
+
+
+
+        return view('dashboard.tag.index', [
+            'accounts' => $accounts,
+            'account' => $account,
+            'tags' => $tags,
+        ]);
     }
 }
