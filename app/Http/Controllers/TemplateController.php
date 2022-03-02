@@ -50,7 +50,7 @@ class TemplateController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            // 'text' => 'required',
+            'text' => 'required',
         ]);
 
 
@@ -63,8 +63,8 @@ class TemplateController extends Controller
 
         Template::create([
             'name' => $request->input('name'),
-            // 'text' => $request->input('text'),
-            // 'isFavorite' => $favoriteFlag,
+            'text' => $request->input('text'),
+            'isFavorite' => $favoriteFlag,
             'account_id' => $aid,
         ]);
 

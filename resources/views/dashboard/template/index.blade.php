@@ -108,34 +108,23 @@ Account
                                 <div class="card-body p-3 py-0">
                                 <ul class="list-group mx-4">
                                     @forelse ($templates as $template)
-                                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                        <li class="list-group-item border-0 d-flex ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $template->name }}</h6>
-                                            {{-- @if ($tag->isPublic == true)
-                                                <span class="text-xs">公開タグ</span>
-                                            @else
-                                                <span class="text-xs">非公開タグ</span>
-                                            @endif --}}
-                                        </div>
-                                        <div class="d-flex align-items-center text-sm">
-                                            <p class="text-xs mx-1 mt-3">{{ $template->text }}</p>
-                                            {{-- <span class="tag-dot me-4" style="background-color:{{ $template->color }};"></span> --}}
-                                            {{-- <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1" href="{{ route('tag.setting', ['aid' => $account->id, 'id' => $tag->id]) }}">
-                                                <i class="fas fa-edit text-sm me-1"></i>
-                                            </a> --}}
-                                            {{-- <form class="ms-auto" action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0" type="submit" name="button">
-                                                    <i class="fas fa-trash text-sm me-1"></i>
-                                                </button>
-                                            </form> --}}
+                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">
+                                                @if ($template->isFavorite == true)
+                                                    <span class="btn btn-link text-muted text-xxs mb-1 px-0"><i class="fas fa-star text-xs me-1"></i></span>
+                                                @endif
+                                                {{ $template->name }}
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" href="">
+                                                    <i class="fas fa-edit text-xs me-1"></i>
+                                                </a>
+                                            </h6>
+                                            <p class="text-xs ms-5">{{ Str::limit($template->text,200) }}</p>
                                         </div>
                                         </li>
                                     @empty
                                         <p>テンプレートが登録されてません。新規テンプレートをご登録ください。</p>
                                     @endforelse
-
                                 </ul>
                                 </div>
                             </div>
@@ -158,18 +147,17 @@ Account
                                     <div class="col-2">
                                         <label class="form-label">お気に入り</label>
                                         <div class="input-group form-check form-switch my-auto">
-                                        <input name="isPublic" class="form-check-input" type="checkbox" 
+                                        <input name="isFavorite" class="form-check-input" type="checkbox" 
                                             id="flexSwitchCheckDefault2" >
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-3">
                                     <div class="col-12">
                                         <label class="">テンプレート本文<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
-                                        <textarea class="edit-token-show multisteps-form__input form-control" type="text"
-                                            placeholder="テンプレート本文" value=""
-                                            name="name">   </textarea>                                 
+                                            <textarea class="edit-token-show multisteps-form__input form-control" name="text" id="" 
+                                                cols="30" rows="3" placeholder="テンプレート本文"></textarea>                             
                                         </div>
                                     </div>
                                 </div>
