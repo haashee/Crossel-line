@@ -87,7 +87,7 @@ Friend list
                                         @forelse ($friend->tags as $tag)
                                             <span class="tag-dot me-1" style="background-color:{{ $tag->color }};"></span>
                                         @empty
-                                            <p>タグなし</p>
+                                            <span class="text-dark text-xs">タグなし</span>
                                         @endforelse
                                     </td>
                                     <td class="text-sm font-weight-normal">
