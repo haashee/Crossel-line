@@ -21,7 +21,12 @@ class Account extends Model
         return $this->hasMany(LineUser::class);
     }
 
-    public function accountSetting()
+    public function tags()
+    {
+        return $this->hasMany(Tag::class);
+    }
+
+    public function accotauntSetting()
     {
         return $this->hasOne(AccountSetting::class, 'account_id', 'id');
     }

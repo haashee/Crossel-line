@@ -10,6 +10,7 @@ use App\Http\Controllers\LineUserController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\RichMenuController;
+use App\Http\Controllers\TagController;
 
 
 /*
@@ -66,6 +67,10 @@ Route::get('accounts/{aid}/chat', [ChatController::class, 'index'])->name('chat.
 Route::get('accounts/{aid}/chat/setting', [ChatController::class, 'setting'])->name('chat.setting');
 Route::post('accounts/{aid}/chat/{id}', [ChatController::class, 'store'])->name('chat.store');
 Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['index', 'store']]);
+
+// tag routes
+Route::get('accounts/{aid}/tag', [TagController::class, 'index'])->name('tag.index');
+Route::resource('/accounts/{aid}/tag', TagController::class, ['except' => ['index']]);
 
 
 
