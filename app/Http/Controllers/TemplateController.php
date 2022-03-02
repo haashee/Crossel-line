@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Account;
+use App\Models\Template;
 use App\Models\Tag;
 
+
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class TemplateController extends Controller
@@ -18,12 +21,12 @@ class TemplateController extends Controller
     {
         $accounts = Account::all();
         $account = Account::where('id', $aid)->first();
-        $tags = Tag::where('account_id', $aid)->get();
+        $templates = Template::where('account_id', $aid)->get();
 
-        return view('dashboard.tag.index', [
+        return view('dashboard.template.index', [
             'accounts' => $accounts,
             'account' => $account,
-            'tags' => $tags,
+            'templates' => $templates,
         ]);
     }
 
@@ -43,9 +46,33 @@ class TemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $aid)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            // 'text' => 'required',
+        ]);
+
+
+        if ($request->has('isFavorite')) {
+            $favoriteFlag = true;
+        } else {
+            $favoriteFlag = false;
+        }
+
+
+        Template::create([
+            'name' => $request->input('name'),
+            // 'text' => $request->input('text'),
+            // 'isFavorite' => $favoriteFlag,
+            'account_id' => $aid,
+        ]);
+
+
+        Session::put('title', 'テンプレート作成完了');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'template')
+            ->with('message', 'テンプレートが無事作成されました。');
     }
 
     /**
