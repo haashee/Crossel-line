@@ -21,6 +21,8 @@ class TagController extends Controller
         $account = Account::where('id', $aid)->first();
         $tags = Tag::where('account_id', $aid)->get();
 
+
+
         return view('dashboard.friends.settings', [
             'accounts' => $accounts,
             'account' => $account,

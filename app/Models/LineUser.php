@@ -27,4 +27,9 @@ class LineUser extends Model
     {
         return $this->hasMany(Chat::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

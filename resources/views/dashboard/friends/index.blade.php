@@ -51,6 +51,9 @@ Friend list
                                         Registered
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        tags
+                                    </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         No. Orders
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -80,6 +83,13 @@ Friend list
                                             <span class="text-dark text-xs">未登録</span>
                                             @endif
                                         </span>
+                                    </td>
+                                    <td class="text-sm font-weight-normal">
+                                        @forelse ($friend->tags as $tag)
+                                            <span class="tag-dot me-1" style="background-color:{{ $tag->color }};"></span>
+                                        @empty
+                                            <p>タグなし</p>
+                                        @endforelse
                                     </td>
                                     <td class="text-sm font-weight-normal">
                                         61
