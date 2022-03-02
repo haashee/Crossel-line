@@ -69,6 +69,7 @@ Route::post('accounts/{aid}/chat/{id}', [ChatController::class, 'store'])->name(
 Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['index', 'store']]);
 
 // tag routes
+Route::get('accounts/{aid}/tag/{id}/setting', [TagController::class, 'setting'])->name('tag.setting');
 Route::get('accounts/{aid}/tag', [TagController::class, 'index'])->name('tag.index');
 Route::resource('accounts/{aid}/tag', TagController::class, ['except' => ['index']]);
 

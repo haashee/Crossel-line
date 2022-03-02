@@ -29,6 +29,22 @@ class TagController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function setting($aid, $id)
+    {
+        $account = Account::where('id', $aid)->first();
+        $tag = Tag::where('id', $id)->first();
+
+        return view('dashboard.friends.tag-edit', [
+            'account' => $account,
+            'tag' => $tag,
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -46,7 +62,6 @@ class TagController extends Controller
      */
     public function store(Request $request, $aid)
     {
-
         $request->validate([
             'name' => 'required',
             'color' => 'required',
@@ -102,9 +117,30 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $aid, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'color' => 'required',
+        ]);
+
+        if ($request->has('isPublic')) {
+            $publicFlag = true;
+        } else {
+            $publicFlag = false;
+        }
+
+        Tag::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'color' => $request->input('color'),
+                'isPublic' => $publicFlag,
+            ]);
+
+        Session::put('title', 'タグ更新完了');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'tag')
+            ->with('message', 'タグが無事更新されました。');
     }
 
     /**
