@@ -36,6 +36,5 @@ class CreateLineuserTagsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('line_user_tag');
-        Schema::dropIfExists('tags');
     }
 }

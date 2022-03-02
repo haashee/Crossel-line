@@ -18,7 +18,7 @@ class CreateChatsTable extends Migration
             $table->string('senderName')->nullable();
             $table->string('receiverName')->nullable();
             $table->string('user_identifier')->nullable();
-            $table->string('message', 300)->nullable();
+            $table->mediumText('message')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
 

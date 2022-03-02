@@ -11,6 +11,7 @@ use App\Http\Controllers\ChatController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\RichMenuController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TemplateController;
 
 
 /*
@@ -74,6 +75,9 @@ Route::get('accounts/{aid}/tag/{id}/setting', [TagController::class, 'setting'])
 Route::get('accounts/{aid}/tag', [TagController::class, 'index'])->name('tag.index');
 Route::resource('accounts/{aid}/tag', TagController::class, ['except' => ['index']]);
 
+// template routes
+Route::get('accounts/{aid}/template', [TemplateController::class, 'index'])->name('template.index');
+Route::resource('accounts/{aid}/template', TemplateController::class, ['except' => ['index']]);
 
 
 
