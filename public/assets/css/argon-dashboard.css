@@ -38042,4 +38042,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
     bottom: 0;
 }
 
-
+/* tags setting page */
+.tag-dot {
+  height: 8px;
+  width: 8px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+}

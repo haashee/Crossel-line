@@ -19,10 +19,12 @@ class TagController extends Controller
     {
         $accounts = Account::all();
         $account = Account::where('id', $aid)->first();
+        $tags = Tag::where('account_id', $aid)->get();
 
         return view('dashboard.friends.settings', [
             'accounts' => $accounts,
             'account' => $account,
+            'tags' => $tags,
         ]);
     }
 
@@ -51,17 +53,24 @@ class TagController extends Controller
         ]);
 
 
+        if ($request->has('isPublic')) {
+            $publicFlag = true;
+        } else {
+            $publicFlag = false;
+        }
+
         Tag::create([
             'name' => $request->input('name'),
             'color' => $request->input('color'),
+            'isPublic' => $publicFlag,
             'account_id' => $aid,
         ]);
 
 
-        Session::put('title', 'リッチメニュー作成完了');
+        Session::put('title', 'タグ作成完了');
 
         return redirect('accounts' . '/' . $aid . '/' . 'tag')
-            ->with('message', 'リッチメニューが無事作成されました。使用するにはデフォルトとして設定してください。');
+            ->with('message', 'タグが無事作成されました。');
     }
 
     /**

@@ -285,8 +285,6 @@ Account
 
                 <!-- Tags Setting -->
                 <div class="card card-body p-4" id="profile">
-                    <form action="{{ route('tag.store', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
-                        @csrf
                         <div class="card-header p-0 pb-3">
                             <div class="row">
                                 <div class="col-md-8 d-flex align-items-center">
@@ -300,94 +298,71 @@ Account
                             <div class="col-md-8 d-flex align-items-center">
                                 <h6 class="mb-0">タグ一覧</h6>
                             </div>
-                            {{-- <div class="col-md-4 text-end">
-                                <a class="edit-token" href="javascript:;">
-                                    <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="アクセストークンを編集"></i>
-                                </a>
-                            </div> --}}
                         </div>
-
-                        {{-- <div class="row">
-                            <div class="col-12 col-sm-2 p-3 px-3">
-                                <div class="avatar avatar-xl position-relative">
-                                    <img src="{{ asset('uploads/profile-pic/' . $account->image) }}"
-                                        class="border-radius-md" alt="team-2">
-                                    <label
-                                        class="btn btn-sm btn-icon-only bg-gradient-light position-absolute bottom-0 end-0 mb-n2 me-n2">
-                                        <span><i class="fa fa-pen top-0" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="" aria-hidden="true"
-                                                data-bs-original-title="Edit Image" aria-label="Edit Image"></i></span>
-                                        <span class="sr-only">Edit Image</span>
-                                        <input name="image" type="file" style="display: none">
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-12 col-sm-10 p-3 px-3">
-                                <label class="text-muted">管理用ニックネーム</label>
-                                <input class="multisteps-form__input form-control mb-3" type="text"
-                                    value="{{ $account->name }}" name="name"/>
-                            </div>
-
-                        </div> --}}
                         <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
                             <div class=" h-100">
                                 <div class="card-body p-3 py-0">
-                                <ul class="list-group">
-                                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                    <div class="d-flex flex-column">
-                                        <h6 class="mb-1 text-dark font-weight-bold text-sm">March, 01, 2020</h6>
-                                        <span class="text-xs">#MS-415646</span>
-                                    </div>
-                                    <div class="d-flex align-items-center text-sm">
-                                        $180
-                                        <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                                    </div>
-                                    </li>
+                                <ul class="list-group mx-4">
+                                    @forelse ($tags as $tag)
+                                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                        <div class="d-flex flex-column">
+                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $tag->name }}</h6>
+                                            <span class="text-xs">友達に公開</span>
+                                        </div>
+                                        <div class="d-flex align-items-center text-sm">
+                                            <p class="text-xs mx-1 mt-3">タグの色</p>
+                                            <span class="tag-dot me-4" style="background-color:{{ $tag->color }};"></span>
+                                            <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1"><i class="fas fa-edit text-sm me-1"></i></button>
+                                            <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0 "><i class="fas fa-trash text-sm me-1"></i></button>
+                                        </div>
+                                        </li>
+                                    @empty
+                                        <p>タグが登録されてません。新規タグをご登録ください。</p>
+                                    @endforelse
+
                                 </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                            <div class="col-md-8 d-flex align-items-center py-3">
-                                <h6 class="mb-0">新規タグの作成</h6>
-                            </div>
-                            <label class="">タグの名前</label>
-                            <input class="edit-token-show multisteps-form__input form-control mb-3" type="text"
-                                placeholder="name" value=""
-                                name="name" />
-
-                            <div class="row">
-                                <div class="col-6">
-                                    <label class="form-label">タグの色</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="color" id="colorpicker" name="color" value="">
+                            <form action="{{ route('tag.store', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="col-md-8 d-flex align-items-center py-3">
+                                    <h6 class="mb-0">新規タグの作成</h6>
+                                </div>
+                                <div class="row">
+                                    <div class="col-8">
+                                        <label class="">タグの名前</label>
+                                        <div class="input-group">
+                                        <input class="edit-token-show multisteps-form__input form-control" type="text"
+                                            placeholder="タグの名前" value=""
+                                            name="name" />                                    
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="form-label">タグの色</label>
+                                        <div class="input-group">
+                                            <input class="form-control" type="color" id="colorpicker" name="color" value="">
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <label class="form-label">友達に公開</label>
+                                        <div class="input-group form-check form-switch my-auto">
+                                        <input name="isPublic" class="form-check-input" type="checkbox" 
+                                            id="flexSwitchCheckDefault2" {{ $tag->isPublic == true ? 'checked' :''}}>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-6">
-                                    <label class="form-label">友達に公開</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="color" id="colorpicker" name="color" value="">
+                                <div class="row">
+                                    <div class="button-row d-flex mt-4 col-12">
+                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
                                     </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
 
-                        {{--
-                        <hr class="horizontal gray-light my-4"> --}}
 
-                        <div class="row">
-                            <div class="button-row d-flex mt-4 col-12">
-                                {{-- <a href="{{ URL::route('accounts.index') }}"
-                                    class="btn bg-gradient-light mb-0 js-btn-prev">アカウント一覧</a>
-                                <a href="javascript:;">
-                                    <i class="fas fa-trash text-secondary text-sm px-3 pt-2" data-bs-toggle="tooltip"
-                                        data-bs-placement="top" title="有料プランをご利用中は削除できません。"></i>
-                                </a> --}}
-                                <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
-                            </div>
-                        </div>
-                    </form>
+
 
                 </div>
                 <!-- Card Basic Info -->
