@@ -118,8 +118,8 @@ Account
                                             @endif --}}
                                         </div>
                                         <div class="d-flex align-items-center text-sm">
-                                            <p class="text-xs mx-1 mt-3">タグの色</p>
-                                            <span class="tag-dot me-4" style="background-color:{{ $template->text }};"></span>
+                                            <p class="text-xs mx-1 mt-3">{{ $template->text }}</p>
+                                            {{-- <span class="tag-dot me-4" style="background-color:{{ $template->color }};"></span> --}}
                                             {{-- <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1" href="{{ route('tag.setting', ['aid' => $account->id, 'id' => $tag->id]) }}">
                                                 <i class="fas fa-edit text-sm me-1"></i>
                                             </a> --}}
@@ -147,7 +147,7 @@ Account
                                     <h6 class="mb-0">新規テンプレートの作成</h6>
                                 </div>
                                 <div class="row">
-                                    <div class="col-8">
+                                    <div class="col-10">
                                         <label class="">テンプレートの名前<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
                                         <input class="edit-token-show multisteps-form__input form-control" type="text"
@@ -156,17 +156,20 @@ Account
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <label class="form-label">タグの色<span class="text-third">(必須)</span></label>
-                                        <div class="input-group">
-                                            <input class="form-control" type="color" id="colorpicker" name="color" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <label class="form-label">友達に公開<span class="text-third">(必須)</span></label>
+                                        <label class="form-label">お気に入り</label>
                                         <div class="input-group form-check form-switch my-auto">
                                         <input name="isPublic" class="form-check-input" type="checkbox" 
                                             id="flexSwitchCheckDefault2" >
-                                            {{-- {{ $tag->isPublic == true ? 'checked' :''}} --}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label class="">テンプレート本文<span class="text-third">(必須)</span></label>
+                                        <div class="input-group">
+                                        <textarea class="edit-token-show multisteps-form__input form-control" type="text"
+                                            placeholder="テンプレート本文" value=""
+                                            name="name">   </textarea>                                 
                                         </div>
                                     </div>
                                 </div>
