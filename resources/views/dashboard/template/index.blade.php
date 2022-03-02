@@ -111,13 +111,14 @@ Account
                                         <li class="list-group-item border-0 d-flex ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark font-weight-bold text-sm">
-                                                @if ($template->isFavorite == true)
-                                                    <span class="btn btn-link text-muted text-xxs mb-1 px-0"><i class="fas fa-star text-xs me-1"></i></span>
-                                                @endif
                                                 {{ $template->name }}
-                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" href="{{ route('template.edit', ['aid' => $account->id, 'template' => $template->id]) }}">
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
+                                                    href="{{ route('template.edit', ['aid' => $account->id, 'template' => $template->id]) }}">
                                                     <i class="fas fa-edit text-xs me-1"></i>
                                                 </a>
+                                                @if ($template->isFavorite == true)
+                                                    <span class="btn btn-link text-muted text-xxs mb-1 px-0" data-bs-toggle="tooltip" data-bs-original-title="お気に入り"><i class="fas fa-star text-xs me-1" style="color:orange"></i></span>
+                                                @endif
                                             </h6>
                                             <p class="text-xs ms-5">{{ Str::limit($template->text,200) }}</p>
                                         </div>
