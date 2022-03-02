@@ -147,7 +147,7 @@ Account
             <div class="card-body pt-0">
               <div class="row">
                 <div class="col-6">
-                  <label class="form-label">ユーザー名</label>
+                  <label class="form-label">ユーザー名<span class="text-third">(必須)</span></label>
                   <div class="input-group">
                     <input id="firstName" name="name" class="form-control" type="text" placeholder="ユーザー名"
                       value="{{ $friend->name }}">
@@ -540,9 +540,14 @@ Account
                   </select>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label mt-4">タグ</label>
-                  <input class="form-control" id="choices-skills" type="text" value="vuejs, angular, react"
-                    placeholder="Enter something" />
+                  <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
+                    <select id="category" name="tags[]" multiple class="form-control" >
+                      @forelse ($tags as $tag)
+                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                      @empty
+                          <p>タグが登録されていません。</p>
+                      @endforelse
+                    </select>
                 </div>
               </div>
               <div class="row">

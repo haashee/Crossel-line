@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\Chat;
+use App\Models\Tag;
 use App\Models\LineUser;
+use App\Models\LineuserTag;
 use Illuminate\Support\Facades\Session;
 
 
@@ -91,9 +93,12 @@ class LineUserController extends Controller
 
         $friend = LineUser::where('id', $id)->first();
 
+        $tags = Tag::where('account_id', $aid)->get();
+
         return view('dashboard.friends.edit', [
             'friend' => $friend,
             'account' => $account,
+            'tags' => $tags,
         ]);
     }
 
@@ -111,7 +116,13 @@ class LineUserController extends Controller
             'name' => 'required',
         ]);
 
+        // change date format
         $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+
+        // sync update tags
+        $data = [];
+        $data['tags'] = $request->input('tags');
+        LineUser::find($id)->tags()->sync($data['tags']);
 
         LineUser::where('id', $id)
             ->update([
