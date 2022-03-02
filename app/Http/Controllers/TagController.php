@@ -23,7 +23,7 @@ class TagController extends Controller
 
 
 
-        return view('dashboard.friends.settings', [
+        return view('dashboard.tag.index', [
             'accounts' => $accounts,
             'account' => $account,
             'tags' => $tags,
@@ -40,7 +40,7 @@ class TagController extends Controller
         $account = Account::where('id', $aid)->first();
         $tag = Tag::where('id', $id)->first();
 
-        return view('dashboard.friends.tag-edit', [
+        return view('dashboard.tag.edit', [
             'account' => $account,
             'tag' => $tag,
         ]);

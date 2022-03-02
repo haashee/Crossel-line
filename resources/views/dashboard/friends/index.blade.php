@@ -32,9 +32,8 @@ Friend list
                     </div>
                     <div class="row mx-3">
                         <div class="button-row d-flex col-sm-auto ms-auto">
-                        <a class="btn bg-gradient-dark mb-0 mx-1" title="Send">保存</a>
-                        <a class="btn bg-gradient-dark mb-0 mx-1" title="Send">会員登録の管理</a>
-                        <a href="{{ route('tag.index', ['aid' => $account->id]) }}" class="btn bg-gradient-dark mb-0 mx-1" title="Send">タグを管理</a>
+                        <a class="btn btn-outline-primary btn-sm mx-1" title="Send">会員登録の管理</a>
+                        <a href="{{ route('tag.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm " title="Send">タグを管理</a>
                         </div>
                     </div>
                     <div class="table-responsive">
