@@ -92,9 +92,15 @@ class TemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($aid, $id)
     {
-        //
+        $account = Account::where('id', $aid)->first();
+        $template = Template::where('id', $id)->first();
+
+        return view('dashboard.template.edit', [
+            'account' => $account,
+            'template' => $template,
+        ]);
     }
 
     /**
@@ -104,9 +110,30 @@ class TemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $aid, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'text' => 'required',
+        ]);
+
+        if ($request->has('isFavorite')) {
+            $favoriteFlag = true;
+        } else {
+            $favoriteFlag = false;
+        }
+
+        Template::where('id', $id)
+            ->update([
+                'name' => $request->input('name'),
+                'text' => $request->input('text'),
+                'isFavorite' => $favoriteFlag,
+            ]);
+
+        Session::put('title', 'テンプレート更新完了');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'template')
+            ->with('message', 'テンプレートが無事更新されました。');
     }
 
     /**
@@ -115,8 +142,14 @@ class TemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($aid, $id)
     {
-        //
+        $template = Template::where('id', $id)->first();
+        $template->delete();
+
+        Session::put('title', 'テンプレート削除');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'template')
+            ->with('message', 'テンプレートが正常に削除されました。');
     }
 }

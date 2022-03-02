@@ -177,6 +177,7 @@ return [
         'urlD' => 'URLリンクD',
         'urlE' => 'URLリンクE',
         'urlF' => 'URLリンクF',
+        'text' => 'テキスト',
     ],
 
 ];

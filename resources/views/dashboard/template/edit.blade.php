@@ -3,7 +3,7 @@
 
 
 @section('title')
-Account
+Tag setting
 @endsection
 
 
@@ -72,7 +72,7 @@ Account
                         <li class="nav-item">
                             <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#profile">
                                 <i class="ni ni-spaceship me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">テンプレートの管理</span>
+                                <span class="text-sm">タグの編集</span>
                             </a>
                         </li>
                         <li class="nav-item pt-2">
@@ -89,58 +89,27 @@ Account
 
                 <!-- Tags Setting -->
                 <div class="card card-body p-4" id="profile">
-                        <div class="card-header p-0 pb-3">
-                            <div class="row">
-                                <div class="col-md-8 d-flex align-items-center">
-                                    <h5 class="mb-0">テンプレートの管理</h5>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="row pt-2 pb-3">
+                    <div class="card-header p-0 pb-3">
+                        <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">テンプレート一覧</h6>
+                                <h5 class="mb-0">テンプレートの管理</h5>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                            <div class=" h-100">
-                                <div class="card-body p-3 py-0">
-                                <ul class="list-group mx-4">
-                                    @forelse ($templates as $template)
-                                        <li class="list-group-item border-0 d-flex ps-0 mb-2 border-radius-lg">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">
-                                                @if ($template->isFavorite == true)
-                                                    <span class="btn btn-link text-muted text-xxs mb-1 px-0"><i class="fas fa-star text-xs me-1"></i></span>
-                                                @endif
-                                                {{ $template->name }}
-                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" href="{{ route('template.edit', ['aid' => $account->id, 'template' => $template->id]) }}">
-                                                    <i class="fas fa-edit text-xs me-1"></i>
-                                                </a>
-                                            </h6>
-                                            <p class="text-xs ms-5">{{ Str::limit($template->text,200) }}</p>
-                                        </div>
-                                        </li>
-                                    @empty
-                                        <p>テンプレートが登録されてません。新規テンプレートをご登録ください。</p>
-                                    @endforelse
-                                </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                            <form action="{{ route('template.store', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
+                    </div>
+                    <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
+                        <form action="{{ route('template.update', ['aid' => $account->id, 'template' => $template->id]) }}" method="POST"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                                 <div class="col-md-8 d-flex align-items-center py-3">
-                                    <h6 class="mb-0">新規テンプレートの作成</h6>
+                                    <h6 class="mb-0">テンプレートの編集</h6>
                                 </div>
                                 <div class="row">
                                     <div class="col-10">
                                         <label class="">テンプレートの名前<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
                                         <input class="edit-token-show multisteps-form__input form-control" type="text"
-                                            placeholder="テンプレートの名前" value=""
+                                            placeholder="テンプレートの名前" value="{{ $template->name }}"
                                             name="name" />                                    
                                         </div>
                                     </div>
@@ -148,7 +117,7 @@ Account
                                         <label class="form-label">お気に入り</label>
                                         <div class="input-group form-check form-switch my-auto">
                                         <input name="isFavorite" class="form-check-input" type="checkbox" 
-                                            id="flexSwitchCheckDefault2" >
+                                            id="flexSwitchCheckDefault2" {{ $template->isFavorite == true ? 'checked' :''}}>
                                         </div>
                                     </div>
                                 </div>
@@ -157,7 +126,7 @@ Account
                                         <label class="">テンプレート本文<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
                                             <textarea class="edit-token-show multisteps-form__input form-control" name="text" id="" 
-                                                cols="30" rows="3" placeholder="テンプレート本文"></textarea>                             
+                                                cols="30" rows="3" placeholder="テンプレート本文">{{ $template->text }}</textarea>                             
                                         </div>
                                     </div>
                                 </div>
@@ -166,13 +135,25 @@ Account
                                         <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
                                     </div>
                                 </div>
+                        </form>
+                        <div class="d-flex align-items-center mb-sm-0 my-3">
+                            <div class="ms-2">
+                                <span class="text-dark font-weight-bold d-block text-sm">テンプレートを削除する</span>
+                                <span class="text-xs d-block">削除されたテンプレートは復元できませんのでご注意ください。</span>
+                            </div>
+                            <form class="ms-auto" action="{{ route('template.destroy', ['aid' => $account->id, 'template' => $template->id]) }}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0 " type="submit" name="button">
+                                    <i class="fas fa-trash text-secondary text-sm" data-bs-toggle="tooltip"
+                                        data-bs-placement="left" title="テンプレートを削除する"></i>
+                                </button>
                             </form>
                         </div>
-
-
-
-
+                    </div>
                 </div>
+
+
             </div>
         </div>
 
@@ -181,7 +162,6 @@ Account
         <!-- Footer -->
         @include('includes.footer')
         <!-- End Footer -->
-
 
 
 
