@@ -307,13 +307,25 @@ Account
                                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $tag->name }}</h6>
-                                            <span class="text-xs">友達に公開</span>
+                                            @if ($tag->isPublic == true)
+                                                <span class="text-xs">公開タグ</span>
+                                            @else
+                                                <span class="text-xs">非公開タグ</span>
+                                            @endif
                                         </div>
                                         <div class="d-flex align-items-center text-sm">
                                             <p class="text-xs mx-1 mt-3">タグの色</p>
                                             <span class="tag-dot me-4" style="background-color:{{ $tag->color }};"></span>
-                                            <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1"><i class="fas fa-edit text-sm me-1"></i></button>
-                                            <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0 "><i class="fas fa-trash text-sm me-1"></i></button>
+                                            <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1">
+                                                <i class="fas fa-edit text-sm me-1"></i>
+                                            </a>
+                                            <form class="ms-auto" action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0" type="submit" name="button">
+                                                    <i class="fas fa-trash text-sm me-1"></i>
+                                                </button>
+                                            </form>
                                         </div>
                                         </li>
                                     @empty
@@ -332,7 +344,7 @@ Account
                                 </div>
                                 <div class="row">
                                     <div class="col-8">
-                                        <label class="">タグの名前</label>
+                                        <label class="">タグの名前<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
                                         <input class="edit-token-show multisteps-form__input form-control" type="text"
                                             placeholder="タグの名前" value=""
@@ -340,16 +352,17 @@ Account
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <label class="form-label">タグの色</label>
+                                        <label class="form-label">タグの色<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
                                             <input class="form-control" type="color" id="colorpicker" name="color" value="">
                                         </div>
                                     </div>
                                     <div class="col-2">
-                                        <label class="form-label">友達に公開</label>
+                                        <label class="form-label">友達に公開<span class="text-third">(必須)</span></label>
                                         <div class="input-group form-check form-switch my-auto">
                                         <input name="isPublic" class="form-check-input" type="checkbox" 
-                                            id="flexSwitchCheckDefault2" {{ $tag->isPublic == true ? 'checked' :''}}>
+                                            id="flexSwitchCheckDefault2" >
+                                            {{-- {{ $tag->isPublic == true ? 'checked' :''}} --}}
                                         </div>
                                     </div>
                                 </div>

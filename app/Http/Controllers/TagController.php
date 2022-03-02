@@ -113,8 +113,14 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($aid, $id)
     {
-        //
+        $tag = Tag::where('id', $id)->first();
+        $tag->delete();
+
+        Session::put('title', 'タグ削除');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'tag')
+            ->with('message', 'タグが正常に削除されました。');
     }
 }

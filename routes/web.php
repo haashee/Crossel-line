@@ -70,7 +70,7 @@ Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['ind
 
 // tag routes
 Route::get('accounts/{aid}/tag', [TagController::class, 'index'])->name('tag.index');
-Route::resource('/accounts/{aid}/tag', TagController::class, ['except' => ['index']]);
+Route::resource('accounts/{aid}/tag', TagController::class, ['except' => ['index']]);
 
 
 
