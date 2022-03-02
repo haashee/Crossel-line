@@ -31,22 +31,6 @@ class TagController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function setting($aid, $id)
-    {
-        $account = Account::where('id', $aid)->first();
-        $tag = Tag::where('id', $id)->first();
-
-        return view('dashboard.tag.edit', [
-            'account' => $account,
-            'tag' => $tag,
-        ]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -107,9 +91,15 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($aid, $id)
     {
-        //
+        $account = Account::where('id', $aid)->first();
+        $tag = Tag::where('id', $id)->first();
+
+        return view('dashboard.tag.edit', [
+            'account' => $account,
+            'tag' => $tag,
+        ]);
     }
 
     /**

@@ -145,7 +145,7 @@ Account
                                         <div class="d-flex align-items-center text-sm">
                                             <p class="text-xs mx-1 mt-3">タグの色</p>
                                             <span class="tag-dot me-4" style="background-color:{{ $tag->color }};"></span>
-                                            <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1" href="{{ route('tag.setting', ['aid' => $account->id, 'id' => $tag->id]) }}">
+                                            <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1" href="{{ route('tag.edit', ['aid' => $account->id, 'tag' => $tag->id]) }}">
                                                 <i class="fas fa-edit text-sm me-1"></i>
                                             </a>
                                             {{-- <form class="ms-auto" action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST">
