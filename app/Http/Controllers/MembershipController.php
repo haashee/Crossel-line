@@ -47,7 +47,7 @@ class MembershipController extends Controller
 
         Session::put('title', 'プライバシーポリシー更新完了');
 
-        return redirect('accounts/' . $aid . '/' . 'edit')
+        return redirect('accounts/' . $aid . '/' . 'membership/setting')
             ->with('message', 'プライバシーポリシーが無事更新されました。');
     }
 
@@ -83,16 +83,10 @@ class MembershipController extends Controller
 
     public function setting($aid)
     {
-        $accounts = Account::all();
         $account = Account::where('id', $aid)->first();
-        $tags = Tag::where('account_id', $aid)->get();
 
-
-
-        return view('dashboard.tag.index', [
-            'accounts' => $accounts,
+        return view('dashboard.membership.settings', [
             'account' => $account,
-            'tags' => $tags,
         ]);
     }
 }

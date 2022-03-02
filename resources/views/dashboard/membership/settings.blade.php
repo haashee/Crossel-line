@@ -72,11 +72,12 @@ Account
                         <li class="nav-item">
                             <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#profile">
                                 <i class="ni ni-spaceship me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">タグの管理</span>
+                                <span class="text-sm">会員登録の設定</span>
                             </a>
                         </li>
                         <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#basic-info" onclick="history.back()">
+                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#basic-info"
+                                onclick="history.back()">
                                 <i class="ni ni-bold-left me-2 text-dark opacity-6"></i>
                                 <span class="text-sm">前に戻る</span>
                             </a>
@@ -111,101 +112,80 @@ Account
             </div>
 
             <div class="col-lg-9 mt-lg-0 mt-4">
-
                 <!-- Tags Setting -->
                 <div class="card card-body p-4" id="profile">
-                        <div class="card-header p-0 pb-3">
-                            <div class="row">
-                                <div class="col-md-8 d-flex align-items-center">
-                                    <h5 class="mb-0">タグの管理</h5>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="row pt-2 pb-3">
+                    <div class="card-header p-0 pb-3">
+                        <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">タグ一覧</h6>
+                                <h5 class="mb-0">会員登録の設定</h5>
                             </div>
+
                         </div>
-                        <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                            <div class=" h-100">
-                                <div class="card-body p-3 py-0">
-                                <ul class="list-group mx-4">
-                                    @forelse ($tags as $tag)
-                                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                        <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $tag->name }}</h6>
-                                            @if ($tag->isPublic == true)
-                                                <span class="text-xs">公開タグ</span>
-                                            @else
-                                                <span class="text-xs">非公開タグ</span>
-                                            @endif
+                    </div>
+
+                    <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
+                        <div class=" h-100">
+                            <div class="card-body p-3 py-0">
+                                <form action="{{  route('membership.update.privacy', ['aid' => $account->id])  }}"
+                                    method="POST" enctype="multipart/form-data">
+                                    @csrf
+
+                                    <div class="row pt-4 pb-3">
+                                        <div class="col-md-8 d-flex align-items-center px-0">
+                                            <h6 class="mb-0">個人情報取扱についてページ</h6>
                                         </div>
-                                        <div class="d-flex align-items-center text-sm">
-                                            <p class="text-xs mx-1 mt-3">タグの色</p>
-                                            <span class="tag-dot me-4" style="background-color:{{ $tag->color }};"></span>
-                                            <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1" href="{{ route('tag.setting', ['aid' => $account->id, 'id' => $tag->id]) }}">
-                                                <i class="fas fa-edit text-sm me-1"></i>
+                                        <div class="col-md-4 text-end">
+                                            <a class="edit-member" href="javascript:;">
+                                                <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip"
+                                                    data-bs-placement="left" title="プライバシーポリシーを編集"></i>
                                             </a>
-                                            {{-- <form class="ms-auto" action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0" type="submit" name="button">
-                                                    <i class="fas fa-trash text-sm me-1"></i>
-                                                </button>
-                                            </form> --}}
                                         </div>
-                                        </li>
-                                    @empty
-                                        <p>タグが登録されてません。新規タグをご登録ください。</p>
-                                    @endforelse
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-12 px-0">
+                                            <label class="form-label">プライバシーページURL</label>
+                                            <div class="input-group">
+                                                <input id="" name="privacy-url" class="form-control edit-member-show"
+                                                    type="text" placeholder="http://www.meniu.io/privacy"
+                                                    value="{{ $account->accountSetting->privacy_url }}"
+                                                    readonly="readonly">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 col-12 px-0">
+                                            <label class="form-label mt-4">プライバシーポリシー本文</label>
+                                            <textarea class="form-control edit-member-show" name="privacy-policy" id=""
+                                                cols="30" rows="10"
+                                                readonly="readonly">{{ $account->accountSetting->privacy_policy }}</textarea>
+                                        </div>
+                                    </div>
 
-                                </ul>
-                                </div>
+                                    <div class="row pt-4 pb-3">
+                                        <div class="col-md-8 d-flex align-items-center px-0">
+                                            <h6 class="mb-0">会員画面のカスタマイズ</h6>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-6 px-0">
+                                            <label class="form-label">背景の色</label>
+                                            <div class="input-group">
+                                                <input class="form-control" type="color" id="colorpicker" name="color"
+                                                    value="{{ $account->accountSetting->membership_background }}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="button-row d-flex mt-4 col-12">
+                                            <button class="btn bg-gradient-dark ms-auto mb-0" type="submit"
+                                                title="Send">保存</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                            <form action="{{ route('tag.store', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="col-md-8 d-flex align-items-center py-3">
-                                    <h6 class="mb-0">新規タグの作成</h6>
-                                </div>
-                                <div class="row">
-                                    <div class="col-8">
-                                        <label class="">タグの名前<span class="text-third">(必須)</span></label>
-                                        <div class="input-group">
-                                        <input class="edit-token-show multisteps-form__input form-control" type="text"
-                                            placeholder="タグの名前" value=""
-                                            name="name" />                                    
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <label class="form-label">タグの色<span class="text-third">(必須)</span></label>
-                                        <div class="input-group">
-                                            <input class="form-control" type="color" id="colorpicker" name="color" value="">
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <label class="form-label">友達に公開<span class="text-third">(必須)</span></label>
-                                        <div class="input-group form-check form-switch my-auto">
-                                        <input name="isPublic" class="form-check-input" type="checkbox" 
-                                            id="flexSwitchCheckDefault2" >
-                                            {{-- {{ $tag->isPublic == true ? 'checked' :''}} --}}
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="button-row d-flex mt-4 col-12">
-                                        <button class="btn bg-gradient-dark ms-auto mb-0" type="submit" title="Send">保存</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-
-
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -243,29 +223,6 @@ Account
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
 
-
-    let editDeleteBtn = document.querySelector('.confirm-delete');
-    let editDelete = document.querySelector('.confirm-delete-btn');
-    editDeleteBtn.addEventListener('click', event => {
-        editDelete.toggleAttribute("disabled");
-    });
-
-
-    let editTokenBtn = document.querySelector('.edit-token');
-    let editToken = document.querySelectorAll('.edit-token-show');
-    editTokenBtn.addEventListener('click', event => {
-        for (var i = 0; i < editToken.length; i++) {
-            editToken[i].toggleAttribute("readonly");
-        }
-    });
-
-    let editLiffBtn = document.querySelector('.edit-liff');
-    let editLiff = document.querySelectorAll('.edit-liff-show');
-    editLiffBtn.addEventListener('click', event => {
-        for (var i = 0; i < editLiff.length; i++) {
-            editLiff[i].toggleAttribute("readonly");
-        }
-    });
 
     let editMemBtn = document.querySelector('.edit-member');
     let editMem = document.querySelectorAll('.edit-member-show');
