@@ -199,7 +199,7 @@ class ChatController extends Controller
      */
     public function setting($aid)
     {
-        return view('dashboard.chat.edit')
+        return view('dashboard.chat.settings')
             ->with('account', Account::where('id', $aid)->first());
     }
 
