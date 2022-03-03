@@ -144,9 +144,9 @@ Account
                                 <p class="text-sm text-secondary mx-4">新しくチャットを開始する場合は「友だち検索」からチャットを開始したい友だちを選択し、友だち詳細画面の「個別チャット履歴」ブロック内の「チャットを開始する」ボタンから新規チャットを開始する事が出来ます。</p>
                                 <hr class="horizontal gray-light my-4">
                                 <p class="text-md mx-4">チャットの設定は下記ボタンをクリック</p>
-                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('chat.setting', ['aid' => $account->id]) }}">チャット設定</a>
-                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('template.index', ['aid' => $account->id]) }}">テンプレート一覧</a>
-                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('multiple.index', ['aid' => $account->id]) }}">一斉送信</a>
+                                <a href="{{ route('chat.setting', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1 ms-4">チャット設定</a>
+                                <a href="{{ route('template.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">テンプレート一覧</a>
+                                <a href="{{ route('multiple.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">一斉送信</a>
                             </div>
                         </div>
                         <!-- Card Chat Input -->
