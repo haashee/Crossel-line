@@ -260,34 +260,6 @@ class ChatController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function multiple($aid)
-    {
-        $account = Account::where('id', $aid)->first();
-
-        $tags = Tag::where('account_id', $aid)->get();
-
-        $templates = Template::where('account_id', $aid)->get();
-
-        $chatAccount = $account->chats()->get();
-        $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id')->take(15);
-
-
-        return view('dashboard.chat.multiple', [
-            'account' => $account,
-            'tags' => $tags,
-            'templates' => $templates,
-            'chatList' => $chatList,
-        ]);
-    }
-
-
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

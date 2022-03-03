@@ -146,7 +146,7 @@ Account
                                 <p class="text-md mx-4">チャットの設定は下記ボタンをクリック</p>
                                 <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('chat.setting', ['aid' => $account->id]) }}">チャット設定</a>
                                 <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('template.index', ['aid' => $account->id]) }}">テンプレート一覧</a>
-                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('chat.multiple', ['aid' => $account->id]) }}">一斉送信</a>
+                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('multiple.index', ['aid' => $account->id]) }}">一斉送信</a>
                             </div>
                         </div>
                         <!-- Card Chat Input -->

@@ -142,7 +142,7 @@ Account
                         <!-- Card Chat Input -->
                         <div class="">
                             <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
-                                action="{{  route('chat.sendMultiple', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
+                                action="{{  route('multiple.store', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="sender_name" value="{{ $account->name }}">
                                 {{-- <input type="hidden" name="receiver_name" value="{{ $friend->name }}"> --}}
@@ -160,7 +160,7 @@ Account
                                         <select name="tag" id="" class="form-control text-xxs py-1 text-center" style="text-indent: 0px;">
                                             <option value="" disabled selected>タグ</option>
                                             @foreach($tags as $tag)
-                                                <option value="{{ $tag->name }}">{{ $tag->name }}</option>
+                                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                             @endforeach
                                         </select>
                                         <select name="" id="chat-options" class="form-control text-xxs py-1 text-center mt-1" style="text-indent: 0px;">
