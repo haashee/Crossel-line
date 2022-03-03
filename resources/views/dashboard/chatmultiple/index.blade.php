@@ -146,21 +146,24 @@ Account
                                 <input type="hidden" name="sender_name" value="{{ $account->name }}">
                                 {{-- <input type="hidden" name="receiver_name" value="{{ $friend->name }}"> --}}
                                 <div class="row">
+                                    <div class="col-md-8">
+                                        <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
+                                        <select id="category" name="tags[]" multiple class="form-control" oninvalid="this.setCustomValidity('こちらは必須項目です。')" onchange="this.setCustomValidity('')" required>
+                                            @forelse ($tags as $tag)
+                                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                            @empty
+                                            <p>タグが登録されていません。</p>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="form-label mt-4">一斉送信するメッセージ本文<span class="text-third">(必須)</span></label>
                                     <div class="col-lg-10">
                                         <div class="input-group">
                                             <textarea name="message" class="form-control " type="text" id='chat-input'
-                                                placeholder="メッセージを入力" rows="3" cols="50"></textarea>
+                                                placeholder="メッセージを入力" rows="3" cols="50" oninvalid="this.setCustomValidity('こちらは必須項目です。')" onchange="this.setCustomValidity('')" required></textarea>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                    <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
-                                    <select id="category" name="tags[]" multiple class="form-control" oninvalid="this.setCustomValidity('こちらは必須項目です。')" onchange="this.setCustomValidity('')" required>
-                                        @forelse ($tags as $tag)
-                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                        @empty
-                                        <p>タグが登録されていません。</p>
-                                        @endforelse
-                                    </select>
                                     </div>
                                     <div class="col-lg-2">
                                         <button class="btn bg-gradient-dark btn-sm float-end mb-2 w-100"
