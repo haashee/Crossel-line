@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\LineUser;
 use App\Models\Chat;
+use App\Models\Template;
 use App\Models\ChatSetting;
 use Illuminate\Support\Facades\Session;
 
@@ -27,6 +28,8 @@ class ChatController extends Controller
 
         $friend = LineUser::where('account_id', $aid)->first();
 
+        $templates = Template::where('account_id', $aid)->get();
+
         $chatAccount = $account->chats()->get();
         $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id');
 
@@ -34,6 +37,7 @@ class ChatController extends Controller
             'friend' => $friend,
             'chatList' => $chatList,
             'account' => $account,
+            'templates' => $templates,
         ]);
     }
 
@@ -110,6 +114,8 @@ class ChatController extends Controller
 
         $friendList = LineUser::where('account_id', $aid)->get();
 
+        $templates = Template::where('account_id', $aid)->get();
+
         $chatAccount = $account->chats()->get();
         $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id')->take(15);
 
@@ -126,6 +132,7 @@ class ChatController extends Controller
             'friend' => $friend,
             'friendlist' => $friendList,
             'account' => $account,
+            'templates' => $templates,
             'chats' => $chats,
             'chatList' => $chatList,
             // 'chat' => $chat,

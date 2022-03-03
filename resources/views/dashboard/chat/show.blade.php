@@ -160,13 +160,28 @@ Account
                                 <div class="row">
                                     <div class="col-lg-10">
                                         <div class="input-group">
-                                            <textarea name="message" class="form-control " type="text"
+                                            <textarea name="message" class="form-control " type="text" id='chat-input'
                                                 placeholder="メッセージを入力"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-2">
-                                        <button class="btn bg-gradient-dark btn-sm float-end"
-                                            type="submit">送信</button>
+                                        <button class="btn bg-gradient-dark btn-sm float-end mb-2 w-100"
+                                            type="submit">送信
+                                        </button>
+                                        <select name="" id="chat-options" class="form-control text-xxs py-1" style="text-indent: 1px;">
+                                            <option value="" disabled selected>テンプレート</option>
+                                            @foreach($templates->take(4) as $template)
+                                                @if ($template->isFavorite == false)
+                                                    <option value="{{ $template->text }}">{{ $template->name }}</option>
+                                                @endif                                           
+                                            @endforeach
+                                            <option value="" disabled>お気に入り</option>
+                                            @foreach($templates as $template)
+                                                @if ($template->isFavorite == true)
+                                                    <option value="{{ $template->text }}">{{ $template->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
@@ -204,6 +219,14 @@ Account
         }
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
+
+    var chatOptions = document.querySelector('#chat-options');
+    var chatInput = document.querySelector('#chat-input');
+
+    chatOptions.addEventListener('change', function(event) {
+    chatInput.value = event.target.value;
+    });
+
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>

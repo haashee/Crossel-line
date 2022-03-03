@@ -165,8 +165,23 @@ Account
                                         </div>
                                     </div>
                                     <div class="col-lg-2">
-                                        <button class="btn bg-gradient-dark btn-sm float-end"
-                                            type="submit" disabled>送信</button>
+                                        <button class="btn bg-gradient-dark btn-sm float-end mb-2 w-100"
+                                            type="submit" disabled>送信
+                                        </button>
+                                        <select name="" id="chat-options" class="form-control text-xxs py-1" style="text-indent: 1px;" disabled>
+                                            <option value="" disabled selected>テンプレート</option>
+                                            @foreach($templates->take(4) as $template)
+                                                @if ($template->isFavorite == false)
+                                                    <option value="{{ $template->text }}">{{ $template->name }}</option>
+                                                @endif                                           
+                                            @endforeach
+                                            <option value="" disabled>お気に入り</option>
+                                            @foreach($templates as $template)
+                                                @if ($template->isFavorite == true)
+                                                    <option value="{{ $template->text }}">{{ $template->name }}</option>
+                                                @endif
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
 
