@@ -64,7 +64,6 @@ Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'p
 Route::get('accounts/{aid}/membership/{id}', [MembershipController::class, 'membership'])->name('membership');
 
 // chat routes
-// Route::post('accounts/{aid}/chat/sendmultiple', [ChatController::class, 'sendMultiple'])->name('chat.sendMultiple');
 Route::get('accounts/{aid}/chat/list', [ChatController::class, 'chatList'])->name('chat.list');
 Route::post('accounts/{aid}/chat/setting/update', [ChatController::class, 'settingUpdate'])->name('chat.setting.update');
 Route::get('accounts/{aid}/chat', [ChatController::class, 'index'])->name('chat.index');
@@ -74,11 +73,11 @@ Route::resource('accounts/{aid}/chat', ChatController::class, ['except' => ['ind
 
 // chat multiple routes
 Route::post('accounts/{aid}/sendmultiple', [ChatMultipleController::class, 'store'])->name('multiple.store');
+Route::get('accounts/{aid}/multiple/show', [ChatMultipleController::class, 'show'])->name('multiple.show');
 Route::get('accounts/{aid}/multiple', [ChatMultipleController::class, 'index'])->name('multiple.index');
-Route::resource('accounts/{aid}/multiple', ChatMultipleController::class, ['except' => ['index', 'store']]);
+Route::resource('accounts/{aid}/multiple', ChatMultipleController::class, ['except' => ['index', 'store', 'show']]);
 
 // tag routes
-// Route::get('accounts/{aid}/tag/{id}/setting', [TagController::class, 'setting'])->name('tag.setting');
 Route::get('accounts/{aid}/tag', [TagController::class, 'index'])->name('tag.index');
 Route::resource('accounts/{aid}/tag', TagController::class, ['except' => ['index']]);
 

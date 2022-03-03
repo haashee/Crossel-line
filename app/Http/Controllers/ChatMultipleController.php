@@ -34,7 +34,7 @@ class ChatMultipleController extends Controller
         $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id')->take(15);
 
 
-        return view('dashboard.chat.multiple', [
+        return view('dashboard.chatmultiple.index', [
             'account' => $account,
             'tags' => $tags,
             'templates' => $templates,
@@ -96,7 +96,7 @@ class ChatMultipleController extends Controller
             Log::error('Sending failed: ' . $response->getRawBody());
         }
 
-        return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/');
+        return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/multiple');
     }
 
     /**
@@ -105,9 +105,17 @@ class ChatMultipleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($aid)
     {
-        //
+        $accounts = Account::all();
+        $account = Account::where('id', $aid)->first();
+        $templates = Template::where('account_id', $aid)->get();
+
+        return view('dashboard.template.index', [
+            'accounts' => $accounts,
+            'account' => $account,
+            'templates' => $templates,
+        ]);
     }
 
     /**
