@@ -109,12 +109,12 @@ Account
                                     @forelse ($chats as $chat)
                                         <li class="list-group-item border-0 d-flex ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">
+                                            <h6 class="mb-2 text-dark font-weight-bold text-sm">
                                                 {{ date('Y/m/d, H:i', strtotime($chat->created_at)) }} 
-                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
+                                                {{-- <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
                                                     href="{{ route('template.edit', ['aid' => $account->id, 'template' => $chat->id]) }}">
                                                     <i class="fas fa-edit text-xs me-1"></i>
-                                                </a>
+                                                </a> --}}
                                             </h6>
                                             <div class="text-xs ms-5 mb-2">
                                                 @forelse ($chat->tags as $tag)

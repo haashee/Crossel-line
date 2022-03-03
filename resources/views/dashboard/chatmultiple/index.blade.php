@@ -49,7 +49,7 @@ Account
                         <h6 class="mb-0">Conversations</h6>
                     </div>
                     <div class="card-body p-3">
-                        <ul class="list-group ContentChatList mb-3">
+                        <ul class="list-group ContentChatListFull mb-3">
                             @foreach ($chatList as $chat)
                                 @if ($chat->lineuser_id)
                                     
@@ -130,12 +130,13 @@ Account
                     <hr class="horizontal gray-light my-4">
                     <div class="card-body p-3 pt-0">
                         <div class="my-1 rounded-lg ">
-                            <div class="position-relative w-100 Content">
+                            <div class="position-relative w-100">
                                 <p class="text-md mx-4">チャットを選択して下さい</p>
                                 <p class="text-sm text-secondary mx-4">新しくチャットを開始する場合は「友だち検索」からチャットを開始したい友だちを選択し、友だち詳細画面の「個別チャット履歴」ブロック内の「チャットを開始する」ボタンから新規チャットを開始する事が出来ます。</p>
                                 <hr class="horizontal gray-light my-4">
                                 <p class="text-md mx-4">チャットの設定は下記ボタンをクリック</p>
-                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('multiple.show', ['aid' => $account->id]) }}">送信済みのメッセージ</a>
+                                <a href="{{ route('multiple.show', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1 ms-4">送信済みのメッセージ</a>
+                                <a href="{{ route('tag.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">タグを管理</a>
                             </div>
                         </div>
                         <!-- Card Chat Input -->

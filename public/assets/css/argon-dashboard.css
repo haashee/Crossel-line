@@ -37825,6 +37825,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
     overflow: auto;
     background: #fff;
 }
+.ContentChatListFull {
+    height: 92%;
+    overflow: auto;
+    background: #fff;
+}
 
 /* membership page */
 .mem-content {
@@ -38044,9 +38049,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* tags setting page */
 .tag-dot {
-  height: 7px;
-  width: 7px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
+    height: 7px;
+    width: 7px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
 }
