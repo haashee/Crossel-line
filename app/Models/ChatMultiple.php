@@ -9,5 +9,12 @@ class ChatMultiple extends Model
 {
     use HasFactory;
 
+    protected $table = 'chat_multiples';
+
     protected $fillable = ['account_id', 'tag_id', 'message', 'user_identifier',];
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class);
+    }
 }

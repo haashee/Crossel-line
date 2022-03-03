@@ -26,6 +26,11 @@ class Account extends Model
         return $this->hasMany(Tag::class);
     }
 
+    public function chatMultiples()
+    {
+        return $this->hasMany(ChatMultiple::class);
+    }
+
     public function accountSetting()
     {
         return $this->hasOne(AccountSetting::class, 'account_id', 'id');
