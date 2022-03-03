@@ -107,14 +107,12 @@ class ChatMultipleController extends Controller
      */
     public function show($aid)
     {
-        $accounts = Account::all();
         $account = Account::where('id', $aid)->first();
-        $templates = Template::where('account_id', $aid)->get();
+        $chats = ChatMultiple::where('account_id', $aid)->get();
 
-        return view('dashboard.template.index', [
-            'accounts' => $accounts,
+        return view('dashboard.chatmultiple.show', [
             'account' => $account,
-            'templates' => $templates,
+            'chats' => $chats,
         ]);
     }
 

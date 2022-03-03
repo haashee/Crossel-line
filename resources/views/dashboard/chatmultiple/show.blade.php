@@ -72,7 +72,7 @@ Account
                         <li class="nav-item">
                             <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#profile">
                                 <i class="ni ni-spaceship me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">タグの管理</span>
+                                <span class="text-sm">送信済み一斉メッセージ</span>
                             </a>
                         </li>
                         <li class="nav-item pt-2">
@@ -81,31 +81,6 @@ Account
                                 <span class="text-sm">前に戻る</span>
                             </a>
                         </li>
-                        {{-- <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#basic-info">
-                                <i class="ni ni-books me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">Basic Info</span>
-                            </a>
-                        </li>
-                        <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll=""
-                                href="#notifications">
-                                <i class="ni ni-bell-55 me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">Notifications</span>
-                            </a>
-                        </li>
-                        <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#sessions">
-                                <i class="ni ni-watch-time me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">Sessions</span>
-                            </a>
-                        </li>
-                        <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#delete">
-                                <i class="ni ni-settings-gear-65 me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">Delete Account</span>
-                            </a>
-                        </li> --}}
                     </ul>
                 </div>
             </div>
@@ -117,55 +92,42 @@ Account
                         <div class="card-header p-0 pb-3">
                             <div class="row">
                                 <div class="col-md-8 d-flex align-items-center">
-                                    <h5 class="mb-0">タグの管理</h5>
+                                    <h5 class="mb-0">一斉送信済み</h5>
                                 </div>
-
                             </div>
                         </div>
 
                         <div class="row pt-2 pb-3">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">タグ一覧</h6>
+                                <h6 class="mb-0">送信済み一覧</h6>
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
                             <div class=" h-100">
                                 <div class="card-body p-3 py-0">
                                 <ul class="list-group mx-4">
-                                    @forelse ($tags as $tag)
-                                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                                    @forelse ($chats as $chat)
+                                        <li class="list-group-item border-0 d-flex ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex flex-column">
-                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $tag->name }}</h6>
-                                            @if ($tag->isPublic == true)
-                                                <span class="text-xs">公開タグ</span>
-                                            @else
-                                                <span class="text-xs">非公開タグ</span>
-                                            @endif
-                                        </div>
-                                        <div class="d-flex align-items-center text-sm">
-                                            <p class="text-xs mx-1 mt-3">タグの色</p>
-                                            <span class="tag-dot me-4" style="background-color:{{ $tag->color }};"></span>
-                                            <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1" href="{{ route('tag.edit', ['aid' => $account->id, 'tag' => $tag->id]) }}">
-                                                <i class="fas fa-edit text-sm me-1"></i>
-                                            </a>
-                                            {{-- <form class="ms-auto" action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0" type="submit" name="button">
-                                                    <i class="fas fa-trash text-sm me-1"></i>
-                                                </button>
-                                            </form> --}}
+                                            <h6 class="mb-1 text-dark font-weight-bold text-sm">
+                                                {{ $chat->name }}name?
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
+                                                    href="{{ route('template.edit', ['aid' => $account->id, 'template' => $chat->id]) }}">
+                                                    <i class="fas fa-edit text-xs me-1"></i>
+                                                </a>
+                                            </h6>
+                                            <p>{{ date('Y/m/d', strtotime($chat->created_at)) }}</p>
+                                            <p class="text-xs ms-5">{{ $chat->message }}</p>
                                         </div>
                                         </li>
                                     @empty
-                                        <p>タグが登録されてません。新規タグをご登録ください。</p>
+                                        <p>送信されたメッセージがありません。</p>
                                     @endforelse
 
                                 </ul>
-                                </div>
                             </div>
                         </div>
-                        <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
+                        {{-- <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
                             <form action="{{ route('tag.store', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-md-8 d-flex align-items-center py-3">
@@ -191,7 +153,6 @@ Account
                                         <div class="input-group form-check form-switch my-auto">
                                         <input name="isPublic" class="form-check-input" type="checkbox" 
                                             id="flexSwitchCheckDefault2" >
-                                            {{-- {{ $tag->isPublic == true ? 'checked' :''}} --}}
                                         </div>
                                     </div>
                                 </div>
@@ -201,7 +162,7 @@ Account
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
 
 
 
