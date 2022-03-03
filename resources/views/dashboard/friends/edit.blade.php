@@ -165,6 +165,7 @@ Account
                 <div class="col-sm-4 col-6">
                   <label class="form-label mt-4">性別</label>
                   <select class="form-control" name="gender" id="choices-gender">
+                    <option value="" {{$friend->gender == null ? 'selected' : ''}} disabled>未選択</option>
                     <option value="male" {{$friend->gender == 'male' ? 'selected' : ''}}>男性</option>
                     <option value="female" {{$friend->gender == 'female' ? 'selected' : ''}}>女性</option>
                   </select>
@@ -174,8 +175,8 @@ Account
                     <div class="col-sm-5 col-5">
                       <label class="form-label mt-4">お誕生日</label>
                       <select name="dob-year" id="dob-year" class="form-control">
-                        <option value="">年</option>
-                        <option value="">----</option>
+                        <option value="" disabled>年</option>
+                        <option value="" disabled>----</option>
                         <option value="2015" {{date("Y", strtotime($friend->birthday)) == '2015' ? 'selected' :
                           ''}}>2015</option>
                         <option value="2014" {{date("Y", strtotime($friend->birthday)) == '2014' ? 'selected' :
@@ -413,8 +414,8 @@ Account
                     <div class="col-sm-4 col-3">
                       <label class="form-label mt-4">&nbsp;</label>
                       <select name="dob-month" id="dob-month" class="form-control">
-                        <option value="">月</option>
-                        <option value="">-----</option>
+                        <option value="" disabled>月</option>
+                        <option value="" disabled >-----</option>
                         <option value="01" {{date("F", strtotime($friend->birthday)) == 'January' ? 'selected' : ''}}>01
                         </option>
                         <option value="02" {{date("F", strtotime($friend->birthday)) == 'February' ? 'selected' :
@@ -444,8 +445,8 @@ Account
                     <div class="col-sm-3 col-4">
                       <label class="form-label mt-4">&nbsp;</label>
                       <select name="dob-day" id="dob-day" class="form-control">
-                        <option value="">日</option>
-                        <option value="">---</option>
+                        <option value="" disabled>日</option>
+                        <option value="" disabled>---</option>
                         <option value="01" {{date("d", strtotime($friend->birthday)) == '01' ? 'selected' : ''}}>01
                         </option>
                         <option value="02" {{date("d", strtotime($friend->birthday)) == '02' ? 'selected' : ''}}>02

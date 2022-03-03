@@ -110,7 +110,7 @@ class ChatController extends Controller
     {
         $account = Account::where('id', $aid)->first();
 
-        $friend = LineUser::where('account_id', $aid)->first();
+        $friend = LineUser::where('id', $id)->first();
 
         $friendList = LineUser::where('account_id', $aid)->get();
 

@@ -67,11 +67,11 @@ class LineUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($aid, $id)
     {
-        $account = Account::where('id', $id)->first();
+        $account = Account::where('id', $aid)->first();
 
-        $friend = LineUser::where('account_id', $account->id)->first();
+        $friend = LineUser::where('id', $id)->first();
 
         return view('dashboard.friends.show', [
             'friend' => $friend,
@@ -160,7 +160,7 @@ class LineUserController extends Controller
 
         Session::put('title', 'ユーザー削除');
 
-        return redirect('/accounts')->with('message', 'ユーザーが正常に削除されました。');
+        return redirect('/accounts' . '/' . $aid . '/friends')->with('message', 'ユーザーが正常に削除されました。');
     }
 
 
