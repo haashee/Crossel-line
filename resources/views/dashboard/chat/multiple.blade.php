@@ -123,13 +123,7 @@ Account
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">{{ $friend->name }}さんとのチャット</h6>
-                            </div>
-                            <div class="col-md-4 text-end">
-                                <a href="javascript:window.location.reload(true)">
-                                    <i class="fas fa-redo text-secondary text-sm" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="チャットを更新する"></i>
-                                </a>
+                                <h6 class="mb-0">一斉送信 </h6>
                             </div>
                         </div>
                     </div>
@@ -137,23 +131,18 @@ Account
                     <div class="card-body p-3 pt-0">
                         <div class="my-1 rounded-lg ">
                             <div class="position-relative w-100 Content">
-                                @foreach ($chats as $chat)
-                                <div class="chat ">
-                                    @if ($chat->message)                                        
-                                        <div data-time="{{ date('Y/m/d h:i', strtotime($chat->created_at)) }}" class="{{ $chat->senderName == $account->name ? 'msg sent' : 'msg rcvd' }}">
-                                            {{ $chat->message }}
-                                        </div>
-                                    @else
-                                        <p class="text-center text-xs">チャットが開始されました。</p>
-                                    @endif
-                                </div>
-                                @endforeach
+                                <p class="text-md mx-4">チャットを選択して下さい</p>
+                                <p class="text-sm text-secondary mx-4">新しくチャットを開始する場合は「友だち検索」からチャットを開始したい友だちを選択し、友だち詳細画面の「個別チャット履歴」ブロック内の「チャットを開始する」ボタンから新規チャットを開始する事が出来ます。</p>
+                                <hr class="horizontal gray-light my-4">
+                                <p class="text-md mx-4">チャットの設定は下記ボタンをクリック</p>
+                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('chat.setting', ['aid' => $account->id]) }}">チャット設定</a>
+                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('template.index', ['aid' => $account->id]) }}">テンプレート一覧</a>
                             </div>
                         </div>
                         <!-- Card Chat Input -->
                         <div class="">
                             <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
-                                action="{{  route('chat.store', ['aid' => $account->id, 'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
+                                action="{{  route('chat.multiple', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="sender_name" value="{{ $account->name }}">
                                 <input type="hidden" name="receiver_name" value="{{ $friend->name }}">
@@ -168,7 +157,7 @@ Account
                                         <button class="btn bg-gradient-dark btn-sm float-end mb-2 w-100"
                                             type="submit">送信
                                         </button>
-                                        <select name="" id="" class="form-control text-xxs py-1 text-center" style="text-indent: 0px;">
+                                        <select name="tag" id="" class="form-control text-xxs py-1 text-center" style="text-indent: 0px;">
                                             <option value="" disabled selected>タグ</option>
                                             @foreach($tags as $tag)
                                                 <option value="{{ $tag->name }}">{{ $tag->name }}</option>
