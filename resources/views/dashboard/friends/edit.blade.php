@@ -113,7 +113,8 @@ Account
             <div class="row justify-content-center align-items-center">
               <div class="col-sm-auto col-4">
                 <div class="avatar avatar-sm position-relative">
-                  <img src="{{ asset('uploads/profile-pic/' . $friend->image) }}" alt="bruce" class="w-100 border-radius-lg shadow-sm">
+                  <img src="{{ asset('uploads/profile-pic/' . $friend->image) }}" alt="bruce"
+                    class="w-100 border-radius-lg shadow-sm">
                 </div>
               </div>
               <div class="col-sm-auto col-8 my-auto">
@@ -415,7 +416,7 @@ Account
                       <label class="form-label mt-4">&nbsp;</label>
                       <select name="dob-month" id="dob-month" class="form-control">
                         <option value="" disabled>月</option>
-                        <option value="" disabled >-----</option>
+                        <option value="" disabled>-----</option>
                         <option value="01" {{date("F", strtotime($friend->birthday)) == 'January' ? 'selected' : ''}}>01
                         </option>
                         <option value="02" {{date("F", strtotime($friend->birthday)) == 'February' ? 'selected' :
@@ -542,13 +543,13 @@ Account
                 </div>
                 <div class="col-md-6">
                   <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
-                    <select id="category" name="tags[]" multiple class="form-control" >
-                      @forelse ($tags as $tag)
-                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                      @empty
-                          <p>タグが登録されていません。</p>
-                      @endforelse
-                    </select>
+                  <select id="category" name="tags[]" multiple class="form-control">
+                    @forelse ($tags as $tag)
+                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    @empty
+                    <p>タグが登録されていません。</p>
+                    @endforelse
+                  </select>
                 </div>
               </div>
               <div class="row">

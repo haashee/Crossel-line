@@ -123,7 +123,7 @@ Account
                     <div class="card-header pb-0 p-3">
                         <div class="row">
                             <div class="col-md-8 d-flex align-items-center">
-                                <h6 class="mb-0">{{ $friend->name }}とのチャット</h6>
+                                <h6 class="mb-0">{{ $friend->name }}さんとのチャット</h6>
                             </div>
                             <div class="col-md-4 text-end">
                                 <a href="javascript:window.location.reload(true)">
