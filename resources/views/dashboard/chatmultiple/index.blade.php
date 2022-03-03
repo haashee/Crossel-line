@@ -154,7 +154,7 @@ Account
                                     </div>
                                     <div class="col-md-6">
                                     <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
-                                    <select id="category" name="tags[]" multiple class="form-control">
+                                    <select id="category" name="tags[]" multiple class="form-control" oninvalid="this.setCustomValidity('こちらは必須項目です。')" onchange="this.setCustomValidity('')" required>
                                         @forelse ($tags as $tag)
                                         <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                         @empty

@@ -116,12 +116,13 @@ Account
                                                     <i class="fas fa-edit text-xs me-1"></i>
                                                 </a>
                                             </h6>
-                                            @forelse ($chat->tags as $tag)
-                                                <p>{{ $tag->name }}</p>
-                                                <span class="tag-dot me-1" style="background-color:{{ $tag->color }};"></span>
-                                            @empty
-                                                <span class="text-dark text-xs">タグなし</span>
-                                            @endforelse
+                                            <p class="text-xs ms-5">
+                                                @forelse ($chat->tags as $tag)
+                                                    {{ $tag->name }}<span class="tag-dot ms-1 me-3" style="background-color:{{ $tag->color }};"></span>
+                                                @empty
+                                                    タグなし<span class="text-dark text-xs"></span>
+                                                @endforelse
+                                            </p>
                                             <p class="text-xs ms-5">{{ $chat->message }}</p>
                                         </div>
                                         </li>
