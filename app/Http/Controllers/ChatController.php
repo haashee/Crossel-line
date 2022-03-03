@@ -8,6 +8,7 @@ use App\Models\LineUser;
 use App\Models\Chat;
 use App\Models\Template;
 use App\Models\ChatSetting;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Session;
 
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
@@ -275,6 +276,7 @@ class ChatController extends Controller
 
         $friendList = LineUser::where('account_id', $aid)->get();
 
+        $tags = Tag::where('account_id', $aid)->get();
         $templates = Template::where('account_id', $aid)->get();
 
         $chatAccount = $account->chats()->get();
@@ -287,6 +289,7 @@ class ChatController extends Controller
             'friend' => $friend,
             'friendlist' => $friendList,
             'account' => $account,
+            'tags' => $tags,
             'templates' => $templates,
             'chats' => $chats,
             'chatList' => $chatList,

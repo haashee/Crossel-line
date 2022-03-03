@@ -168,7 +168,7 @@ Account
                                         <button class="btn bg-gradient-dark btn-sm float-end mb-2 w-100"
                                             type="submit">送信
                                         </button>
-                                        <select name="" id="chat-options" class="form-control text-xxs py-1" style="text-indent: 1px;">
+                                        <select name="" id="chat-options" class="form-control text-xxs py-1 text-center" style="text-indent: 0px;">
                                             <option value="" disabled selected>テンプレート</option>
                                             @foreach($templates->take(4) as $template)
                                                 @if ($template->isFavorite == false)
