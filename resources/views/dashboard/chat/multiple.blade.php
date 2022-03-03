@@ -55,7 +55,7 @@ Account
                                     
                                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                     <div class="avatar avatar-xs me-3">
-                                        <img src="{{ asset('uploads/profile-pic/' . $friend->image) }}" alt="kal"
+                                        <img src="{{ asset('uploads/profile-pic/' . $chat->lineUser->image) }}" alt="kal"
                                             class="border-radius-lg shadow">
                                     </div>
                                     <div class="d-flex align-items-start flex-column justify-content-center">
@@ -142,10 +142,10 @@ Account
                         <!-- Card Chat Input -->
                         <div class="">
                             <form class="my-3 py-2 px-4 rounded-lg text-sm flex flex-col flex-grow"
-                                action="{{  route('chat.multiple', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
+                                action="{{  route('chat.sendMultiple', ['aid' => $account->id])  }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="sender_name" value="{{ $account->name }}">
-                                <input type="hidden" name="receiver_name" value="{{ $friend->name }}">
+                                {{-- <input type="hidden" name="receiver_name" value="{{ $friend->name }}"> --}}
                                 <div class="row">
                                     <div class="col-lg-10">
                                         <div class="input-group">

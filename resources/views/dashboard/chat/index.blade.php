@@ -54,7 +54,7 @@ Account
                                 @if ($chat->lineuser_id)
                                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                     <div class="avatar avatar-xs me-3">
-                                        <img src="{{ asset('uploads/profile-pic/' . $friend->image) }}" alt="kal"
+                                        <img src="{{ asset('uploads/profile-pic/' . $chat->lineUser->image) }}" alt="kal"
                                             class="border-radius-lg shadow">
                                     </div>
                                     <div class="d-flex align-items-start flex-column justify-content-center">
@@ -146,6 +146,7 @@ Account
                                 <p class="text-md mx-4">チャットの設定は下記ボタンをクリック</p>
                                 <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('chat.setting', ['aid' => $account->id]) }}">チャット設定</a>
                                 <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('template.index', ['aid' => $account->id]) }}">テンプレート一覧</a>
+                                <a class="btn btn-outline-primary btn-sm mb-0 mx-4" href="{{ route('chat.multiple', ['aid' => $account->id]) }}">一斉送信</a>
                             </div>
                         </div>
                         <!-- Card Chat Input -->

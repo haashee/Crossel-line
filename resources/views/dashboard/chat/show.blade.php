@@ -55,7 +55,7 @@ Account
                                     
                                 <li class="list-group-item border-0 d-flex align-items-center px-0 mb-2">
                                     <div class="avatar avatar-xs me-3">
-                                        <img src="{{ asset('uploads/profile-pic/' . $friend->image) }}" alt="kal"
+                                        <img src="{{ asset('uploads/profile-pic/' . $chat->lineUser->image) }}" alt="kal"
                                             class="border-radius-lg shadow">
                                     </div>
                                     <div class="d-flex align-items-start flex-column justify-content-center">

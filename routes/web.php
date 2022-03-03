@@ -63,6 +63,7 @@ Route::get('accounts/{aid}/membership/privacy', [MembershipController::class, 'p
 Route::get('accounts/{aid}/membership/{id}', [MembershipController::class, 'membership'])->name('membership');
 
 // chat routes
+Route::post('accounts/{aid}/chat/sendmultiple', [ChatController::class, 'sendMultiple'])->name('chat.sendMultiple');
 Route::get('accounts/{aid}/chat/multiple', [ChatController::class, 'multiple'])->name('chat.multiple');
 Route::get('accounts/{aid}/chat/list', [ChatController::class, 'chatList'])->name('chat.list');
 Route::post('accounts/{aid}/chat/setting/update', [ChatController::class, 'settingUpdate'])->name('chat.setting.update');

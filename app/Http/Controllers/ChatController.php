@@ -60,7 +60,7 @@ class ChatController extends Controller
      */
     public function store(Request $request, $aid, $id)
     {
-        // add richmenu ID to accounts table
+        // 
         Chat::where('id', $aid)
             ->updateOrCreate([
                 'senderName' => $request->sender_name,
@@ -136,7 +136,6 @@ class ChatController extends Controller
             'templates' => $templates,
             'chats' => $chats,
             'chatList' => $chatList,
-            // 'chat' => $chat,
         ]);
     }
 
@@ -270,28 +269,18 @@ class ChatController extends Controller
     {
         $account = Account::where('id', $aid)->first();
 
-        $id = 5;
-
-        $friend = LineUser::where('id', $id)->first();
-
-        $friendList = LineUser::where('account_id', $aid)->get();
-
         $tags = Tag::where('account_id', $aid)->get();
+
         $templates = Template::where('account_id', $aid)->get();
 
         $chatAccount = $account->chats()->get();
         $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id')->take(15);
 
-        $chats = Chat::where('lineuser_id', $id)->get();
-
 
         return view('dashboard.chat.multiple', [
-            'friend' => $friend,
-            'friendlist' => $friendList,
             'account' => $account,
             'tags' => $tags,
             'templates' => $templates,
-            'chats' => $chats,
             'chatList' => $chatList,
         ]);
     }
@@ -304,7 +293,7 @@ class ChatController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function sendMultiple(Request $request, $aid, $id)
+    public function sendMultiple(Request $request, $aid)
     {
         // add richmenu ID to accounts table
         Chat::where('id', $aid)
@@ -312,7 +301,7 @@ class ChatController extends Controller
                 'senderName' => $request->sender_name,
                 'receiverName' => $request->receiver_name,
                 'message' => $request->message,
-                'lineuser_id' => $id,
+                'lineuser_id' => null,
             ]);
 
         // get account ID (aid) 
@@ -326,15 +315,11 @@ class ChatController extends Controller
         $http_client = new CurlHTTPClient($access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
 
-        // Set user to send 
-        $user = LineUser::where('id', $id)->first();;
-        $userId = $user->line_id;
+        // set line users to send
+        $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U94dee02c3d6a8f0329ca869578f397f9"];
 
         // Set message to send
         $message = $request->message;
-
-        // set line users to send
-        $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U6f9e0ed71f65c0f07c6915788713aa5c"];
 
         // Send to multiple people
         $textMessageBuilder = new TextMessageBuilder($message);
@@ -347,6 +332,6 @@ class ChatController extends Controller
             Log::error('Sending failed: ' . $response->getRawBody());
         }
 
-        return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/' . $id);
+        return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/');
     }
 }
