@@ -256,4 +256,94 @@ class ChatController extends Controller
         return redirect('accounts/' . $aid . '/' . 'chat')
             ->with('message', 'チャット設定が更新されました。');
     }
+
+
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function multiple($aid)
+    {
+        $account = Account::where('id', $aid)->first();
+
+        $id = 5;
+
+        $friend = LineUser::where('id', $id)->first();
+
+        $friendList = LineUser::where('account_id', $aid)->get();
+
+        $templates = Template::where('account_id', $aid)->get();
+
+        $chatAccount = $account->chats()->get();
+        $chatList = $chatAccount->sortByDesc('created_at')->unique('lineuser_id')->take(15);
+
+        $chats = Chat::where('lineuser_id', $id)->get();
+
+
+        return view('dashboard.chat.multiple', [
+            'friend' => $friend,
+            'friendlist' => $friendList,
+            'account' => $account,
+            'templates' => $templates,
+            'chats' => $chats,
+            'chatList' => $chatList,
+        ]);
+    }
+
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function sendMultiple(Request $request, $aid, $id)
+    {
+        // add richmenu ID to accounts table
+        Chat::where('id', $aid)
+            ->updateOrCreate([
+                'senderName' => $request->sender_name,
+                'receiverName' => $request->receiver_name,
+                'message' => $request->message,
+                'lineuser_id' => $id,
+            ]);
+
+        // get account ID (aid) 
+        $account = Account::where('id', $aid)->first();
+
+        // get channel secret and access token
+        $channel_secret = $account->channel_secret;
+        $access_token = $account->access_token;
+
+        // LINEBOTSDKの設定
+        $http_client = new CurlHTTPClient($access_token);
+        $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
+
+        // Set user to send 
+        $user = LineUser::where('id', $id)->first();;
+        $userId = $user->line_id;
+
+        // Set message to send
+        $message = $request->message;
+
+        // set line users to send
+        $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U6f9e0ed71f65c0f07c6915788713aa5c"];
+
+        // Send to multiple people
+        $textMessageBuilder = new TextMessageBuilder($message);
+        $response = $bot->multicast($line_id_list, $textMessageBuilder);
+
+        // Logging error
+        if ($response->isSucceeded()) {
+            Log::info('Line send successful');
+        } else {
+            Log::error('Sending failed: ' . $response->getRawBody());
+        }
+
+        return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/' . $id);
+    }
 }
