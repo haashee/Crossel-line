@@ -119,7 +119,7 @@ class LineUserController extends Controller
         // change date format
         $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
 
-        // sync update tags
+        // sync updated tags
         $data = [];
         $data['tags'] = $request->input('tags');
         LineUser::find($id)->tags()->sync($data['tags']);

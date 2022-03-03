@@ -152,16 +152,26 @@ Account
                                                 placeholder="メッセージを入力" rows="3" cols="50"></textarea>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                    <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
+                                    <select id="category" name="tags[]" multiple class="form-control">
+                                        @forelse ($tags as $tag)
+                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        @empty
+                                        <p>タグが登録されていません。</p>
+                                        @endforelse
+                                    </select>
+                                    </div>
                                     <div class="col-lg-2">
                                         <button class="btn bg-gradient-dark btn-sm float-end mb-2 w-100"
                                             type="submit">送信
                                         </button>
-                                        <select name="tag" id="" class="form-control text-xxs py-1 text-center" style="text-indent: 0px;">
+                                        {{-- <select name="tag" id="" class="form-control text-xxs py-1 text-center" style="text-indent: 0px;">
                                             <option value="" disabled selected>タグ</option>
                                             @foreach($tags as $tag)
                                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                             @endforeach
-                                        </select>
+                                        </select> --}}
                                         <select name="" id="chat-options" class="form-control text-xxs py-1 text-center mt-1" style="text-indent: 0px;">
                                             <option value="" disabled selected>テンプレート</option>
                                             @foreach($templates->take(4) as $template)

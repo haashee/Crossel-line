@@ -61,12 +61,20 @@ class ChatMultipleController extends Controller
     public function store(Request $request, $aid)
     {
         // store values
-        ChatMultiple::where('id', $aid)
-            ->updateOrCreate([
-                'message' => $request->message,
-                'tag_id' => $request->tag,
-                'account_id' => $aid,
-            ]);
+        // ChatMultiple::create([
+        //     'message' => $request->message,
+        //     // 'tag_id' => $request->tag,
+        //     'account_id' => $aid,
+        // ]);
+
+        $data = [];
+        $data['tags'] = $request->input('tags');
+
+        $chat = new ChatMultiple();
+        $chat->message = $request->message;
+        $chat->account_id = $aid;
+        $chat->save();
+        $chat->tags()->attach($data['tags']);
 
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
@@ -96,7 +104,7 @@ class ChatMultipleController extends Controller
             Log::error('Sending failed: ' . $response->getRawBody());
         }
 
-        return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/multiple');
+        return redirect('/accounts' . '/' . $aid . '/multiple');
     }
 
     /**

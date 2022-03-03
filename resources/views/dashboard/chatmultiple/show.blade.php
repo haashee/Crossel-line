@@ -110,13 +110,18 @@ Account
                                         <li class="list-group-item border-0 d-flex ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex flex-column">
                                             <h6 class="mb-1 text-dark font-weight-bold text-sm">
-                                                {{ $chat->name }}name?
+                                                {{ date('Y/m/d, H:i', strtotime($chat->created_at)) }} 
                                                 <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
                                                     href="{{ route('template.edit', ['aid' => $account->id, 'template' => $chat->id]) }}">
                                                     <i class="fas fa-edit text-xs me-1"></i>
                                                 </a>
                                             </h6>
-                                            <p>{{ date('Y/m/d', strtotime($chat->created_at)) }}</p>
+                                            @forelse ($chat->tags as $tag)
+                                                <p>{{ $tag->name }}</p>
+                                                <span class="tag-dot me-1" style="background-color:{{ $tag->color }};"></span>
+                                            @empty
+                                                <span class="text-dark text-xs">タグなし</span>
+                                            @endforelse
                                             <p class="text-xs ms-5">{{ $chat->message }}</p>
                                         </div>
                                         </li>

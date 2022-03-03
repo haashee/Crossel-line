@@ -20,12 +20,6 @@ class CreateChatMultiplesTable extends Migration
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
 
-            $table->unsignedBigInteger('tag_id');
-            $table->foreign('tag_id')
-                ->references('id')
-                ->on('tags')
-                ->onDelete('cascade');
-
             $table->unsignedBigInteger('account_id');
             $table->foreign('account_id')
                 ->references('id')

@@ -11,10 +11,15 @@ class ChatMultiple extends Model
 
     protected $table = 'chat_multiples';
 
-    protected $fillable = ['account_id', 'tag_id', 'message', 'user_identifier',];
+    protected $fillable = ['account_id', 'message', 'user_identifier',];
 
     public function account()
     {
         return $this->belongsTo(Account::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }
