@@ -175,6 +175,7 @@ Account
                   <div class="row">
                     <div class="col-sm-5 col-5">
                       <label class="form-label mt-4">お誕生日</label>
+                      <input type="text" name="" id="birth-date" value="{{ $friend->birthday }}" >
                       <select name="dob-year" id="dob-year" class="form-control">
                         <option value="" disabled>年</option>
                         <option value="" disabled>----</option>
@@ -820,6 +821,18 @@ Account
     //         editLiff[i].toggleAttribute("readonly");
     //     }
     // });
+
+    const dateHidden = document.querySelector('#birth-date');
+    if (dateHidden.value !== "1970-01-01") {
+    const [yyyy,mm,dd] = dateHidden.split("-");
+    document.getElementById("dob-year").value=yyyy;
+    document.getElementById("dob-month").value=mm;
+    document.getElementById("dob-day").value=dd;
+    } else {
+    document.getElementById("dob-year").value=null;
+    document.getElementById("dob-month").value=null;
+    document.getElementById("dob-day").value=null;
+    }
 
   </script>
   <script>
