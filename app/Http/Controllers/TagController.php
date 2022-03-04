@@ -95,10 +95,13 @@ class TagController extends Controller
     {
         $account = Account::where('id', $aid)->first();
         $tag = Tag::where('id', $id)->first();
+        $friends = $tag->lineUsers()->get();
+
 
         return view('dashboard.tag.edit', [
             'account' => $account,
             'tag' => $tag,
+            'friends' => $friends,
         ]);
     }
 

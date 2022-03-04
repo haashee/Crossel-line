@@ -76,25 +76,26 @@ Tag setting
                             </a>
                         </li>
                         <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#basic-info" onclick="history.back()">
+                            <a class="nav-link text-body d-flex align-items-center" data-scroll=""
+                                href="#notifications">
+                                <i class="ni ni-fat-delete me-2 text-dark opacity-6"></i>
+                                <span class="text-sm">タグを削除</span>
+                            </a>
+                        </li>
+                        <li class="nav-item pt-2">
+                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#sessions">
+                                <i class="ni ni-bullet-list-67 me-2 text-dark opacity-6"></i>
+                                <span class="text-sm">登録されている友達</span>
+                            </a>
+                        </li>
+                        <li class="nav-item pt-2">
+                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#basic-info"
+                                onclick="history.back()">
                                 <i class="ni ni-bold-left me-2 text-dark opacity-6"></i>
                                 <span class="text-sm">前に戻る</span>
                             </a>
                         </li>
                         {{-- <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll=""
-                                href="#notifications">
-                                <i class="ni ni-bell-55 me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">Notifications</span>
-                            </a>
-                        </li>
-                        <li class="nav-item pt-2">
-                            <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#sessions">
-                                <i class="ni ni-watch-time me-2 text-dark opacity-6"></i>
-                                <span class="text-sm">Sessions</span>
-                            </a>
-                        </li>
-                        <li class="nav-item pt-2">
                             <a class="nav-link text-body d-flex align-items-center" data-scroll="" href="#delete">
                                 <i class="ni ni-settings-gear-65 me-2 text-dark opacity-6"></i>
                                 <span class="text-sm">Delete Account</span>
@@ -116,8 +117,8 @@ Tag setting
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                        <form action="{{ route('tag.update', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form action="{{ route('tag.update', ['aid' => $account->id, 'tag' => $tag->id]) }}"
+                            method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="col-md-8 d-flex align-items-center py-3">
@@ -134,7 +135,8 @@ Tag setting
                                 <div class="col-2">
                                     <label class="form-label">タグの色<span class="text-third">(必須)</span></label>
                                     <div class="input-group">
-                                        <input class="form-control" type="color" id="colorpicker" name="color" value="{{ $tag->color }}">
+                                        <input class="form-control" type="color" id="colorpicker" name="color"
+                                            value="{{ $tag->color }}">
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -152,23 +154,260 @@ Tag setting
                                 </div>
                             </div>
                         </form>
-                        <div class="d-flex align-items-center mb-sm-0 my-3">
+                    </div>
+                </div>
+                <!-- Delete Tag -->
+                <div class="card mt-4" id="notifications">
+                    <div class="card-header">
+                        <h5>タグを削除</h5>
+                        <p class="text-sm mb-0">削除されたアカウントは復元できませんのでご注意ください。
+                        </p>
+                    </div>
+                    <div class="card-body d-sm-flex pt-4">
+                        <div class="d-flex align-items-center mb-sm-0 mb-4">
                             <div class="ms-2">
-                                <span class="text-dark font-weight-bold d-block text-sm">タグを削除する</span>
-                                <span class="text-xs d-block">削除されたタグは復元できませんのでご注意ください。</span>
+                                {{-- <span class="text-dark font-weight-bold d-block text-sm">アカウントの削除はできません</span>
+                                <span class="text-xs d-block">有料プランをご利用中はアカウントの削除ができません。</span> --}}
+                                <span class="text-dark font-weight-bold d-block text-sm">削除を確定</span>
+                                <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span>
                             </div>
-                            <form class="ms-auto" action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST">
+                        </div>
+
+                            <form class="ms-auto"
+                                action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}"
+                                method="POST">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0 " type="submit" name="button">
-                                    <i class="fas fa-trash text-secondary text-sm" data-bs-toggle="tooltip"
-                                        data-bs-placement="left" title="タグを削除する"></i>
+                            <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button"
+                                name="button">確定</button>
+                                <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit"
+                                name="button" disabled>
+                                削除
                                 </button>
                             </form>
+                    </div>
+                </div>
+                <!-- Friend List -->
+                <div class="card mt-4" id="sessions">
+                    <div class="card-header pb-0">
+                        <h5>タグに登録されている友達</h5>
+                        <p class="text-sm">
+                            このタグに紐付いた友だちのリスト
+                        </p>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="table-responsive p-0">
+                            <table class="table table-flush" id="datatable-basic">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Start date
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Name
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Registered
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            tags
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            No. Orders
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Orders total
+                                        </th>
+                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Setting
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($friends as $friend )
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">
+                                            {{ $friend->created_at->toDateString() }}
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            {{ $friend->name }}
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            <span class="badge badge-dot me-4">
+                                                @if ($friend->email)
+                                                <i class="bg-info"></i>
+                                                <span class="text-dark text-xs">登録済み</span>
+                                                @else
+                                                <i class="bg-secondary"></i>
+                                                <span class="text-dark text-xs">未登録</span>
+                                                @endif
+                                            </span>
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            @forelse ($friend->tags as $tag)
+                                            <span class="tag-dot me-1"
+                                                style="background-color:{{ $tag->color }};"></span>
+                                            @empty
+                                            <span class="text-dark text-xs">タグなし</span>
+                                            @endforelse
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            61
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            ¥9000
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            <div class="dropdown">
+                                                <a href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="見る">
+                                                    <i class="fas fa-eye text-third"></i>
+                                                </a>
+                                                <a href="/accounts/{{ $account->id }}/friends/{{ $friend->id }}/edit"
+                                                    class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="編集">
+                                                    <i class="fas fa-user-edit text-third"></i>
+                                                </a>
+                                                <a href="{{ route('friends.chat', ['aid' => $account->id, 'id' => $friend->id]) }}"
+                                                    class="" data-bs-toggle="tooltip" data-bs-original-title="チャットする">
+                                                    <i class="fas fa-envelope text-third"></i>
+                                                </a>
+                                                {{-- <a onclick="doSomething()" href="javascript:;"
+                                                    data-bs-toggle="tooltip" data-bs-original-title="削除">
+                                                    <i class="fas fa-trash text-third"></i>
+                                                </a>
+                                                <div id="id_confrmdiv">confirmation
+                                                    <button id="id_truebtn">Yes</button>
+                                                    <button id="id_falsebtn">No</button>
+                                                </div> --}}
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">
+                                            Garrett Winters
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Accountant
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Tokyo
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            63
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            2011/07/25
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            $170,750
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">
+                                            Ashton Cox
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Junior Technical Author
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            San Francisco
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            66
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            2009/01/12
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            $86,000
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">
+                                            Cedric Kelly
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Senior Javascript Developer
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Edinburgh
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            22
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            2012/03/29
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            $433,060
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">
+                                            Airi Satou
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Accountant
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Tokyo
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            33
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            2008/11/28
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            $162,700
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">
+                                            Brielle Williamson
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Integration Specialist
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            New York
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            61
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            2012/12/02
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            $372,000
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-sm font-weight-normal">
+                                            Herrod Chandler
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            Sales Assistant
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            San Francisco
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            59
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            2012/08/06
+                                        </td>
+                                        <td class="text-sm font-weight-normal">
+                                            $137,500
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         </div>
                     </div>
                 </div>
-
 
             </div>
         </div>
@@ -189,13 +428,32 @@ Tag setting
 
 
 @section('scripts')
-<script src="../../../assets/js/core/popper.min.js"></script>
-<script src="../../../assets/js/core/bootstrap.min.js"></script>
-<script src="../../../assets/js/plugins/perfect-scrollbar.min.js"></script>
-<script src="../../../assets/js/plugins/smooth-scrollbar.min.js"></script>
 <!-- Kanban scripts -->
-<script src="../../../assets/js/plugins/dragula/dragula.min.js"></script>
-<script src="../../../assets/js/plugins/jkanban/jkanban.js"></script>
+<script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/datatables.js') }}"></script>
+<!-- Kanban scripts -->
+<script src="{{ asset('assets/js/plugins/dragula/dragula.min.js') }}"></script>
+<script src="{{ asset('assets/js/plugins/jkanban/jkanban.js') }}"></script>
+<script>
+    const dataTableBasic = new simpleDatatables.DataTable(
+                "#datatable-basic",
+                {
+                    searchable: false,
+                    fixedHeight: true,
+                }
+            );
+
+            const dataTableSearch = new simpleDatatables.DataTable(
+                "#datatable-search",
+                {
+                    searchable: true,
+                    fixedHeight: true,
+                }
+            );
+</script>
 <script>
     var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
