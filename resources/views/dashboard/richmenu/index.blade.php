@@ -159,6 +159,12 @@ Account
                         <h6 class="mb-1">カスタムリッチメニュー</h6>
                         <p class="text-sm">カスタムテンプレート一覧</p>
                     </div>
+                    <div class="row mx-3">
+                        <div class="button-row d-flex col-sm-auto ms-auto">
+                        <a href="{{ route('tag.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">マルチボタンの設定</a>
+                        <a href="{{ route('membership.setting', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">リッチメニューの設定</a>
+                        </div>
+                    </div>
                     <div class="card-body p-3">
                         <div class="row target-area">
                             @foreach ($richmenus as $richmenu)
@@ -243,18 +249,20 @@ Account
         Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
 
-    const targetArea = document.querySelector('.target-area');
+    const targetAreas = document.querySelectorAll('.target-area');
     const richSpinner = document.querySelectorAll('.spinner-border');
-    targetArea.addEventListener("click", function(e){
-        const targetName = e.target.name;
-        if(targetName == 'richmenu-btn'){
-            richSpinner.forEach(function(btn) {
-                btn.classList.add('hide-content');
-                e.target.children[0].classList.remove('hide-content');
-            });
-        }
-
-    })
+    
+    targetAreas.forEach(function(targetArea){
+        targetArea.addEventListener("click", function(e){
+            const targetName = e.target.name;
+            if(targetName == 'richmenu-btn'){
+                richSpinner.forEach(function(btn) {
+                    btn.classList.add('hide-content');
+                    e.target.children[0].classList.remove('hide-content');
+                });
+            }
+        })
+    });
 
 </script>
 <!-- Github buttons -->

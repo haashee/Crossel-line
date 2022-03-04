@@ -210,6 +210,30 @@ class LineMessengerController extends Controller
 
                     // send this flex message
                     $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
+                } elseif ($message_content == 'マルチボタン') {
+                    //Send quick reply message
+                    //Define display texts for quick reply (max number is 12)
+                    $categories = [
+                        '和食',
+                        '洋食',
+                        '中華料理',
+                        'アジア・エスニック',
+                        'イタリアン',
+                        'フレンチ'
+                    ];
+
+                    foreach ($categories as $category) {
+                        // Display the texts and define reply text
+                        $message_template_action_builder = new MessageTemplateActionBuilder($category, $category . 'を選択したよ！'); #(display text, reply text)
+                        // Create buttons for the display text
+                        $quick_reply_button_builder = new QuickReplyButtonBuilder($message_template_action_builder);
+                        // Add buttons
+                        $quick_reply_buttons[] = $quick_reply_button_builder;
+                    }
+                    // Create quick reply and send message
+                    $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
+                    $text_message_builder = new TextMessageBuilder('カテゴリを選択してください', $quick_reply_message_builder); #(text bubble, quick reply)
+                    $bot->replyMessage($reply_token, $text_message_builder);
                 } else if ($account->chatSetting->default_text_active == true) {
                     // The message to send
                     $message_data = $account->chatSetting->default_text;
