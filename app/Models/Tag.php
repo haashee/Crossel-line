@@ -15,4 +15,14 @@ class Tag extends Model
     {
         return $this->belongsTo(Account::class);
     }
+
+    public function chatMultiples()
+    {
+        return $this->belongsToMany(ChatMultiple::class);
+    }
+
+    public function lineUsers()
+    {
+        return $this->belongsToMany(LineUser::class);
+    }
 }
