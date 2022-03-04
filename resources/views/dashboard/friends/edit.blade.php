@@ -384,11 +384,10 @@ Account
                   </select>
                 </div>
                 <div class="col-md-6">
-                  <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
-                  <textarea name="" id="" cols="30" rows="10">@foreach ($friend->tags as $tag){{$tag->id}}@endforeach</textarea>
+                  <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>                  
                   <select id="tags" name="tags[]" multiple class="form-control">
                     @forelse ($tags as $tag)
-                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                    <option value="{{ $tag->id }}" {{$friend->tags->contains('id', $tag->id)  ? 'selected' : ''}}>{{ $tag->name }}</option>
                     @empty
                     <p>タグが登録されていません。</p>
                     @endforelse
