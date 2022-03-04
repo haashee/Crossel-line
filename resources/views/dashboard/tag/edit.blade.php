@@ -213,12 +213,6 @@ Tag setting
                                             tags
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            No. Orders
-                                        </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Orders total
-                                        </th>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Setting
                                         </th>
                                     </tr>
@@ -250,12 +244,6 @@ Tag setting
                                             @empty
                                             <span class="text-dark text-xs">タグなし</span>
                                             @endforelse
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            61
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            ¥9000
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             <div class="dropdown">
@@ -293,12 +281,6 @@ Tag setting
                                             Tokyo
                                         </td>
                                         <td class="text-sm font-weight-normal">
-                                            63
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            2011/07/25
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
                                             $170,750
                                         </td>
                                     </tr>
@@ -311,12 +293,6 @@ Tag setting
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             San Francisco
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            66
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            2009/01/12
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             $86,000
@@ -333,12 +309,6 @@ Tag setting
                                             Edinburgh
                                         </td>
                                         <td class="text-sm font-weight-normal">
-                                            22
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            2012/03/29
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
                                             $433,060
                                         </td>
                                     </tr>
@@ -351,12 +321,6 @@ Tag setting
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             Tokyo
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            33
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            2008/11/28
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             $162,700
@@ -373,12 +337,6 @@ Tag setting
                                             New York
                                         </td>
                                         <td class="text-sm font-weight-normal">
-                                            61
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            2012/12/02
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
                                             $372,000
                                         </td>
                                     </tr>
@@ -391,12 +349,6 @@ Tag setting
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             San Francisco
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            59
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            2012/08/06
                                         </td>
                                         <td class="text-sm font-weight-normal">
                                             $137,500
