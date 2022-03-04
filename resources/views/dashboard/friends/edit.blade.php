@@ -175,10 +175,10 @@ Account
                   <div class="row">
                     <div class="col-sm-5 col-5">
                       <label class="form-label mt-4">お誕生日</label>
-                      <input type="text" name="" id="birth-date" value="{{ $friend->birthday }}" hidden>
+                      <input type="text" name="" id="birth-date" value="{{ $friend->birthday }}" hidden >
                       <select name="dob-year" id="dob-year" class="form-control">
                         <option value="" disabled>年</option>
-                        <option value="" disabled>----</option>
+                        <option value="" >未選択</option>
                         <option value="2015">2015</option>
                         <option value="2014">2014</option>
                         <option value="2013">2013</option>
@@ -301,7 +301,7 @@ Account
                       <label class="form-label mt-4">&nbsp;</label>
                       <select name="dob-month" id="dob-month" class="form-control">
                         <option value="" disabled>月</option>
-                        <option value="" disabled>-----</option>
+                        <option value="">未選択</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
@@ -320,7 +320,7 @@ Account
                       <label class="form-label mt-4">&nbsp;</label>
                       <select name="dob-day" id="dob-day" class="form-control">
                         <option value="" disabled>日</option>
-                        <option value="" disabled>---</option>
+                        <option value="">未選択</option>
                         <option value="01">01</option>
                         <option value="02">02</option>
                         <option value="03">03</option>
@@ -385,7 +385,8 @@ Account
                 </div>
                 <div class="col-md-6">
                   <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
-                  <select id="category" name="tags[]" multiple class="form-control">
+                  <textarea name="" id="" cols="30" rows="10">@foreach ($friend->tags as $tag){{$tag->id}}@endforeach</textarea>
+                  <select id="tags" name="tags[]" multiple class="form-control">
                     @forelse ($tags as $tag)
                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                     @empty
@@ -663,17 +664,15 @@ Account
     //     }
     // });
 
-    const dateHidden = document.querySelector('#birth-date');
-    if (dateHidden.value !== "1970-01-01") {
-    const [yyyy,mm,dd] = dateHidden.split("-");
+    let dateHidden = document.querySelector('#birth-date');
+    if (dateHidden.value != null) {
+    const [yyyy,mm,dd] = dateHidden.value.split("-");
     document.getElementById("dob-year").value=yyyy;
     document.getElementById("dob-month").value=mm;
     document.getElementById("dob-day").value=dd;
-    } else {
-    document.getElementById("dob-year").value=null;
-    document.getElementById("dob-month").value=null;
-    document.getElementById("dob-day").value=null;
-    }
+    } 
+
+
 
   </script>
   <script>

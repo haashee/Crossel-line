@@ -117,7 +117,12 @@ class LineUserController extends Controller
         ]);
 
         // change date format
-        $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+        if ($request->input('dob-year') != null && $request->input('dob-month') != null) {
+            $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+        } else {
+            $DOB = null;
+        }
+
 
         // sync updated tags
         $data = [];
