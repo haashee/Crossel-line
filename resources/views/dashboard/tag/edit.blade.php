@@ -201,19 +201,19 @@ Tag setting
                                 <thead class="thead-light">
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Start date
+                                            友達登録日
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Name
+                                            お名前
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Registered
+                                            会員登録
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            tags
+                                            タグ
                                         </th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Setting
+                                            アクション
                                         </th>
                                     </tr>
                                 </thead>
@@ -270,90 +270,6 @@ Tag setting
                                         </td>
                                     </tr>
                                     @endforeach
-                                    <tr>
-                                        <td class="text-sm font-weight-normal">
-                                            Garrett Winters
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Accountant
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Tokyo
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            $170,750
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-sm font-weight-normal">
-                                            Ashton Cox
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Junior Technical Author
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            San Francisco
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            $86,000
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-sm font-weight-normal">
-                                            Cedric Kelly
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Senior Javascript Developer
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Edinburgh
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            $433,060
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-sm font-weight-normal">
-                                            Airi Satou
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Accountant
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Tokyo
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            $162,700
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-sm font-weight-normal">
-                                            Brielle Williamson
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Integration Specialist
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            New York
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            $372,000
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-sm font-weight-normal">
-                                            Herrod Chandler
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            Sales Assistant
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            San Francisco
-                                        </td>
-                                        <td class="text-sm font-weight-normal">
-                                            $137,500
-                                        </td>
-                                    </tr>
                                 </tbody>
                             </table>
                         </div>
