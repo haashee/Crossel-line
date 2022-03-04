@@ -61,20 +61,29 @@ class ChatMultipleController extends Controller
     public function store(Request $request, $aid)
     {
         // store values
-        // ChatMultiple::create([
-        //     'message' => $request->message,
-        //     // 'tag_id' => $request->tag,
-        //     'account_id' => $aid,
-        // ]);
-
-        $data = [];
-        $data['tags'] = $request->input('tags');
-
         $chat = new ChatMultiple();
         $chat->message = $request->message;
         $chat->account_id = $aid;
         $chat->save();
+
+        // set value for pivot table
+        $data = [];
+        $data['tags'] = $request->input('tags');
         $chat->tags()->attach($data['tags']);
+
+        // set line users to send
+        $id_array = [];
+        foreach ($data['tags'] as $tag_id) {
+            $tag = Tag::find($tag_id);
+            foreach ($tag->lineUsers as $friend) {
+                $line_id = $friend->line_id;
+                if ($line_id[0] == "U") {
+                    array_push($id_array, $line_id);
+                }
+            }
+        }
+        // $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U94dee02c3d6a8f0329ca869578f397f9"];
+        $line_id_list = array_unique($id_array);
 
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
@@ -86,9 +95,6 @@ class ChatMultipleController extends Controller
         // LINEBOTSDKの設定
         $http_client = new CurlHTTPClient($access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
-
-        // set line users to send
-        $line_id_list = ["U6f9e0ed71f65c0f07c6915788713aa5c", "U94dee02c3d6a8f0329ca869578f397f9"];
 
         // Set message to send
         $message = $request->message;
