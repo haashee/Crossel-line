@@ -139,14 +139,14 @@ Account
                                             </div>
 
                                             <div class="col-8 ps-0 mb-2 border-radius-lg action-pills-group g-0">
-                                                <div class="row text-center g-0">
+                                                <div class="row g-0 text-end">
 
                                                     @if(isset($richmenuSetting->multiBtnA))
                                                         <form class="" action="{{ route('richmenu.multi.reset', ['aid' => $account->id]) }}" method="POST">
                                                             @csrf
 
                                                             @foreach(explode(',', $richmenuSetting->multiBtnA ) as $action) 
-                                                                <div class="action-pill col-2 text-xs p-1 px-2 me-1">
+                                                                <div class="action-pill col-2 text-xs p-1 px-2 me-1 ">
                                                                         {{$action}}
                                                                 </div>
                                                             @endforeach
@@ -170,7 +170,7 @@ Account
                                             </div>
 
                                             <div class="col-8 ps-0 mb-2 border-radius-lg action-pills-group g-0">
-                                                <div class="row text-center g-0">
+                                                <div class="row text-end g-0">
 
                                                     @if(isset($richmenuSetting->multiBtnB))
                                                         <form class="" action="{{ route('richmenu.multi.reset', ['aid' => $account->id]) }}" method="POST">
@@ -202,7 +202,7 @@ Account
                                             </div>
 
                                             <div class="col-8 ps-0 mb-2 border-radius-lg action-pills-group g-0">
-                                                <div class="row text-center g-0">
+                                                <div class="row text-end g-0">
 
                                                     @if(isset($richmenuSetting->multiBtnC))
                                                         <form class="" action="{{ route('richmenu.multi.reset', ['aid' => $account->id]) }}" method="POST">
