@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\RichMenu;
 use App\Models\Account;
 use App\Models\LineUser;
+use App\Models\RichmenuSetting;
 use App\Models\Tag;
 
 use Illuminate\Support\Facades\Session;
@@ -462,9 +463,17 @@ class RichMenuController extends Controller
     public function updateMulti(Request $request, $aid)
     {
         $request->validate([
-            'name' => 'required',
-            'color' => 'required',
+            'action' => 'required',
+            // 'multiBtn' => 'required',
+            'message' => 'required',
         ]);
+
+
+        // $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+        // $newAction = $request->input('multiBtn');
+        // if ($newAction == 'multiBtnA') {
+        //     dd($richmenuSetting->multiBtnA);
+        // }
 
         if ($request->has('isPublic')) {
             $publicFlag = true;
@@ -472,16 +481,16 @@ class RichMenuController extends Controller
             $publicFlag = false;
         }
 
-        Tag::where('id', $aid)
+        RichmenuSetting::where('account_id', $aid)
             ->update([
-                'name' => $request->input('name'),
-                'color' => $request->input('color'),
-                'isPublic' => $publicFlag,
+                // 'action' => $request->input('action'),
+                'multiBtnA' => '[1, 5, 9]',
+                'displayTextA' => $request->input('message'),
             ]);
 
-        Session::put('title', 'タグ更新完了');
+        Session::put('title', 'ボタン追加完了');
 
-        return redirect('accounts' . '/' . $aid . '/' . 'tag')
-            ->with('message', 'タグが無事更新されました。');
+        return redirect('accounts' . '/' . $aid . '/' . 'multibtn')
+            ->with('message', 'マルチボタンが追加されました。');
     }
 }

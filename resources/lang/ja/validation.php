@@ -178,6 +178,9 @@ return [
         'urlE' => 'URLリンクE',
         'urlF' => 'URLリンクF',
         'text' => 'テキスト',
+        'message' => 'メッセージ',
+        'action' => 'アクション',
+        'multiBtn' => 'マルチボタン',
     ],
 
 ];

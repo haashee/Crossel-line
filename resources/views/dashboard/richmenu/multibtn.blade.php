@@ -198,7 +198,7 @@ Account
                             </div>
                         </div>
                         <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
-                            <form action="{{ route('tag.store', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('richmenu.multi.update', ['aid' => $account->id]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="col-md-8 d-flex align-items-center py-3">
                                     <h6 class="mb-0">マルチボタンを追加</h6>
@@ -207,8 +207,8 @@ Account
                                     <div class="col-8">
                                         <label class="">アクションを選択<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
-                                                <select class="form-control" name="actions" id="actions">
-                                                    <option value="">-</option>
+                                                <select class="form-control" name="action" id="action">
+                                                    <option value="" disabled selected>未選択</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
                                                     <option value="会員情報">会員情報</option>
@@ -221,7 +221,7 @@ Account
                                         <label class="multisteps-form__input form-label">マルチボタン<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
                                                 <select class="form-control" name="multiBtn" id="multiBtn">
-                                                    <option value="">-</option>
+                                                    <option value="" disabled selected>未選択</option>
                                                     <option value="multiBtnA">マルチボタン「 A 」</option>
                                                     <option value="multiBtnB">マルチボタン「 B 」</option>
                                                     <option value="multiBtnC">マルチボタン「 C 」</option>
@@ -240,7 +240,7 @@ Account
                                     <div class="col-12">
                                         <label class="">マルチボタンのメッセージ<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
-                                            <textarea class="edit-token-show multisteps-form__input form-control" name="displayText" id="displayText" cols="30" rows="2" placeholder="表示されるメッセージ"></textarea>
+                                            <textarea class="edit-token-show multisteps-form__input form-control" name="message" id="displayText" cols="30" rows="2" placeholder="表示されるメッセージ"></textarea>
                                         </div>
                                     </div>
                                 </div>
