@@ -38061,3 +38061,14 @@ svg.leaflet-image-layer.leaflet-interactive path {
     border-radius: 50%;
     display: inline-block;
 }
+
+/* action pills in multi button setting richmenu */
+.action-pills {
+    background: #35455d;
+    /* bottom: 0;
+    width: 100%; */
+    text-align: center;
+    border-radius: 1rem;
+    color: white;
+    /* border-bottom-right-radius: 1rem; */
+}

@@ -133,16 +133,22 @@ Account
                                 <div class="card-body p-3 py-0">
                                 <ul class="list-group mx-4">
                                         <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                                            <div class="d-flex flex-column">
+                                            <div class="d-flex flex-column me-3">
                                                 <h6 class="mb-1 text-dark font-weight-bold text-sm">マルチボタン「 A 」</h6>
-                                                    <span class="text-xs">公開タグ</span>
+                                                    <span class="text-xs">{{ $richmenuSetting->displayTextA }}</span>
                                             </div>
                                             <div class="d-flex align-items-center text-sm">
-                                                <p class="text-xs mx-1 mt-3">タグの色</p>
-                                                <span class="tag-dot me-4" ></span>
-                                                <a class="btn btn-link text-dark text-muted text-xs mb-0 px-0 mx-1" href="">
-                                                    <i class="fas fa-edit text-sm me-1"></i>
-                                                </a>
+                                                <div class="text-xs mx-1 mt-3">
+                                                    @foreach(explode(',', $richmenuSetting->multiBtnA ) as $action) 
+                                                        <span class="action-pills me-1 px-2 py-1">
+                                                            {{$action}}
+                                                        </span> 
+                                                    @endforeach
+                                                    <a class="btn btn-link text-dark text-muted text-xs mb-1 px-0 mx-1" href="">
+                                                        <i class="fas fa-trash text-sm me-1"></i>
+                                                    </a>
+                                                </div>
+                                                {{-- <span class="tag-dot me-4" ></span> --}}
                                                 {{-- <form class="ms-auto" action="{{ route('tag.destroy', ['aid' => $account->id, 'tag' => $tag->id]) }}" method="POST">
                                                     @csrf
                                                     @method('delete')

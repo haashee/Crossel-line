@@ -15,9 +15,9 @@ class CreateRichmenuSettingsTable extends Migration
     {
         Schema::create('richmenu_settings', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->json('multiBtnA')->nullable();
-            $table->json('multiBtnB')->nullable();
-            $table->json('multiBtnC')->nullable();
+            $table->string('multiBtnA')->nullable();
+            $table->string('multiBtnB')->nullable();
+            $table->string('multiBtnC')->nullable();
             $table->mediumText('displayTextA')->nullable();
             $table->mediumText('displayTextB')->nullable();
             $table->mediumText('displayTextC')->nullable();

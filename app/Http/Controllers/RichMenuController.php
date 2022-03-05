@@ -444,11 +444,16 @@ class RichMenuController extends Controller
         $tags = Tag::where('account_id', $aid)->get();
 
 
+        $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
+
+
 
         return view('dashboard.richmenu.multibtn', [
             'accounts' => $accounts,
             'account' => $account,
             'tags' => $tags,
+            'richmenuSetting' => $richmenuSetting,
         ]);
     }
 
@@ -463,30 +468,83 @@ class RichMenuController extends Controller
     public function updateMulti(Request $request, $aid)
     {
         $request->validate([
-            'action' => 'required',
+            // 'action' => 'required',
             // 'multiBtn' => 'required',
             'message' => 'required',
         ]);
 
 
-        // $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
-        // $newAction = $request->input('multiBtn');
-        // if ($newAction == 'multiBtnA') {
-        //     dd($richmenuSetting->multiBtnA);
-        // }
 
-        if ($request->has('isPublic')) {
-            $publicFlag = true;
-        } else {
-            $publicFlag = false;
+        // $array = [];
+        // array_push($array, $oldActions);
+        // $array = ['lastname', 'email', 'phone'];
+        // collect($oldActions)->implode('-');
+        // var_dump(explode(" ", $oldActions)); // string(20) "lastname,email,phone"
+
+
+        $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
+        $newAction = $request->input('action');
+        $assignBtn = $request->input('multiBtn');
+
+        switch ($assignBtn) {
+            case 'multiBtnA':
+                $oldActions = $richmenuSetting->multiBtnA;
+                if ($oldActions) {
+                    $updatedActionsA = $oldActions . ', ' . $newAction;
+                } else {
+                    $updatedActionsA = $newAction;
+                }
+                break;
+
+            case 'multiBtnB':
+                $oldActions = $richmenuSetting->multiBtnB;
+                if ($oldActions) {
+                    $updatedActionsB = $oldActions . ', ' . $newAction;
+                } else {
+                    $updatedActionsB = $newAction;
+                }
+                break;
+
+            case 'multiBtnC':
+                $oldActions = $richmenuSetting->multiBtnC;
+                if ($oldActions) {
+                    $updatedActionsC = $oldActions . ', ' . $newAction;
+                } else {
+                    $updatedActionsC = $newAction;
+                }
+                break;
+
+            default:
+                break;
         }
 
-        RichmenuSetting::where('account_id', $aid)
-            ->update([
-                // 'action' => $request->input('action'),
-                'multiBtnA' => '[1, 5, 9]',
-                'displayTextA' => $request->input('message'),
-            ]);
+        // if ($request->has('isPublic')) {
+        //     $publicFlag = true;
+        // } else {
+        //     $publicFlag = false;
+        // }
+
+
+        $setting = RichmenuSetting::where('account_id', $aid)->first();
+        if (isset($updatedActionsA)) {
+            $setting->multiBtnA = $updatedActionsA;
+        } elseif (isset($updatedActionsB)) {
+            $setting->multiBtnB = $updatedActionsB;
+        } elseif (isset($updatedActionsC)) {
+            $setting->multiBtnC = $updatedActionsC;
+        }
+        $setting->displayTextA = $request->input('message');
+        $setting->save();
+
+        // RichmenuSetting::where('account_id', $aid)
+        //     ->update([
+        //         // 'action' => $updatedActions,
+        //         'multiBtnA' => $updatedActionsA,
+        //         'multiBtnB' => $updatedActionsB,
+        //         'multiBtnC' => $updatedActionsC,
+        //         'displayTextA' => $request->input('message'),
+        //     ]);
 
         Session::put('title', 'ボタン追加完了');
 
