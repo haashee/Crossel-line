@@ -95,6 +95,9 @@ class AccountsController extends Controller
 
         RichmenuSetting::create([
             'account_id' => $newAccount->id,
+            'displayTextA' => 'カテゴリを選択してください。',
+            'displayTextB' => 'カテゴリを選択してください。',
+            'displayTextC' => 'カテゴリを選択してください。',
         ]);
 
         Session::put('title', 'アカウントの初期化完了');

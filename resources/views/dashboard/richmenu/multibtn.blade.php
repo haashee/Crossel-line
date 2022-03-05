@@ -256,27 +256,20 @@ Account
                                     <div class="col-4">
                                         <label class="multisteps-form__input form-label">マルチボタン<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
-                                                <select class="form-control" name="multiBtn" id="multiBtn">
+                                                <select class="form-control" name="multiBtn" id="multiBtnJs">
                                                     <option value="" disabled selected>未選択</option>
-                                                    <option value="multiBtnA">マルチボタン「 A 」</option>
-                                                    <option value="multiBtnB">マルチボタン「 B 」</option>
-                                                    <option value="multiBtnC">マルチボタン「 C 」</option>
+                                                    <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
+                                                    <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
+                                                    <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
                                                 </select>                                        
                                         </div>
                                     </div>
-                                    {{-- <div class="col-2">
-                                        <label class="form-label">友達に公開<span class="text-third">(必須)</span></label>
-                                        <div class="input-group form-check form-switch my-auto">
-                                        <input name="isPublic" class="form-check-input" type="checkbox" 
-                                            id="flexSwitchCheckDefault2" >
-                                        </div>
-                                    </div> --}}
                                 </div>
                                 <div class="row mt-3">
                                     <div class="col-12">
                                         <label class="">マルチボタンのメッセージ<span class="text-third">(必須)</span></label>
                                         <div class="input-group">
-                                            <textarea class="edit-token-show multisteps-form__input form-control" name="message" id="displayText" cols="30" rows="2" placeholder="表示されるメッセージ"></textarea>
+                                            <textarea class="multisteps-form__input form-control" name="message" id="displayMessageInputJs" cols="30" rows="2" placeholder="表示されるメッセージ"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -329,35 +322,19 @@ Account
         }
 
 
-    let editDeleteBtn = document.querySelector('.confirm-delete');
-    let editDelete = document.querySelector('.confirm-delete-btn');
-    editDeleteBtn.addEventListener('click', event => {
-        editDelete.toggleAttribute("disabled");
-    });
+    // let editDeleteBtn = document.querySelector('.confirm-delete');
+    // let editDelete = document.querySelector('.confirm-delete-btn');
+    // editDeleteBtn.addEventListener('click', event => {
+    //     editDelete.toggleAttribute("disabled");
+    // });
 
+    var btnOptions = document.getElementById("multiBtnJs");
+    var messageInput = document.querySelector('#displayMessageInputJs');
 
-    let editTokenBtn = document.querySelector('.edit-token');
-    let editToken = document.querySelectorAll('.edit-token-show');
-    editTokenBtn.addEventListener('click', event => {
-        for (var i = 0; i < editToken.length; i++) {
-            editToken[i].toggleAttribute("readonly");
-        }
-    });
-
-    let editLiffBtn = document.querySelector('.edit-liff');
-    let editLiff = document.querySelectorAll('.edit-liff-show');
-    editLiffBtn.addEventListener('click', event => {
-        for (var i = 0; i < editLiff.length; i++) {
-            editLiff[i].toggleAttribute("readonly");
-        }
-    });
-
-    let editMemBtn = document.querySelector('.edit-member');
-    let editMem = document.querySelectorAll('.edit-member-show');
-    editMemBtn.addEventListener('click', event => {
-        for (var i = 0; i < editMem.length; i++) {
-            editMem[i].toggleAttribute("readonly");
-        }
+    btnOptions.addEventListener('change', function(event) {
+        var option= btnOptions.options[btnOptions.selectedIndex];
+        var datarc = option.getAttribute("data-message");
+        messageInput.innerHTML = datarc;
     });
 
 </script>
