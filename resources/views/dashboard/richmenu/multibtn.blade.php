@@ -239,10 +239,10 @@ Account
                                 </div>
                                 <div class="row">
                                     <div class="col-8">
-                                        <label class="">アクションを選択<span class="text-third">(必須)</span></label>
+                                        <label class="">アクションを選択</label>
                                         <div class="input-group">
                                                 <select class="form-control" name="action" id="action">
-                                                    <option value="" disabled selected>未選択</option>
+                                                    <option value="" selected>未選択</option>
                                                     <option value="メニューをみる">メニューをみる</option>
                                                     <option value="注文履歴">注文履歴</option>
                                                     <option value="会員情報">会員情報</option>

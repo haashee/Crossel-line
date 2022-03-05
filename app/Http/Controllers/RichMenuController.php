@@ -469,18 +469,9 @@ class RichMenuController extends Controller
     {
         $request->validate([
             // 'action' => 'required',
-            // 'multiBtn' => 'required',
+            'multiBtn' => 'required',
             'message' => 'required',
         ]);
-
-
-
-        // $array = [];
-        // array_push($array, $oldActions);
-        // $array = ['lastname', 'email', 'phone'];
-        // collect($oldActions)->implode('-');
-        // var_dump(explode(" ", $oldActions)); // string(20) "lastname,email,phone"
-
 
         $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
 
@@ -519,14 +510,8 @@ class RichMenuController extends Controller
                 break;
         }
 
-        // if ($request->has('isPublic')) {
-        //     $publicFlag = true;
-        // } else {
-        //     $publicFlag = false;
-        // }
-
-
         $setting = RichmenuSetting::where('account_id', $aid)->first();
+
         if (isset($updatedActionsA)) {
             $setting->multiBtnA = $updatedActionsA;
         } elseif (isset($updatedActionsB)) {
@@ -534,17 +519,16 @@ class RichMenuController extends Controller
         } elseif (isset($updatedActionsC)) {
             $setting->multiBtnC = $updatedActionsC;
         }
-        $setting->displayTextA = $request->input('message');
-        $setting->save();
 
-        // RichmenuSetting::where('account_id', $aid)
-        //     ->update([
-        //         // 'action' => $updatedActions,
-        //         'multiBtnA' => $updatedActionsA,
-        //         'multiBtnB' => $updatedActionsB,
-        //         'multiBtnC' => $updatedActionsC,
-        //         'displayTextA' => $request->input('message'),
-        //     ]);
+        if ($assignBtn == 'multiBtnA') {
+            $setting->displayTextA = $request->input('message');
+        } elseif ($assignBtn == 'multiBtnB') {
+            $setting->displayTextB = $request->input('message');
+        } elseif ($assignBtn == 'multiBtnC') {
+            $setting->displayTextC = $request->input('message');
+        }
+
+        $setting->save();
 
         Session::put('title', 'ボタン追加完了');
 
