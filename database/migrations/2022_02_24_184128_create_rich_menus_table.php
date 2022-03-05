@@ -34,6 +34,12 @@ class CreateRichMenusTable extends Migration
             $table->string('url_d')->nullable();
             $table->string('url_e')->nullable();
             $table->string('url_f')->nullable();
+            $table->string('multi_a')->nullable();
+            $table->string('multi_b')->nullable();
+            $table->string('multi_c')->nullable();
+            $table->string('multi_d')->nullable();
+            $table->string('multi_e')->nullable();
+            $table->string('multi_f')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('account_id')->nullable();
