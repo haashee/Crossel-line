@@ -52,6 +52,9 @@ class LineMessengerController extends Controller
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
 
+        // Get the rich menu setting for this account
+        $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
         // get current default richmenu table
         $richmenu = RichMenu::where([
             'account_id' => $aid,
@@ -211,23 +214,23 @@ class LineMessengerController extends Controller
 
                     // send this flex message
                     $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
-                } elseif ($message_content == 'マルチボタン') {
+                } elseif ($message_content == $richmenuSetting->nameA) {
                     //Send quick reply message
+
+                    // get string from richmenu setting (multi btn actions)
+                    $stringList = $richmenuSetting->multiBtnA;
+
                     //Define display texts for quick reply (max number is 12)
-                    $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+                    // explode the string and set it as buttons
+                    $buttons = explode(',', $stringList);
 
-                    $categories = [
-                        '和食',
-                        '洋食',
-                        '中華料理',
-                        'アジア・エスニック',
-                        'イタリアン',
-                        'フレンチ'
-                    ];
+                    // $categories = [
+                    //     '和食', '洋食', '中華料理', 'アジア・エスニック', 'イタリアン', 'フレンチ'
+                    // ];
 
-                    foreach ($categories as $category) {
+                    foreach ($buttons as $button) {
                         // Display the texts and define reply text
-                        $message_template_action_builder = new MessageTemplateActionBuilder($category, $category . 'を選択したよ！'); #(display text, reply text)
+                        $message_template_action_builder = new MessageTemplateActionBuilder($button, $button); #(display text, reply text)
                         // Create buttons for the display text
                         $quick_reply_button_builder = new QuickReplyButtonBuilder($message_template_action_builder);
                         // Add buttons
@@ -235,7 +238,51 @@ class LineMessengerController extends Controller
                     }
                     // Create quick reply and send message
                     $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
-                    $text_message_builder = new TextMessageBuilder('カテゴリを選択してください', $quick_reply_message_builder); #(text bubble, quick reply)
+                    $text_message_builder = new TextMessageBuilder($richmenuSetting->displayTextA, $quick_reply_message_builder); #(text bubble, quick reply)
+                    $bot->replyMessage($reply_token, $text_message_builder);
+                } elseif ($message_content == $richmenuSetting->nameB) {
+                    //Send quick reply message
+
+                    // get string from richmenu setting (multi btn actions)
+                    $stringList = $richmenuSetting->multiBtnB;
+
+                    //Define display texts for quick reply (max number is 12)
+                    // explode the string and set it as buttons
+                    $buttons = explode(',', $stringList);
+
+                    foreach ($buttons as $button) {
+                        // Display the texts and define reply text
+                        $message_template_action_builder = new MessageTemplateActionBuilder($button, $button); #(display text, reply text)
+                        // Create buttons for the display text
+                        $quick_reply_button_builder = new QuickReplyButtonBuilder($message_template_action_builder);
+                        // Add buttons
+                        $quick_reply_buttons[] = $quick_reply_button_builder;
+                    }
+                    // Create quick reply and send message
+                    $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
+                    $text_message_builder = new TextMessageBuilder($richmenuSetting->displayTextB, $quick_reply_message_builder); #(text bubble, quick reply)
+                    $bot->replyMessage($reply_token, $text_message_builder);
+                } elseif ($message_content == $richmenuSetting->nameC) {
+                    //Send quick reply message
+
+                    // get string from richmenu setting (multi btn actions)
+                    $stringList = $richmenuSetting->multiBtnC;
+
+                    //Define display texts for quick reply (max number is 12)
+                    // explode the string and set it as buttons
+                    $buttons = explode(',', $stringList);
+
+                    foreach ($buttons as $button) {
+                        // Display the texts and define reply text
+                        $message_template_action_builder = new MessageTemplateActionBuilder($button, $button); #(display text, reply text)
+                        // Create buttons for the display text
+                        $quick_reply_button_builder = new QuickReplyButtonBuilder($message_template_action_builder);
+                        // Add buttons
+                        $quick_reply_buttons[] = $quick_reply_button_builder;
+                    }
+                    // Create quick reply and send message
+                    $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
+                    $text_message_builder = new TextMessageBuilder($richmenuSetting->displayTextC, $quick_reply_message_builder); #(text bubble, quick reply)
                     $bot->replyMessage($reply_token, $text_message_builder);
                 } else if ($account->chatSetting->default_text_active == true) {
                     // The message to send
