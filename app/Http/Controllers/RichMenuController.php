@@ -131,6 +131,12 @@ class RichMenuController extends Controller
             'url_d' => $request->input('urlD'),
             'url_e' => $request->input('urlE'),
             'url_f' => $request->input('urlF'),
+            'multi_a' => $request->input('multiA'),
+            'multi_b' => $request->input('multiB'),
+            'multi_c' => $request->input('multiC'),
+            'multi_d' => $request->input('multiD'),
+            'multi_e' => $request->input('multiE'),
+            'multi_f' => $request->input('multiF'),
             'account_id' => $aid,
         ]);
 
@@ -533,6 +539,14 @@ class RichMenuController extends Controller
             $setting->displayTextB = $request->input('message');
         } elseif ($assignBtn == 'multiBtnC') {
             $setting->displayTextC = $request->input('message');
+        }
+
+        if ($assignBtn == 'multiBtnA') {
+            $setting->nameA = $request->input('name');
+        } elseif ($assignBtn == 'multiBtnB') {
+            $setting->nameB = $request->input('name');
+        } elseif ($assignBtn == 'multiBtnC') {
+            $setting->nameC = $request->input('name');
         }
 
         $setting->save();

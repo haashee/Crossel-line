@@ -14,6 +14,7 @@ use App\Models\RichMenu;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
 use App\Models\User;
+use App\Models\RichmenuSetting;
 
 use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use LINE\LINEBot\MessageBuilder\StickerMessageBuilder;
@@ -213,6 +214,8 @@ class LineMessengerController extends Controller
                 } elseif ($message_content == 'マルチボタン') {
                     //Send quick reply message
                     //Define display texts for quick reply (max number is 12)
+                    $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
                     $categories = [
                         '和食',
                         '洋食',

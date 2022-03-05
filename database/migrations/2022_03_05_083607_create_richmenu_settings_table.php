@@ -18,6 +18,9 @@ class CreateRichmenuSettingsTable extends Migration
             $table->string('multiBtnA')->nullable();
             $table->string('multiBtnB')->nullable();
             $table->string('multiBtnC')->nullable();
+            $table->string('nameA')->nullable();
+            $table->string('nameB')->nullable();
+            $table->string('nameC')->nullable();
             $table->mediumText('displayTextA')->nullable();
             $table->mediumText('displayTextB')->nullable();
             $table->mediumText('displayTextC')->nullable();

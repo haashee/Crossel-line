@@ -134,7 +134,7 @@ Account
                                 <div class="container">
                                         <div class="row ">
                                             <div class="col-4 col-md ps-0 mb-2 border-radius-lg">
-                                                <h6 class="mb-1 text-dark font-weight-bold text-sm">マルチボタン「 A 」</h6>
+                                                <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}</h6>
                                                     <span class="text-xs">{{ $richmenuSetting->displayTextA ? $richmenuSetting->displayTextA : "未登録" }}</span>
                                             </div>
 
@@ -165,7 +165,7 @@ Account
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-4 col-md ps-0 mb-2 border-radius-lg">
-                                                <h6 class="mb-1 text-dark font-weight-bold text-sm">マルチボタン「 B 」</h6>
+                                                <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}</h6>
                                                     <span class="text-xs">{{ $richmenuSetting->displayTextB ? $richmenuSetting->displayTextB : "未登録" }}</span>
                                             </div>
 
@@ -197,7 +197,7 @@ Account
                                         </div>
                                         <div class="row my-4">
                                             <div class="col-4 col-md ps-0 mb-2 border-radius-lg">
-                                                <h6 class="mb-1 text-dark font-weight-bold text-sm">マルチボタン「 C 」</h6>
+                                                <h6 class="mb-1 text-dark font-weight-bold text-sm">{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}</h6>
                                                     <span class="text-xs">{{ $richmenuSetting->displayTextC ? $richmenuSetting->displayTextC : "未登録" }}</span>
                                             </div>
 
@@ -240,8 +240,26 @@ Account
                                     <h6 class="mb-0">マルチボタンを追加</h6>
                                 </div>
                                 <div class="row">
-                                    <div class="col-8">
-                                        <label class="">アクションを選択</label>
+                                    <div class="col-3">
+                                        <label class="multisteps-form__input form-label">マルチボタン<span class="text-third">(必須)</span></label>
+                                        <div class="input-group">
+                                                <select class="form-control" name="multiBtn" id="multiBtnJs">
+                                                    <option value="" disabled selected>未選択</option>
+                                                    <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}" data-name="{{ $richmenuSetting->nameA }}">{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}</option>
+                                                    <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}" data-name="{{ $richmenuSetting->nameB }}">{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}</option>
+                                                    <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}" data-name="{{ $richmenuSetting->nameC }}">{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}</option>
+                                                </select>                                        
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="">マルチボタンの名前<span class="text-third">(必須)</span></label>
+                                        <div class="input-group">
+                                            <input type="text" class="multisteps-form__input form-control" name="name" 
+                                                id="displayNameInputJs" cols="30" rows="2" placeholder="マルチボタンの名前">
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <label class="">アクションを追加</label>
                                         <div class="input-group">
                                                 <select class="form-control" name="action" id="action">
                                                     <option value="" selected>未選択</option>
@@ -250,17 +268,6 @@ Account
                                                     <option value="会員情報">会員情報</option>
                                                     <option value="店舗情報">店舗情報</option>
                                                     <option value="友達に紹介">友達に紹介</option>
-                                                </select>                                        
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <label class="multisteps-form__input form-label">マルチボタン<span class="text-third">(必須)</span></label>
-                                        <div class="input-group">
-                                                <select class="form-control" name="multiBtn" id="multiBtnJs">
-                                                    <option value="" disabled selected>未選択</option>
-                                                    <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
-                                                    <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
-                                                    <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
                                                 </select>                                        
                                         </div>
                                     </div>
@@ -330,11 +337,14 @@ Account
 
     var btnOptions = document.getElementById("multiBtnJs");
     var messageInput = document.querySelector('#displayMessageInputJs');
+    var nameInput = document.querySelector('#displayNameInputJs');
 
     btnOptions.addEventListener('change', function(event) {
         var option= btnOptions.options[btnOptions.selectedIndex];
-        var datarc = option.getAttribute("data-message");
-        messageInput.innerHTML = datarc;
+        var dataMessage = option.getAttribute("data-message");
+        var dataName = option.getAttribute("data-name");
+        messageInput.innerHTML = dataMessage;
+        nameInput.value = dataName;
     });
 
 </script>

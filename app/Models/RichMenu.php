@@ -13,6 +13,7 @@ class RichMenu extends Model
         'name', 'width', 'height', 'image', 'display_text', 'richmenu_id', 'account_id',
         'text_a', 'text_b', 'text_c', 'text_d', 'text_e', 'text_f',
         'url_a', 'url_b', 'url_c', 'url_d', 'url_e', 'url_f',
+        'multi_a', 'multi_b', 'multi_c', 'multi_d', 'multi_e', 'multi_f',
     ];
 
     public function account()
