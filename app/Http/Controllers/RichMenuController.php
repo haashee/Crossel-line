@@ -60,6 +60,7 @@ class RichMenuController extends Controller
 
         $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
 
+
         return view('dashboard.richmenu.create', [
             'account' => $account,
             'richmenuSetting' => $richmenuSetting,
@@ -330,6 +331,39 @@ class RichMenuController extends Controller
         // isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
         // ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basic_id) : new MessageTemplateActionBuilder('m', $richmenu->text_a)
         // ($richmenu->text_a == '友達に紹介') ? new UriTemplateActionBuilder($richmenu->text_a, 'https://line.me/R/nv/recommendOA/' . $account->basicId) : (isset($richmenu->url_a) ? new UriTemplateActionBuilder($richmenu->text_a, $richmenu->url_a) : new MessageTemplateActionBuilder('m', $richmenu->text_a))
+
+        $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
+        if ($richmenu->text_a == 'マルチボタン') {
+            $replyTextA = $richmenuSetting->nameA;
+        } else {
+            $replyTextA = $richmenu->text_a;
+        }
+        if ($richmenu->text_b == 'マルチボタン') {
+            $replyTextB = $richmenuSetting->nameB;
+        } else {
+            $replyTextB = $richmenu->text_b;
+        }
+        if ($richmenu->text_c == 'マルチボタン') {
+            $replyTextC = $richmenuSetting->nameC;
+        } else {
+            $replyTextC = $richmenu->text_c;
+        }
+        if ($richmenu->text_d == 'マルチボタン') {
+            $replyTextD = $richmenuSetting->nameD;
+        } else {
+            $replyTextD = $richmenu->text_d;
+        }
+        if ($richmenu->text_e == 'マルチボタン') {
+            $replyTextD = $richmenuSetting->nameD;
+        } else {
+            $replyTextD = $richmenu->text_e;
+        }
+        if ($richmenu->text_f == 'マルチボタン') {
+            $replyTextF = $richmenuSetting->nameF;
+        } else {
+            $replyTextF = $richmenu->text_f;
+        }
 
 
         // check if big richmenu or small richmenu
