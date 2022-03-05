@@ -537,7 +537,7 @@ class RichMenuController extends Controller
         Session::put('title', 'ボタン追加完了');
 
         return redirect('accounts' . '/' . $aid . '/' . 'multibtn')
-            ->with('message', 'マルチボタンが追加されました。');
+            ->with('message', 'マルチボタンにボタンが追加されました。');
     }
 
 
