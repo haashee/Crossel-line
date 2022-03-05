@@ -36,6 +36,11 @@ class Account extends Model
         return $this->hasOne(AccountSetting::class, 'account_id', 'id');
     }
 
+    public function richmenuSetting()
+    {
+        return $this->hasOne(AccountSetting::class, 'account_id', 'id');
+    }
+
     public function chatSetting()
     {
         return $this->hasOne(ChatSetting::class, 'account_id', 'id');

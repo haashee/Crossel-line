@@ -161,7 +161,7 @@ Account
                     </div>
                     <div class="row mx-3">
                         <div class="button-row d-flex col-sm-auto ms-auto">
-                        <a href="{{ route('tag.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">マルチボタンの設定</a>
+                        <a href="{{ route('richmenu.multi', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">マルチボタンの設定</a>
                         <a href="{{ route('membership.setting', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">リッチメニューの設定</a>
                         </div>
                     </div>

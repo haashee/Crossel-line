@@ -92,6 +92,10 @@ class AccountsController extends Controller
             'default_text' => 'メッセージありがとうございます。申し訳ありませんがこのアカウントから個別に返信することはできません。次回の配信をお楽しみに!',
         ]);
 
+        RichmenuSetting::create([
+            'account_id' => $newAccount->id,
+        ]);
+
         Session::put('title', 'アカウントの初期化完了');
 
         return redirect('/accounts' . '/' . $newAccount->id . '/create/check')

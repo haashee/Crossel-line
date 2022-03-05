@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\RichMenu;
 use App\Models\Account;
 use App\Models\LineUser;
+use App\Models\Tag;
 
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
@@ -427,5 +428,60 @@ class RichMenuController extends Controller
         Session::put('title', 'リッチメニュー適応成功');
 
         return redirect('/accounts' . '/' . $aid . '/richmenu')->with('message', 'リッチメニューが適応されました。');
+    }
+
+
+    /**
+     * Display a multiBtn setting.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function multiBtn($aid)
+    {
+        $accounts = Account::all();
+        $account = Account::where('id', $aid)->first();
+        $tags = Tag::where('account_id', $aid)->get();
+
+
+
+        return view('dashboard.richmenu.multibtn', [
+            'accounts' => $accounts,
+            'account' => $account,
+            'tags' => $tags,
+        ]);
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $aid
+     * @return \Illuminate\Http\Response
+     */
+    public function updateMulti(Request $request, $aid)
+    {
+        $request->validate([
+            'name' => 'required',
+            'color' => 'required',
+        ]);
+
+        if ($request->has('isPublic')) {
+            $publicFlag = true;
+        } else {
+            $publicFlag = false;
+        }
+
+        Tag::where('id', $aid)
+            ->update([
+                'name' => $request->input('name'),
+                'color' => $request->input('color'),
+                'isPublic' => $publicFlag,
+            ]);
+
+        Session::put('title', 'タグ更新完了');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'tag')
+            ->with('message', 'タグが無事更新されました。');
     }
 }
