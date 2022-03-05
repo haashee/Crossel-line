@@ -38063,12 +38063,26 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 /* action pills in multi button setting richmenu */
-.action-pills {
+.action-pill {
     background: #35455d;
-    /* bottom: 0;
-    width: 100%; */
     text-align: center;
     border-radius: 1rem;
     color: white;
-    /* border-bottom-right-radius: 1rem; */
+    width: fit-content;
+    display: inline-block;
+}
+
+.action-pills-group > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    height: 100%;
+}
+
+.action-pill-deletebtn {
+    text-align: center;
+    color: white;
+    width: fit-content;
+    display: inline-block;
 }
