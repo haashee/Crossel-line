@@ -256,7 +256,14 @@ Account
                                                 </div>
                                                 <div id="divMulti_A">
                                                     <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                                    <input id="multiA" name="multiA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                    <div class="input-group">
+                                                        <select class="multisteps-form__input form-control" name="multiA" id="multiA">
+                                                            <option value="" disabled selected>未選択</option>
+                                                            <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
+                                                            <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
+                                                            <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
+                                                        </select>                                        
+                                                    </div>
                                                 </div>
 
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
@@ -276,7 +283,14 @@ Account
                                                 </div>
                                                 <div id="divMulti_B">
                                                     <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                                    <input id="multiB" name="multiB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                    <div class="input-group">
+                                                        <select class="multisteps-form__input form-control" name="multiB" id="multiB">
+                                                            <option value="" disabled selected>未選択</option>
+                                                            <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
+                                                            <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
+                                                            <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
+                                                        </select>                                        
+                                                    </div>
                                                 </div>
 
                                                 <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
@@ -296,7 +310,14 @@ Account
                                                 </div>
                                                 <div id="divMulti_C">
                                                     <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                                    <input id="multiC" name="multiC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                    <div class="input-group">
+                                                        <select class="multisteps-form__input form-control" name="multiC" id="multiC">
+                                                            <option value="" disabled selected>未選択</option>
+                                                            <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
+                                                            <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
+                                                            <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
+                                                        </select>                                        
+                                                    </div>
                                                 </div>
 
                                                 <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定</label>
@@ -316,7 +337,14 @@ Account
                                                 </div>
                                                 <div id="divMulti_D">
                                                     <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                                    <input id="multiD" name="multiD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                    <div class="input-group">
+                                                        <select class="multisteps-form__input form-control" name="multiD" id="multiD">
+                                                            <option value="" disabled selected>未選択</option>
+                                                            <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
+                                                            <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
+                                                            <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
+                                                        </select>                                        
+                                                    </div>
                                                 </div>
 
                                                 <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定</label>
@@ -336,7 +364,14 @@ Account
                                                 </div>
                                                 <div id="divMulti_E">
                                                     <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                                    <input id="multiE" name="multiE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                    <div class="input-group">
+                                                        <select class="multisteps-form__input form-control" name="multiE" id="multiE">
+                                                            <option value="" disabled selected>未選択</option>
+                                                            <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
+                                                            <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
+                                                            <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
+                                                        </select>                                        
+                                                    </div>
                                                 </div>
 
                                                 <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定</label>
@@ -356,7 +391,14 @@ Account
                                                 </div>
                                                 <div id="divMulti_F">
                                                     <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                                    <input id="multiF" name="multiF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                                    <div class="input-group">
+                                                        <select class="multisteps-form__input form-control" name="multiF" id="multiF">
+                                                            <option value="" disabled selected>未選択</option>
+                                                            <option value="multiBtnA" data-message="{{ $richmenuSetting->displayTextA }}">マルチボタン「 A 」</option>
+                                                            <option value="multiBtnB" data-message="{{ $richmenuSetting->displayTextB }}">マルチボタン「 B 」</option>
+                                                            <option value="multiBtnC" data-message="{{ $richmenuSetting->displayTextC }}">マルチボタン「 C 」</option>
+                                                        </select>                                        
+                                                    </div>
                                                 </div>
 
                                             </div>

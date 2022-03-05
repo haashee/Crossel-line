@@ -58,8 +58,11 @@ class RichMenuController extends Controller
     {
         $account = Account::where('id', $aid)->first();
 
+        $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
         return view('dashboard.richmenu.create', [
             'account' => $account,
+            'richmenuSetting' => $richmenuSetting,
         ]);
     }
 
