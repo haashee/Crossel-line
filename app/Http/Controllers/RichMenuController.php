@@ -432,6 +432,8 @@ class RichMenuController extends Controller
     }
 
 
+
+
     /**
      * Display a multiBtn setting.
      *
@@ -456,6 +458,8 @@ class RichMenuController extends Controller
             'richmenuSetting' => $richmenuSetting,
         ]);
     }
+
+
 
 
     /**
@@ -534,5 +538,37 @@ class RichMenuController extends Controller
 
         return redirect('accounts' . '/' . $aid . '/' . 'multibtn')
             ->with('message', 'マルチボタンが追加されました。');
+    }
+
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $aid
+     * @return \Illuminate\Http\Response
+     */
+    public function resetMulti(Request $request, $aid)
+    {
+        $setting = RichmenuSetting::where('account_id', $aid)->first();
+
+        $resetBtn = $request->input('resetBtn');
+
+        if ($resetBtn == 'multiBtnA') {
+            $setting->multiBtnA = null;
+        } elseif ($resetBtn == 'multiBtnB') {
+            $setting->multiBtnB = null;
+        } elseif ($resetBtn == 'multiBtnC') {
+            $setting->multiBtnC = null;
+        }
+
+        $setting->save();
+
+        Session::put('title', 'マルチボタンのリセット完了');
+
+        return redirect('accounts' . '/' . $aid . '/' . 'multibtn')
+            ->with('message', 'マルチボタンがが正常にリセットされました。');
     }
 }

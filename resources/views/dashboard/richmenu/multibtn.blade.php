@@ -142,19 +142,19 @@ Account
                                                 <div class="row text-center g-0">
 
                                                     @if(isset($richmenuSetting->multiBtnA))
-                                                        <form class="" action="" method="POST">
+                                                        <form class="" action="{{ route('richmenu.multi.reset', ['aid' => $account->id]) }}" method="POST">
                                                             @csrf
-                                                            @method('delete')
 
                                                             @foreach(explode(',', $richmenuSetting->multiBtnA ) as $action) 
                                                                 <div class="action-pill col-2 text-xs p-1 px-2 me-1">
                                                                         {{$action}}
                                                                 </div>
                                                             @endforeach
+                                                            <input type="text" name="resetBtn" value="multiBtnA" hidden>
                                                             <button class="btn btn-link text-muted text-xs mb-0 px-0 action-pill-deletebtn " type="submit" name="del">
                                                                 <i class="fas fa-trash text-sm me-1"></i>
                                                             </button>
-
+                                                            
                                                         </form>                                                    
                                                     @else 
                                                         <p class="text-xs pt-3"> 未登録</p>
@@ -173,15 +173,16 @@ Account
                                                 <div class="row text-center g-0">
 
                                                     @if(isset($richmenuSetting->multiBtnB))
-                                                        <form class="" action="" method="POST">
+                                                        <form class="" action="{{ route('richmenu.multi.reset', ['aid' => $account->id]) }}" method="POST">
                                                             @csrf
-                                                            @method('delete')
+                                                            {{-- @method('delete') --}}
 
                                                             @foreach(explode(',', $richmenuSetting->multiBtnB ) as $action) 
                                                                 <div class="action-pill col-2 text-xs p-1 px-2 me-1">
                                                                         {{$action}}
                                                                 </div>
                                                             @endforeach
+                                                            <input type="text" name="resetBtn" value="multiBtnB" hidden>
                                                             <button class="btn btn-link text-muted text-xs mb-0 px-0 action-pill-deletebtn " type="submit" name="del">
                                                                 <i class="fas fa-trash text-sm me-1"></i>
                                                             </button>
@@ -204,15 +205,16 @@ Account
                                                 <div class="row text-center g-0">
 
                                                     @if(isset($richmenuSetting->multiBtnC))
-                                                        <form class="" action="" method="POST">
+                                                        <form class="" action="{{ route('richmenu.multi.reset', ['aid' => $account->id]) }}" method="POST">
                                                             @csrf
-                                                            @method('delete')
+                                                            {{-- @method('delete') --}}
 
                                                             @foreach(explode(',', $richmenuSetting->multiBtnC ) as $action) 
                                                                 <div class="action-pill col-2 text-xs p-1 px-2 me-1">
                                                                         {{$action}}
                                                                 </div>
                                                             @endforeach
+                                                            <input type="text" name="resetBtn" value="multiBtnC" hidden>
                                                             <button class="btn btn-link text-muted text-xs mb-0 px-0 action-pill-deletebtn " type="submit" name="del">
                                                                 <i class="fas fa-trash text-sm me-1"></i>
                                                             </button>

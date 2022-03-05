@@ -52,6 +52,7 @@ Route::get('accounts/{aid}/friends', [LineUserController::class, 'index'])->name
 Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
 
 // rich menu routes
+Route::post('accounts/{aid}/resetmulti', [RichMenuController::class, 'resetMulti'])->name('richmenu.multi.reset');
 Route::post('accounts/{aid}/updatemulti', [RichMenuController::class, 'updateMulti'])->name('richmenu.multi.update');
 Route::get('accounts/{aid}/multibtn', [RichMenuController::class, 'multiBtn'])->name('richmenu.multi');
 Route::get('accounts/{aid}/richmenu/{id}/apply', [RichMenuController::class, 'richMenuApply'])->name('richmenu.apply');
