@@ -64,6 +64,16 @@ Account
     </div>
     @endif
 
+    <!--confirmation message-->
+    <div id="id_confrmdiv" class="card card-body  p-4">
+      <div class="row justify-content-center align-items-center">
+        <p class="text-md">
+          この操作を実行すると元に戻せなくなります。<br> このまま処理を続けてもよろしいですか?
+        </p>
+        <button id="id_truebtn" class="mx-3 btn bg-gradient-danger mb-0">進む</button>
+        <button id="id_falsebtn" class="mx-3 btn btn-outline-secondary mb-0">戻る</button>
+      </div>
+    </div>
 
 
     <div class="row mt-3">
@@ -603,8 +613,12 @@ Account
               @csrf
               @method('delete')
               <button class="confirm-delete btn btn-outline-secondary mb-0 ms-auto" type="button"
-                name="button">確定</button>
-              <button class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="submit" name="button" disabled>
+                name="button">確定
+              </button>
+              <button onclick="confirmDelete()" class="confirm-delete-btn btn bg-gradient-danger mb-0 ms-2" type="button" name="button" disabled>
+                削除
+              </button>
+              <button id="deleteBtn" class="btn bg-gradient-danger mb-0 ms-2" type="submit" name="button" hidden>
                 削除
               </button>
             </form>
@@ -793,6 +807,19 @@ Account
     reader.readAsDataURL(input.files[0]);
   };
   </script>
+  <script>
+    function confirmDelete(){
+        document.getElementById('id_confrmdiv').style.display="block"; 
+        
+        document.getElementById('id_truebtn').onclick = function(){
+           // delete operation
+            document.getElementById("deleteBtn").click();
+        };
+        document.getElementById('id_falsebtn').onclick = function(){
+            document.getElementById('id_confrmdiv').style.display="none";
+        };
+    }
+</script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

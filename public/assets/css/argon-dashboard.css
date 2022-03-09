@@ -37695,24 +37695,26 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* confirm box */
 #id_confrmdiv {
     display: none;
-    background-color: #eee;
-    border-radius: 5px;
-    border: 1px solid #aaa;
+    /* background-color: #eee; */
+    /* border-radius: 5px; */
+    /* border: 1px solid #aaa; */
     position: fixed;
-    width: 300px;
+    width: 500px;
     left: 50%;
     margin-left: -150px;
     padding: 6px 8px 8px;
     box-sizing: border-box;
     text-align: center;
+    z-index: 1000;
 }
 
 #id_confrmdiv button {
-    background-color: #ccc;
+    /* background-color: #ccc; */
     display: inline-block;
-    border-radius: 3px;
-    border: 1px solid #aaa;
-    padding: 2px;
+    border-radius: 0.5rem;
+    /* border: 1px solid #aaa; */
+    /* padding: 2px;
+    padding-top: 5px; */
     text-align: center;
     width: 80px;
     cursor: pointer;
