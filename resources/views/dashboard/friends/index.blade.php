@@ -109,14 +109,6 @@ Friend list
                                                 data-bs-toggle="tooltip" data-bs-original-title="チャットする">
                                                 <i class="fas fa-envelope text-third"></i>
                                             </a>
-                                            {{-- <a onclick="doSomething()" href="javascript:;" data-bs-toggle="tooltip"
-                                                data-bs-original-title="削除">
-                                                <i class="fas fa-trash text-third"></i>
-                                            </a>
-                                            <div id="id_confrmdiv">confirmation
-                                                <button id="id_truebtn">Yes</button>
-                                                <button id="id_falsebtn">No</button>
-                                            </div> --}}
                                     </td>
                                 </tr>
                                 @endforeach
@@ -1179,20 +1171,7 @@ Friend list
                 );
             }
 </script>
-<script>
-    function doSomething(){
-        document.getElementById('id_confrmdiv').style.display="block"; //this is the replace of this line
 
-        document.getElementById('id_truebtn').onclick = function(){
-           // Do your delete operation
-            alert('true');
-        };
-        document.getElementById('id_falsebtn').onclick = function(){
-            alert('false');
-            return false;
-        };
-    }
-</script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->

@@ -37695,9 +37695,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 /* confirm box */
 #id_confrmdiv {
     display: none;
-    /* background-color: #eee; */
-    /* border-radius: 5px; */
-    /* border: 1px solid #aaa; */
     position: fixed;
     width: 500px;
     left: 50%;
@@ -37709,12 +37706,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 }
 
 #id_confrmdiv button {
-    /* background-color: #ccc; */
     display: inline-block;
     border-radius: 0.5rem;
-    /* border: 1px solid #aaa; */
-    /* padding: 2px;
-    padding-top: 5px; */
     text-align: center;
     width: 80px;
     cursor: pointer;
