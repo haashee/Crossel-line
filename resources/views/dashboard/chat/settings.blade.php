@@ -539,7 +539,7 @@ Account
                 </div>
 
                 <!-- Card Delete Account -->
-                <div class="card mt-4" id="delete">
+                {{-- <div class="card mt-4" id="delete">
                     <div class="card-header">
                         <h5>Delete Account</h5>
                         <p class="text-sm mb-0">削除されたアカウントは復元できませんのでご注意ください。
@@ -548,8 +548,6 @@ Account
                     <div class="card-body d-sm-flex pt-4">
                         <div class="d-flex align-items-center mb-sm-0 mb-4">
                             <div class="ms-2">
-                                {{-- <span class="text-dark font-weight-bold d-block text-sm">アカウントの削除はできません</span>
-                                <span class="text-xs d-block">有料プランをご利用中はアカウントの削除ができません。</span> --}}
                                 <span class="text-dark font-weight-bold d-block text-sm">削除を確定</span>
                                 <span class="text-xs d-block">削除を確定するには「確定」ボタンを押してから削除してください。</span>
                             </div>
@@ -566,7 +564,7 @@ Account
                             </button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
