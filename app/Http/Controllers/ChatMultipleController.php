@@ -76,9 +76,14 @@ class ChatMultipleController extends Controller
         foreach ($data['tags'] as $tag_id) {
             $tag = Tag::find($tag_id);
             foreach ($tag->lineUsers as $friend) {
-                $line_id = $friend->line_id;
-                if ($line_id[0] == "U") {
-                    array_push($id_array, $line_id);
+                if ($friend->isBlackListed) {
+                    Log::warning("The user " . $friend->name  . " was not added to send list");
+                    break;
+                } else {
+                    $line_id = $friend->line_id;
+                    if ($line_id[0] == "U") {
+                        array_push($id_array, $line_id);
+                    }
                 }
             }
         }
@@ -105,7 +110,7 @@ class ChatMultipleController extends Controller
 
         // Logging error
         if ($response->isSucceeded()) {
-            Log::info('Line send successful');
+            Log::info('Line multiple send successful');
         } else {
             Log::error('Sending failed: ' . $response->getRawBody());
         }
