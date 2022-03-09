@@ -9,7 +9,7 @@ class RichmenuSetting extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['multiBtn1', 'multiBtn2', 'multiBtn3', 'showRichmenu', 'account_id', 'nameA', 'nameB', 'nameC'];
+    protected $fillable = ['multiBtnA', 'multiBtnB', 'multiBtnC', 'showRichmenu', 'account_id', 'nameA', 'nameB', 'nameC', 'displayTextA', 'displayTextB', 'displayTextC'];
 
     protected $casts = [
         'multiBtn1' => 'array',

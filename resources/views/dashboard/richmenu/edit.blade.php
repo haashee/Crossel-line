@@ -305,11 +305,24 @@ Account
                                     </select>
                                     <div id="divUrl_A">
                                         <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
-                                        <input id="urlA" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlA" name="urlA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_a }}" />
                                     </div>
                                     <div id="divMulti_A">
                                         <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                        <input id="multiA" name="multiA" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <div class="input-group">
+                                            <select class="multisteps-form__input form-control" name="multiA" id="multiA">
+                                                <option value="" disabled selected>未選択</option>
+                                                <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}" {{$richmenu->multi_a == $richmenuSetting->nameA ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}" {{$richmenu->multi_a == $richmenuSetting->nameB ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}" {{$richmenu->multi_a == $richmenuSetting->nameC ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
+                                                </option>
+                                            </select>                                        
+                                        </div>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
@@ -321,15 +334,28 @@ Account
                                         <option value="店舗情報" {{$richmenu->text_b == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
                                         <option value="友達に紹介" {{$richmenu->text_b == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
                                         <option value="リンク" {{$richmenu->text_b == 'リンク' ? 'selected' : ''}}>リンク</option>
-                                        <option value="マルチボタン" {{$richmenu->text_a == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
+                                        <option value="マルチボタン" {{$richmenu->text_b == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
                                     </select>
                                     <div id="divUrl_B">
                                         <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
-                                        <input id="urlB" name="urlB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlB" name="urlB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_b }}" />
                                     </div>
                                     <div id="divMulti_B">
                                         <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                        <input id="multiB" name="multiB" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <div class="input-group">
+                                            <select class="multisteps-form__input form-control" name="multiB" id="multiB">
+                                                <option value="" disabled selected>未選択</option>
+                                                <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}" {{$richmenu->multi_b == $richmenuSetting->nameA ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}" {{$richmenu->multi_b == $richmenuSetting->nameB ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}" {{$richmenu->multi_b == $richmenuSetting->nameC ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
+                                                </option>
+                                            </select>                                        
+                                        </div>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
@@ -341,15 +367,28 @@ Account
                                         <option value="店舗情報" {{$richmenu->text_c == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
                                         <option value="友達に紹介" {{$richmenu->text_c == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
                                         <option value="リンク" {{$richmenu->text_c == 'リンク' ? 'selected' : ''}}>リンク</option>
-                                        <option value="マルチボタン" {{$richmenu->text_a == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
+                                        <option value="マルチボタン" {{$richmenu->text_c == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
                                     </select>
                                     <div id="divUrl_C">
                                         <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
-                                        <input id="urlC" name="urlC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlC" name="urlC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_c }}" />
                                     </div>
                                     <div id="divMulti_C">
                                         <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                        <input id="multiC" name="multiC" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <div class="input-group">
+                                            <select class="multisteps-form__input form-control" name="multiC" id="multiC">
+                                                <option value="" disabled selected>未選択</option>
+                                                <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}" {{$richmenu->multi_c == $richmenuSetting->nameA ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}" {{$richmenu->multi_c == $richmenuSetting->nameB ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}" {{$richmenu->multi_c == $richmenuSetting->nameC ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
+                                                </option>
+                                            </select>                                        
+                                        </div>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定</label>
@@ -361,15 +400,28 @@ Account
                                         <option value="店舗情報" {{$richmenu->text_d == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
                                         <option value="友達に紹介" {{$richmenu->text_d == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
                                         <option value="リンク" {{$richmenu->text_d == 'リンク' ? 'selected' : ''}}>リンク</option>
-                                        <option value="マルチボタン" {{$richmenu->text_a == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
+                                        <option value="マルチボタン" {{$richmenu->text_d == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
                                     </select>
                                     <div id="divUrl_D">
                                         <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
-                                        <input id="urlD" name="urlD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlD" name="urlD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_d }}" />
                                     </div>
                                     <div id="divMulti_D">
                                         <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                        <input id="multiD" name="multiD" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <div class="input-group">
+                                            <select class="multisteps-form__input form-control" name="multiD" id="multiD">
+                                                <option value="" disabled selected>未選択</option>
+                                                <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}" {{$richmenu->multi_d == $richmenuSetting->nameA ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}" {{$richmenu->multi_d == $richmenuSetting->nameB ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}" {{$richmenu->multi_d == $richmenuSetting->nameC ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
+                                                </option>
+                                            </select>                                        
+                                        </div>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定</label>
@@ -381,15 +433,28 @@ Account
                                         <option value="店舗情報" {{$richmenu->text_e == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
                                         <option value="友達に紹介" {{$richmenu->text_e == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
                                         <option value="リンク" {{$richmenu->text_e == 'リンク' ? 'selected' : ''}}>リンク</option>
-                                        <option value="マルチボタン" {{$richmenu->text_a == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
+                                        <option value="マルチボタン" {{$richmenu->text_e == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
                                     </select>
                                     <div id="divUrl_E">
                                         <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
-                                        <input id="urlE" name="urlE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlE" name="urlE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_e }}" />
                                     </div>
                                     <div id="divMulti_E">
                                         <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                        <input id="multiE" name="multiE" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <div class="input-group">
+                                            <select class="multisteps-form__input form-control" name="multiE" id="multiE">
+                                                <option value="" disabled selected>未選択</option>
+                                                <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}" {{$richmenu->multi_e == $richmenuSetting->nameA ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}" {{$richmenu->multi_e == $richmenuSetting->nameB ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}" {{$richmenu->multi_e == $richmenuSetting->nameC ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
+                                                </option>
+                                            </select>                                        
+                                        </div>
                                     </div>
 
                                     <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定</label>
@@ -401,15 +466,28 @@ Account
                                         <option value="店舗情報" {{$richmenu->text_f == '店舗情報' ? 'selected' : ''}}>店舗情報</option>
                                         <option value="友達に紹介" {{$richmenu->text_f == '友達に紹介' ? 'selected' : ''}}>友達に紹介</option>
                                         <option value="リンク" {{$richmenu->text_f == 'リンク' ? 'selected' : ''}}>リンク</option>
-                                        <option value="マルチボタン" {{$richmenu->text_a == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
+                                        <option value="マルチボタン" {{$richmenu->text_f == 'マルチボタン' ? 'selected' : ''}}>マルチボタン</option>
                                     </select>
                                     <div id="divUrl_F">
                                         <label class="text-secondary">リンクのURL <span class="text-third">(URLはhttp://から始まる必要があります。)</span></label>
-                                        <input id="urlF" name="urlF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <input id="urlF" name="urlF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" value="{{ $richmenu->url_f }}" />
                                     </div>
                                     <div id="divMulti_F">
                                         <label class="text-secondary">マルチボタンを選択<span class="text-third">(必須)</span></label>
-                                        <input id="multiF" name="multiF" class="multisteps-form__input form-control" type="text" placeholder="http://www.google.com" />
+                                        <div class="input-group">
+                                            <select class="multisteps-form__input form-control" name="multiF" id="multiF">
+                                                <option value="" disabled selected>未選択</option>
+                                                <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}" {{$richmenu->multi_f == $richmenuSetting->nameA ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}" {{$richmenu->multi_f == $richmenuSetting->nameB ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
+                                                </option>
+                                                <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}" {{$richmenu->multi_f == $richmenuSetting->nameC ? 'selected' : ''}}>
+                                                    {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
+                                                </option>
+                                            </select>                                        
+                                        </div>
                                     </div>
 
                                 </div>
@@ -580,7 +658,7 @@ Account
         });
 
 
-    
+    // for rich menu simulation
     document.addEventListener('DOMContentLoaded', copyToDiv);
     document.getElementById('label').addEventListener('keyup', copyToDiv);
     
@@ -594,29 +672,54 @@ Account
 
 
 
-    // var btnA = document.getElementById("buttonsA");
-    // var btnB = document.getElementById("buttonsB");
-    // var btnC = document.getElementById("buttonsC");
-    // var btnD = document.getElementById("buttonsD");
-    // var btnE = document.getElementById("buttonsE");
-    // var btnF = document.getElementById("buttonsF");
 
-    // if (btnA.value == 'リンク') {
-    //     showDivv('hidden_divA');
-    // }if (btnB.value == 'リンク') {
-    //     showDivv('hidden_divB');
-    // }if (btnC.value == 'リンク') {
-    //     showDivv('hidden_divC');
-    // }if (btnD.value == 'リンク') {
-    //     showDivv('hidden_divD');
-    // }if (btnE.value == 'リンク') {
-    //     showDivv('hidden_divE');
-    // }if (btnF.value == 'リンク') {
-    //     showDivv('hidden_divF');
-    // } 
+    // if selected in database then show 
+    var btnA = document.getElementById("buttonsA");
+    var btnB = document.getElementById("buttonsB");
+    var btnC = document.getElementById("buttonsC");
+    var btnD = document.getElementById("buttonsD");
+    var btnE = document.getElementById("buttonsE");
+    var btnF = document.getElementById("buttonsF");
+
+    if (btnA.value == 'リンク') {
+        showDivv('divUrl_A');
+    } else if (btnA.value == 'マルチボタン') {
+        showDivv('divMulti_A');
+    }
+        
+    if (btnB.value == 'リンク') {
+        showDivv('divUrl_B');
+    } else if (btnB.value == 'マルチボタン') {
+        showDivv('divMulti_B');
+    }
+    
+    if (btnC.value == 'リンク') {
+        showDivv('divUrl_C');
+    } else if (btnC.value == 'マルチボタン') {
+        showDivv('divMulti_C');
+    }
+    
+    if (btnD.value == 'リンク') {
+        showDivv('divUrl_D');
+    } else if (btnD.value == 'マルチボタン') {
+        showDivv('divMulti_D');
+    }
+    
+    if (btnE.value == 'リンク') {
+        showDivv('divUrl_E');
+    } else if (btnE.value == 'マルチボタン') {
+        showDivv('divMulti_E');
+    }
+    
+    if (btnF.value == 'リンク') {
+        showDivv('divUrl_F');
+    } else if (btnF.value == 'マルチボタン') {
+        showDivv('divMulti_F');
+    }
 
 
 
+    // show when changed input value
     function showUrl(divId, element)
     {
         document.getElementById(divId).style.display = (element.value == 'リンク') ? 'block' : 'none';
@@ -627,10 +730,10 @@ Account
         document.getElementById(divId).style.display = element.value == 'マルチボタン' ? 'block' : 'none';
     }
 
-    // function showDivv(divId)
-    // {
-    //     document.getElementById(divId).style.display = 'block';
-    // }
+    function showDivv(divId)
+    {
+        document.getElementById(divId).style.display = 'block';
+    }
 
 
 </script>

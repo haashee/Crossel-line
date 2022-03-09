@@ -259,14 +259,14 @@ Account
                                                     <div class="input-group">
                                                         <select class="multisteps-form__input form-control" name="multiA" id="multiA">
                                                             <option value="" disabled selected>未選択</option>
-                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}" data-message="{{ $richmenuSetting->displayTextA }}">
-                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}
+                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}">
+                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}" data-message="{{ $richmenuSetting->displayTextB }}">
-                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}
+                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}">
+                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}" data-message="{{ $richmenuSetting->displayTextC }}">
-                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}
+                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}">
+                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
                                                             </option>
                                                         </select>                                        
                                                     </div>
@@ -292,14 +292,14 @@ Account
                                                     <div class="input-group">
                                                         <select class="multisteps-form__input form-control" name="multiB" id="multiB">
                                                             <option value="" disabled selected>未選択</option>
-                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}" data-message="{{ $richmenuSetting->displayTextA }}">
-                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}
+                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}">
+                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}" data-message="{{ $richmenuSetting->displayTextB }}">
-                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}
+                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}">
+                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}" data-message="{{ $richmenuSetting->displayTextC }}">
-                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}
+                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}">
+                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
                                                             </option>
                                                         </select>                                        
                                                     </div>
@@ -325,14 +325,14 @@ Account
                                                     <div class="input-group">
                                                         <select class="multisteps-form__input form-control" name="multiC" id="multiC">
                                                             <option value="" disabled selected>未選択</option>
-                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}" data-message="{{ $richmenuSetting->displayTextA }}">
-                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}
+                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}">
+                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}" data-message="{{ $richmenuSetting->displayTextB }}">
-                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}
+                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}">
+                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}" data-message="{{ $richmenuSetting->displayTextC }}">
-                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}
+                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}">
+                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
                                                             </option>
                                                         </select>                                        
                                                     </div>
@@ -358,14 +358,14 @@ Account
                                                     <div class="input-group">
                                                         <select class="multisteps-form__input form-control" name="multiD" id="multiD">
                                                             <option value="" disabled selected>未選択</option>
-                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}" data-message="{{ $richmenuSetting->displayTextA }}">
-                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}
+                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}">
+                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}" data-message="{{ $richmenuSetting->displayTextB }}">
-                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}
+                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}">
+                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}" data-message="{{ $richmenuSetting->displayTextC }}">
-                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}
+                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}">
+                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
                                                             </option>
                                                         </select>                                        
                                                     </div>
@@ -391,14 +391,14 @@ Account
                                                     <div class="input-group">
                                                         <select class="multisteps-form__input form-control" name="multiE" id="multiE">
                                                             <option value="" disabled selected>未選択</option>
-                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}" data-message="{{ $richmenuSetting->displayTextA }}">
-                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}
+                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}">
+                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}" data-message="{{ $richmenuSetting->displayTextB }}">
-                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}
+                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}">
+                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}" data-message="{{ $richmenuSetting->displayTextC }}">
-                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}
+                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}">
+                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
                                                             </option>
                                                         </select>                                        
                                                     </div>
@@ -424,14 +424,14 @@ Account
                                                     <div class="input-group">
                                                         <select class="multisteps-form__input form-control" name="multiF" id="multiF">
                                                             <option value="" disabled selected>未選択</option>
-                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}" data-message="{{ $richmenuSetting->displayTextA }}">
-                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタン「 A 」" }}
+                                                            <option value="{{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}" data-message="{{ $richmenuSetting->displayTextA }}">
+                                                                {{ $richmenuSetting->nameA ? $richmenuSetting->nameA : "マルチボタンA" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}" data-message="{{ $richmenuSetting->displayTextB }}">
-                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタン「 B 」" }}
+                                                            <option value="{{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}" data-message="{{ $richmenuSetting->displayTextB }}">
+                                                                {{ $richmenuSetting->nameB ? $richmenuSetting->nameB : "マルチボタンB" }}
                                                             </option>
-                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}" data-message="{{ $richmenuSetting->displayTextC }}">
-                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタン「 C 」" }}
+                                                            <option value="{{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}" data-message="{{ $richmenuSetting->displayTextC }}">
+                                                                {{ $richmenuSetting->nameC ? $richmenuSetting->nameC : "マルチボタンC" }}
                                                             </option>
                                                         </select>                                        
                                                     </div>

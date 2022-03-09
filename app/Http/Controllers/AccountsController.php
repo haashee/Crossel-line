@@ -98,6 +98,12 @@ class AccountsController extends Controller
             'displayTextA' => 'カテゴリを選択してください。',
             'displayTextB' => 'カテゴリを選択してください。',
             'displayTextC' => 'カテゴリを選択してください。',
+            'nameA' => 'マルチボタンA',
+            'nameB' => 'マルチボタンB',
+            'nameC' => 'マルチボタンC',
+            'multiBtnA' => '店舗情報, 友達に紹介',
+            'multiBtnB' => '店舗情報, 友達に紹介',
+            'multiBtnC' => '店舗情報, 友達に紹介',
         ]);
 
         Session::put('title', 'アカウントの初期化完了');
