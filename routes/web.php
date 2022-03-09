@@ -48,6 +48,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // friends routes
 Route::get('accounts/{aid}/friends/{id}/chat', [LineUserController::class, 'sendChat'])->name('friends.chat');
+Route::get('accounts/{aid}/friends/blacklist', [LineUserController::class, 'blackList'])->name('friends.blacklist');
 Route::get('accounts/{aid}/friends', [LineUserController::class, 'index'])->name('friends.index');
 Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' => ['index']]);
 

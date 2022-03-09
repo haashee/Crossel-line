@@ -205,4 +205,22 @@ class LineUserController extends Controller
 
         return redirect('accounts/' . $aid . '/' . 'chat' . '/' . $id);
     }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function blackList($aid)
+    {
+        $account = Account::where('id', $aid)->first();
+        $friends = LineUser::where('isBlackListed', true)->get();
+
+
+        return view('dashboard.friends.blacklist', [
+            'account' => $account,
+            'friends' => $friends,
+        ]);
+    }
 }

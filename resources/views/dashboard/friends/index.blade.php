@@ -34,6 +34,7 @@ Friend list
                         <div class="button-row d-flex col-sm-auto ms-auto">
                         <a href="{{ route('membership.setting', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">会員登録の管理</a>
                         <a href="{{ route('tag.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">タグを管理</a>
+                        <a href="{{ route('friends.blacklist', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">ブラックリスト</a>
                         </div>
                     </div>
                     <div class="table-responsive">
