@@ -44,6 +44,8 @@ Tag setting
         </div>
         @endif
 
+
+
         <!--session message-->
         @if (session()->has('message'))
         <div class="position-fixed bottom-1 end-1 z-index-2">
@@ -63,6 +65,18 @@ Tag setting
         </div>
         @endif
 
+
+
+        <!--confirmation message-->
+        <div id="id_confrmdiv" class="card card-body  p-4">
+            <div class="row justify-content-center align-items-center">
+                <p class="text-md">
+                この操作を実行すると元に戻せなくなります。<br> このまま処理を続けてもよろしいですか?
+                </p>
+                <button id="id_truebtn" class="mx-3 btn bg-gradient-danger mb-0">進む</button>
+                <button id="id_falsebtn" class="mx-3 btn btn-outline-secondary mb-0">戻る</button>
+            </div>
+        </div>
 
 
         <div class="row mt-3">
@@ -144,7 +158,11 @@ Tag setting
                             <form class="ms-auto" action="{{ route('template.destroy', ['aid' => $account->id, 'template' => $template->id]) }}" method="POST">
                                 @csrf
                                 @method('delete')
-                                <button class="btn btn-link text-dark text-muted text-xs mb-0 px-0 " type="submit" name="button">
+                                <button onclick="confirmDelete()" class="btn btn-link text-dark text-muted text-xs mb-0 px-0 " type="button" name="button">
+                                    <i class="fas fa-trash text-secondary text-sm" data-bs-toggle="tooltip"
+                                        data-bs-placement="left" title="テンプレートを削除する"></i>
+                                </button>
+                                <button id="deleteBtn" class="btn btn-link text-dark text-muted text-xs mb-0 px-0 " type="submit" name="button" hidden>
                                     <i class="fas fa-trash text-secondary text-sm" data-bs-toggle="tooltip"
                                         data-bs-placement="left" title="テンプレートを削除する"></i>
                                 </button>
@@ -221,6 +239,19 @@ Tag setting
         }
     });
 
+</script>
+<script>
+    function confirmDelete(){
+        document.getElementById('id_confrmdiv').style.display="block"; 
+        
+        document.getElementById('id_truebtn').onclick = function(){
+           // delete operation
+            document.getElementById("deleteBtn").click();
+        };
+        document.getElementById('id_falsebtn').onclick = function(){
+            document.getElementById('id_confrmdiv').style.display="none";
+        };
+    }
 </script>
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
