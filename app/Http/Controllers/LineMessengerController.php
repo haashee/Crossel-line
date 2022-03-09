@@ -91,6 +91,12 @@ class LineMessengerController extends Controller
         // userIdがあるユーザーを検索
         $user = LineUser::where('line_id', $userId)->first();
 
+        // check if blacklisted
+        if ($user->isBlackListed) {
+            Log::warning("Exited because the user " . $user->name  . " is blacklisted");
+            return;
+        }
+
         // もし見つからない場合は、データベースに保存
         if ($user == NULL) {
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
@@ -239,7 +245,7 @@ class LineMessengerController extends Controller
                     // Create quick reply and send message
                     $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
                     $text_message_builder = new TextMessageBuilder($richmenuSetting->displayTextA, $quick_reply_message_builder); #(text bubble, quick reply)
-                    $bot->replyMessage($reply_token, $text_message_builder);
+                    $response = $bot->replyMessage($reply_token, $text_message_builder);
                 } elseif ($message_content == $richmenuSetting->nameB) {
                     //Send quick reply message
 
@@ -261,7 +267,7 @@ class LineMessengerController extends Controller
                     // Create quick reply and send message
                     $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
                     $text_message_builder = new TextMessageBuilder($richmenuSetting->displayTextB, $quick_reply_message_builder); #(text bubble, quick reply)
-                    $bot->replyMessage($reply_token, $text_message_builder);
+                    $response = $bot->replyMessage($reply_token, $text_message_builder);
                 } elseif ($message_content == $richmenuSetting->nameC) {
                     //Send quick reply message
 
@@ -283,7 +289,7 @@ class LineMessengerController extends Controller
                     // Create quick reply and send message
                     $quick_reply_message_builder = new QuickReplyMessageBuilder($quick_reply_buttons);
                     $text_message_builder = new TextMessageBuilder($richmenuSetting->displayTextC, $quick_reply_message_builder); #(text bubble, quick reply)
-                    $bot->replyMessage($reply_token, $text_message_builder);
+                    $response = $bot->replyMessage($reply_token, $text_message_builder);
                 } else if ($account->chatSetting->default_text_active == true) {
                     // The message to send
                     $message_data = $account->chatSetting->default_text;
