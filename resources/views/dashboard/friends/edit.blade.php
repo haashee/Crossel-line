@@ -139,13 +139,13 @@ Account
               </div>
               <div class="col-sm-auto ms-sm-auto mt-sm-0 mt-3 d-flex">
                 <label class="form-check-label mb-0">
-                  <small id="profileVisibility">
-                    Switch to invisible
+                  <small id="isBlackList">
+                    {{$friend->isBlackListed == true ? 'ブラックリストに追加済み' : 'ブラックリストに追加する'}}
                   </small>
                 </label>
                 <div class="form-check form-switch ms-2">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault23" checked
-                    onchange="visible()">
+                  <input name="isBlackListed" class="form-check-input" type="checkbox" id="checkBoxBlack"
+                    onchange="visible()" {{$friend->isBlackListed == true ? 'checked' : ''}} >
                 </div>
               </div>
             </div>
@@ -784,13 +784,15 @@ Account
   }
 
   function visible() {
-    var elem = document.getElementById('profileVisibility');
-    if (elem) {
-      if (elem.innerHTML == "Switch to visible") {
-        elem.innerHTML = "Switch to invisible"
-      } else {
-        elem.innerHTML = "Switch to visible"
-      }
+    var elem = document.getElementById('isBlackList');
+    var inputBlack = document.getElementById('checkBoxBlack');
+
+    if (inputBlack.checked) {
+      elem.innerHTML = "ブラックリストに追加済み"
+      console.log("checked");
+    } else {
+      elem.innerHTML = "ブラックリストに追加する"
+      console.log("not checked");
     }
   }
 

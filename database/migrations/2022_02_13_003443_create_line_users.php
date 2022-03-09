@@ -24,6 +24,7 @@ class CreateLineUsers extends Migration
             $table->string('postcode')->nullable();
             $table->string('gender')->nullable();
             $table->string('email')->nullable();
+            $table->boolean('isBlackListed')->default(0);
             $table->string('mode')->nullable()->comment('チャネルの状態'); // `standby` は送信すべきでない
             $table->timestamps();
 

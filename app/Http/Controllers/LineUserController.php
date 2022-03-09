@@ -123,6 +123,13 @@ class LineUserController extends Controller
             $DOB = null;
         }
 
+        // black listed checkbox
+        if ($request->has('isBlackListed')) {
+            $blackListedFlag = true;
+        } else {
+            $blackListedFlag = false;
+        }
+
 
         // sync updated tags
         $data = [];
@@ -137,6 +144,7 @@ class LineUserController extends Controller
                 'postcode' => $request->input('postcode'),
                 'gender' => $request->input('gender'),
                 'email' => $request->input('email'),
+                'isBlackListed' => $blackListedFlag,
             ]);
 
         Session::put('title', 'ユーザー編集完了');
