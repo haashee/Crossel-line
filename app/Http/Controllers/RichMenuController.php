@@ -526,12 +526,6 @@ class RichMenuController extends Controller
 
         $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
 
-        // if ($request->filled('action')) {
-        //     $newAction = $request->input('action');
-        // } else {
-        //     $newAction = null;
-        // }
-
         $newAction = $request->input('action');
         $assignBtn = $request->input('multiBtn');
 
