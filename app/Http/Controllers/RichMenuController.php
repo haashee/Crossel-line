@@ -526,14 +526,22 @@ class RichMenuController extends Controller
 
         $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
 
+        // if ($request->filled('action')) {
+        //     $newAction = $request->input('action');
+        // } else {
+        //     $newAction = null;
+        // }
+
         $newAction = $request->input('action');
         $assignBtn = $request->input('multiBtn');
 
         switch ($assignBtn) {
             case 'multiBtnA':
                 $oldActions = $richmenuSetting->multiBtnA;
-                if ($oldActions) {
+                if ($oldActions && $request->filled('action')) {
                     $updatedActionsA = $oldActions . ', ' . $newAction;
+                } elseif ($oldActions) {
+                    $updatedActionsA = $oldActions;
                 } else {
                     $updatedActionsA = $newAction;
                 }
@@ -541,8 +549,10 @@ class RichMenuController extends Controller
 
             case 'multiBtnB':
                 $oldActions = $richmenuSetting->multiBtnB;
-                if ($oldActions) {
+                if ($oldActions && $request->filled('action')) {
                     $updatedActionsB = $oldActions . ', ' . $newAction;
+                } elseif ($oldActions) {
+                    $updatedActionsB = $oldActions;
                 } else {
                     $updatedActionsB = $newAction;
                 }
@@ -550,8 +560,10 @@ class RichMenuController extends Controller
 
             case 'multiBtnC':
                 $oldActions = $richmenuSetting->multiBtnC;
-                if ($oldActions) {
+                if ($oldActions && $request->filled('action')) {
                     $updatedActionsC = $oldActions . ', ' . $newAction;
+                } elseif ($oldActions) {
+                    $updatedActionsC = $oldActions;
                 } else {
                     $updatedActionsC = $newAction;
                 }
@@ -589,10 +601,10 @@ class RichMenuController extends Controller
 
         $setting->save();
 
-        Session::put('title', 'ボタン追加完了');
+        Session::put('title', 'ボタン更新完了');
 
         return redirect('accounts' . '/' . $aid . '/' . 'multibtn')
-            ->with('message', 'マルチボタンにボタンが追加されました。');
+            ->with('message', 'マルチボタンが変更されました。');
     }
 
 
