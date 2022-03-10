@@ -141,7 +141,7 @@ Account
                                 <div class="chat ">
                                     @if ($chat->message)                                        
                                         <div data-time="{{ date('Y/m/d h:i', strtotime($chat->created_at)) }}" class="{{ $chat->senderName == $account->name ? 'msg sent' : 'msg rcvd' }}">
-                                            {{ $chat->message }}
+                                            {!! nl2br($chat->message) !!}
                                         </div>
                                     @else
                                         <p class="text-center text-xs">チャットが開始されました。</p>
