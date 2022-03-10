@@ -60,10 +60,12 @@ Account
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-sm">Project #1</p>
+                                        <p class="text-gradient text-dark mb-2 text-xs">
+                                            リッチメニューのテンプレート #1
+                                        </p>
                                         <a href="javascript:;">
                                             <h5>
-                                                Bubbles
+                                                LINE簡単注文
                                             </h5>
                                         </a>
                                         {{-- <p class="mb-4 text-sm">
@@ -93,10 +95,12 @@ Account
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-sm">Project #2</p>
+                                        <p class="text-gradient text-dark mb-2 text-xs">
+                                            リッチメニューのテンプレート #2
+                                        </p>
                                         <a href="javascript:;">
                                             <h5>
-                                                Scandinavian
+                                                ミニマルオレンジ
                                             </h5>
                                         </a>
                                         <div class="d-flex align-items-center justify-content-between">
@@ -124,10 +128,12 @@ Account
                                         </a>
                                     </div>
                                     <div class="card-body px-1 pb-0">
-                                        <p class="text-gradient text-dark mb-2 text-sm">Project #3</p>
+                                        <p class="text-gradient text-dark mb-2 text-xs">
+                                            リッチメニューのテンプレート #3
+                                        </p>
                                         <a href="javascript:;">
                                             <h5>
-                                                Minimalist
+                                                フラット
                                             </h5>
                                         </a>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
