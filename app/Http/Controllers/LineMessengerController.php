@@ -669,6 +669,9 @@ class LineMessengerController extends Controller
         // get account ID (aid) 
         $account = Account::where('id', $aid)->first();
 
+        // get from richmenu table 
+        $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
         // get channel secret and access token
         $channel_secret = $account->channel_secret;
         $access_token = $account->access_token;
@@ -689,23 +692,34 @@ class LineMessengerController extends Controller
 
                 // Create richmenu
                 $richMenuBuilder = new RichMenuBuilder(
-                    new RichMenuSizeBuilder(843, 2500), #h,w
+                    new RichMenuSizeBuilder(1686, 2500), #h,w
                     true, # show rich menu as default (false to hide rich menu) 
                     "Rich Menu 1", # name of rich menu
                     "ここをタップ!", # Display text for rich menu
                     array( # array for actions on rich menu
                         new RichMenuAreaBuilder( # action 1
                             new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
-                            new UriTemplateActionBuilder("クリックしてね", 'https://google.com/') # reply text
-                            // new MessageTemplateActionBuilder('m', 'Text A') # reply text
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
                         ),
                         new RichMenuAreaBuilder( # action 2
                             new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text B') # reply text
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
                         ),
                         new RichMenuAreaBuilder( # action 3
                             new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text C') # reply text
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 4
+                            new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '注文履歴') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 5
+                            new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '店舗情報') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 6
+                            new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
+                            new UriTemplateActionBuilder('l', 'https://line.me/R/nv/recommendOA/' . $account->basic_id)
                         ),
                     )
                 );
@@ -753,22 +767,34 @@ class LineMessengerController extends Controller
 
                 // Create richmenu
                 $richMenuBuilder = new RichMenuBuilder(
-                    new RichMenuSizeBuilder(843, 2500), #h,w
+                    new RichMenuSizeBuilder(1686, 2500), #h,w
                     true, # show rich menu as default (false to hide rich menu) 
-                    "Rich Menu 1", # name of rich menu
+                    "Rich Menu 2", # name of rich menu
                     "ここをタップ!", # Display text for rich menu
                     array( # array for actions on rich menu
                         new RichMenuAreaBuilder( # action 1
                             new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text A') # reply text
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
                         ),
                         new RichMenuAreaBuilder( # action 2
                             new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text B') # reply text
+                            new MessageTemplateActionBuilder('m', '注文履歴') # reply text
                         ),
                         new RichMenuAreaBuilder( # action 3
                             new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text C') # reply text
+                            new MessageTemplateActionBuilder('m', '店舗情報') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 4
+                            new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 5
+                            new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
+                            new UriTemplateActionBuilder('l', 'https://line.me/R/nv/recommendOA/' . $account->basic_id)
+                        ),
+                        new RichMenuAreaBuilder( # action 6
+                            new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', $richmenuSetting->nameA)
                         ),
                     )
                 );
@@ -816,22 +842,34 @@ class LineMessengerController extends Controller
 
                 // Create richmenu
                 $richMenuBuilder = new RichMenuBuilder(
-                    new RichMenuSizeBuilder(843, 2500), #h,w
+                    new RichMenuSizeBuilder(1686, 2500), #h,w
                     true, # show rich menu as default (false to hide rich menu) 
-                    "Rich Menu 1", # name of rich menu
+                    "Rich Menu 3", # name of rich menu
                     "ここをタップ!", # Display text for rich menu
                     array( # array for actions on rich menu
                         new RichMenuAreaBuilder( # action 1
                             new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text A') # reply text
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
                         ),
                         new RichMenuAreaBuilder( # action 2
                             new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text B') # reply text
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
                         ),
                         new RichMenuAreaBuilder( # action 3
                             new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
-                            new MessageTemplateActionBuilder('m', 'Text C') # reply text
+                            new MessageTemplateActionBuilder('m', '会員情報') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 4
+                            new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '注文履歴') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 5
+                            new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
+                            new UriTemplateActionBuilder('l', 'https://line.me/R/nv/recommendOA/' . $account->basic_id)
+                        ),
+                        new RichMenuAreaBuilder( # action 6
+                            new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', $richmenuSetting->nameA)
                         ),
                     )
                 );
