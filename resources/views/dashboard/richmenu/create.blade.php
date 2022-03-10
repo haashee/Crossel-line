@@ -151,14 +151,14 @@ Account
                                                 <input id="label" name="label" class="multisteps-form__input form-control" type="text" placeholder="リッチメニュー表示ラベル" />
                                                 <label class="mt-4">リッチメニューのサイズ <span class="text-third">(必須)</span></label> <br>
                                                 <input type="radio" id="big" name="richmenu_size" class="multisteps-form__input" value="big">
-                                                <label for="big">Big</label><br>
+                                                <label for="big" class="text-muted">大きいサイズ</label><br>
                                                 <input type="radio" id="small" name="richmenu_size" class="multisteps-form__input" value="small">
-                                                <label for="small">Small</label><br>
+                                                <label for="small" class="text-muted">小さいサイズ</label><br>
                                             </div>
                                         </div>
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
-                                                title="Next">Next</button>
+                                                title="Next">次へ</button>
                                         </div>
                                     </div>
                                 </div>
@@ -179,9 +179,9 @@ Account
                                         </div>
                                         <div class="button-row d-flex mt-4">
                                             <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
-                                                title="Prev">Prev</button>
+                                                title="Prev">戻る</button>
                                             <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next" type="button"
-                                                title="Next">Next</button>
+                                                title="Next">次へ</button>
                                         </div>
                                     </div>
                                 </div>
@@ -239,7 +239,7 @@ Account
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-6 mt-3 mt-sm-0">
-                                                <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定</label>
+                                                <label class="multisteps-form__input form-label" for="buttons">「 A 」ボタンの設定<span class="text-third">(必須)</span></label>
                                                 <select class="form-control" name="buttonsA" id="buttonsA" onchange="showUrl('divUrl_A', this);showMulti('divMulti_A', this);">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
@@ -272,7 +272,7 @@ Account
                                                     </div>
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定</label>
+                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 B 」ボタンの設定<span class="text-third">(必須)</span></label>
                                                 <select class="form-control" name="buttonsB" id="buttonsB" onchange="showUrl('divUrl_B', this);showMulti('divMulti_B', this);">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
@@ -305,7 +305,7 @@ Account
                                                     </div>
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定</label>
+                                                <label class="multisteps-form__input form-label mt-4" for="buttons">「 C 」ボタンの設定<span class="text-third">(必須)</span></label>
                                                 <select class="form-control" name="buttonsC" id="buttonsC" onchange="showUrl('divUrl_C', this);showMulti('divMulti_C', this);">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
@@ -338,7 +338,7 @@ Account
                                                     </div>
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定</label>
+                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 D 」ボタンの設定<span class="text-third">(必須)</span></label>
                                                 <select class="form-control forbig-richmenu" name="buttonsD" id="buttonsD" onchange="showUrl('divUrl_D', this);showMulti('divMulti_D', this);">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
@@ -371,7 +371,7 @@ Account
                                                     </div>
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定</label>
+                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 E 」ボタンの設定<span class="text-third">(必須)</span></label>
                                                 <select class="form-control forbig-richmenu" name="buttonsE" id="buttonsE" onchange="showUrl('divUrl_E', this);showMulti('divMulti_E', this);">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
@@ -404,7 +404,7 @@ Account
                                                     </div>
                                                 </div>
 
-                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定</label>
+                                                <label class="multisteps-form__input form-label mt-4 forbig-richmenu" for="buttons">「 F 」ボタンの設定<span class="text-third">(必須)</span></label>
                                                 <select class="form-control forbig-richmenu" name="buttonsF" id="buttonsF" onchange="showUrl('divUrl_F', this);showMulti('divMulti_F', this);">
                                                     <option value="">-</option>
                                                     <option value="メニューをみる">メニューをみる</option>
@@ -442,9 +442,9 @@ Account
                                         <div class="row">
                                             <div class="button-row d-flex mt-4 col-12">
                                                 <button class="btn bg-gradient-secondary mb-0 js-btn-prev" type="button"
-                                                    title="Prev">Prev</button>
+                                                    title="Prev">戻る</button>
                                                 <button class="btn bg-gradient-dark ms-auto mb-0 js-btn-next"
-                                                    type="button" title="Next">Next</button>
+                                                    type="button" title="Next">次へ</button>
                                             </div>
                                         </div>
                                     </div>
