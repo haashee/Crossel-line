@@ -7,7 +7,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
   <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
   <title>
-    {{ $account->name }}の会員登録
+    {{ $account->name }}の会員画面
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -51,12 +51,12 @@
 
     
     <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
-      style="background-color: {{ $account->accountSetting->membership_background }}; background-position: top;">
+      style="background-color: {{ $account->accountSetting->membership_background }}; background-position: top; z-index:-10;">
       {{-- <span class="mask bg-gradient-dark opacity-6"></span> --}}
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-5 text-center mx-auto">
-            <h1 class="text-white mb-2">プロフィール</h1>
+            <h2 class="text-white mb-8">プロフィール</h2>
             {{-- <p class="text-lead text-white">
               Use these awesome forms to login or create new account in your project for free.
             </p> --}}
@@ -74,18 +74,18 @@
               <h5>Register with</h5>
             </div> --}}
             <div class="mem-btn-container row px-xl-5 px-sm-4 px-4 py-3">
-              <div class="col-4 ms-auto px-1">
-                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 active" data-memtab="settings">
+              <div class="col-4 col-xs-4 col-sm-4 ms-auto px-1">
+                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 text-xs active" data-memtab="settings">
                   基本情報
                 </button>
               </div>
-              <div class="col-4 px-1">
-                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="orders">
+              <div class="col-4 col-xs-4 col-sm-4 px-1">
+                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 text-xs" data-memtab="orders">
                   注文履歴
                 </button>
               </div>
-              <div class="col-4 me-auto px-1">
-                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="card">
+              <div class="col-4 col-xs-4 col-sm-4 me-auto px-1">
+                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 text-xs" data-memtab="card">
                   会員証
                 </button>
               </div>
