@@ -21,6 +21,10 @@ class MembershipController extends Controller
             'friend' => $friend,
             'account' => $account,
         ]);
+        // return view('dashboard.membership.test', [
+        //     'friend' => $friend,
+        //     'account' => $account,
+        // ]);
     }
 
     public function privacy($aid)
@@ -74,11 +78,11 @@ class MembershipController extends Controller
 
         Session::put('title', '会員情報の更新完了');
 
-        return redirect('accounts/' . $aid . '/' . 'membership' . '/' . $id)
-            ->with('message', '会員情報が更新されました。');
-
-        // return redirect('https://liff.line.me/' . $account->liff_tall)
+        // return redirect('accounts/' . $aid . '/' . 'membership' . '/' . $id)
         //     ->with('message', '会員情報が更新されました。');
+
+        return redirect('https://liff.line.me/' . $account->liff_tall)
+            ->with('message', '会員情報が更新されました。');
     }
 
     public function setting($aid)

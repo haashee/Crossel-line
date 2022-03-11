@@ -19,9 +19,7 @@
   <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   {{-- <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css?v=2.0.0') }}" rel="stylesheet" /> --}}
-  <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.0" rel="stylesheet" />
-
-  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.0" rel="stylesheet" />  
 </head>
 
 <body class="bg-gray-100">
@@ -96,10 +94,9 @@
               </div> --}}
             </div>
             <div class="mem-content card-body pt-2 active" id="settings">
-              <form role="form" action="{{  route('membership.update', ['aid' => $account->id,'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data">
-              {{-- <form role="form" action="/accounts/{{ $account->id }}/friends/{{ $friend->id }}" method="POST" enctype="multipart/form-data"> --}}
+              {{-- <form role="form" action="{{  route('membership.update', ['aid' => $account->id,'id' => $friend->id])  }}" method="POST" enctype="multipart/form-data"> --}}
+              <form role="form" action="/accounts/{{ $account->id }}/membership/{{ $friend->id }}/update" method="POST" enctype="multipart/form-data">
                 @csrf
-                {{-- @method('PUT') --}}
                 <input id="firstName" name="name" class="form-control" type="hidden" placeholder="ユーザー名" value="{{ $friend->name }}">
                 <div class="mb-3">
                   <label class="form-label">メールアドレス<span class="text-third">(必須)</span></label>
@@ -314,7 +311,7 @@
                 <div class="form-check form-check-info text-start">
                   <input class="form-check-input" type="checkbox" name="checkbox" value="checkbox" id="flexCheckDefault" checked required>
                   <label class="form-check-label" for="flexCheckDefault">
-                    <a href="{{ route('membership.privacy', ['aid' => $account->id]) }}" class="text-dark font-weight-bolder">個人情報の取り扱い</a>に同意します。
+                    <a href="/accounts/{{ $account->id }}/membership/privacy" class="text-dark font-weight-bolder">個人情報の取り扱い</a>に同意します。
                   </label>
                 </div>
                 <div class="text-center">
@@ -479,24 +476,9 @@
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.0') }}"></script>
 
-  {{-- <script>
-    // LIFFの初期化を行う
-    liff.init({
-      // 自分のLIFF ID（URLから『https://liff.line.me/』を除いた文字列）を入力する
-      liffId: "1656854060-voy11a1Y"
-
-    }).then(() => { // 初期化完了. 以降はLIFF SDKの各種メソッドを利用できる
-      // 利用者のLINEアカウントのプロフィール名を取得
-      liff.getProfile().then(profile => {
-
-      // プロフィール名
-      const name = profile.displayName
-
-      // HTMLに挿入
-      document.querySelector("#name").innerText = name
-      })
-    })
-  </script> --}}
+  <!-- LIFF -->
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="../../../liff/liff-starter.js"></script>
 </body>
 
 </html>

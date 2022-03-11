@@ -3,11 +3,11 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
     <title>
-        {{ $account->name }}の会員登録
+        プライバシーポリシー
     </title>
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
@@ -18,7 +18,8 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
-    <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css?v=2.0.0') }}" rel="stylesheet" />
+    {{-- <link id="pagestyle" href="{{ asset('assets/css/argon-dashboard.css?v=2.0.0') }}" rel="stylesheet" /> --}}
+    <link id="pagestyle" href="../../../assets/css/argon-dashboard.css?v=2.0.0" rel="stylesheet" />  
 </head>
 
 <body class="bg-gray-100">
@@ -48,12 +49,12 @@
 
 
         <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
-            style="background-color: {{ $account->accountSetting->membership_background }}; background-position: top;">
+            style="background-color: {{ $account->accountSetting->membership_background }}; background-position: top; z-index:-10;">
             {{-- <span class="mask bg-gradient-dark opacity-6"></span> --}}
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-lg-5 text-center mx-auto">
-                        <h1 class="text-white mb-2">プロフィール</h1>
+                        <h2 class="text-white mb-8">個人情報取扱方</h2>
                         {{-- <p class="text-lead text-white">
                             Use these awesome forms to login or create new account in your project for free.
                         </p> --}}
@@ -75,13 +76,13 @@
                                     基本情報
                                 </button>
                             </div> --}}
-                            <div class="col-4 me-auto px-1">
-                                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0" data-memtab="card" onclick="history.back()">
+                            <div class="col-4 col-xs-4 col-sm-4 me-auto px-1">
+                                <button class="mem-tab-btn btn btn-outline-light w-100 text-xs mb-0" data-memtab="card" onclick="history.back()">
                                     戻る
                                 </button>
                             </div>
-                            <div class="col-8 px-1">
-                                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 active" data-memtab="orders">
+                            <div class="col-8 col-xs-8 col-sm-8 px-1">
+                                <button class="mem-tab-btn btn btn-outline-light w-100 mb-0 text-xs active" data-memtab="orders">
                                     個人情報取扱
                                 </button>
                             </div>
@@ -171,6 +172,10 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('assets/js/argon-dashboard.min.js?v=2.0.0') }}"></script>
+
+    <!-- LIFF -->
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="../../../liff/liff-starter.js"></script>
 </body>
 
 </html>
