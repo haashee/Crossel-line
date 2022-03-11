@@ -184,7 +184,7 @@ Account
                 <div class="col-sm-8">
                   <div class="row">
                     <div class="col-sm-5 col-5">
-                      <label class="form-label mt-4">お誕生日</label>
+                      <label class="form-label mt-4">お誕生日<span class="text-third">(必須)</span></label>
                       <input type="text" name="" id="birth-date" value="{{ $friend->birthday }}" hidden >
                       <select name="dob-year" id="dob-year" class="form-control">
                         <option value="" disabled>年</option>

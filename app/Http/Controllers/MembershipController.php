@@ -73,7 +73,15 @@ class MembershipController extends Controller
 
         $account = Account::where('id', $aid)->first();
 
-        $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+
+        // change date format
+        if ($request->input('dob-year') != null && $request->input('dob-month') != null) {
+            $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+        } else {
+            $DOB = null;
+        }
+
+        // $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
 
         LineUser::where('id', $id)
             ->update([

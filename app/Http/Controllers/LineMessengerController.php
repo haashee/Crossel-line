@@ -92,7 +92,7 @@ class LineMessengerController extends Controller
         $user = LineUser::where('line_id', $userId)->first();
 
         // check if blacklisted
-        if ($user->isBlackListed) {
+        if ($user != NULL && $user->isBlackListed) {
             Log::warning("Exited because the user " . $user->name  . " is blacklisted");
             return;
         }
