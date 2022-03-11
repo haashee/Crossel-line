@@ -1,6 +1,6 @@
 window.onload = function () {
     const useNodeJS = false; // if you are not using a node server, set this value to false
-    const defaultLiffId = "1656854060-ByZ88V8o"; // change the default LIFF value if you are not using a node server
+    // const defaultLiffId = "enter liff id"; // change the default LIFF value if you are not using a node server
 
     // DO NOT CHANGE THIS
     let myLiffId = "";
@@ -19,14 +19,15 @@ window.onload = function () {
             .catch(function (error) {
                 document
                     .getElementById("liffAppContent")
-                    .classList.add("hidden");
+                    .classList.add("hide-content");
                 document
                     .getElementById("nodeLiffIdErrorMessage")
-                    .classList.remove("hidden");
+                    .classList.remove("hide-content");
             });
     } else {
         myLiffId = defaultLiffId;
         initializeLiffOrDie(myLiffId);
+        console.log(defaultLiffId);
     }
 };
 
@@ -36,10 +37,10 @@ window.onload = function () {
  */
 function initializeLiffOrDie(myLiffId) {
     if (!myLiffId) {
-        document.getElementById("liffAppContent").classList.add("hidden");
+        document.getElementById("liffAppContent").classList.add("hide-content");
         document
             .getElementById("liffIdErrorMessage")
-            .classList.remove("hidden");
+            .classList.remove("hide-content");
     } else {
         initializeLiff(myLiffId);
     }
@@ -55,13 +56,16 @@ function initializeLiff(myLiffId) {
     })
         .then(() => {
             // start to use LIFF's api
-            initializeApp();
+            // initializeApp();
         })
         .catch((err) => {
-            document.getElementById("liffAppContent").classList.add("hidden");
+            document
+                .getElementById("liffAppContent")
+                .classList.add("hide-content");
             document
                 .getElementById("liffInitErrorMessage")
-                .classList.remove("hidden");
+                .classList.remove("hide-content");
+            console.log(err);
         });
 }
 
@@ -98,14 +102,20 @@ function displayLiffData() {
  */
 function displayIsInClientInfo() {
     if (liff.isInClient()) {
-        document.getElementById("liffLoginButton").classList.toggle("hidden");
-        document.getElementById("liffLogoutButton").classList.toggle("hidden");
+        document
+            .getElementById("liffLoginButton")
+            .classList.toggle("hide-content");
+        document
+            .getElementById("liffLogoutButton")
+            .classList.toggle("hide-content");
         document.getElementById("isInClientMessage").textContent =
             "You are opening the app in the in-app browser of LINE.";
     } else {
         document.getElementById("isInClientMessage").textContent =
             "You are opening the app in an external browser.";
-        document.getElementById("shareTargetPicker").classList.toggle("hidden");
+        document
+            .getElementById("shareTargetPicker")
+            .classList.toggle("hide-content");
     }
 }
 
