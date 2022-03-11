@@ -11,6 +11,14 @@ use Illuminate\Support\Facades\Session;
 
 class MembershipController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => [
+            'membership', 'privacy', 'update'
+        ]]);
+    }
+
+
     public function membership($aid, $id)
     {
         $account = Account::where('id', $aid)->first();
@@ -21,11 +29,9 @@ class MembershipController extends Controller
             'friend' => $friend,
             'account' => $account,
         ]);
-        // return view('dashboard.membership.test', [
-        //     'friend' => $friend,
-        //     'account' => $account,
-        // ]);
     }
+
+
 
     public function privacy($aid)
     {
@@ -35,6 +41,8 @@ class MembershipController extends Controller
             'account' => $account,
         ]);
     }
+
+
 
     public function updatePrivacy(Request $request, $aid)
     {
@@ -54,6 +62,8 @@ class MembershipController extends Controller
         return redirect('accounts/' . $aid . '/' . 'membership/setting')
             ->with('message', 'プライバシーポリシーが無事更新されました。');
     }
+
+
 
     public function update(Request $request, $aid, $id)
     {
@@ -84,6 +94,8 @@ class MembershipController extends Controller
         return redirect('https://liff.line.me/' . $account->liff_tall)
             ->with('message', '会員情報が更新されました。');
     }
+
+
 
     public function setting($aid)
     {
