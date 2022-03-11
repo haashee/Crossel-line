@@ -11,7 +11,7 @@ class LineUser extends Model
 
     protected $table = 'line_users';
 
-    protected $fillable = ['name', 'line_id', 'provider', 'mode', 'account_id', 'birthday', 'phone', 'postcode', 'gender', 'email', 'isBlackListed'];
+    protected $fillable = ['name', 'line_id', 'provider', 'mode', 'account_id', 'birthday', 'phone', 'postcode', 'gender', 'email', 'isBlackListed', 'image'];
 
     protected $primaryKey = 'id';
 

@@ -56,6 +56,16 @@ function initializeLiff(myLiffId) {
         .then(() => {
             // start to use LIFF's api
             // initializeApp();
+            // getting id token to send to server (not working)
+            // const idToken = liff.getIDToken();
+            // document.getElementById("profileUrl").value = idToken;
+            // console.log(idToken);
+            // console.log(idToken); // print decoded idToken object
+            // liff.getProfile().then(function (profile) {
+            //     // const profileUrlInput = document.getElementById("profileUrl");
+            //     document.getElementById("profileUrl").value = profile.userId;
+            //     console.log(profile.userId);
+            // });
         })
         .catch((err) => {
             document
