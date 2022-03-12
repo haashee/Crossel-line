@@ -385,22 +385,32 @@ Account
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6 align-self-center">
+                <div class="col-md-4">
+                  <label class="form-label mt-4">非公開タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>                  
+                  <select id="tags" name="tags[]" multiple class="form-control">
+                    @forelse ($tags as $tag)
+                    <option value="{{ $tag->id }}" {{$friend->tags->contains('id', $tag->id)  ? 'selected' : ''}}>{{ $tag->name }}</option>
+                    @empty
+                    <p>非公開タグが登録されていません。</p>
+                    @endforelse
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <label class="form-label mt-4">公開タグ<span class="text-third">(1つのみ選択可)</span></label>                  
+                  <select id="tags" name="tags[]" class="form-control">
+                    @forelse ($tagsPublic as $tag)
+                    <option value="{{ $tag->id }}" {{$friend->tags->contains('id', $tag->id)  ? 'selected' : ''}}>{{ $tag->name }}</option>
+                    @empty
+                    <p>公開タグが登録されていません。</p>
+                    @endforelse
+                  </select>
+                </div>
+                <div class="col-md-4">
                   <label class="form-label mt-4">リッチメニュー</label>
                   <select class="form-control" name="choices-language" id="choices-language">
                     <option value="English">English</option>
                     <option value="French">French</option>
                     <option value="Spanish">Spanish</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>                  
-                  <select id="tags" name="tags[]" multiple class="form-control">
-                    @forelse ($tags as $tag)
-                    <option value="{{ $tag->id }}" {{$friend->tags->contains('id', $tag->id)  ? 'selected' : ''}}>{{ $tag->name }}</option>
-                    @empty
-                    <p>タグが登録されていません。</p>
-                    @endforelse
                   </select>
                 </div>
               </div>

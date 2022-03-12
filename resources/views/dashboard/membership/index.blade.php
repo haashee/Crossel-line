@@ -100,16 +100,10 @@
                 <form role="form" action="/accounts/{{ $account->id }}/membership/{{ $friend->id }}/update" method="POST" enctype="multipart/form-data">
                   @csrf
                   <input id="firstName" name="name" class="form-control" type="hidden" placeholder="ユーザー名" value="{{ $friend->name }}">
-                  <div class="mb-3">
+                  <div class="">
                     <label class="form-label">メールアドレス<span class="text-third">(必須)</span></label>
                     <div class="input-group">
                       <input id="email" name="email" class="form-control" type="email" placeholder="example@email.com" value="{{ $friend->email }}" oninvalid="this.setCustomValidity('こちらは必須項目です。')" onchange="this.setCustomValidity('')" required>
-                    </div>
-                  </div>
-                  <div class="mb-3">
-                    <label class="form-label">電話番号<span class="text-third">(任意)</span></label>
-                    <div class="input-group">
-                      <input id="phone" name="phone" class="form-control" type="tel" placeholder="090-9999-8888" value="{{ $friend->phone }}">
                     </div>
                   </div>
                   <div class="col-sm-8 mb-3">
@@ -295,6 +289,25 @@
                           <option value="31">31</option>
                         </select>
                       </div>
+                    </div>
+                  </div>
+                  @if($tags->isNotEmpty())
+                    <div class="mb-3">
+                      <label class="form-label">該当する項目を選択<span class="text-third">(任意)</span></label>
+                      <div class="input-group">
+                        <select class="form-control" name="tags" id="choices-gender" >
+                          <option value="" selected></option>
+                          @foreach ($tags as $tag)
+                          <option value="{{ $tag->id }}" {{$friend->tags->contains('id', $tag->id)  ? 'selected' : ''}}>{{ $tag->name }}</option>
+                          @endforeach
+                        </select>
+                      </div>
+                    </div>
+                  @endif
+                  <div class="mb-3">
+                    <label class="form-label">電話番号<span class="text-third">(任意)</span></label>
+                    <div class="input-group">
+                      <input id="phone" name="phone" class="form-control" type="tel" placeholder="090-9999-8888" value="{{ $friend->phone }}">
                     </div>
                   </div>
                   <div class="row mb-3">

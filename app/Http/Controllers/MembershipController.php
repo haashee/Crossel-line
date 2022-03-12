@@ -25,9 +25,13 @@ class MembershipController extends Controller
 
         $friend = LineUser::where('id', $id)->first();
 
+        $tags = Tag::where('account_id', $aid)->where('isPublic', 1)->get();
+
+
         return view('dashboard.membership.index', [
             'friend' => $friend,
             'account' => $account,
+            'tags' => $tags,
         ]);
     }
 
@@ -81,7 +85,15 @@ class MembershipController extends Controller
             $DOB = null;
         }
 
-        // $DOB = $request->input('dob-year') . "/" . $request->input('dob-month') . "/" . $request->input('dob-day');
+        // attach isPublic tag
+        $data = $request->input('tags');
+        $tags = Tag::where('account_id', $aid)->where('isPublic', 1)->get();
+        foreach ($tags as $tag) {
+            LineUser::find($id)->tags()->detach($tag);
+        }
+        LineUser::find($id)->tags()->sync([$data], false);
+        // LineUser::find($id)->tags()->attach($data);
+
 
         LineUser::where('id', $id)
             ->update([

@@ -93,12 +93,15 @@ class LineUserController extends Controller
 
         $friend = LineUser::where('id', $id)->first();
 
-        $tags = Tag::where('account_id', $aid)->get();
+        $tags = Tag::where('account_id', $aid)->where('isPublic', 0)->get();
+
+        $tagsPublic = Tag::where('account_id', $aid)->where('isPublic', 1)->get();
 
         return view('dashboard.friends.edit', [
             'friend' => $friend,
             'account' => $account,
             'tags' => $tags,
+            'tagsPublic' => $tagsPublic,
         ]);
     }
 
