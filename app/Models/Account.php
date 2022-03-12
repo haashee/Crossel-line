@@ -46,6 +46,11 @@ class Account extends Model
         return $this->hasOne(ChatSetting::class, 'account_id', 'id');
     }
 
+    public function receivedMedia()
+    {
+        return $this->hasOne(ReceivedMedia::class, 'account_id', 'id');
+    }
+
     public function chats()
     {
         return $this->hasManyThrough(

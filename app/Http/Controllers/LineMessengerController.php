@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Http;
 
 
 use App\Models\LineUser;
+use App\Models\ReceivedMedia;
 use App\Models\RichMenu;
 use LINE\LINEBot\HTTPClient\CurlHTTPClient;
 use LINE\LINEBot;
@@ -42,6 +43,7 @@ use Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use \LINE\LINEBot\Constant\HTTPHeader;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -118,8 +120,13 @@ class LineMessengerController extends Controller
 
         // if does not exist then create new
         if ($chatUser == NULL && $message_type == 'message') {
-            // get message content that was sent to you
-            $message_content = $inputs['events'][0]['message']['text'];
+            // if message is an image
+            if ($inputs['events'][0]['message']['type'] == 'image') {
+                $message_content = 'image file';
+            } else {
+                // get message content that was sent to you
+                $message_content = $inputs['events'][0]['message']['text'];
+            }
             // get profile info of user
             $profile = $bot->getProfile($userId)->getJSONDecodedBody();
 
@@ -151,7 +158,7 @@ class LineMessengerController extends Controller
                 $reply_token = $inputs['events'][0]['replyToken'];
 
                 // get message content that was sent to you
-                $message_content = $inputs['events'][0]['message']['text'];
+                // $message_content = $inputs['events'][0]['message']['text'];
 
                 // if message content is button texts 
                 if ($message_content == 'メニューをみる') {
@@ -197,29 +204,37 @@ class LineMessengerController extends Controller
 
                     // send this flex message
                     $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
-                } else if ($message_content == 'リンク') {
-                    // get flex json template for layout (https://developers.line.biz/flex-simulator/)
-                    // https://developers.line.biz/en/docs/messaging-api/using-flex-messages/
-                    $flexTemplate = file_get_contents(resource_path() . "/json/flex_btn_membership.json");
+                } else if ($message_content == 'image file') {
+                    // get media ID from message
+                    $mediaId = $inputs['events'][0]['message']['id'];
 
-                    // decode the json template
-                    $data = json_decode($flexTemplate, true);
+                    // send to verify media id
+                    $response = $bot->getMessageContent($mediaId);
 
-                    // change the title of template
-                    $data["body"]["contents"]["0"]["contents"]["1"]["contents"]["0"]["text"] = $user->name . 'の会員情報';
+                    // if status 200 from response
+                    if ($response->isSucceeded()) {
+                        // get binary image 
+                        $binary = $response->getRawBody();
 
-                    // change the URI of button
-                    $data["footer"]["contents"]["0"]["action"]["uri"] = 'https://liff.line.me/' . $account->liff_tall;
+                        // set path of new image to store
+                        $pathImg = "/media/images/" . $aid . '-' . uniqid() . ".jpg";
 
-                    // create flex message
-                    $flexMessageBuilder = new RawMessageBuilder([
-                        'type' => 'flex',
-                        'altText' => '会員情報',
-                        'contents' => $data
-                    ]);
+                        // store received image
+                        Storage::disk("public")->put($pathImg, $binary);
 
-                    // send this flex message
-                    $response = $bot->replyMessage($reply_token, $flexMessageBuilder);
+                        // save image to received media
+                        $media = new ReceivedMedia();
+                        $media->image = url($pathImg);
+                        $media->type = 'image';
+                        $media->senderName = $user->name;
+                        $media->account_id = $aid;
+                        $media->save();
+
+                        // log if succeeded
+                        Log::info("Image received and saved`" . $pathImg . "`");
+                    } else {
+                        error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
+                    }
                 } elseif ($message_content == $richmenuSetting->nameA) {
                     //Send quick reply message
 
