@@ -224,7 +224,7 @@ class LineMessengerController extends Controller
 
                         // save image to received media
                         $media = new ReceivedMedia();
-                        $media->image = url($pathImg);
+                        $media->image = $pathImg;
                         $media->type = 'image';
                         $media->senderName = $user->name;
                         $media->account_id = $aid;

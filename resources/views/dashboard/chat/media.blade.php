@@ -111,28 +111,35 @@ Account
                                         <li class="list-group-item border-0 d-flex ps-0 mb-2 border-radius-lg">
                                         <div class="d-flex flex-row">
                                             <h6 class="mb-1 text-muted font-weight-bold text-sm me-5">
-                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
-                                                    href="">
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="受信日時"
+                                                    href="javascript:;">
                                                     <i class="fas fa-clock text-xs me-1"></i>
                                                 </a>
                                                 {{ $media->created_at }}
                                             </h6>
                                             <h6 class="mb-1 text-muted font-weight-bold text-sm me-5">
-                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
-                                                    href="">
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="送信した友達"
+                                                    href="javascript:;">
                                                     <i class="fas fa-id-card text-xs me-1"></i>
                                                 </a>
                                                 {{ $media->senderName }}
                                             </h6>
                                             <h6 class="mb-1 text-muted font-weight-bold text-sm me-5">
-                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="編集する"
-                                                    href="">
-                                                    <i class="fas fa-file-image text-xs me-1"></i>
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="ファイルタイプ"
+                                                    href="javascript:;">
+                                                    <i class="fas {{ $media->type == 'image' ? 'fa-file-image' : 'fa-film' }} text-xs me-1"></i>
                                                 </a>
                                                 {{ $media->type }}
                                             </h6>
-                                            <a href={{ asset($media->image) }}>Thing</a>
-                                            <a href="{{asset($media->image)}}" download>he</a>
+                                            <h6 class="mb-1 text-muted font-weight-bold text-sm me-5">
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="ファイルタイプ"
+                                                    href="javascript:;" >
+                                                    <i class="fas fa-arrow-alt-circle-down text-xs me-1"></i>
+                                                </a>
+                                                <a href="{{ asset('storage/' . $media->image) }}" class="mb-1 text-muted font-weight-bold text-sm" download>ダウンロード</a>
+                                                
+                                            </h6>
+                                            {{-- <a href="{{ asset('storage/' . $media->image) }}" download>ダウンロード</a> --}}
                                         </div>
                                         </li>
                                         <hr>
