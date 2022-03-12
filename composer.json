@@ -16,7 +16,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "linecorp/line-bot-sdk": "^7.3",
-        "milon/barcode": "^9.0"
+        "milon/barcode": "^9.0",
+        "nesbot/carbon": "^2.57"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

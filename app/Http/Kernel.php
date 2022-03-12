@@ -64,4 +64,16 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     ];
+
+    protected function schedule(Schedule $schedule)
+    {
+        $schedule->call(function () {
+            $files = DB::table('received_media')->whereDate('delete_at', Carbon::now()->format('Y-m-d'))->get();
+            foreach ($files as $file) {
+                $file->delete();
+                $file_path = storage_path('app/public/media/' . $file->media);
+                unlink($file_path);
+            }
+        })->daily();
+    }
 }

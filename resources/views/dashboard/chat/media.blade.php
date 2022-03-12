@@ -105,6 +105,7 @@ Account
                         </div>
                         <div class="col-12 col-sm-12 mt-4 mt-sm-0 text-start m-auto">
                             <div class=" h-100">
+                                <p class="text-sm mb-5">受信されたメディアは21日後に自動削除されます。削除されたメディアは復旧できません。</p>
                                 <div class="card-body p-3 py-0">
                                 <ul class="list-group mx-4">
                                     @forelse ($media as $media)

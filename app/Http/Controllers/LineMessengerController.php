@@ -44,6 +44,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use \LINE\LINEBot\Constant\HTTPHeader;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 
 
@@ -219,7 +220,7 @@ class LineMessengerController extends Controller
                         $binary = $response->getRawBody();
 
                         // set path of new image to store
-                        $pathMedia = "/media/images/" . $aid . '-' . uniqid() . ".jpg";
+                        $pathMedia = "/media" . "/" . $aid . '-' . uniqid() . ".jpg";
 
                         // store received image
                         Storage::disk("public")->put($pathMedia, $binary);
@@ -229,6 +230,7 @@ class LineMessengerController extends Controller
                         $media->media = $pathMedia;
                         $media->type = 'image';
                         $media->senderName = $user->name;
+                        $media->delete_at = Carbon::now()->addDays(1)->format('Y-m-d');
                         $media->account_id = $aid;
                         $media->save();
 
@@ -250,7 +252,7 @@ class LineMessengerController extends Controller
                         $binary = $response->getRawBody();
 
                         // set path of new image to store
-                        $pathMedia = "/media/videos/" . $aid . '-' . uniqid() . ".mp4";
+                        $pathMedia = "/media" . "/" . $aid . '-' . uniqid() . ".mp4";
 
                         // store received image
                         Storage::disk("public")->put($pathMedia, $binary);
@@ -260,6 +262,7 @@ class LineMessengerController extends Controller
                         $media->media = $pathMedia;
                         $media->type = 'video';
                         $media->senderName = $user->name;
+                        $media->delete_at = Carbon::now()->addDays(1)->format('Y-m-d');
                         $media->account_id = $aid;
                         $media->save();
 
