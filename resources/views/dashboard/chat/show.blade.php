@@ -136,7 +136,7 @@ Account
                     <hr class="horizontal gray-light my-4">
                     <div class="card-body p-3 pt-0">
                         <div class="my-1 rounded-lg ">
-                            <div class="position-relative w-100 Content">
+                            <div id="scrollBottom" class="position-relative w-100 Content">
                                 @foreach ($chats as $chat)
                                 <div class="chat ">
                                     @if ($chat->message)                                        
@@ -234,6 +234,10 @@ Account
     chatOptions.addEventListener('change', function(event) {
     chatInput.value = event.target.value;
     });
+
+    // scroll to bottom in chat div
+    var objDiv = document.getElementById("scrollBottom");
+    objDiv.scrollTop = objDiv.scrollHeight;
 
 </script>
 <!-- Github buttons -->
