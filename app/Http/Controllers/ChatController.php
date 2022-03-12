@@ -19,6 +19,13 @@ use Log;
 
 class ChatController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -319,7 +326,7 @@ class ChatController extends Controller
     public function media($aid)
     {
         $account = Account::where('id', $aid)->first();
-        $media = ReceivedMedia::where('account_id', $aid)->get();
+        $media = ReceivedMedia::where('account_id', $aid)->get()->sortByDesc('created_at');
 
         return view('dashboard.chat.media', [
             'account' => $account,

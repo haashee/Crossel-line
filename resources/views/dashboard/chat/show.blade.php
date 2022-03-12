@@ -141,11 +141,19 @@ Account
                                 <div class="chat ">
                                     @if ($chat->message)                                        
                                         <div data-time="{{ date('Y/m/d h:i', strtotime($chat->created_at)) }}" class="{{ $chat->senderName == $account->name ? 'msg sent' : 'msg rcvd' }}">
-                                            {!! nl2br($chat->message) !!}
+                                            @if ($chat->message == 'image file')
+                                                (画像を受信しました<a href="{{ route('chat.media', ['aid' => $account->id]) }}">ファイルを見る</a>)
+                                            @elseif ($chat->message == 'video file')
+                                                (動画を受信しました<a href="{{ route('chat.media', ['aid' => $account->id]) }}">ファイルを見る</a>)
+                                            @else
+                                                {!! nl2br($chat->message) !!}
+                                            @endif
                                         </div>
                                     @else
                                         <p class="text-center text-xs">チャットが開始されました。</p>
                                     @endif
+                                    
+                                    
                                 </div>
                                 @endforeach
                             </div>

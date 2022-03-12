@@ -131,12 +131,12 @@ Account
                                                 </a>
                                                 {{ $media->type }}
                                             </h6>
-                                            <h6 class="mb-1 text-muted font-weight-bold text-sm me-5">
-                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="ファイルタイプ"
+                                            <h6 class="mb-1 text-muted font-weight-bold text-sm me-1">
+                                                <a class="btn btn-link text-dark text-muted text-xxs mb-1 px-0 ms-1" data-bs-toggle="tooltip" data-bs-original-title="ダウンロード"
                                                     href="javascript:;" >
                                                     <i class="fas fa-arrow-alt-circle-down text-xs me-1"></i>
                                                 </a>
-                                                <a href="{{ asset('storage/' . $media->image) }}" class="mb-1 text-muted font-weight-bold text-sm" download>ダウンロード</a>
+                                                <a href="{{ asset('storage/' . $media->image) }}" class="mb-1 text-muted font-weight-bold text-sm" download>ファイルをダウンロード</a>
                                                 
                                             </h6>
                                             {{-- <a href="{{ asset('storage/' . $media->image) }}" download>ダウンロード</a> --}}

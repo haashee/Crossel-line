@@ -123,6 +123,8 @@ class LineMessengerController extends Controller
             // if message is an image
             if ($inputs['events'][0]['message']['type'] == 'image') {
                 $message_content = 'image file';
+            } elseif ($inputs['events'][0]['message']['type'] == 'video') {
+                $message_content = 'video file';
             } else {
                 // get message content that was sent to you
                 $message_content = $inputs['events'][0]['message']['text'];
