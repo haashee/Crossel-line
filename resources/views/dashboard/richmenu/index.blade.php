@@ -73,7 +73,7 @@ Account
                                         </p> --}}
                                         <div class="d-flex align-items-center justify-content-between">
                                             <form 
-                                                action="/line/{{ $account->id }}/richmenu/create" 
+                                                action="/accounts/{{ $account->id }}/richmenu/default" 
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 <button value="rich01" name="richmenu-btn" type="submit" class="btn btn-outline-primary btn-sm mb-0">
@@ -105,7 +105,7 @@ Account
                                         </a>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <form 
-                                                action="/line/{{ $account->id }}/richmenu/create" 
+                                                action="/accounts/{{ $account->id }}/richmenu/default" 
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 
@@ -138,7 +138,7 @@ Account
                                         </a>
                                         <div class="d-flex align-items-center justify-content-between mb-4">
                                             <form 
-                                                action="/line/{{ $account->id }}/richmenu/create" 
+                                                action="/accounts/{{ $account->id }}/richmenu/default" 
                                                 method="GET" enctype="multipart/form-data">
                                                 @csrf
                                                 

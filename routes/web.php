@@ -56,6 +56,7 @@ Route::resource('accounts/{aid}/friends', LineUserController::class, ['except' =
 Route::post('accounts/{aid}/resetmulti', [RichMenuController::class, 'resetMulti'])->name('richmenu.multi.reset');
 Route::post('accounts/{aid}/updatemulti', [RichMenuController::class, 'updateMulti'])->name('richmenu.multi.update');
 Route::get('accounts/{aid}/multibtn', [RichMenuController::class, 'multiBtn'])->name('richmenu.multi');
+Route::get('accounts/{aid}/richmenu/default', [RichMenuController::class, 'richMenuDefault']);
 Route::get('accounts/{aid}/richmenu/{id}/apply', [RichMenuController::class, 'richMenuApply'])->name('richmenu.apply');
 Route::get('accounts/{aid}/richmenu', [RichMenuController::class, 'index'])->name('richmenu.index');
 Route::resource('accounts/{aid}/richmenu', RichMenuController::class, ['except' => ['index']]);
@@ -98,16 +99,15 @@ Route::group(['prefix' => 'line'], function () {
     // LINE recieve message
     Route::post('{aid}/webhook', [LineMessengerController::class, 'webhook']);
 
-    // LINE send message
-    Route::get('{aid}/send', [LineMessengerController::class, 'sendMessage']);
 
-    // LINE rich menu create/upload/
-    Route::get('{aid}/richmenu/create', [LineMessengerController::class, 'richMenuCreate']);
+    // delete if not needed
+    // LINE send message
+    // Route::get('{aid}/send', [LineMessengerController::class, 'sendMessage']);
 
     // LINE rich menu delete
-    Route::get('{aid}/richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);
+    // Route::get('{aid}/richmenu/delete', [LineMessengerController::class, 'richMenuDelete']);
 });
 
-
+// delete if not needed
 // Liff sample
 Route::get('/liff/sample', [LiffController::class, 'liff'])->name('liff');

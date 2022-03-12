@@ -296,6 +296,264 @@ class RichMenuController extends Controller
 
 
 
+
+
+    public function richMenuDefault($aid, Request $request)
+    {
+        // get account ID (aid) 
+        $account = Account::where('id', $aid)->first();
+
+        // get from richmenu table 
+        $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
+
+        // get channel secret and access token
+        $channel_secret = $account->channel_secret;
+        $access_token = $account->access_token;
+
+        // https://developers.line.biz/en/reference/messaging-api/#create-rich-menu
+        // LINEBOTSDKの設定
+        $http_client = new CurlHTTPClient($access_token);
+        $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
+
+        // choosing richmenu 01,02,03
+        switch ($request->input('richmenu-btn')) {
+            case ('rich01'):
+
+                // delete the old rich menu on LINE if exists in database
+                if ($account->richmenu_id) {
+                    $response = $bot->deleteRichMenu($account->richmenu_id);
+                }
+
+                // Create richmenu
+                $richMenuBuilder = new RichMenuBuilder(
+                    new RichMenuSizeBuilder(1686, 2500), #h,w
+                    true, # show rich menu as default (false to hide rich menu) 
+                    "Rich Menu 1", # name of rich menu
+                    "ここをタップ!", # Display text for rich menu
+                    array( # array for actions on rich menu
+                        new RichMenuAreaBuilder( # action 1
+                            new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 2
+                            new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 3
+                            new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 4
+                            new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '注文履歴') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 5
+                            new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '店舗情報') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 6
+                            new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
+                            new UriTemplateActionBuilder('l', 'https://line.me/R/nv/recommendOA/' . $account->basic_id)
+                        ),
+                    )
+                );
+                $response = $bot->createRichMenu($richMenuBuilder);
+
+                // check what is sent in POST for debug
+                file_put_contents(base_path() . '/postdata.txt', var_export($response, true));
+
+                // retrieve richmenu id
+                $richMenuBody = $response->getRawBody();
+                $richMenuId = json_decode($richMenuBody)->richMenuId;
+                Log::info('the rich menu ID is `' . $richMenuId . '`');
+
+                // upload pic for richmenu
+                $imagePath = public_path() . '/images/rich-img-01.jpeg';
+                $contentType = 'image/jpeg';
+                $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
+
+                // apply richmenu to all users in this account
+                $lineUsers = LineUser::where('account_id', $aid)->get();
+                foreach ($lineUsers as $friend) {
+                    $response = $bot->linkRichMenu($friend->line_id, $richMenuId);
+                }
+
+                // add richmenu ID to accounts table
+                Account::where('id', $aid)
+                    ->update([
+                        'richmenu_id' => $richMenuId,
+                    ]);
+
+                // Succeeded
+                if ($response->isSucceeded()) {
+                    Log::info('Richmenu uploaded');
+                } else {
+                    // Failed
+                    Log::error($response->getRawBody());
+                }
+                break;
+
+            case ('rich02'):
+                // delete the old rich menu on LINE if exists in database
+                if ($account->richmenu_id) {
+                    $response = $bot->deleteRichMenu($account->richmenu_id);
+                }
+
+                // Create richmenu
+                $richMenuBuilder = new RichMenuBuilder(
+                    new RichMenuSizeBuilder(1686, 2500), #h,w
+                    true, # show rich menu as default (false to hide rich menu) 
+                    "Rich Menu 2", # name of rich menu
+                    "ここをタップ!", # Display text for rich menu
+                    array( # array for actions on rich menu
+                        new RichMenuAreaBuilder( # action 1
+                            new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 2
+                            new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '注文履歴') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 3
+                            new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '店舗情報') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 4
+                            new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 5
+                            new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
+                            new UriTemplateActionBuilder('l', 'https://line.me/R/nv/recommendOA/' . $account->basic_id)
+                        ),
+                        new RichMenuAreaBuilder( # action 6
+                            new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', $richmenuSetting->nameA)
+                        ),
+                    )
+                );
+                $response = $bot->createRichMenu($richMenuBuilder);
+
+                // check what is sent in POST for debug
+                file_put_contents(base_path() . '/postdata.txt', var_export($response, true));
+
+                // retrieve richmenu id
+                $richMenuBody = $response->getRawBody();
+                $richMenuId = json_decode($richMenuBody)->richMenuId;
+                Log::info('the rich menu ID is `' . $richMenuId . '`');
+
+                // upload pic for richmenu
+                $imagePath = public_path() . '/images/rich-img-02.jpeg';
+                $contentType = 'image/jpeg';
+                $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
+
+                // apply richmenu to all users in this account
+                $lineUsers = LineUser::where('account_id', $aid)->get();
+                foreach ($lineUsers as $friend) {
+                    $response = $bot->linkRichMenu($friend->line_id, $richMenuId);
+                }
+
+                // add richmenu ID to accounts table
+                Account::where('id', $aid)
+                    ->update([
+                        'richmenu_id' => $richMenuId,
+                    ]);
+
+                // Succeeded
+                if ($response->isSucceeded()) {
+                    Log::info('Richmenu uploaded');
+                } else {
+                    // Failed
+                    Log::error($response->getRawBody());
+                }
+                break;
+
+            case ('rich03'):
+                // delete the old rich menu on LINE if exists in database
+                if ($account->richmenu_id) {
+                    $response = $bot->deleteRichMenu($account->richmenu_id);
+                }
+
+                // Create richmenu
+                $richMenuBuilder = new RichMenuBuilder(
+                    new RichMenuSizeBuilder(1686, 2500), #h,w
+                    true, # show rich menu as default (false to hide rich menu) 
+                    "Rich Menu 3", # name of rich menu
+                    "ここをタップ!", # Display text for rich menu
+                    array( # array for actions on rich menu
+                        new RichMenuAreaBuilder( # action 1
+                            new RichMenuAreaBoundsBuilder(0, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 2
+                            new RichMenuAreaBoundsBuilder(833, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', 'メニューをみる') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 3
+                            new RichMenuAreaBoundsBuilder(1666, 0, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '会員情報') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 4
+                            new RichMenuAreaBoundsBuilder(0, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', '注文履歴') # reply text
+                        ),
+                        new RichMenuAreaBuilder( # action 5
+                            new RichMenuAreaBoundsBuilder(833, 843, 833, 843), # (x,y,width,height)
+                            new UriTemplateActionBuilder('l', 'https://line.me/R/nv/recommendOA/' . $account->basic_id)
+                        ),
+                        new RichMenuAreaBuilder( # action 6
+                            new RichMenuAreaBoundsBuilder(1666, 843, 833, 843), # (x,y,width,height)
+                            new MessageTemplateActionBuilder('m', $richmenuSetting->nameA)
+                        ),
+                    )
+                );
+                $response = $bot->createRichMenu($richMenuBuilder);
+
+                // check what is sent in POST for debug
+                file_put_contents(base_path() . '/postdata.txt', var_export($response, true));
+
+                // retrieve richmenu id
+                $richMenuBody = $response->getRawBody();
+                $richMenuId = json_decode($richMenuBody)->richMenuId;
+                Log::info('the rich menu ID is `' . $richMenuId . '`');
+
+                // upload pic for richmenu
+                $imagePath = public_path() . '/images/rich-img-03.jpeg';
+                $contentType = 'image/jpeg';
+                $response = $bot->uploadRichMenuImage($richMenuId, $imagePath, $contentType);
+
+                // apply richmenu to all users in this account
+                $lineUsers = LineUser::where('account_id', $aid)->get();
+                foreach ($lineUsers as $friend) {
+                    $response = $bot->linkRichMenu($friend->line_id, $richMenuId);
+                }
+
+                // add richmenu ID to accounts table
+                Account::where('id', $aid)
+                    ->update([
+                        'richmenu_id' => $richMenuId,
+                    ]);
+
+                // Succeeded
+                if ($response->isSucceeded()) {
+                    Log::info('Richmenu uploaded');
+                } else {
+                    // Failed
+                    Log::error($response->getRawBody());
+                }
+                break;
+            default:
+        }
+
+        // session 'title' with 'message'
+        Session::put('title', 'リッチメニュー適応成功');
+
+        return redirect('/accounts' . '/' . $aid . '/richmenu')->with('message', 'リッチメニューが適応されました。');
+    }
+
+
+
+
     public function richMenuApply($aid, $id, Request $request)
     {
         // get from account table

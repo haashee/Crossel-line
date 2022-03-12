@@ -149,14 +149,13 @@ class LineUserController extends Controller
 
         Session::put('title', 'ユーザー編集完了');
 
-        if ($request->checkbox) {
-            Session::put('title', '会員情報の更新完了');
-            return redirect('accounts/' . $aid . '/' . 'membership' . '/' . $id)
-                ->with('message', '会員情報が更新されました。');
-        } else {
-            return redirect('accounts/' . $aid . '/' . 'friends' . '/' . $id . '/' . 'edit')
-                ->with('message', 'ユーザー情報が無事編集されました。');
-        }
+        // if ($request->checkbox) {
+        //     Session::put('title', '会員情報の更新完了');
+        //     return redirect('accounts/' . $aid . '/' . 'membership' . '/' . $id)
+        //         ->with('message', '会員情報が更新されました。');
+        // } else {
+        return redirect('accounts/' . $aid . '/' . 'friends' . '/' . $id . '/' . 'edit')
+            ->with('message', 'ユーザー情報が無事編集されました。');
     }
 
 
