@@ -777,9 +777,9 @@ class RichMenuController extends Controller
     public function updateMulti(Request $request, $aid)
     {
         $request->validate([
-            // 'action' => 'required',
             'multiBtn' => 'required',
             'message' => 'required',
+            'name' => ['not_regex:/^(会員情報|メニューをみる|リンク|注文履歴|店舗情報|友達に紹介)$/i'],
         ]);
 
         $richmenuSetting = RichmenuSetting::where('account_id', $aid)->first();
