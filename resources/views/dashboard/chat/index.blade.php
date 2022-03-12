@@ -147,6 +147,7 @@ Account
                                 <a href="{{ route('chat.setting', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1 ms-4">チャット設定</a>
                                 <a href="{{ route('template.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">テンプレート一覧</a>
                                 <a href="{{ route('multiple.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">一斉送信</a>
+                                <a href="{{ route('chat.media', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">受信メディア</a>
                             </div>
                         </div>
                         <!-- Card Chat Input -->

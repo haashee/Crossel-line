@@ -8,6 +8,7 @@ use App\Models\LineUser;
 use App\Models\Chat;
 use App\Models\Template;
 use App\Models\ChatSetting;
+use App\Models\ReceivedMedia;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Session;
 
@@ -305,5 +306,24 @@ class ChatController extends Controller
         }
 
         return redirect('/accounts' . '/' . $aid . '/' . 'chat' . '/');
+    }
+
+
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function media($aid)
+    {
+        $account = Account::where('id', $aid)->first();
+        $media = ReceivedMedia::where('account_id', $aid)->get();
+
+        return view('dashboard.chat.media', [
+            'account' => $account,
+            'media' => $media,
+        ]);
     }
 }
