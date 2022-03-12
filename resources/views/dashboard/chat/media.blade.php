@@ -136,10 +136,8 @@ Account
                                                     href="javascript:;" >
                                                     <i class="fas fa-arrow-alt-circle-down text-xs me-1"></i>
                                                 </a>
-                                                <a href="{{ asset('storage/' . $media->image) }}" class="mb-1 text-muted font-weight-bold text-sm" download>ファイルをダウンロード</a>
-                                                
+                                                <a href="{{ asset('storage/' . $media->media) }}" class="mb-1 text-muted font-weight-bold text-sm" download>ファイルをダウンロード</a>
                                             </h6>
-                                            {{-- <a href="{{ asset('storage/' . $media->image) }}" download>ダウンロード</a> --}}
                                         </div>
                                         </li>
                                         <hr>

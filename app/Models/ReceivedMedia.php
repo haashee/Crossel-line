@@ -9,5 +9,5 @@ class ReceivedMedia extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['account_id', 'type', 'senderName', 'image',];
+    protected $fillable = ['account_id', 'type', 'senderName', 'media',];
 }

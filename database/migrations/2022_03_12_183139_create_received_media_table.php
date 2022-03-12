@@ -17,7 +17,7 @@ class CreateReceivedMediaTable extends Migration
             $table->bigIncrements('id');
             $table->string('type')->nullable();
             $table->string('senderName')->nullable();
-            $table->string('image')->nullable();
+            $table->string('media')->nullable();
             $table->timestamps();
 
             $table->unsignedBigInteger('account_id');

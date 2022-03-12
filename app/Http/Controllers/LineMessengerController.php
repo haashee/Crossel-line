@@ -219,23 +219,54 @@ class LineMessengerController extends Controller
                         $binary = $response->getRawBody();
 
                         // set path of new image to store
-                        $pathImg = "/media/images/" . $aid . '-' . uniqid() . ".jpg";
+                        $pathMedia = "/media/images/" . $aid . '-' . uniqid() . ".jpg";
 
                         // store received image
-                        Storage::disk("public")->put($pathImg, $binary);
+                        Storage::disk("public")->put($pathMedia, $binary);
 
                         // save image to received media
                         $media = new ReceivedMedia();
-                        $media->image = $pathImg;
+                        $media->media = $pathMedia;
                         $media->type = 'image';
                         $media->senderName = $user->name;
                         $media->account_id = $aid;
                         $media->save();
 
                         // log if succeeded
-                        Log::info("Image received and saved`" . $pathImg . "`");
+                        Log::info("Image received and saved`" . $pathMedia . "`");
                     } else {
-                        error_log($response->getHTTPStatus() . ' ' . $response->getRawBody());
+                        Log::error($response->getHTTPStatus() . ' ' . $response->getRawBody());
+                    }
+                } else if ($message_content == 'video file') {
+                    // get media ID from message
+                    $mediaId = $inputs['events'][0]['message']['id'];
+
+                    // send to verify media id
+                    $response = $bot->getMessageContent($mediaId);
+
+                    // if status 200 from response
+                    if ($response->isSucceeded()) {
+                        // get binary image 
+                        $binary = $response->getRawBody();
+
+                        // set path of new image to store
+                        $pathMedia = "/media/videos/" . $aid . '-' . uniqid() . ".mp4";
+
+                        // store received image
+                        Storage::disk("public")->put($pathMedia, $binary);
+
+                        // save image to received media
+                        $media = new ReceivedMedia();
+                        $media->media = $pathMedia;
+                        $media->type = 'video';
+                        $media->senderName = $user->name;
+                        $media->account_id = $aid;
+                        $media->save();
+
+                        // log if succeeded
+                        Log::info("Video received and saved`" . $pathMedia . "`");
+                    } else {
+                        Log::error($response->getHTTPStatus() . ' ' . $response->getRawBody());
                     }
                 } elseif ($message_content == $richmenuSetting->nameA) {
                     //Send quick reply message
