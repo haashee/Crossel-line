@@ -181,6 +181,8 @@ return [
         'message' => 'メッセージ',
         'action' => 'アクション',
         'multiBtn' => 'マルチボタン',
+        'image_text' => 'テキスト',
+        'image_url' => 'URL',
     ],
 
 ];
