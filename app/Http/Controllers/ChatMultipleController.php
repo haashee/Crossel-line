@@ -97,7 +97,7 @@ class ChatMultipleController extends Controller
         $chat->isAfter = $isAfterFlag;
         $chat->account_id = $aid;
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->storeAs('/public/sendmedia/', $aid . '-' . uniqid() . '.jpg');;
+            $path = $request->file('image')->storeAs('/public/sendmedia', $aid . '-' . uniqid() . '.jpg');;
             $chat->image = $path;
             $chat->image_text = $request->image_text;
             $chat->image_url = $request->image_url;
