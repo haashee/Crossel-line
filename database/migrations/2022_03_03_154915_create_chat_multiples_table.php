@@ -17,6 +17,10 @@ class CreateChatMultiplesTable extends Migration
             $table->bigIncrements('id');
             $table->string('user_identifier')->nullable();
             $table->mediumText('message')->nullable();
+            $table->string('image_text')->nullable();
+            $table->string('image_url')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('isAfter')->default(1);
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
 

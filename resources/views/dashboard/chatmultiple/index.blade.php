@@ -131,9 +131,9 @@ Account
                     <div class="card-body p-3 pt-0">
                         <div class="my-1 rounded-lg ">
                             <div class="position-relative w-100">
-                                <p class="text-md mx-4">チャットを選択して下さい</p>
+                                {{-- <p class="text-md mx-4">チャットを選択して下さい</p>
                                 <p class="text-sm text-secondary mx-4">新しくチャットを開始する場合は「友だち検索」からチャットを開始したい友だちを選択し、友だち詳細画面の「個別チャット履歴」ブロック内の「チャットを開始する」ボタンから新規チャットを開始する事が出来ます。</p>
-                                <hr class="horizontal gray-light my-4">
+                                <hr class="horizontal gray-light my-4"> --}}
                                 <p class="text-md mx-4">チャットの設定は下記ボタンをクリック</p>
                                 <a href="{{ route('multiple.show', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1 ms-4">送信済みのメッセージ</a>
                                 <a href="{{ route('tag.index', ['aid' => $account->id]) }}" class="btn btn-outline-primary btn-sm mx-1">タグを管理</a>
@@ -148,14 +148,41 @@ Account
                                 {{-- <input type="hidden" name="receiver_name" value="{{ $friend->name }}"> --}}
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <label class="form-label mt-4">タグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
-                                        <select id="category" name="tags[]" multiple class="form-control" oninvalid="this.setCustomValidity('こちらは必須項目です。')" onchange="this.setCustomValidity('')" required>
+                                        <label class="form-label mt-0">送信する友達のタグ<span class="text-third">(Ctrlで複数選択可能)</span></label>
+                                        <select id="category" name="tags[]" multiple class="form-control h-75" oninvalid="this.setCustomValidity('こちらは必須項目です。')" onchange="this.setCustomValidity('')" required>
                                             @forelse ($tags as $tag)
                                             <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                                             @empty
                                             <p>タグが登録されていません。</p>
                                             @endforelse
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <label class="form-label mt-4">画像メッセージを追加<span class="text-third">(追加する場合はリンクもご記入ください)</span></label>
+                                                <input class="form-control" type="file" id="image" name="image" accept="image/png, image/jpeg">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label class="form-label mt-4">画像の送信順番</label>
+                                                <select class="form-control" name="isAfter" id="">
+                                                    <option value="1" selected>画像をメッセージ本文の後に送信</option>
+                                                    <option value="0">画像をメッセージ本文の前に送信</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="form-label mt-4">画像メッセージの通知テキスト<span class="text-third">(必須)</span></label>
+                                                <input class="form-control" type="text" id="image_text" name="image_text">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label mt-4">画像メッセージのリンクURL<span class="text-third">(httpsからご記入ください)</span></label>
+                                                <input class="form-control" type="text" id="image_url" name="image_url" placeholder="https://google.com">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">

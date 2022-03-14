@@ -15,6 +15,14 @@ use LINE\LINEBot\MessageBuilder\TextMessageBuilder;
 use Log;
 use Illuminate\Http\Request;
 
+use LINE\LINEBot\MessageBuilder\ImageMessageBuilder;
+use LINE\LINEBot\ImagemapActionBuilder\AreaBuilder;
+use LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder;
+use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
+use LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder;
+use Illuminate\Support\Facades\Storage;
+
+
 class ChatMultipleController extends Controller
 {
     /**
@@ -60,10 +68,31 @@ class ChatMultipleController extends Controller
      */
     public function store(Request $request, $aid)
     {
-        // store values
+
+        // $request->validate([
+        //     'name' => 'required',
+        //     'image' => 'mimes:jpg,png,jpeg|max:5048'
+        // ]);
+
+
+        // isAfter checkbox
+        if ($request->isAfter == 1) {
+            $isAfterFlag = true;
+        } else {
+            $isAfterFlag = false;
+        }
+
+        // store values and image
         $chat = new ChatMultiple();
         $chat->message = $request->message;
+        $chat->image_text = $request->image_text;
+        $chat->image_url = $request->image_url;
+        $chat->isAfter = $isAfterFlag;
         $chat->account_id = $aid;
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->storeAs('/public/sendmedia/', $aid . '-' . uniqid() . '.jpg');;
+            $chat->image = $path;
+        }
         $chat->save();
 
         // set value for pivot table
@@ -101,12 +130,50 @@ class ChatMultipleController extends Controller
         $http_client = new CurlHTTPClient($access_token);
         $bot = new LINEBot($http_client, ['channelSecret' => $channel_secret]);
 
+
+        // get uploaded image from storage 
+        $filename = Storage::path($chat->image);
+
+        // get the dimensions of the image
+        $data = getimagesize($filename);
+        $width = $data[0];
+        $height = $data[1];
+
+        // set the image as base for the image map message
+        $pathImg = str_replace('public/', 'storage/', $chat->image); // change starting of url from public/ to storage/
+        $alt_text =  $chat->image_text; // alt text for displaying notification
+        $base_url = 'https://6ee2-223-133-69-171.ngrok.io/' . $pathImg . '?_ignore='; // url of image
+        $base_size = new BaseSizeBuilder($height, $width); // base image dimensions
+
+        // set action area builder
+        $x = 0;
+        $y = 0;
+        $area = new AreaBuilder($x, $y, $width, $height);
+        $link_url = $chat->image_url;
+        $image_map_actions = [new ImagemapUriActionBuilder($link_url, $area)];
+
+        // build image map message
+        $image_map_message = new ImagemapMessageBuilder(
+            $base_url,
+            $alt_text,
+            $base_size,
+            $image_map_actions
+        );
+
         // Set message to send
         $message = $request->message;
 
-        // Send to multiple people
+        // build text message 
         $textMessageBuilder = new TextMessageBuilder($message);
-        $response = $bot->multicast($line_id_list, $textMessageBuilder);
+
+        // set the order to send (image first or text first)
+        if ($isAfterFlag) {
+            $response = $bot->multicast($line_id_list, $textMessageBuilder);
+            $response = $bot->multicast($line_id_list, $image_map_message);
+        } else {
+            $response = $bot->multicast($line_id_list, $image_map_message);
+            $response = $bot->multicast($line_id_list, $textMessageBuilder);
+        }
 
         // Logging error
         if ($response->isSucceeded()) {

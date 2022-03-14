@@ -11,7 +11,7 @@ class ChatMultiple extends Model
 
     protected $table = 'chat_multiples';
 
-    protected $fillable = ['account_id', 'message', 'user_identifier',];
+    protected $fillable = ['account_id', 'message', 'user_identifier', 'image_text', 'image_url', 'image', 'isAfter'];
 
     public function account()
     {
