@@ -10,4 +10,9 @@ class ReceivedMedia extends Model
     use HasFactory;
 
     protected $fillable = ['account_id', 'type', 'senderName', 'media', 'delete_at'];
+
+    public function account()
+    {
+        return $this->belongsTo(Account::class);
+    }
 }

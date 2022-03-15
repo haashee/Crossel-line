@@ -48,7 +48,7 @@ class Account extends Model
 
     public function receivedMedia()
     {
-        return $this->hasOne(ReceivedMedia::class, 'account_id', 'id');
+        return $this->hasMany(ReceivedMedia::class, 'account_id');
     }
 
     public function chats()

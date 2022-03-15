@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Account;
 use App\Models\AccountSetting;
+use App\Models\ChatMultiple;
 use App\Models\ChatSetting;
+use App\Models\ReceivedMedia;
+use App\Models\RichMenu;
 use App\Models\RichmenuSetting;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
@@ -207,12 +210,37 @@ class AccountsController extends Controller
     public function destroy($id)
     {
         $account = Account::where('id', $id)->first();
-        $account->delete();
 
+        // unlink delete the account profile pic
         if ($account->image !== 'default_profilepicture.png') {
             $file_path = public_path('uploads/profile-pic/') . $account->image;
             unlink($file_path);
         }
+
+        // unlink delete the received media on this account
+        $receivedMedia = ReceivedMedia::where('account_id', $account->id)->get();
+        foreach ($receivedMedia as $media) {
+            $mediaPath = public_path('storage') . $media->media;
+            unlink($mediaPath);
+        }
+
+        // unlink delete the send media on this account
+        $sendMedia = ChatMultiple::where('account_id', $account->id)->get();
+        foreach ($sendMedia as $media) {
+            $mediaPath = public_path('storage') . $media->image;
+            unlink($mediaPath);
+        }
+
+        // unlink delete the richmenu images on this account
+        $richmenus = RichMenu::where('account_id', $account->id)->get();
+        foreach ($richmenus as $richmenu) {
+            $imgPath = public_path('uploads/richmenu/') . $richmenu->image;
+            unlink($imgPath);
+        }
+
+        // delete account entry in database
+        $account->delete();
+
 
         Session::put('title', 'アカウント削除');
 
