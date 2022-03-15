@@ -75,5 +75,14 @@ class Kernel extends HttpKernel
                 unlink($file_path);
             }
         })->daily();
+
+        $schedule->call(function () {
+            $files = DB::table('chat_multiples')->whereDate('delete_at', Carbon::now()->format('Y-m-d'))->get();
+            foreach ($files as $file) {
+                $file->delete();
+                $file_path = storage_path('app/public/sendmedia/' . $file->media);
+                unlink($file_path);
+            }
+        })->daily();
     }
 }

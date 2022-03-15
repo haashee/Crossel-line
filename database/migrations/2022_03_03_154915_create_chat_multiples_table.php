@@ -21,6 +21,7 @@ class CreateChatMultiplesTable extends Migration
             $table->string('image_url')->nullable();
             $table->string('image')->nullable();
             $table->boolean('isAfter')->default(1);
+            $table->date('delete_at')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
 

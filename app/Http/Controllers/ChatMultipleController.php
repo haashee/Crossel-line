@@ -21,6 +21,7 @@ use LINE\LINEBot\ImagemapActionBuilder\ImagemapUriActionBuilder;
 use LINE\LINEBot\MessageBuilder\Imagemap\BaseSizeBuilder;
 use LINE\LINEBot\MessageBuilder\ImagemapMessageBuilder;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 
 class ChatMultipleController extends Controller
@@ -96,6 +97,7 @@ class ChatMultipleController extends Controller
         $chat->message = $request->message;
         $chat->isAfter = $isAfterFlag;
         $chat->account_id = $aid;
+        $chat->delete_at = Carbon::now()->addDays(1)->format('Y-m-d');
         if ($request->hasFile('image')) {
             $path = $request->file('image')->storeAs('/public/sendmedia', $aid . '-' . uniqid() . '.jpg');
             $pathImg = str_replace('public/', '/', $path);
