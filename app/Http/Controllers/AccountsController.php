@@ -65,9 +65,9 @@ class AccountsController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'channel_secret' => 'required',
-            'access_token' => 'required',
+            'name' => 'required|unique:accounts',
+            'channel_secret' => 'required|unique:accounts',
+            'access_token' => 'required|unique:accounts',
         ]);
 
         $newAccount = Account::create([
