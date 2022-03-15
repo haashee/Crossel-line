@@ -125,8 +125,22 @@ Account
                                                 @endforelse
                                             </div>
                                             <p class="text-sm ms-5">{{ $chat->message }}</p>
+                                            @if ($chat->image)
+                                                <div class="col-xl-3 col-md-6 mb-xl-0 ms-4">
+                                                    <div class="card card-blog card-plain">
+                                                        <div class="position-relative">
+                                                            <a class="d-block border-radius-xl">
+                                                                <img src="{{ asset('storage/' . $chat->image) }}" alt="img-blur-shadow"
+                                                                    class="img-fluid shadow border-radius-xl">
+                                                            </a>
+                                                        </div>
+                                                        <p class="text-muted text-xs ps-2 pt-2">{{ $chat->image_url }}</p>
+                                                    </div>
+                                                </div>
+                                            @endif
                                         </div>
                                         </li>
+                                        <hr>
                                     @empty
                                         <p>送信されたメッセージがありません。</p>
                                     @endforelse

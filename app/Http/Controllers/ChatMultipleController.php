@@ -97,8 +97,9 @@ class ChatMultipleController extends Controller
         $chat->isAfter = $isAfterFlag;
         $chat->account_id = $aid;
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->storeAs('/public/sendmedia', $aid . '-' . uniqid() . '.jpg');;
-            $chat->image = $path;
+            $path = $request->file('image')->storeAs('/public/sendmedia', $aid . '-' . uniqid() . '.jpg');
+            $pathImg = str_replace('public/', '/', $path);
+            $chat->image = $pathImg;
             $chat->image_text = $request->image_text;
             $chat->image_url = $request->image_url;
         }
@@ -142,7 +143,7 @@ class ChatMultipleController extends Controller
         // if there is image message
         if ($request->hasFile('image')) {
             // get uploaded image from storage 
-            $filename = Storage::path($chat->image);
+            $filename = Storage::path('public' . $chat->image);
 
             // get the dimensions of the image
             $data = getimagesize($filename);
@@ -150,7 +151,7 @@ class ChatMultipleController extends Controller
             $height = $data[1];
 
             // set the image as base for the image map message
-            $pathImg = str_replace('public/', 'storage/', $chat->image); // change starting of url from public/ to storage/
+            $pathImg = "storage" . $chat->image; // change starting of url from public/ to storage/
             $alt_text =  $chat->image_text; // alt text for displaying notification
             $base_url = 'https://6ee2-223-133-69-171.ngrok.io/' . $pathImg . '?_ignore='; // url of image
             $base_size = new BaseSizeBuilder($height, $width); // base image dimensions
@@ -210,7 +211,7 @@ class ChatMultipleController extends Controller
     public function show($aid)
     {
         $account = Account::where('id', $aid)->first();
-        $chats = ChatMultiple::where('account_id', $aid)->get();
+        $chats = ChatMultiple::where('account_id', $aid)->get()->sortByDesc('created_at');
 
         return view('dashboard.chatmultiple.show', [
             'account' => $account,
