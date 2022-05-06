@@ -221,21 +221,27 @@ class AccountsController extends Controller
         $receivedMedia = ReceivedMedia::where('account_id', $account->id)->get();
         foreach ($receivedMedia as $media) {
             $mediaPath = public_path('storage') . $media->media;
-            unlink($mediaPath);
+            if ($media->media != null && File::exists($mediaPath)) {
+                unlink($mediaPath);
+            }
         }
 
         // unlink delete the send media on this account
         $sendMedia = ChatMultiple::where('account_id', $account->id)->get();
         foreach ($sendMedia as $media) {
             $mediaPath = public_path('storage') . $media->image;
-            unlink($mediaPath);
+            if ($media->image != null && File::exists($mediaPath)) {
+                unlink($mediaPath);
+            }
         }
 
         // unlink delete the richmenu images on this account
         $richmenus = RichMenu::where('account_id', $account->id)->get();
         foreach ($richmenus as $richmenu) {
             $imgPath = public_path('uploads/richmenu/') . $richmenu->image;
-            unlink($imgPath);
+            if ($richmenu->image != null && File::exists($imgPath)) {
+                unlink($imgPath);
+            }
         }
 
         // delete account entry in database

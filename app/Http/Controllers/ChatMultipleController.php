@@ -155,7 +155,7 @@ class ChatMultipleController extends Controller
             // set the image as base for the image map message
             $pathImg = "storage" . $chat->image; // change starting of url from public/ to storage/
             $alt_text =  $chat->image_text; // alt text for displaying notification
-            $base_url = 'https://6ee2-223-133-69-171.ngrok.io/' . $pathImg . '?_ignore='; // url of image
+            $base_url = 'https://d466-223-133-69-171.ngrok.io' . $pathImg . '?_ignore='; // url of image
             $base_size = new BaseSizeBuilder($height, $width); // base image dimensions
 
             // set action area builder
